@@ -5,9 +5,13 @@ import java.util.List;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.MVS_Sports.SportsManagement.entity.MetodoPagamento;
 import com.MVS_Sports.SportsManagement.entity.Pagamento;
+import com.MVS_Sports.SportsManagement.entity.StatoPagamento;
 import com.MVS_Sports.SportsManagement.repository.PagamentoRepository;
 
 import jakarta.persistence.EntityNotFoundException;
@@ -66,6 +70,7 @@ public class PagamentoService {
 		}
 	}
 	
+	
 	//	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< RIMUOVI PAGAMENTO PER ID >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	public String removePagamentoById(Long id) {
 		if (!PagamentoRepositoryDao.existsById(id)) {
@@ -74,5 +79,23 @@ public class PagamentoService {
 			PagamentoRepositoryDao.deleteById(id);
 			return "Pagamento eliminato";
 		}
+	}
+	
+	
+	//	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< CERCA PAGAMENTO PER METODO DI PAGAMENTO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	public List<Pagamento> findByNomeAttivitaContains(MetodoPagamento s){
+		return PagamentoRepositoryDao.findByMetodoPagamentoContains(s);
+	}
+	public Page<Pagamento> findByNomeAttivitaContains(Pageable pag,MetodoPagamento s){
+		return PagamentoRepositoryDao.findByMetodoPagamentoContains(pag, s);
+	}
+	
+	
+	//	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< CERCA PAGAMENTO PER STATO DI PAGAMENTO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	public List<Pagamento> findByNomeAttivitaContains(StatoPagamento s){
+		return PagamentoRepositoryDao.findByStatoPagamentoContains(s);
+	}
+	public Page<Pagamento> findByNomeAttivitaContains(Pageable pag,StatoPagamento s){
+		return PagamentoRepositoryDao.findByStatoPagamentoContains(pag, s);
 	}
 }

@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.MVS_Sports.SportsManagement.entity.Notifica;
@@ -75,5 +77,14 @@ public class NotificaService {
 			return "Notifica eliminato";
 		}
 	}
+	
+//	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< CERCA NOTIFICA PER PARTE DI TIPO NOTIFICA >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	public List<Notifica> findByNomeAttivitaContains(String s){
+		return NotificaRepositoryDao.findByTipoNotificaContains(s);
+	}
+	public Page<Notifica> findByNomeAttivitaContains(Pageable pag,String s){
+		return NotificaRepositoryDao.findByTipoNotificaContains(pag, s);
+	}
+	
 	
 }
