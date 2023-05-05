@@ -24,7 +24,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 @Entity
-@Table(name = "sportActivity")
+@Table(name = "attivitaSportiva")
 public class AttivitaSportiva {
 
 	@Id
@@ -42,10 +42,10 @@ public class AttivitaSportiva {
 	private Long numeroMassimoPartecipanti;
 	private LocalTime durataEvento;
 
-	@OneToMany(mappedBy = "event", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "attivitaSportiva", fetch = FetchType.EAGER)
 	private List<Evento> eventi;
 
-	@OneToMany(mappedBy = "review", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "attivitaSportiva", fetch = FetchType.EAGER)
 	private List<Recensione> recensioni;
 
 	

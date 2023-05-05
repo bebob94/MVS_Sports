@@ -43,19 +43,19 @@ public class User {
     
     private String CreditCard;
     
-    @OneToMany(mappedBy = "event", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "attivitaSportiva", fetch = FetchType.EAGER)
 	private List<Evento> eventi;
     
-    @OneToMany(mappedBy = "payment",  fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user",  fetch = FetchType.EAGER)
     private List <Pagamento> pagamenti;
    
-    @OneToMany(mappedBy = "notification", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
 	private List<Notifica> notifiche;
     
-    @OneToOne(mappedBy = "sportActivity")
-    private AttivitaSportiva attivitaSportia;
+    @OneToOne
+    private AttivitaSportiva attivitaSportive;
     
-    @OneToMany(mappedBy = "review", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
 	private List<Recensione> recensioni;
     
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
