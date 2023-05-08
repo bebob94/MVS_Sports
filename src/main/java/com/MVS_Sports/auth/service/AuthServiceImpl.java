@@ -73,11 +73,7 @@ public class AuthServiceImpl implements AuthService {
         if(userRepository.existsByEmail(registerDto.getEmail())){
             throw new MyAPIException(HttpStatus.BAD_REQUEST, "Email is already exists!.");
         }
-        
-        // add check for email exists in database
-        if(userRepository.existsBySecretCode(registerDto.getSecretCode())){
-            throw new MyAPIException(HttpStatus.BAD_REQUEST, "SecretCode is already exists!.");
-        }
+       
 
         User user = new User();
         user.setName(registerDto.getName());
@@ -106,7 +102,7 @@ public class AuthServiceImpl implements AuthService {
     
     public ERole getRole(String role) {
     	if(role.equals("ROLE_ADMIN")) return ERole.ROLE_ADMIN;
-    	else if(role.equals("COMPANY_OWNER")) return ERole.COMPANY_OWNER;
+    	else if(role.equals("COMPANY_OWNER")) return ERole.ROLE_COMPANY_OWNER;
     	else return ERole.ROLE_USER;
     }
     

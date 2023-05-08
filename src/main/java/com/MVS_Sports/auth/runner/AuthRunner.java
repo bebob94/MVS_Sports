@@ -48,7 +48,7 @@ public class AuthRunner implements ApplicationRunner {
 		roleRepository.save(user);
 		
 		Role companyOwner = new Role();
-		companyOwner.setRoleName(ERole.COMPANY_OWNER);
+		companyOwner.setRoleName(ERole.ROLE_COMPANY_OWNER);
 		roleRepository.save(companyOwner);
 		
 		adminRole = new HashSet<Role>();
