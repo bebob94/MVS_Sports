@@ -2,6 +2,11 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Logo from "../logoMVS.jpg";
+import ComeFunziona from "./ComeFunziona";
+import { Link } from "react-router-dom";
+import Home from "./Home";
+import Prenotazioni from "./Prenotazioni";
+import Notifiche from "./Notifiche";
 
 function MyNavbar() {
   return (
@@ -18,18 +23,18 @@ function MyNavbar() {
       />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="me-auto mt">
-          <Nav.Link href="#home">
+          <Link className="MyLink" to={"/"} onClick={Home}>
             <strong>Home</strong>
-          </Nav.Link>
-          <Nav.Link href="#link">
+          </Link>
+          <Link className="MyLink" to={"/ComeFunziona"} onClick={ComeFunziona}>
             <strong>Come funziona</strong>
-          </Nav.Link>
-          <Nav.Link href="#link">
+          </Link>
+          <Link className="MyLink" to={"/Prenotazioni"} onClick={Prenotazioni}>
             <strong>Prenotazioni</strong>
-          </Nav.Link>
-          <Nav.Link href="#link">
+          </Link>
+          <Link className="MyLink" to={"/Notifiche"} onClick={Notifiche}>
             <strong>Notifiche</strong>
-          </Nav.Link>
+          </Link>
         </Nav>
         <Nav className="me-2">
           <strong>

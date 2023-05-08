@@ -16,10 +16,10 @@ function App() {
         <MyNavbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/Profile/:user" element={<Profile />} />
-          <Route path="/Profile/:prenotation" element={<Prenotazioni />} />
-          <Route path="/Profile/:notification" element={<Notifiche />} />
-          <Route path="/Profile/:comeFunziona" element={<ComeFunziona />} />
+          <Route path="/Profile" element={<Profile />} />
+          <Route path="/Prenotazioni" element={<Prenotazioni />} />
+          <Route path="/Notifiche" element={<Notifiche />} />
+          <Route path="/ComeFunziona" element={<ComeFunziona />} />
         </Routes>
       </BrowserRouter>
     </div>

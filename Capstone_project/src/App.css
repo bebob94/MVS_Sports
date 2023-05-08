@@ -57,11 +57,23 @@ strong {
   box-shadow: black 2px 2px 10px 8px;
 }
 
-.myNav {
-  background: rgb(9, 9, 121);
-  background: linear-gradient(
-    180deg,
-    rgba(9, 9, 121, 1) 46%,
-    rgba(255, 255, 255, 0.8631827731092436) 85%
-  );
+.MyLink {
+  text-decoration: none !important;
+  margin: 0 15px !important;
+}
+
+.MyContainer {
+  height: 60em;
+  width: 100%;
+
+  background-image: url(.//Sportditutti-quartieri-inclusione.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.myButton {
+  background-color: green;
+}
+.myButton:hover {
+  transform: scale(1.2);
 }
