@@ -38,7 +38,7 @@ public class AttivitaSportivaService {
 //	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< CREA ATTIVITA SPORTIVA >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	public AttivitaSportiva creaAttivitaSportiva(String nome, String descrizione, String indirizzo, LocalTime oa, LocalTime oc, TipoDiSport tds, User user) {
 		AttivitaSportiva as =new AttivitaSportiva();
-		if(user.getRoles().equals(com.MVS_Sports.auth.entity.ERole.ROLE_COMPANY_OWNER)) {
+		
 			as.setNomeAttivita(nome);
 			as.setDescrizioneAttivita(descrizione);
 			as.setIndirizzo(indirizzo);
@@ -85,7 +85,7 @@ public class AttivitaSportivaService {
 			
 			default:
 				as.setNumeroMassimoPartecipanti(null);
-			}
+			
 			as.setEventi((List<Evento>) eventiRepositoryDao.findAll());
 			as.setRecensioni((List<Recensione>) recensioniRepositoryDao.findAll());
 			attivitaSportivaRepositoryDao.save(as);
