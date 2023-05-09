@@ -16,6 +16,7 @@ import com.MVS_Sports.SportsManagement.entity.TipoDiSport;
 import com.MVS_Sports.SportsManagement.repository.AttivitaSportivaRepository;
 import com.MVS_Sports.SportsManagement.repository.EventoRepository;
 import com.MVS_Sports.SportsManagement.repository.RecensioneRepository;
+import com.MVS_Sports.auth.entity.User;
 
 import jakarta.persistence.EntityNotFoundException;
 
@@ -35,58 +36,61 @@ public class AttivitaSportivaService {
 
 	
 //	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< CREA ATTIVITA SPORTIVA >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-	public AttivitaSportiva creaAttivitaSportiva(String nome, String descrizione, String indirizzo, LocalTime oa, LocalTime oc, TipoDiSport tds) {
+	public AttivitaSportiva creaAttivitaSportiva(String nome, String descrizione, String indirizzo, LocalTime oa, LocalTime oc, TipoDiSport tds, User user) {
 		AttivitaSportiva as =new AttivitaSportiva();
-		as.setNomeAttivita(nome);
-		as.setDescrizioneAttivita(descrizione);
-		as.setIndirizzo(indirizzo);
-		as.setOrarioApertura(oa);
-		as.setOrarioChiusura(oc);
-		as.setTipoDiSport(tds);
-		switch (tds) {
-		case CALCETTO: {
-			as.setNumeroMassimoPartecipanti(10l);
-			as.setDurataEvento(Duration.parse("PT1H00M"));
-			break;
-		}
-		case TENNIS_SINGOLO: {
-			as.setNumeroMassimoPartecipanti(2l);
-			as.setDurataEvento(Duration.parse("PT1H30M"));
-			break;
-		}
-		case TENNIS_DOPPIO: {
-			as.setNumeroMassimoPartecipanti(4l);
-			as.setDurataEvento(Duration.parse("PT1H30M"));
-			break;
-		}
-		case BEACH_TENNIS: {
-			as.setNumeroMassimoPartecipanti(4l);
-			as.setDurataEvento(Duration.parse("PT1H30M"));
-			break;
-		}
-		case  BEACH_VOLLEY: {
-			as.setNumeroMassimoPartecipanti(12l);
-			as.setDurataEvento(Duration.parse("PT1H30M"));
-			break;
-		}
-		case PALLAVOLO: {
-			as.setNumeroMassimoPartecipanti(12l);
-			as.setDurataEvento(Duration.parse("PT1H00M"));
-			break;
-		}
-		
-		case PADDLE: {
-			as.setNumeroMassimoPartecipanti(4l);
-			as.setDurataEvento(Duration.parse("PT1H30M"));
-			break;
-		}
-
+		if(user.getRoles().equals(com.MVS_Sports.auth.entity.ERole.ROLE_COMPANY_OWNER)) {
+			as.setNomeAttivita(nome);
+			as.setDescrizioneAttivita(descrizione);
+			as.setIndirizzo(indirizzo);
+			as.setOrarioApertura(oa);
+			as.setOrarioChiusura(oc);
+			as.setTipoDiSport(tds);
+			switch (tds) {
+			case CALCETTO: {
+				as.setNumeroMassimoPartecipanti(10l);
+				as.setDurataEvento(Duration.parse("PT1H00M"));
+				break;
+			}
+			case TENNIS_SINGOLO: {
+				as.setNumeroMassimoPartecipanti(2l);
+				as.setDurataEvento(Duration.parse("PT1H30M"));
+				break;
+			}
+			case TENNIS_DOPPIO: {
+				as.setNumeroMassimoPartecipanti(4l);
+				as.setDurataEvento(Duration.parse("PT1H30M"));
+				break;
+			}
+			case BEACH_TENNIS: {
+				as.setNumeroMassimoPartecipanti(4l);
+				as.setDurataEvento(Duration.parse("PT1H30M"));
+				break;
+			}
+			case  BEACH_VOLLEY: {
+				as.setNumeroMassimoPartecipanti(12l);
+				as.setDurataEvento(Duration.parse("PT1H30M"));
+				break;
+			}
+			case PALLAVOLO: {
+				as.setNumeroMassimoPartecipanti(12l);
+				as.setDurataEvento(Duration.parse("PT1H00M"));
+				break;
+			}
+			
+			case PADDLE: {
+				as.setNumeroMassimoPartecipanti(4l);
+				as.setDurataEvento(Duration.parse("PT1H30M"));
+				break;
+			}
+			
 			default:
 				as.setNumeroMassimoPartecipanti(null);
-	}
+			}
 			as.setEventi((List<Evento>) eventiRepositoryDao.findAll());
 			as.setRecensioni((List<Recensione>) recensioniRepositoryDao.findAll());
 			attivitaSportivaRepositoryDao.save(as);
+			
+		}
 			return as;
 	}
 	

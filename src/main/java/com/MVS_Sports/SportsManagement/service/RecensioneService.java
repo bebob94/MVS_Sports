@@ -1,5 +1,7 @@
 package com.MVS_Sports.SportsManagement.service;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.ObjectProvider;
@@ -7,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import com.MVS_Sports.SportsManagement.entity.AttivitaSportiva;
 import com.MVS_Sports.SportsManagement.entity.Recensione;
+import com.MVS_Sports.SportsManagement.entity.Valutazione;
 import com.MVS_Sports.SportsManagement.repository.RecensioneRepository;
 
 import jakarta.persistence.EntityNotFoundException;
@@ -18,26 +22,26 @@ public class RecensioneService {
 	@Autowired
 	RecensioneRepository recensioneRepositoryDao;
 	
-	@Autowired
-	@Qualifier("Recensione")
-	private ObjectProvider<Recensione> RecensioneProvider;
 	
-//	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< SALVA RECENSIONE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-	public void saveRecensione(Recensione r) {
-		recensioneRepositoryDao.save(r);
-	}
 	
 //	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< CREA RECENSIONE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-	public void creaRecensione() {
-		saveRecensione(RecensioneProvider.getObject());
+	public Recensione creaRecensione(Valutazione valutazione, String tr, LocalDateTime orarioRecensione , AttivitaSportiva as) {
+		Recensione r = new Recensione();
+		r.setValutazione(valutazione);
+		r.setTestoRecensione(tr);
+		r.setOrarioRecensione(orarioRecensione);
+		r.setAttivitaSportiva(as);
+		recensioneRepositoryDao.save(r);
+		return r;
 	}
 	
 //	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< MODIFICA RECENSIONE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-	public void updateRecensione( Recensione r) {
+	public Recensione updateRecensione( Recensione r) {
 		if (!recensioneRepositoryDao.existsById(r.getId())) {
 			throw new EntityNotFoundException("Recensione not exists!!!");
 		} else {
 			recensioneRepositoryDao.save(r);
+			return r;
 		}
 	}
 	
@@ -51,7 +55,7 @@ public class RecensioneService {
 	}
 
 	
-//	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< CERCA TUTTE LE RECENSIONi >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< CERCA TUTTE LE RECENSIONI >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	public List<Recensione> findAllRecensione() {
 		return (List<Recensione>) recensioneRepositoryDao.findAll();
 	}

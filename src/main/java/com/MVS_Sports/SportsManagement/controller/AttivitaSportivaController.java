@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.MVS_Sports.SportsManagement.entity.AttivitaSportiva;
 import com.MVS_Sports.SportsManagement.entity.TipoDiSport;
 import com.MVS_Sports.SportsManagement.service.AttivitaSportivaService;
+import com.MVS_Sports.auth.entity.User;
 
 
 
@@ -89,11 +90,12 @@ public class AttivitaSportivaController {
 	}
 	//<<<<<<<<<<<<<<<<<<<<<<<<< FINE METODI PUT>>>>>>>>>>>>>>>>>>>>>>>>>
 	
+	
 	//<<<<<<<<<<<<<<<<<<<<<<<<< INIZIO METODI POST>>>>>>>>>>>>>>>>>>>>>>>>>
-	@PostMapping("/{nome}/{descrizione}/{indirizzo}/{orarioApertura}/{orarioChiusura}/{tipoDiSport}")
+	@PostMapping("/{nome}/{descrizione}/{indirizzo}/{orarioApertura}/{orarioChiusura}/{tipoDiSport}/{users}")
 	@PreAuthorize("hasRole('ADMIN') or hasRole('COMPANY_OWNER')")
-	public ResponseEntity<?> postAttivitaSportiva(@PathVariable String nome,@PathVariable String descrizione,@PathVariable String indirizzo,@PathVariable LocalTime oa,@PathVariable LocalTime oc,@PathVariable TipoDiSport tds){
-		return new ResponseEntity<AttivitaSportiva>(attivitaSportivaService.creaAttivitaSportiva(nome, descrizione, indirizzo, oa, oc, tds),HttpStatus.OK);
+	public ResponseEntity<?> postAttivitaSportiva(@PathVariable String nome,@PathVariable String descrizione,@PathVariable String indirizzo,@PathVariable LocalTime oa,@PathVariable LocalTime oc,@PathVariable TipoDiSport tds,@PathVariable User user){
+		return new ResponseEntity<AttivitaSportiva>(attivitaSportivaService.creaAttivitaSportiva(nome, descrizione, indirizzo, oa, oc, tds, user),HttpStatus.OK);
 	}
 	//<<<<<<<<<<<<<<<<<<<<<<<<< FINE METODI POST>>>>>>>>>>>>>>>>>>>>>>>>>
 }

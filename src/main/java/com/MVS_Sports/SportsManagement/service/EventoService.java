@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.MVS_Sports.SportsManagement.entity.AttivitaSportiva;
 import com.MVS_Sports.SportsManagement.entity.Evento;
 import com.MVS_Sports.SportsManagement.repository.EventoRepository;
+import com.MVS_Sports.auth.entity.User;
 
 import jakarta.persistence.EntityNotFoundException;
 
@@ -21,8 +22,9 @@ public class EventoService {
 	
 	
 //	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< CREA EVENTO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-	public Evento creaEvento(LocalTime oi, Long np, AttivitaSportiva attivitaSportiva) {
+	public Evento creaEvento(LocalTime oi, Long np, AttivitaSportiva attivitaSportiva, User userCreatore) {
 		Evento e = new Evento();
+		e.setUserCreatore(userCreatore);;
 		e.setAttivitaSportiva(attivitaSportiva);
 		e.setOrarioInizio(oi);
 		e.setOrarioFine(oi.plus(e.getAttivitaSportiva().getDurataEvento()));
@@ -32,10 +34,11 @@ public class EventoService {
 	}
 	
 //	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< MODIFICA EVENTO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-	public Evento updateEvento( Evento e) {
+	public Evento updateEvento( Evento e, List<User> users) {
 		if (!eventoRepositoryDao.existsById(e.getId())) {
 			throw new EntityNotFoundException("Evento not exists!!!");
 		} else {
+			e.setUsers(users);
 			eventoRepositoryDao.save(e);
 			return e;
 		}

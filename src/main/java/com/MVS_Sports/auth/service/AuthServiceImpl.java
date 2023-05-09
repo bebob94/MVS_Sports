@@ -1,6 +1,7 @@
 package com.MVS_Sports.auth.service;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.http.HttpStatus;
@@ -77,9 +78,13 @@ public class AuthServiceImpl implements AuthService {
 
         User user = new User();
         user.setName(registerDto.getName());
+        user.setSurname(registerDto.getSurname());
+        user.setIndirizzo(registerDto.getIndirizzo());
         user.setUsername(registerDto.getUsername());
         user.setEmail(registerDto.getEmail());
         user.setPassword(passwordEncoder.encode(registerDto.getPassword()));
+        user.setCreditCard(registerDto.getCreditCard());
+        
 
         Set<Role> roles = new HashSet<>();
         
@@ -102,7 +107,7 @@ public class AuthServiceImpl implements AuthService {
     
     public ERole getRole(String role) {
     	if(role.equals("ROLE_ADMIN")) return ERole.ROLE_ADMIN;
-    	else if(role.equals("COMPANY_OWNER")) return ERole.ROLE_COMPANY_OWNER;
+    	else if(role.equals("ROLE_COMPANY_OWNER")) return ERole.ROLE_COMPANY_OWNER;
     	else return ERole.ROLE_USER;
     }
     

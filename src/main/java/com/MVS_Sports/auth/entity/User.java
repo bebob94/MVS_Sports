@@ -43,7 +43,7 @@ public class User {
     
     private String CreditCard;
     
-    @OneToMany(mappedBy = "attivitaSportiva", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "userCreatore", fetch = FetchType.EAGER)
 	private List<Evento> eventi;
     
     @OneToMany(mappedBy = "user",  fetch = FetchType.EAGER)
