@@ -31,10 +31,10 @@ public class TestController {
 		return "User Content.";
 	}
 
-	@GetMapping("/own")
+	@GetMapping("/owner")
 	@PreAuthorize("hasRole('COMPANY_OWNER')")
 	public String moderatorAccess() {
-		return "Moderator Board.";
+		return "COMPANY_OWNER Board.";
 	}
 
 	@GetMapping("/admin")

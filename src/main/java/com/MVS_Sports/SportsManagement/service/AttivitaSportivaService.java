@@ -1,16 +1,21 @@
 package com.MVS_Sports.SportsManagement.service;
 
+import java.time.Duration;
+import java.time.LocalTime;
 import java.util.List;
 
-import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.MVS_Sports.SportsManagement.entity.AttivitaSportiva;
+import com.MVS_Sports.SportsManagement.entity.Evento;
+import com.MVS_Sports.SportsManagement.entity.Recensione;
+import com.MVS_Sports.SportsManagement.entity.TipoDiSport;
 import com.MVS_Sports.SportsManagement.repository.AttivitaSportivaRepository;
+import com.MVS_Sports.SportsManagement.repository.EventoRepository;
+import com.MVS_Sports.SportsManagement.repository.RecensioneRepository;
 
 import jakarta.persistence.EntityNotFoundException;
 
@@ -21,25 +26,77 @@ public class AttivitaSportivaService {
 	AttivitaSportivaRepository attivitaSportivaRepositoryDao;
 	
 	@Autowired
-	@Qualifier("AttivitaSportiva")
-	private ObjectProvider<AttivitaSportiva> AttivitaSportivaProvider;
+	EventoRepository eventiRepositoryDao;
 	
-//	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< SALVA ATTIVITA SPORTIVA >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-	public void saveAttivitaSportiva(AttivitaSportiva as) {
-		attivitaSportivaRepositoryDao.save(as);
-	}
+	@Autowired
+	RecensioneRepository recensioniRepositoryDao;
+	
+	
+
 	
 //	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< CREA ATTIVITA SPORTIVA >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-	public void creaAttivitaSportiva() {
-		saveAttivitaSportiva(AttivitaSportivaProvider.getObject());
+	public AttivitaSportiva creaAttivitaSportiva(String nome, String descrizione, String indirizzo, LocalTime oa, LocalTime oc, TipoDiSport tds) {
+		AttivitaSportiva as =new AttivitaSportiva();
+		as.setNomeAttivita(nome);
+		as.setDescrizioneAttivita(descrizione);
+		as.setIndirizzo(indirizzo);
+		as.setOrarioApertura(oa);
+		as.setOrarioChiusura(oc);
+		as.setTipoDiSport(tds);
+		switch (tds) {
+		case CALCETTO: {
+			as.setNumeroMassimoPartecipanti(10l);
+			as.setDurataEvento(Duration.parse("PT1H00M"));
+			break;
+		}
+		case TENNIS_SINGOLO: {
+			as.setNumeroMassimoPartecipanti(2l);
+			as.setDurataEvento(Duration.parse("PT1H30M"));
+			break;
+		}
+		case TENNIS_DOPPIO: {
+			as.setNumeroMassimoPartecipanti(4l);
+			as.setDurataEvento(Duration.parse("PT1H30M"));
+			break;
+		}
+		case BEACH_TENNIS: {
+			as.setNumeroMassimoPartecipanti(4l);
+			as.setDurataEvento(Duration.parse("PT1H30M"));
+			break;
+		}
+		case  BEACH_VOLLEY: {
+			as.setNumeroMassimoPartecipanti(12l);
+			as.setDurataEvento(Duration.parse("PT1H30M"));
+			break;
+		}
+		case PALLAVOLO: {
+			as.setNumeroMassimoPartecipanti(12l);
+			as.setDurataEvento(Duration.parse("PT1H00M"));
+			break;
+		}
+		
+		case PADDLE: {
+			as.setNumeroMassimoPartecipanti(4l);
+			as.setDurataEvento(Duration.parse("PT1H30M"));
+			break;
+		}
+
+			default:
+				as.setNumeroMassimoPartecipanti(null);
+	}
+			as.setEventi((List<Evento>) eventiRepositoryDao.findAll());
+			as.setRecensioni((List<Recensione>) recensioniRepositoryDao.findAll());
+			attivitaSportivaRepositoryDao.save(as);
+			return as;
 	}
 	
 //	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< MODIFICA ATTIVITA SPORTIVA >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-	public void updateAttivitaSportiva( AttivitaSportiva as) {
+	public AttivitaSportiva updateAttivitaSportiva( AttivitaSportiva as) {
 		if (!attivitaSportivaRepositoryDao.existsById(as.getId())) {
 			throw new EntityNotFoundException("AttivitaSportiva not exists!!!");
 		} else {
 			attivitaSportivaRepositoryDao.save(as);
+			return as;
 		}
 	}
 	
@@ -92,6 +149,14 @@ public class AttivitaSportivaService {
 	}
 	public Page<AttivitaSportiva> findByTipoDiSportContains(Pageable pag,String s){
 		return attivitaSportivaRepositoryDao.findByNomeAttivitaContains(pag, s);
+	}
+	
+	//	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< CERCA ATTIVITA SPORTIVA PER INDIRIZZO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	public List<AttivitaSportiva> findByIndirizzo(String s){
+		return attivitaSportivaRepositoryDao.findByIndirizzo(s);
+	}
+	public Page<AttivitaSportiva> findByIndirizzo(Pageable pag,String s){
+		return attivitaSportivaRepositoryDao.findByIndirizzo(pag, s);
 	}
 	
 }

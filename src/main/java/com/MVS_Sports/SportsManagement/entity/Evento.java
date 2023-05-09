@@ -1,6 +1,7 @@
 package com.MVS_Sports.SportsManagement.entity;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,8 +29,8 @@ public class Evento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    private LocalDate orarioInizio;
-    private LocalDate orarioFine;
+    private LocalTime orarioInizio;
+    private LocalTime orarioFine;
     private Long numeroPartecipanti;
     
     @ManyToOne

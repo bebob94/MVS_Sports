@@ -15,13 +15,15 @@ public interface AttivitaSportivaRepository extends PagingAndSortingRepository<A
 
 	Optional<AttivitaSportiva> findByNomeAttivita( String nomeAttivita);
 	Optional<AttivitaSportiva> findByTipoDiSport( TipoDiSport tipoDiSport);
-	Optional<AttivitaSportiva> findByIndirizzoAttivita(String indirizzoAttivita);
 	
 	public List<AttivitaSportiva> findByNomeAttivitaContains(String s);
 	public Page<AttivitaSportiva> findByNomeAttivitaContains(Pageable page,String s);
 	
 	public List<AttivitaSportiva> findByTipoDiSportContains(String s);
 	public Page<AttivitaSportiva> findByTipoDiSportContains(Pageable page,String s);
+	
+	public List<AttivitaSportiva> findByIndirizzo(String s);
+	public Page<AttivitaSportiva> findByIndirizzo(Pageable page,String s);
 	
 	
 }

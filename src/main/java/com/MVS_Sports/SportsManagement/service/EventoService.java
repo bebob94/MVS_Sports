@@ -1,12 +1,12 @@
 package com.MVS_Sports.SportsManagement.service;
 
+import java.time.LocalTime;
 import java.util.List;
 
-import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import com.MVS_Sports.SportsManagement.entity.AttivitaSportiva;
 import com.MVS_Sports.SportsManagement.entity.Evento;
 import com.MVS_Sports.SportsManagement.repository.EventoRepository;
 
@@ -18,26 +18,26 @@ public class EventoService {
 	@Autowired
 	EventoRepository eventoRepositoryDao;
 	
-	@Autowired
-	@Qualifier("Evento")
-	private ObjectProvider<Evento> EventoProvider;
 	
-//	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< SALVA EVENTO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-	public void saveEvento(Evento e) {
-		eventoRepositoryDao.save(e);
-	}
 	
 //	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< CREA EVENTO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-	public void creaEvento() {
-		saveEvento( EventoProvider.getObject());
+	public Evento creaEvento(LocalTime oi, Long np, AttivitaSportiva attivitaSportiva) {
+		Evento e = new Evento();
+		e.setAttivitaSportiva(attivitaSportiva);
+		e.setOrarioInizio(oi);
+		e.setOrarioFine(oi.plus(e.getAttivitaSportiva().getDurataEvento()));
+		e.setNumeroPartecipanti(np);
+		eventoRepositoryDao.save(e);
+		return e;
 	}
 	
 //	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< MODIFICA EVENTO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-	public void updateAttivitaSportiva( Evento e) {
+	public Evento updateEvento( Evento e) {
 		if (!eventoRepositoryDao.existsById(e.getId())) {
 			throw new EntityNotFoundException("Evento not exists!!!");
 		} else {
 			eventoRepositoryDao.save(e);
+			return e;
 		}
 	}
 	

@@ -1,5 +1,6 @@
 package com.MVS_Sports.SportsManagement.entity;
 
+import java.time.Duration;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -33,14 +34,14 @@ public class AttivitaSportiva {
 
 	private String nomeAttivita;
 	private String descrizioneAttivita;
-	private String indirizzoAttivita;
+	private String indirizzo;
 	private LocalTime orarioApertura;
 	private LocalTime orarioChiusura;
 
 	@Enumerated(EnumType.STRING)
 	private TipoDiSport tipoDiSport;
 	private Long numeroMassimoPartecipanti;
-	private LocalTime durataEvento;
+	private Duration durataEvento;
 
 	@OneToMany(mappedBy = "attivitaSportiva", fetch = FetchType.EAGER)
 	private List<Evento> eventi;
