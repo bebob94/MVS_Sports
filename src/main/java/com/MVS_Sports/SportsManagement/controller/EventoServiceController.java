@@ -59,8 +59,8 @@ public class EventoServiceController {
 		//<<<<<<<<<<<<<<<<<<<<<<<<< INIZIO METODI POST>>>>>>>>>>>>>>>>>>>>>>>>>
 		@PostMapping("/{orarioInizio}/{numeroPartecipanti}/{attivitaSportiva}/{UserCreatore}")
 		@PreAuthorize("hasRole('ADMIN') or hasRole('COMPANY_OWNER') or hasRole('ADMIN')")
-		public ResponseEntity<?> postAttivitaSportiva(@PathVariable LocalTime oi,@PathVariable Long np,@PathVariable AttivitaSportiva attivitaSportiva, @PathVariable User userCreatore){
-			return new ResponseEntity<Evento>(eventoService.creaEvento(oi, np ,attivitaSportiva, userCreatore),HttpStatus.OK);
+		public ResponseEntity<?> postAttivitaSportiva(@PathVariable LocalTime oi,@PathVariable Long np,@PathVariable AttivitaSportiva attivitaSportiva, @PathVariable User userCreatore, @PathVariable String testoNotifica){
+			return new ResponseEntity<Evento>(eventoService.creaEvento(oi, np ,attivitaSportiva, userCreatore, testoNotifica),HttpStatus.OK);
 		}
 		//<<<<<<<<<<<<<<<<<<<<<<<<< FINE METODI POST>>>>>>>>>>>>>>>>>>>>>>>>>
 }

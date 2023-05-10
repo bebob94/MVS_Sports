@@ -8,6 +8,9 @@ import Profile from "./Components/Profile";
 import Prenotazioni from "./Components/Prenotazioni";
 import Notifiche from "./Components/Notifiche";
 import ComeFunziona from "./Components/ComeFunziona";
+import Register from "./Components/Register";
+import Login from "./Components/Login";
+// import Register from "./Components/Register";
 
 function App() {
   return (
@@ -15,6 +18,8 @@ function App() {
       <BrowserRouter>
         <MyNavbar />
         <Routes>
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/" element={<Home />} />
           <Route path="/Profile" element={<Profile />} />
           <Route path="/Prenotazioni" element={<Prenotazioni />} />

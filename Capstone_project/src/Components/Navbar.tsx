@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
@@ -9,6 +10,8 @@ import Prenotazioni from "./Prenotazioni";
 import Notifiche from "./Notifiche";
 
 function MyNavbar() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   return (
     <Navbar bg="transparent" expand="lg" className="pt-0 fixed-top myNav">
       <img
@@ -37,30 +40,33 @@ function MyNavbar() {
           </Link>
         </Nav>
         <Nav className="me-2">
-          <strong>
-            <NavDropdown title="Nome Utente" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Dashboard</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Impostazioni
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">
-                Le tue prenotazioni
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">Esci</NavDropdown.Item>
-            </NavDropdown>
-          </strong>
-          <Nav.Link href="#login">
-            <strong>Accedi</strong>
-          </Nav.Link>
-          <Nav.Link href="#register">
-            <strong>Registrati</strong>
-          </Nav.Link>
+          {isLoggedIn ? (
+            <strong>
+              <NavDropdown title="Nome Utente" id="basic-nav-dropdown">
+                <NavDropdown.Item href="#action/3.1">
+                  Dashboard
+                </NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.2">
+                  Impostazioni
+                </NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.3">
+                  Le tue prenotazioni
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href="#action/3.4">Esci</NavDropdown.Item>
+              </NavDropdown>
+            </strong>
+          ) : (
+            <>
+              <Link to={"/login"} className="MyLink">
+                <strong>Accedi</strong>
+              </Link>
+              <Link to={"/register"} className="MyLink">
+                <strong>Registrati</strong>
+              </Link>
+            </>
+          )}
         </Nav>
-        <i
-          className="bi bi-person-circle me-4"
-          style={{ fontSize: "2rem", color: "white" }}
-        ></i>
       </Navbar.Collapse>
     </Navbar>
   );

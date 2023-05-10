@@ -1,28 +1,21 @@
-import Image from "../Sportditutti-quartieri-inclusione.jpg";
+import { Col, Row, Container } from "react-bootstrap";
+
+import Carosello from "./Carosello";
 
 function Home() {
   return (
-    <div style={{ position: "relative" }}>
-      <img
-        src={Image}
-        alt="immagine sport"
-        className="w-100"
-        style={{ height: "40em" }}
-      />
-      <div
-        style={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          zIndex: "1",
-          textAlign: "center",
-        }}
-      >
+    <div className="MyContainer">
+      <Container style={{ paddingTop: "7em" }}>
         <h2 className="HomeText">PRENOTA ONLINE IL TUO CAMPO DA GIOCO</h2>
-        <h3 className="HomeText">NON TROVI ABBASTANZA COMPAGNI?</h3>
-        <h4 className="HomeText">NON TI PREOCUPARE, CI PENSIAMO NOI!!</h4>
-      </div>
+        <h3 className="HomeText">
+          NON TROVI ABBASTANZA COMPAGNI? NON TI PREOCUPARE, CI PENSIAMO NOI!!
+        </h3>
+      </Container>
+      <Row className="justify-content-center mt-5 mb-3">
+        <Col xs={4}>
+          <Carosello />
+        </Col>
+      </Row>
     </div>
   );
 }

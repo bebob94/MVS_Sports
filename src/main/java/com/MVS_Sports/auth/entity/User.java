@@ -49,7 +49,7 @@ public class User {
     @OneToMany(mappedBy = "user",  fetch = FetchType.EAGER)
     private List <Pagamento> pagamenti;
    
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
 	private List<Notifica> notifiche;
     
     @OneToOne
