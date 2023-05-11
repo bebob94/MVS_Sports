@@ -264,9 +264,3 @@ const Register = () => {
 };
 
 export default Register;
-
-// import React from "react";
-
-// // il tuo codice qui
-
-// export {};

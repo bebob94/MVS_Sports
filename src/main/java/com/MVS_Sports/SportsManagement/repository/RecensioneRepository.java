@@ -10,7 +10,7 @@ import com.MVS_Sports.SportsManagement.entity.Recensione;
 import com.MVS_Sports.SportsManagement.entity.Valutazione;
 
 
-public interface RecensioneRepository extends PagingAndSortingRepository<Recensione, Long>,CrudRepository<Recensione, Long> {
+public interface RecensioneRepository extends PagingAndSortingRepository<Recensione, Long>, CrudRepository<Recensione, Long> {
 
 	Optional<Recensione> findByValutazione( Valutazione valutazione);
 	Optional<Recensione> findByOrarioRecensione( LocalDateTime orarioRecensione);

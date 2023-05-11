@@ -9,10 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import com.MVS_Sports.SportsManagement.Payload.RecensioneDto;
 import com.MVS_Sports.SportsManagement.entity.AttivitaSportiva;
 import com.MVS_Sports.SportsManagement.entity.Recensione;
 import com.MVS_Sports.SportsManagement.entity.Valutazione;
+import com.MVS_Sports.SportsManagement.repository.AttivitaSportivaRepository;
 import com.MVS_Sports.SportsManagement.repository.RecensioneRepository;
+import com.MVS_Sports.auth.repository.UserRepository;
 
 import jakarta.persistence.EntityNotFoundException;
 
@@ -22,15 +25,22 @@ public class RecensioneService {
 	@Autowired
 	RecensioneRepository recensioneRepositoryDao;
 	
+	@Autowired
+	AttivitaSportivaRepository attivitaSportivaRepositoryDao;
+	
+	@Autowired
+	UserRepository userRepositoryDao;
+	
 	
 	
 //	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< CREA RECENSIONE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-	public Recensione creaRecensione(Valutazione valutazione, String tr, LocalDateTime orarioRecensione , AttivitaSportiva as) {
+	public Recensione creaRecensione(RecensioneDto recensione, Long id1, Long id2) {
 		Recensione r = new Recensione();
-		r.setValutazione(valutazione);
-		r.setTestoRecensione(tr);
-		r.setOrarioRecensione(orarioRecensione);
-		r.setAttivitaSportiva(as);
+		r.setValutazione(recensione.getValutazione());
+		r.setTestoRecensione(recensione.getTestoRecensione());
+		r.setOrarioRecensione(recensione.getOrarioRecensione());
+		r.setAttivitaSportiva(attivitaSportivaRepositoryDao.findById(id2).get());
+		r.setUser(userRepositoryDao.findById(id2).get());
 		recensioneRepositoryDao.save(r);
 		return r;
 	}

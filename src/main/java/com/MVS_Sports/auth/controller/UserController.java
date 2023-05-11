@@ -17,8 +17,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.MVS_Sports.SportsManagement.entity.AttivitaSportiva;
-import com.MVS_Sports.SportsManagement.entity.TipoDiSport;
 import com.MVS_Sports.auth.entity.User;
 import com.MVS_Sports.auth.service.UserService;
 

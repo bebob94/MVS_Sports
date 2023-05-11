@@ -54,7 +54,7 @@ public class NotificaService {
 
 	
 //	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< CERCA TUTTE LE NOTIFICHE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-	public List<Notifica> findAllAttivitaSportiva() {
+	public List<Notifica> findAllNotifica() {
 		return (List<Notifica>) NotificaRepositoryDao.findAll();
 	}
 	

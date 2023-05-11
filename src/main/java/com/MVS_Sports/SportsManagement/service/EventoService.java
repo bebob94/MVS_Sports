@@ -7,10 +7,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.MVS_Sports.SportsManagement.Payload.EventoDto;
+import com.MVS_Sports.SportsManagement.Payload.NotificaDto;
 import com.MVS_Sports.SportsManagement.entity.AttivitaSportiva;
 import com.MVS_Sports.SportsManagement.entity.Evento;
 import com.MVS_Sports.SportsManagement.entity.Notifica;
 import com.MVS_Sports.SportsManagement.entity.TipoNotifica;
+import com.MVS_Sports.SportsManagement.repository.AttivitaSportivaRepository;
 import com.MVS_Sports.SportsManagement.repository.EventoRepository;
 import com.MVS_Sports.SportsManagement.repository.NotificaRepository;
 import com.MVS_Sports.auth.entity.User;
@@ -28,21 +31,27 @@ public class EventoService {
 	UserRepository userRepository;
 	
 	@Autowired
+	AttivitaSportivaRepository attivitaSportivaRepository;
+	
+	@Autowired
 	NotificaRepository notificaRepository;
 	
 //	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< CREA EVENTO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-	public Evento creaEvento(LocalTime oi, Long np, AttivitaSportiva attivitaSportiva, User userCreatore ,String testoNotifica) {
+	public Evento creaEvento(EventoDto evento, Long id1, Long id2 , NotificaDto notifica) {
+		
 		Evento e = new Evento();
-		e.setUserCreatore(userCreatore);;
+		e.setUserCreatore(userRepository.findById(id1).get());;
+		AttivitaSportiva attivitaSportiva = attivitaSportivaRepository.findById(id2).get();
 		e.setAttivitaSportiva(attivitaSportiva);
-		e.setOrarioInizio(oi);
-		e.setOrarioFine(oi.plus(e.getAttivitaSportiva().getDurataEvento()));
-		e.setNumeroPartecipanti(np);
+		LocalTime orarioInizio = evento.getOrarioInizio();
+		e.setOrarioInizio(orarioInizio);
+		e.setOrarioFine(orarioInizio.plus(e.getAttivitaSportiva().getDurataEvento()));
+		e.setNumeroPartecipanti(evento.getNumeroPartecipanti());
 		
 		Notifica n = new Notifica();
-		n.setTipoNotifica(TipoNotifica.NUOVO_EVENTO_AVVIATO);
+		n.setTipoNotifica(notifica.getTipoNotifica());
 		n.setOrarioNotifica(LocalDateTime.now());
-		n.setTestoNotifica(testoNotifica);
+		n.setTestoNotifica(notifica.getTestoNotifica());
 		n.setAttivitaSportiva(attivitaSportiva);
 		n.setUsers(userRepository.findAll());
 		notificaRepository.save(n);

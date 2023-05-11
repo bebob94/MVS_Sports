@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.MVS_Sports.SportsManagement.Payload.EventoDto;
+import com.MVS_Sports.SportsManagement.Payload.NotificaDto;
 import com.MVS_Sports.SportsManagement.entity.AttivitaSportiva;
 import com.MVS_Sports.SportsManagement.entity.Evento;
 import com.MVS_Sports.SportsManagement.entity.TipoDiSport;
@@ -57,10 +59,10 @@ public class EventoServiceController {
 		
 		
 		//<<<<<<<<<<<<<<<<<<<<<<<<< INIZIO METODI POST>>>>>>>>>>>>>>>>>>>>>>>>>
-		@PostMapping("/{orarioInizio}/{numeroPartecipanti}/{attivitaSportiva}/{UserCreatore}")
+		@PostMapping(value="/add/{id}")
 		@PreAuthorize("hasRole('ADMIN') or hasRole('COMPANY_OWNER') or hasRole('ADMIN')")
-		public ResponseEntity<?> postEvento(@PathVariable LocalTime oi,@PathVariable Long np,@PathVariable AttivitaSportiva attivitaSportiva, @PathVariable User userCreatore, @PathVariable String testoNotifica){
-			return new ResponseEntity<Evento>(eventoService.creaEvento(oi, np ,attivitaSportiva, userCreatore, testoNotifica),HttpStatus.OK);
+		public ResponseEntity<?> postEvento(@RequestBody EventoDto evento, Long id1, Long id2 , NotificaDto notifica){
+			return new ResponseEntity<Evento>(eventoService.creaEvento(evento, id1, id2, notifica),HttpStatus.OK);
 		}
 		//<<<<<<<<<<<<<<<<<<<<<<<<< FINE METODI POST>>>>>>>>>>>>>>>>>>>>>>>>>
 }

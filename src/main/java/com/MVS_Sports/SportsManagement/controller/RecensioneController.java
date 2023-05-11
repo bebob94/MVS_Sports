@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.MVS_Sports.SportsManagement.Payload.RecensioneDto;
 import com.MVS_Sports.SportsManagement.entity.AttivitaSportiva;
 import com.MVS_Sports.SportsManagement.entity.Recensione;
 import com.MVS_Sports.SportsManagement.entity.TipoDiSport;
@@ -67,10 +68,10 @@ public class RecensioneController {
 		
 		
 		//<<<<<<<<<<<<<<<<<<<<<<<<< INIZIO METODI POST>>>>>>>>>>>>>>>>>>>>>>>>>
-		@PostMapping("/{valutazione}/{testoRecensione}/{orarioRecensione}/{attivitaSportiva}")
+		@PostMapping(value="/add/{id}")
 		@PreAuthorize("hasRole('ADMIN') or hasRole('USER')  or hasRole('COMPANY_OWNER')")
-		public ResponseEntity<?> postAttivitaSportiva(@PathVariable Valutazione valutazione,@PathVariable String testoRecensione,@PathVariable LocalDateTime orarioRecensione,@PathVariable AttivitaSportiva attivitaSportiva){
-			return new ResponseEntity<Recensione>(recensioneService.creaRecensione(valutazione, testoRecensione, orarioRecensione, attivitaSportiva),HttpStatus.OK);
+		public ResponseEntity<?> postAttivitaSportiva(@RequestBody RecensioneDto recensione, Long id1, Long id2){
+			return new ResponseEntity<Recensione>(recensioneService.creaRecensione(recensione, id1, id2),HttpStatus.OK);
 		}
 		//<<<<<<<<<<<<<<<<<<<<<<<<< FINE METODI POST>>>>>>>>>>>>>>>>>>>>>>>>>
 }

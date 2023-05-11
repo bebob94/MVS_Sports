@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.MVS_Sports.SportsManagement.Payload.AttivitaSportivaDto;
 import com.MVS_Sports.SportsManagement.entity.AttivitaSportiva;
 import com.MVS_Sports.SportsManagement.entity.Evento;
 import com.MVS_Sports.SportsManagement.entity.Recensione;
@@ -17,6 +18,7 @@ import com.MVS_Sports.SportsManagement.repository.AttivitaSportivaRepository;
 import com.MVS_Sports.SportsManagement.repository.EventoRepository;
 import com.MVS_Sports.SportsManagement.repository.RecensioneRepository;
 import com.MVS_Sports.auth.entity.User;
+import com.MVS_Sports.auth.repository.UserRepository;
 
 import jakarta.persistence.EntityNotFoundException;
 
@@ -25,6 +27,9 @@ public class AttivitaSportivaService {
 
 	@Autowired
 	AttivitaSportivaRepository attivitaSportivaRepositoryDao;
+	
+	@Autowired
+	UserRepository userRepositoryDao;
 	
 	@Autowired
 	EventoRepository eventiRepositoryDao;
@@ -36,16 +41,18 @@ public class AttivitaSportivaService {
 
 	
 //	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< CREA ATTIVITA SPORTIVA >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-	public AttivitaSportiva creaAttivitaSportiva(String nome, String descrizione, String indirizzo, LocalTime oa, LocalTime oc, TipoDiSport tds, User user) {
+	public AttivitaSportiva creaAttivitaSportiva(AttivitaSportivaDto attivitaSportiva, Long id) {
+		User u = userRepositoryDao.findById(id).get();
 		AttivitaSportiva as =new AttivitaSportiva();
 		
-			as.setNomeAttivita(nome);
-			as.setDescrizioneAttivita(descrizione);
-			as.setIndirizzo(indirizzo);
-			as.setOrarioApertura(oa);
-			as.setOrarioChiusura(oc);
-			as.setTipoDiSport(tds);
-			switch (tds) {
+			as.setNomeAttivita(attivitaSportiva.getNomeAttivita());
+			as.setDescrizioneAttivita(attivitaSportiva.getDescrizioneAttivita());
+			as.setIndirizzo(attivitaSportiva.getIndirizzo());
+			as.setOrarioApertura(attivitaSportiva.getOrarioApertura());
+			as.setOrarioChiusura(attivitaSportiva.getOrarioChiusura());
+			as.setTipoDiSport(attivitaSportiva.getTipoDiSport());
+			as.setUser(u);
+			switch (attivitaSportiva.getTipoDiSport()) {
 			case CALCETTO: {
 				as.setNumeroMassimoPartecipanti(10l);
 				as.setDurataEvento(Duration.parse("PT1H00M"));

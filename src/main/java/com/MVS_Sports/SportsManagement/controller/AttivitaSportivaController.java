@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.MVS_Sports.SportsManagement.Payload.AttivitaSportivaDto;
 import com.MVS_Sports.SportsManagement.entity.AttivitaSportiva;
 import com.MVS_Sports.SportsManagement.entity.TipoDiSport;
 import com.MVS_Sports.SportsManagement.service.AttivitaSportivaService;
@@ -88,10 +89,10 @@ public class AttivitaSportivaController {
 	
 	
 	//<<<<<<<<<<<<<<<<<<<<<<<<< INIZIO METODI POST>>>>>>>>>>>>>>>>>>>>>>>>>
-	@PostMapping("/{nome}/{descrizione}/{indirizzo}/{orarioApertura}/{orarioChiusura}/{tipoDiSport}/{users}")
+	@PostMapping(value="/add/{id}")
 	@PreAuthorize("hasRole('ADMIN') or hasRole('COMPANY_OWNER')")
-	public ResponseEntity<?> postAttivitaSportiva(@PathVariable String nome,@PathVariable String descrizione,@PathVariable String indirizzo,@PathVariable LocalTime oa,@PathVariable LocalTime oc,@PathVariable TipoDiSport tds,@PathVariable User user){
-		return new ResponseEntity<AttivitaSportiva>(attivitaSportivaService.creaAttivitaSportiva(nome, descrizione, indirizzo, oa, oc, tds, user),HttpStatus.OK);
+	public ResponseEntity<?> postAttivitaSportiva(@RequestBody AttivitaSportivaDto attivitaSportiva, Long id){
+		return new ResponseEntity<AttivitaSportiva>(attivitaSportivaService.creaAttivitaSportiva(attivitaSportiva, id),HttpStatus.OK);
 	}
 	//<<<<<<<<<<<<<<<<<<<<<<<<< FINE METODI POST>>>>>>>>>>>>>>>>>>>>>>>>>
 }
