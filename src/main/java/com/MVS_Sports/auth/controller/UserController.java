@@ -1,4 +1,4 @@
-package com.MVS_Sports.SportsManagement.controller;
+package com.MVS_Sports.auth.controller;
 
 import java.time.LocalTime;
 import java.util.List;
@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,50 +18,50 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.MVS_Sports.SportsManagement.entity.AttivitaSportiva;
-import com.MVS_Sports.SportsManagement.entity.Evento;
 import com.MVS_Sports.SportsManagement.entity.TipoDiSport;
-import com.MVS_Sports.SportsManagement.service.EventoService;
 import com.MVS_Sports.auth.entity.User;
+import com.MVS_Sports.auth.service.UserService;
 
 @RestController
-@RequestMapping("/Evento")
+@RequestMapping("/User")
 @CrossOrigin(origins = "*", maxAge = 6000000)
-public class EventoServiceController {
+public class UserController {
+	
+	@Autowired
+	UserService userService;
 
-	
-	@Autowired EventoService eventoService;
-	
 	//<<<<<<<<<<<<<<<<<<<<<<<<< INIZIO METODI GET>>>>>>>>>>>>>>>>>>>>>>>>>
 		@GetMapping("/{id}")
 		@PreAuthorize("hasRole('USER') or hasRole('COMPANY_OWNER') or hasRole('ADMIN')")
-		public ResponseEntity<Evento> trovaEventoTramiteId(@PathVariable Long id) {
-			return new ResponseEntity<Evento>(eventoService.findEventoById(id),
+		public ResponseEntity<User> trovaAttivitaSportivaTramiteId(@PathVariable Long id) {
+			return new ResponseEntity<User>(userService.findUserById(id),
 					HttpStatus.OK);
 		}
-		
+
 		@GetMapping("/all")
 		@PreAuthorize("hasRole('USER') or hasRole('COMPANY_OWNER') or hasRole('ADMIN')")
-		public ResponseEntity<List<Evento>> trovaEventoAll() {
-			return new ResponseEntity<List<Evento>>(eventoService.findAllEvento(),
+		public ResponseEntity<List<User>> trovaAttivitaSportivaAll() {
+			return new ResponseEntity<List<User>>(userService.findAllUser(),
 					HttpStatus.OK);
 		}
 		//<<<<<<<<<<<<<<<<<<<<<<<<< FINE METODI GET>>>>>>>>>>>>>>>>>>>>>>>>>
+
+		
+		//<<<<<<<<<<<<<<<<<<<<<<<<< INIZIO METODI DELETE>>>>>>>>>>>>>>>>>>>>>>>>>
+		@DeleteMapping("/{id}")
+		@PreAuthorize("hasRole('ADMIN')")
+		public ResponseEntity<String> eliminaUser( @PathVariable Long id){
+			return new ResponseEntity<String>(userService.removeUserById(id), HttpStatus.OK);
+		}
+		//<<<<<<<<<<<<<<<<<<<<<<<<< FINE METODI DELETE>>>>>>>>>>>>>>>>>>>>>>>>>
 		
 		
 		//<<<<<<<<<<<<<<<<<<<<<<<<< INIZIO METODI PUT>>>>>>>>>>>>>>>>>>>>>>>>>
 		@PutMapping()
-		@PreAuthorize("hasRole('ADMIN')  or hasRole('COMPANY_OWNER') or hasRole('ADMIN')")
-		public ResponseEntity<?> updateEvento(@RequestBody Evento e, List<User> users){
-			return new ResponseEntity<Evento>(eventoService.updateEvento(e,users),HttpStatus.OK);
+		@PreAuthorize("hasRole('ADMIN')  or hasRole('COMPANY_OWNER') or hasRole('ADMIN') ")
+		public ResponseEntity<?> updateUser(@RequestBody User u){
+			return new ResponseEntity<User>(userService.updateUser(u),HttpStatus.OK);
 		}
 		//<<<<<<<<<<<<<<<<<<<<<<<<< FINE METODI PUT>>>>>>>>>>>>>>>>>>>>>>>>>
 		
-		
-		//<<<<<<<<<<<<<<<<<<<<<<<<< INIZIO METODI POST>>>>>>>>>>>>>>>>>>>>>>>>>
-		@PostMapping("/{orarioInizio}/{numeroPartecipanti}/{attivitaSportiva}/{UserCreatore}")
-		@PreAuthorize("hasRole('ADMIN') or hasRole('COMPANY_OWNER') or hasRole('ADMIN')")
-		public ResponseEntity<?> postEvento(@PathVariable LocalTime oi,@PathVariable Long np,@PathVariable AttivitaSportiva attivitaSportiva, @PathVariable User userCreatore, @PathVariable String testoNotifica){
-			return new ResponseEntity<Evento>(eventoService.creaEvento(oi, np ,attivitaSportiva, userCreatore, testoNotifica),HttpStatus.OK);
-		}
-		//<<<<<<<<<<<<<<<<<<<<<<<<< FINE METODI POST>>>>>>>>>>>>>>>>>>>>>>>>>
 }

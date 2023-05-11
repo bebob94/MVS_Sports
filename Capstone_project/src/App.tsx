@@ -10,6 +10,7 @@ import Notifiche from "./Components/Notifiche";
 import ComeFunziona from "./Components/ComeFunziona";
 import Register from "./Components/Register";
 import Login from "./Components/Login";
+import Attivita from "./Components/Attivita";
 // import Register from "./Components/Register";
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           <Route path="/Prenotazioni" element={<Prenotazioni />} />
           <Route path="/Notifiche" element={<Notifiche />} />
           <Route path="/ComeFunziona" element={<ComeFunziona />} />
+          <Route path="/Attivita" element={<Attivita />} />
         </Routes>
       </BrowserRouter>
     </div>

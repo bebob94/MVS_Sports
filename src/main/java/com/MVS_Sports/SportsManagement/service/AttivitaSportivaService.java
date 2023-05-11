@@ -53,22 +53,22 @@ public class AttivitaSportivaService {
 			}
 			case TENNIS_SINGOLO: {
 				as.setNumeroMassimoPartecipanti(2l);
-				as.setDurataEvento(Duration.parse("PT1H30M"));
+				as.setDurataEvento(Duration.parse("PT1H00M"));
 				break;
 			}
 			case TENNIS_DOPPIO: {
 				as.setNumeroMassimoPartecipanti(4l);
-				as.setDurataEvento(Duration.parse("PT1H30M"));
+				as.setDurataEvento(Duration.parse("PT1H00M"));
 				break;
 			}
 			case BEACH_TENNIS: {
 				as.setNumeroMassimoPartecipanti(4l);
-				as.setDurataEvento(Duration.parse("PT1H30M"));
+				as.setDurataEvento(Duration.parse("PT1H00M"));
 				break;
 			}
 			case  BEACH_VOLLEY: {
 				as.setNumeroMassimoPartecipanti(12l);
-				as.setDurataEvento(Duration.parse("PT1H30M"));
+				as.setDurataEvento(Duration.parse("PT1H00M"));
 				break;
 			}
 			case PALLAVOLO: {
@@ -79,7 +79,7 @@ public class AttivitaSportivaService {
 			
 			case PADDLE: {
 				as.setNumeroMassimoPartecipanti(4l);
-				as.setDurataEvento(Duration.parse("PT1H30M"));
+				as.setDurataEvento(Duration.parse("PT1H00M"));
 				break;
 			}
 			

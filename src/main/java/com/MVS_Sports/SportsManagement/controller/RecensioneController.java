@@ -39,7 +39,7 @@ public class RecensioneController {
 					HttpStatus.OK);
 		}
 		
-		@GetMapping
+		@GetMapping("/all")
 		@PreAuthorize("hasRole('USER') or hasRole('COMPANY_OWNER') or hasRole('ADMIN')")
 		public ResponseEntity<List<Recensione>> trovaRecensioneAll() {
 			return new ResponseEntity<List<Recensione>>(recensioneService.findAllRecensione(),

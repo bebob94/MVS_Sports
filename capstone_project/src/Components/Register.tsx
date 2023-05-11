@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import {
   faCheck,
   faTimes,
@@ -31,6 +32,13 @@ const Register = () => {
   const [errMsg, setErrMsg] = useState<string>("");
   const [success, setSuccess] = useState<boolean>(false);
 
+  const [isChecked, setIsChecked] = useState<boolean>(false);
+
+  const handleCheckboxChange = (event: {
+    target: { checked: boolean | ((prevState: boolean) => boolean) };
+  }) => {
+    setIsChecked(event.target.checked);
+  };
   useEffect(() => {
     if (userRef.current) {
       userRef.current.focus();
@@ -97,7 +105,9 @@ const Register = () => {
         <section>
           <h1>Success!</h1>
           <p>
-            <a href="#">Sign In</a>
+            <Link to={"/login"} className="MyLink2">
+              Sign In
+            </Link>
           </p>
         </section>
       ) : (
@@ -220,7 +230,18 @@ const Register = () => {
               <FontAwesomeIcon icon={faInfoCircle} />
               Must match the first password input field.
             </p>
-
+            <div>
+              <label htmlFor="isChecked" className="mr-2">
+                Sei un titolare d'azienda?
+                <input
+                  className="ms-2"
+                  type="checkbox"
+                  id="isChecked"
+                  checked={isChecked}
+                  onChange={handleCheckboxChange}
+                />
+              </label>
+            </div>
             <button
               disabled={!validName || !validPwd || !validMatch ? true : false}
             >
@@ -231,8 +252,9 @@ const Register = () => {
             Already registered?
             <br />
             <span className="line">
-              {/*put router link here*/}
-              <a href="#">Sign In</a>
+              <Link to={"/login"} className="MyLink2">
+                Sign In
+              </Link>
             </span>
           </p>
         </section>

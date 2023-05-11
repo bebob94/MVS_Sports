@@ -1,6 +1,5 @@
 package com.MVS_Sports.SportsManagement.controller;
 
-import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -24,9 +23,6 @@ import com.MVS_Sports.SportsManagement.service.AttivitaSportivaService;
 import com.MVS_Sports.auth.entity.User;
 
 
-
-
-
 @RestController
 @RequestMapping("/AttivitaSportiva")
 @CrossOrigin(origins = "*", maxAge = 6000000)
@@ -43,7 +39,7 @@ public class AttivitaSportivaController {
 				HttpStatus.OK);
 	}
 
-	@GetMapping
+	@GetMapping("/all")
 	@PreAuthorize("hasRole('USER') or hasRole('COMPANY_OWNER') or hasRole('ADMIN')")
 	public ResponseEntity<List<AttivitaSportiva>> trovaAttivitaSportivaAll() {
 		return new ResponseEntity<List<AttivitaSportiva>>(attivitaSportivaService.findAllAttivitaSportiva(),
