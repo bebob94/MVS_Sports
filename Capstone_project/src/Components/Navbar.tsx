@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
@@ -8,9 +8,20 @@ import { Link } from "react-router-dom";
 import Home from "./Home";
 import Prenotazioni from "./Prenotazioni";
 import Notifiche from "./Notifiche";
+import { RootState } from "./Redux/Store";
+import { useDispatch, useSelector } from "react-redux";
+import { USER } from "./Redux/ActionType";
 
 function MyNavbar() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const user = useSelector((state: RootState) => state.user);
+  const dispatch = useDispatch();
+
+  const handleSubmit = () => {
+    dispatch({
+      type: USER,
+      payload: {},
+    });
+  };
 
   return (
     <Navbar bg="transparent" expand="lg" className="pt-0 fixed-top myNav">
@@ -40,22 +51,31 @@ function MyNavbar() {
           </Link>
         </Nav>
         <Nav className="me-2">
-          {isLoggedIn ? (
-            <strong>
-              <NavDropdown title="Nome Utente" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">
-                  Dashboard
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Impostazioni
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">
-                  Le tue prenotazioni
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">Esci</NavDropdown.Item>
-              </NavDropdown>
-            </strong>
+          {user.user.username ? (
+            <>
+              <strong className="mt-2 me-4">Benvenuto</strong>
+              <strong style={{ marginRight: "6em" }}>
+                <NavDropdown title={user.user.username} id="basic-nav-dropdown">
+                  <NavDropdown.Item href="/Dashboard" className="text-dark">
+                    Dashboard
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.2" className="text-dark">
+                    Impostazioni
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="/ComeFunziona" className="text-dark">
+                    Come funziona
+                  </NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item
+                    href="#action/3.4"
+                    className="text-dark"
+                    onClick={handleSubmit}
+                  >
+                    Esci
+                  </NavDropdown.Item>
+                </NavDropdown>
+              </strong>
+            </>
           ) : (
             <>
               <Link to={"/login"} className="MyLink">

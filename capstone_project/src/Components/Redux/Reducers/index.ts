@@ -1,18 +1,19 @@
 import { PayloadAction } from "@reduxjs/toolkit";
 import { USER } from "../ActionType";
-import { MyState, User } from "../Interfaces/index";
+import { MyState, Registration } from "../Interfaces";
 
 const initialState: MyState = {
-  user: {} as User,
+  user: {} as Registration,
 };
+
 export const userReducer = (
   state = initialState,
-  action: PayloadAction<User>
+  action: PayloadAction<Registration>
 ) => {
   switch (action.type) {
     case USER:
       return {
-        user: action.payload as User,
+        user: action.payload as Registration,
       };
     default:
       return state;

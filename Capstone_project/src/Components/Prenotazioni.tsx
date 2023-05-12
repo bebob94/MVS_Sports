@@ -4,30 +4,17 @@ import { FaSearch } from "react-icons/fa";
 function Prenotazioni() {
   return (
     <div className="MyContainer py-5">
-      <Container className="secondSection py-5 mb-5">
-        <h2>Cerca e prenota il tuo campo sportivo online!</h2>
-        <p className="mt-5 mb-5">
-          Con il nostro portale online, puoi cercare e prenotare campi sportivi
-          per vari sport. Una volta trovato il campo che desideri, puoi
-          prenotarlo online in modo sicuro e conveniente.
-        </p>
-        <p className=" mb-5">
-          Siamo qui per semplificare la tua vita sportiva e offrirti
-          un'esperienza facile, veloce e conveniente nella ricerca e
-          prenotazione dei campi sportivi.
-        </p>
-      </Container>
       <Container className="prenotazioniColor py-5 mt-5">
         <Row>
           <Col xs={12} md={6} className="mt-5">
             <h2>Cerca il tuo campo preferito!</h2>
-            <p className="mt-5">
+            <h3 className="mt-5">
               <strong>
                 Stai cercando un centro sportivo nel Sarrabus per prenotare un
                 campo da calcetto, pallavolo, tennis? Oppure preferisci giocare
-                a padel/paddle, beach tennis o beach volley libero?
+                a padel/paddle, beach tennis o beach volley?
               </strong>
-            </p>
+            </h3>
           </Col>
           <Col xs={12} md={6} className="mt-5">
             <Form className="mt-5">
@@ -61,6 +48,19 @@ function Prenotazioni() {
             </Form>
           </Col>
         </Row>
+      </Container>
+      <Container className="secondSection py-5 mb-5">
+        <h2>Cerca e prenota il tuo campo sportivo online!</h2>
+        <h4 className="mt-5 mb-5">
+          Con il nostro portale online, puoi cercare e prenotare campi sportivi
+          per vari sport. Una volta trovato il campo che desideri, puoi
+          prenotarlo online in modo sicuro e conveniente.
+        </h4>
+        <h4 className=" mb-5">
+          Siamo qui per semplificare la tua vita sportiva e offrirti
+          un'esperienza facile, veloce e conveniente nella ricerca e
+          prenotazione dei campi sportivi.
+        </h4>
       </Container>
     </div>
   );

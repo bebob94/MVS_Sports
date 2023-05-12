@@ -1,11 +1,11 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-
+import { userReducer } from "../Reducers/index";
 import storage from "redux-persist/lib/storage";
 import { persistReducer, persistStore } from "redux-persist";
 
-const reducers = combineReducers({});
-
-// export default reducers;
+const reducers = combineReducers({
+  user: userReducer,
+});
 
 const persistConfig = {
   key: "root",
@@ -21,5 +21,6 @@ export const store = configureStore({
       serializableCheck: false,
     }),
 });
+
 export type RootState = ReturnType<typeof store.getState>;
 export const persistor = persistStore(store);

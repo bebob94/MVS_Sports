@@ -1,7 +1,7 @@
-import { log } from "console";
-import { User, register } from "../Interfaces";
+import { User, Registration } from "../Interfaces";
 
 export const USER = "USER";
+
 let url = "http://localhost:8080/api/auth/register";
 
 export const myfetch = async (params: User) => {
@@ -20,8 +20,7 @@ export const myfetch = async (params: User) => {
     return res;
   } catch (error) {}
 };
-
-export const registerFetch = async (body: register) => {
+export const registerFetch = async (body: Registration) => {
   let res = await fetch(url, {
     method: "POST",
     headers: {
@@ -29,4 +28,5 @@ export const registerFetch = async (body: register) => {
     },
     body: JSON.stringify(body),
   });
+  console.log(res);
 };

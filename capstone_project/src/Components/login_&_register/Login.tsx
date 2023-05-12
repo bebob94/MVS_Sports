@@ -1,13 +1,17 @@
 import { useRef, useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
-import AuthContext from "./api/context/AuthProvider";
-import axios from "./api/axios";
-const LOGIN_URL = "/auth";
+import { Link, useNavigate } from "react-router-dom";
+import AuthContext from "../api/context/AuthProvider";
+import axios from "../api/axios";
+import { useDispatch } from "react-redux";
+import { USER } from "../Redux/ActionType";
+const LOGIN_URL = "/api/auth/login";
 
 const Login = () => {
-  const { setAuth } = useContext(AuthContext);
+  const { setAuth }: any = useContext(AuthContext);
   const userRef = useRef<HTMLInputElement>(null);
   const errRef = useRef<HTMLInputElement>(null);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [user, setUser] = useState("");
   const [pwd, setPwd] = useState("");
@@ -15,43 +19,43 @@ const Login = () => {
   const [success, setSuccess] = useState(false);
 
   useEffect(() => {
-    userRef.current!.focus();
+    userRef.current?.focus();
   }, []);
-
   useEffect(() => {
     setErrMsg("");
   }, [user, pwd]);
 
-  const handleSubmit = async (e: { preventDefault: () => void }) => {
-    e.preventDefault();
+  useEffect(() => {
+    if (success) {
+      navigate("/");
+      setSuccess(false);
+    }
+  }, [success]);
 
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
     try {
       const response = await axios.post(
         LOGIN_URL,
-        JSON.stringify({ user, pwd }),
+        JSON.stringify({ username: user, password: pwd }),
         {
           headers: { "Content-Type": "application/json" },
-          withCredentials: true,
         }
       );
-      console.log(JSON.stringify(response?.data));
-      //console.log(JSON.stringify(response));
+      const id = response?.data?.id;
       const accessToken = response?.data?.accessToken;
       const roles = response?.data?.roles;
-      setAuth({ user, pwd, roles, accessToken });
+      setAuth({ id, user, pwd, roles, accessToken });
+      dispatch({
+        type: USER,
+        payload: { id, username: user, accessToken, roles },
+      });
+
       setUser("");
       setPwd("");
       setSuccess(true);
-    } catch (err: any) {
-      if (!err?.response) {
-        setErrMsg("No Server Response");
-      } else if (err.response?.status === 400) {
-        setErrMsg("Missing Username or Password");
-      } else if (err.response?.status === 401) {
-        setErrMsg("Unauthorized");
-      } else {
-        setErrMsg("Login Failed");
-      }
+    } catch (error: any) {
+      setErrMsg(error?.response?.data.message);
       errRef.current?.focus();
     }
   };
@@ -63,7 +67,7 @@ const Login = () => {
           <h1>You are logged in!</h1>
           <br />
           <p>
-            <Link to={"/register"} className="MyLink2">
+            <Link to={"/"} className="MyLink2">
               Go to Home
             </Link>
           </p>
@@ -98,7 +102,7 @@ const Login = () => {
               value={pwd}
               required
             />
-            <button>Sign In</button>
+            <button disabled={!user || !pwd ? true : false}>Sign In</button>
           </form>
           <p>
             Need an Account?

@@ -83,16 +83,15 @@ public class AuthServiceImpl implements AuthService {
         user.setUsername(registerDto.getUsername());
         user.setEmail(registerDto.getEmail());
         user.setPassword(passwordEncoder.encode(registerDto.getPassword()));
-        user.setCreditCard(registerDto.getCreditCard());
+        
         
 
         Set<Role> roles = new HashSet<>();
         
-        if(registerDto.getRoles() != null) {
-	        registerDto.getRoles().forEach(role -> {
-	        	Role userRole = roleRepository.findByRoleName(getRole(role)).get();
-	        	roles.add(userRole);
-	        });
+        if(registerDto.getOwner()) {
+        	Role userRole = roleRepository.findByRoleName(ERole.ROLE_COMPANY_OWNER).get();
+        	roles.add(userRole);
+	    
         } else {
         	Role userRole = roleRepository.findByRoleName(ERole.ROLE_USER).get();
         	roles.add(userRole);

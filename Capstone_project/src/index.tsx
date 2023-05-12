@@ -5,6 +5,7 @@ import App from "./App";
 import { Provider } from "react-redux";
 import { persistor, store } from "./Components/Redux/Store";
 import { PersistGate } from "redux-persist/integration/react";
+import { AuthProvider } from "./Components/api/context/AuthProvider";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -12,7 +13,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <Provider store={store}>
     <PersistGate persistor={persistor}>
-      <App />
+      <AuthProvider>
+        <App />
+      </AuthProvider>
     </PersistGate>
   </Provider>
 );

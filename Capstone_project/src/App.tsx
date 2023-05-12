@@ -4,13 +4,13 @@ import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MyNavbar from "./Components/Navbar";
 import Home from "./Components/Home";
-import Profile from "./Components/Profile";
 import Prenotazioni from "./Components/Prenotazioni";
 import Notifiche from "./Components/Notifiche";
 import ComeFunziona from "./Components/ComeFunziona";
-import Register from "./Components/Register";
-import Login from "./Components/Login";
+import Register from "./Components/login_&_register/Register";
+import Login from "./Components/login_&_register/Login";
 import Attivita from "./Components/Attivita";
+import Dashboard from "./Components/profile/Dashboard";
 // import Register from "./Components/Register";
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Home />} />
-          <Route path="/Profile" element={<Profile />} />
+          <Route path="/Dashboard" element={<Dashboard />} />
           <Route path="/Prenotazioni" element={<Prenotazioni />} />
           <Route path="/Notifiche" element={<Notifiche />} />
           <Route path="/ComeFunziona" element={<ComeFunziona />} />

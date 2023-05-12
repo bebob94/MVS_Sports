@@ -6,11 +6,15 @@ export interface User {
   given_name: string;
 }
 export interface MyState {
-  user: User;
+  user: Registration;
 }
-export interface register {
-  name: String;
+export interface Roles {
+  id: Number;
+  roleName: String;
+}
+export interface Registration {
+  id: String;
   username: String;
-  email: String;
-  password: String;
+  accessToken: String;
+  roles: Roles[];
 }

@@ -1,6 +1,6 @@
 package com.MVS_Sports.auth.payload;
 
-import java.util.Set;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,6 +20,5 @@ public class RegisterDto {
     private String username;
     private String email;
     private String password;
-    private String creditCard;
-    private Set<String> roles;
+    private Boolean owner;
 }
