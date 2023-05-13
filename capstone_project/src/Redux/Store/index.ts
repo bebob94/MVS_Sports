@@ -1,10 +1,13 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { userReducer } from "../Reducers/index";
+
 import storage from "redux-persist/lib/storage";
 import { persistReducer, persistStore } from "redux-persist";
+import { userReducer } from "../Reducers";
+import { AttivitaSportivaReducer } from "../Reducers/AttivitaSportive";
 
 const reducers = combineReducers({
   user: userReducer,
+  attivitaSportiva: AttivitaSportivaReducer,
 });
 
 const persistConfig = {

@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "../api/context/AuthProvider";
 import axios from "../api/axios";
 import { useDispatch } from "react-redux";
-import { USER } from "../Redux/ActionType";
+import { USER } from "../../Redux/ActionType";
 const LOGIN_URL = "/api/auth/login";
 
 const Login = () => {

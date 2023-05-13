@@ -42,15 +42,15 @@ public class Notifica {
 	 	private TipoNotifica tipoNotifica;
 	 	private LocalDateTime orarioNotifica;
 	 
-	 	@JsonIgnoreProperties({"users", "recensioni"})
+	 	@JsonIgnoreProperties({"users", "recensioni", "attivitaSportiva", "notifica"})
 	 	@OneToOne
 	 	private Evento evento;
 	 	
-	 	@JsonIgnore
+	 	 @JsonIgnoreProperties({"eventi", "users", "recensioni"})
 	 	@ManyToOne
 	 	private AttivitaSportiva attivitaSportiva;
 	 	
-	 	@JsonIgnoreProperties({"eventi", "recensioni"})
+	 	@JsonIgnore
 	 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
 	    private List<User> users;
 	 

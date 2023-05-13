@@ -2,15 +2,15 @@ import { useEffect, useState } from "react";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import Logo from "../logoMVS.jpg";
+import Logo from "../image/logoMVS.jpg";
 import ComeFunziona from "./ComeFunziona";
 import { Link } from "react-router-dom";
 import Home from "./Home";
 import Prenotazioni from "./Prenotazioni";
 import Notifiche from "./Notifiche";
-import { RootState } from "./Redux/Store";
+import { RootState } from "../Redux/ActionType";
 import { useDispatch, useSelector } from "react-redux";
-import { USER } from "./Redux/ActionType";
+import { USER } from "../Redux/ActionType";
 
 function MyNavbar() {
   const user = useSelector((state: RootState) => state.user);

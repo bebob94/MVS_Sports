@@ -1,12 +1,12 @@
 import React from "react";
 import Carousel from "react-bootstrap/Carousel";
-import calcetto from "../calcetto-calcio-a-5.jpg";
-import pallavolo from "../pallavolo-3.jpg";
-import tennisSingolo from "../tennis singolo.jpg";
-import tennisDoppio from "../tennis-doppio.jpg";
-import beachTennis from "../beach tennis.jpg";
-import beachVolley from "../beach-volley-min.jpg";
-import paddle from "../paddle.jpg";
+import calcetto from "../image/calcetto-calcio-a-5.jpg";
+import pallavolo from "../image/pallavolo-3.jpg";
+import tennisSingolo from "../image/tennis singolo.jpg";
+import tennisDoppio from "../image/tennis-doppio.jpg";
+import beachTennis from "../image/beach tennis.jpg";
+import beachVolley from "../image/beach-volley-min.jpg";
+import paddle from "../image/paddle.jpg";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function Carosello() {
