@@ -16,6 +16,7 @@ import com.MVS_Sports.SportsManagement.entity.Evento;
 import com.MVS_Sports.SportsManagement.entity.Notifica;
 import com.MVS_Sports.SportsManagement.entity.Pagamento;
 import com.MVS_Sports.SportsManagement.entity.Recensione;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 @Setter

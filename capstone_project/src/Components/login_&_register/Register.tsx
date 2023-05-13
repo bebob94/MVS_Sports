@@ -46,8 +46,9 @@ const Register = () => {
 
   const handleCheckboxChange = () => {
     // setIsChecked(event.target.checked);
+
     setIsChecked(!isChecked);
-    console.log(isChecked);
+    console.log(!isChecked);
   };
 
   useEffect(() => {
@@ -343,7 +344,7 @@ const Register = () => {
                   className="ms-2"
                   type="checkbox"
                   id="isChecked"
-                  checked={!isChecked}
+                  checked={isChecked}
                   onChange={handleCheckboxChange}
                 />
               </label>

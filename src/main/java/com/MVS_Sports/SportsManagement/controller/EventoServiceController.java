@@ -1,6 +1,5 @@
 package com.MVS_Sports.SportsManagement.controller;
 
-import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,16 +16,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.MVS_Sports.SportsManagement.Payload.EventoDto;
-import com.MVS_Sports.SportsManagement.Payload.NotificaDto;
-import com.MVS_Sports.SportsManagement.entity.AttivitaSportiva;
 import com.MVS_Sports.SportsManagement.entity.Evento;
-import com.MVS_Sports.SportsManagement.entity.TipoDiSport;
 import com.MVS_Sports.SportsManagement.service.EventoService;
 import com.MVS_Sports.auth.entity.User;
 
 @RestController
-@RequestMapping("/Evento")
-@CrossOrigin(origins = "*", maxAge = 6000000)
+@RequestMapping("api/Evento")
+@CrossOrigin(origins = "http://localhost:3000", maxAge = 6000000)
 public class EventoServiceController {
 
 	
@@ -59,10 +55,10 @@ public class EventoServiceController {
 		
 		
 		//<<<<<<<<<<<<<<<<<<<<<<<<< INIZIO METODI POST>>>>>>>>>>>>>>>>>>>>>>>>>
-		@PostMapping(value="/add/{id}")
+		@PostMapping(value="/add/{id1}/{id2}")
 		@PreAuthorize("hasRole('ADMIN') or hasRole('COMPANY_OWNER') or hasRole('ADMIN')")
-		public ResponseEntity<?> postEvento(@RequestBody EventoDto evento, Long id1, Long id2 , NotificaDto notifica){
-			return new ResponseEntity<Evento>(eventoService.creaEvento(evento, id1, id2, notifica),HttpStatus.OK);
+		public ResponseEntity<String> postEvento(@RequestBody EventoDto evento ,@PathVariable Long id1, @PathVariable Long id2 ){
+			return new ResponseEntity<String>(eventoService.creaEvento(evento, id1, id2),HttpStatus.CREATED);
 		}
 		//<<<<<<<<<<<<<<<<<<<<<<<<< FINE METODI POST>>>>>>>>>>>>>>>>>>>>>>>>>
 }

@@ -17,7 +17,7 @@ import com.MVS_Sports.SportsManagement.service.NotificaService;
 
 @RestController
 @RequestMapping("/Notifica")
-@CrossOrigin(origins = "*", maxAge = 6000000)
+@CrossOrigin(origins = "http://localhost:3000", maxAge = 6000000)
 public class NotificaController {
 
 	@Autowired NotificaService notificaService;

@@ -1,18 +1,13 @@
 package com.MVS_Sports.SportsManagement.service;
 
-import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.MVS_Sports.SportsManagement.Payload.RecensioneDto;
-import com.MVS_Sports.SportsManagement.entity.AttivitaSportiva;
 import com.MVS_Sports.SportsManagement.entity.Recensione;
-import com.MVS_Sports.SportsManagement.entity.Valutazione;
 import com.MVS_Sports.SportsManagement.repository.AttivitaSportivaRepository;
 import com.MVS_Sports.SportsManagement.repository.RecensioneRepository;
 import com.MVS_Sports.auth.repository.UserRepository;
@@ -34,15 +29,19 @@ public class RecensioneService {
 	
 	
 //	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< CREA RECENSIONE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-	public Recensione creaRecensione(RecensioneDto recensione, Long id1, Long id2) {
+	public String creaRecensione(RecensioneDto recensione, Long id1, Long id2) {
 		Recensione r = new Recensione();
-		r.setValutazione(recensione.getValutazione());
-		r.setTestoRecensione(recensione.getTestoRecensione());
-		r.setOrarioRecensione(recensione.getOrarioRecensione());
-		r.setAttivitaSportiva(attivitaSportivaRepositoryDao.findById(id2).get());
-		r.setUser(userRepositoryDao.findById(id2).get());
-		recensioneRepositoryDao.save(r);
-		return r;
+		if(recensione.getValutazione()>0 &  recensione.getValutazione() <10 ) {
+			r.setValutazione(recensione.getValutazione());
+			r.setTestoRecensione(recensione.getTestoRecensione());
+			r.setOrarioRecensione(LocalDateTime.now());
+			r.setAttivitaSportiva(attivitaSportivaRepositoryDao.findById(id2).get());
+			r.setUser(userRepositoryDao.findById(id1).get());
+			recensioneRepositoryDao.save(r);
+			return "Recensione added successfully";
+		}else {
+			return "error valutation";
+		}
 	}
 	
 //	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< MODIFICA RECENSIONE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

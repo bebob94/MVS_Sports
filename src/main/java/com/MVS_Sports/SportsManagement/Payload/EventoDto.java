@@ -9,7 +9,5 @@ import lombok.Data;
 public class EventoDto {
 
 	 private LocalTime orarioInizio;
-	    private LocalTime orarioFine;
 	    private Long numeroPartecipanti;
-	 	private Notifica notifica;
 }

@@ -41,10 +41,10 @@ public class AttivitaSportivaService {
 
 	
 //	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< CREA ATTIVITA SPORTIVA >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-	public AttivitaSportiva creaAttivitaSportiva(AttivitaSportivaDto attivitaSportiva, Long id) {
+	public String creaAttivitaSportiva(AttivitaSportivaDto attivitaSportiva, Long id) {
 		User u = userRepositoryDao.findById(id).get();
 		AttivitaSportiva as =new AttivitaSportiva();
-		
+		System.out.println(as);
 			as.setNomeAttivita(attivitaSportiva.getNomeAttivita());
 			as.setDescrizioneAttivita(attivitaSportiva.getDescrizioneAttivita());
 			as.setIndirizzo(attivitaSportiva.getIndirizzo());
@@ -93,12 +93,12 @@ public class AttivitaSportivaService {
 			default:
 				as.setNumeroMassimoPartecipanti(null);
 			
+		}
 			as.setEventi((List<Evento>) eventiRepositoryDao.findAll());
 			as.setRecensioni((List<Recensione>) recensioniRepositoryDao.findAll());
 			attivitaSportivaRepositoryDao.save(as);
-			
-		}
-			return as;
+			System.out.println(as);
+			return "attività sportiva added successfully";
 	}
 	
 //	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< MODIFICA ATTIVITA SPORTIVA >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -155,19 +155,19 @@ public class AttivitaSportivaService {
 	}
 	
 	//	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< CERCA ATTIVITA SPORTIVA PER PARTE DI TIPO DI SPORT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-	public List<AttivitaSportiva> findByTipoDiSportContains(String s){
-		return attivitaSportivaRepositoryDao.findByNomeAttivitaContains(s);
+	public List<AttivitaSportiva> findByTipoDiSport(String s){
+		return attivitaSportivaRepositoryDao.findByTipoDiSport(s);
 	}
-	public Page<AttivitaSportiva> findByTipoDiSportContains(Pageable pag,String s){
-		return attivitaSportivaRepositoryDao.findByNomeAttivitaContains(pag, s);
+	public Page<AttivitaSportiva> findByTipoDiSportPage(Pageable pag,String s){
+		return attivitaSportivaRepositoryDao.findByTipoDiSport(pag, s);
 	}
 	
 	//	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< CERCA ATTIVITA SPORTIVA PER INDIRIZZO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	public List<AttivitaSportiva> findByIndirizzo(String s){
-		return attivitaSportivaRepositoryDao.findByIndirizzo(s);
+		return attivitaSportivaRepositoryDao.findByIndirizzoContains(s);
 	}
 	public Page<AttivitaSportiva> findByIndirizzo(Pageable pag,String s){
-		return attivitaSportivaRepositoryDao.findByIndirizzo(pag, s);
+		return attivitaSportivaRepositoryDao.findByIndirizzoContains(pag, s);
 	}
 	
 }

@@ -37,7 +37,7 @@ public class EventoService {
 	NotificaRepository notificaRepository;
 	
 //	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< CREA EVENTO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-	public Evento creaEvento(EventoDto evento, Long id1, Long id2 , NotificaDto notifica) {
+	public String creaEvento(EventoDto evento, Long id1, Long id2 ) {
 		
 		Evento e = new Evento();
 		e.setUserCreatore(userRepository.findById(id1).get());;
@@ -47,16 +47,22 @@ public class EventoService {
 		e.setOrarioInizio(orarioInizio);
 		e.setOrarioFine(orarioInizio.plus(e.getAttivitaSportiva().getDurataEvento()));
 		e.setNumeroPartecipanti(evento.getNumeroPartecipanti());
-		
-		Notifica n = new Notifica();
-		n.setTipoNotifica(notifica.getTipoNotifica());
-		n.setOrarioNotifica(LocalDateTime.now());
-		n.setTestoNotifica(notifica.getTestoNotifica());
-		n.setAttivitaSportiva(attivitaSportiva);
-		n.setUsers(userRepository.findAll());
-		notificaRepository.save(n);
-		eventoRepositoryDao.save(e);
-		return e;
+		creaNotificaPerEvento(1l);
+		return "evento added successfully";
+	}
+	
+	public String creaNotificaPerEvento(Long idEvento) {
+	    Evento evento = eventoRepositoryDao.findById(idEvento).get();
+	    Notifica n = new Notifica();
+	    n.setTipoNotifica(TipoNotifica.NUOVO_EVENTO_AVVIATO);
+	    n.setOrarioNotifica(LocalDateTime.now());
+	    n.setAttivitaSportiva(evento.getAttivitaSportiva());
+	    n.setUsers(userRepository.findAll());
+	    n.setEvento(evento);
+	    notificaRepository.save(n);
+	    evento.setNotifica(n);
+	    eventoRepositoryDao.save(evento);
+	    return "Notifica added successfully";
 	}
 	
 //	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< MODIFICA EVENTO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

@@ -19,11 +19,11 @@ public interface AttivitaSportivaRepository extends PagingAndSortingRepository<A
 	public List<AttivitaSportiva> findByNomeAttivitaContains(String s);
 	public Page<AttivitaSportiva> findByNomeAttivitaContains(Pageable page,String s);
 	
-	public List<AttivitaSportiva> findByTipoDiSportContains(String s);
-	public Page<AttivitaSportiva> findByTipoDiSportContains(Pageable page,String s);
+	public List<AttivitaSportiva> findByTipoDiSport(String s);
+	public Page<AttivitaSportiva> findByTipoDiSport(Pageable page,String s);
 	
-	public List<AttivitaSportiva> findByIndirizzo(String s);
-	public Page<AttivitaSportiva> findByIndirizzo(Pageable page,String s);
+	public List<AttivitaSportiva> findByIndirizzoContains(String s);
+	public Page<AttivitaSportiva> findByIndirizzoContains(Pageable page,String s);
 	
 	
 }

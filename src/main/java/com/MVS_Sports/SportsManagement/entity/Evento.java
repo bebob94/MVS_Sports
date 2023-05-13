@@ -4,6 +4,8 @@ import java.time.LocalTime;
 import java.util.List;
 
 import com.MVS_Sports.auth.entity.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -39,15 +41,19 @@ public class Evento {
     private LocalTime orarioFine;
     private Long numeroPartecipanti;
     
+    @JsonIgnoreProperties({"eventi","users", "roles","password","pagamenti","notifiche","attivitaSportive","recensioni","creditCard"})
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     private User userCreatore;
     
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @JsonIgnore
     private List<User> users;
     
+    @JsonIgnoreProperties({"eventi", "users", "recensioni"})
     @ManyToOne
     private AttivitaSportiva attivitaSportiva;
     
+    @JsonIgnoreProperties({"evento", "users"})
  	@OneToOne
  	private Notifica notifica;
     

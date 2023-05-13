@@ -1,7 +1,5 @@
 package com.MVS_Sports.SportsManagement.controller;
 
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,15 +17,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.MVS_Sports.SportsManagement.Payload.RecensioneDto;
-import com.MVS_Sports.SportsManagement.entity.AttivitaSportiva;
 import com.MVS_Sports.SportsManagement.entity.Recensione;
-import com.MVS_Sports.SportsManagement.entity.TipoDiSport;
-import com.MVS_Sports.SportsManagement.entity.Valutazione;
 import com.MVS_Sports.SportsManagement.service.RecensioneService;
 
 @RestController
-@RequestMapping("/Recensione")
-@CrossOrigin(origins = "*", maxAge = 6000000)
+@RequestMapping("api/Recensione")
+@CrossOrigin(origins = "http://localhost:3000", maxAge = 6000000)
 public class RecensioneController {
 
 	@Autowired RecensioneService recensioneService;
@@ -68,10 +63,10 @@ public class RecensioneController {
 		
 		
 		//<<<<<<<<<<<<<<<<<<<<<<<<< INIZIO METODI POST>>>>>>>>>>>>>>>>>>>>>>>>>
-		@PostMapping(value="/add/{id}")
+		@PostMapping(value="/add/{id1}/{id2}")
 		@PreAuthorize("hasRole('ADMIN') or hasRole('USER')  or hasRole('COMPANY_OWNER')")
-		public ResponseEntity<?> postAttivitaSportiva(@RequestBody RecensioneDto recensione, Long id1, Long id2){
-			return new ResponseEntity<Recensione>(recensioneService.creaRecensione(recensione, id1, id2),HttpStatus.OK);
+		public ResponseEntity<String> postAttivitaSportiva(@RequestBody RecensioneDto recensione,@PathVariable Long id1,@PathVariable Long id2){
+			return new ResponseEntity<String>(recensioneService.creaRecensione(recensione, id1, id2),HttpStatus.CREATED);
 		}
 		//<<<<<<<<<<<<<<<<<<<<<<<<< FINE METODI POST>>>>>>>>>>>>>>>>>>>>>>>>>
 }

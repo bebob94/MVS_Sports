@@ -1,6 +1,5 @@
 package com.MVS_Sports.SportsManagement.controller;
 
-import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,14 +18,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.MVS_Sports.SportsManagement.Payload.AttivitaSportivaDto;
 import com.MVS_Sports.SportsManagement.entity.AttivitaSportiva;
-import com.MVS_Sports.SportsManagement.entity.TipoDiSport;
 import com.MVS_Sports.SportsManagement.service.AttivitaSportivaService;
-import com.MVS_Sports.auth.entity.User;
 
 
 @RestController
-@RequestMapping("/AttivitaSportiva")
-@CrossOrigin(origins = "*", maxAge = 6000000)
+@RequestMapping("/api/AttivitaSportiva")
+@CrossOrigin(origins = "http://localhost:3000", maxAge = 6000000)
 public class AttivitaSportivaController {
 
 	@Autowired
@@ -50,7 +47,7 @@ public class AttivitaSportivaController {
 	@GetMapping("/tipoDiSport/{imp}")
 	@PreAuthorize("hasRole('USER') or hasRole('COMPANY_OWNER') or hasRole('ADMIN')")
 	public ResponseEntity<List<AttivitaSportiva>> trovaAttivitaSportivaByTipoDiSport(@PathVariable String imp) {
-		return new ResponseEntity<List<AttivitaSportiva>>(attivitaSportivaService.findByTipoDiSportContains(imp),
+		return new ResponseEntity<List<AttivitaSportiva>>(attivitaSportivaService.findByTipoDiSport(imp),
 				HttpStatus.OK);
 	}
 	
@@ -84,15 +81,15 @@ public class AttivitaSportivaController {
 	@PreAuthorize("hasRole('ADMIN')  or hasRole('COMPANY_OWNER')")
 	public ResponseEntity<?> updateAttivitaSportiva(@RequestBody AttivitaSportiva as){
 		return new ResponseEntity<AttivitaSportiva>(attivitaSportivaService.updateAttivitaSportiva(as),HttpStatus.OK);
-	}
+	} 
 	//<<<<<<<<<<<<<<<<<<<<<<<<< FINE METODI PUT>>>>>>>>>>>>>>>>>>>>>>>>>
 	
 	
 	//<<<<<<<<<<<<<<<<<<<<<<<<< INIZIO METODI POST>>>>>>>>>>>>>>>>>>>>>>>>>
 	@PostMapping(value="/add/{id}")
 	@PreAuthorize("hasRole('ADMIN') or hasRole('COMPANY_OWNER')")
-	public ResponseEntity<?> postAttivitaSportiva(@RequestBody AttivitaSportivaDto attivitaSportiva, Long id){
-		return new ResponseEntity<AttivitaSportiva>(attivitaSportivaService.creaAttivitaSportiva(attivitaSportiva, id),HttpStatus.OK);
+	public ResponseEntity<String> postAttivitaSportiva(@RequestBody AttivitaSportivaDto attivitaSportiva, @PathVariable Long id){
+		return new ResponseEntity<String>(attivitaSportivaService.creaAttivitaSportiva(attivitaSportiva, id),HttpStatus.CREATED);
 	}
 	//<<<<<<<<<<<<<<<<<<<<<<<<< FINE METODI POST>>>>>>>>>>>>>>>>>>>>>>>>>
 }

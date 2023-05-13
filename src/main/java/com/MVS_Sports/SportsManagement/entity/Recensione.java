@@ -1,13 +1,11 @@
 package com.MVS_Sports.SportsManagement.entity;
 
 import java.time.LocalDateTime;
-import java.util.Optional;
 
 import com.MVS_Sports.auth.entity.User;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -32,14 +30,16 @@ public class Recensione {
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    private Long id;
 	  	
-	  	@Enumerated(EnumType.STRING)
-	  	private Valutazione valutazione;
+	  	
+	  	private Integer valutazione;
 	  	private String testoRecensione;
 	  	private LocalDateTime orarioRecensione;
 	  	
+	  	@JsonIgnoreProperties({"eventi","recensioni", "users", "roles","password","pagamenti","notifiche","attivitaSportive","recensioni","creditCard"})
 	  	@ManyToOne
 	 	private User user;
 	 	
+	  	@JsonIgnoreProperties({"eventi", "users" , "recensioni"})
 	 	@ManyToOne
 	 	private AttivitaSportiva attivitaSportiva;
 	 

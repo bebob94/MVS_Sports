@@ -3,8 +3,10 @@ package com.MVS_Sports.SportsManagement.entity;
 import java.time.Duration;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Optional;
 
 import com.MVS_Sports.auth.entity.User;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -51,7 +53,7 @@ public class AttivitaSportiva {
 
 	@OneToMany(mappedBy = "attivitaSportiva", fetch = FetchType.EAGER)
 	private List<Recensione> recensioni;
-
+	@JsonIgnoreProperties({"roles","password","pagamenti","notifiche","attivitaSportive","recensioni","creditCard"})
 	 @OneToOne
 	 private User user;
 

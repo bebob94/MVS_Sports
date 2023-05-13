@@ -25,8 +25,6 @@ function Attivita() {
   };
 
   const timeOptions = [
-    "08:00",
-    "08:30",
     "09:00",
     "09:30",
     "10:00",

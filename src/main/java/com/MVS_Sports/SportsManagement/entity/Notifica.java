@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import com.MVS_Sports.auth.entity.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -38,15 +40,17 @@ public class Notifica {
 	 	
 	 	@Enumerated(EnumType.STRING)
 	 	private TipoNotifica tipoNotifica;
-	 	private String testoNotifica;
 	 	private LocalDateTime orarioNotifica;
 	 
+	 	@JsonIgnoreProperties({"users", "recensioni"})
 	 	@OneToOne
 	 	private Evento evento;
 	 	
+	 	@JsonIgnore
 	 	@ManyToOne
 	 	private AttivitaSportiva attivitaSportiva;
 	 	
+	 	@JsonIgnoreProperties({"eventi", "recensioni"})
 	 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
 	    private List<User> users;
 	 
