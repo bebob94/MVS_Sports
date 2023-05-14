@@ -23,7 +23,7 @@ import com.MVS_Sports.SportsManagement.service.AttivitaSportivaService;
 
 @RestController
 @RequestMapping("/api/AttivitaSportiva")
-@CrossOrigin(origins = "http://localhost:3000", maxAge = 6000000)
+@CrossOrigin(origins = "http://localhost:3000", maxAge = 6000000, allowCredentials = "true")
 public class AttivitaSportivaController {
 
 	@Autowired

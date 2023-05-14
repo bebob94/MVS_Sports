@@ -4,14 +4,14 @@ import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MyNavbar from "./Components/Navbar";
 import Home from "./Components/Home";
-import Prenotazioni from "./Components/Prenotazioni";
 import Notifiche from "./Components/Notifiche";
 import ComeFunziona from "./Components/ComeFunziona";
 import Register from "./Components/login_&_register/Register";
 import Login from "./Components/login_&_register/Login";
-import Attivita from "./Components/Attivita";
+import Attivita from "./Components/Attivita/Attivita";
 import Dashboard from "./Components/profile/Dashboard";
-// import Register from "./Components/Register";
+import Results from "./Components/Attivita/results";
+import Prenotazioni from "./Components/Attivita/Prenotazioni";
 
 function App() {
   return (
@@ -26,7 +26,8 @@ function App() {
           <Route path="/Prenotazioni" element={<Prenotazioni />} />
           <Route path="/Notifiche" element={<Notifiche />} />
           <Route path="/ComeFunziona" element={<ComeFunziona />} />
-          <Route path="/Attivita" element={<Attivita />} />
+          <Route path="/Results" element={<Results />} />
+          <Route path="/Attivita/:id" element={<Attivita />} />
         </Routes>
       </BrowserRouter>
     </div>

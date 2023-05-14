@@ -2,25 +2,36 @@ import { PayloadAction } from "@reduxjs/toolkit";
 import { AttivitaSportiva, MyAttivitaSportiva } from "../Interfaces";
 import {
   ATTIVITA_SPORTIVA_FETCH,
-  ATTIVITA_SPORTIVA_FETCH_BY_INDIRIZZO_OR_NAME,
+  ATTIVITA_SPORTIVA_FETCH_BY_ID,
+  ATTIVITA_SPORTIVA_FETCH_BY_NAME,
 } from "../ActionType/AttivitaSportive";
 
 const initialState: MyAttivitaSportiva = {
-  AttivitaSportiva: [],
+  AllAttivitaSportive: [],
+  AttivitaSportiva: {} as AttivitaSportiva,
 };
 
 export const AttivitaSportivaReducer = (
   state = initialState,
-  action: PayloadAction<AttivitaSportiva[]>
+  action: PayloadAction<AttivitaSportiva[] | AttivitaSportiva>
 ) => {
   switch (action.type) {
     case ATTIVITA_SPORTIVA_FETCH:
       return {
-        AttivitaSportiva: action.payload as AttivitaSportiva[],
+        ...state,
+        AllAttivitaSportive: action.payload as AttivitaSportiva[],
       };
-    case ATTIVITA_SPORTIVA_FETCH_BY_INDIRIZZO_OR_NAME:
+    case ATTIVITA_SPORTIVA_FETCH_BY_NAME:
       return {
-        AttivitaSportiva: action.payload as AttivitaSportiva[],
+        ...state,
+        AllAttivitaSportive: action.payload as AttivitaSportiva[],
       };
+    case ATTIVITA_SPORTIVA_FETCH_BY_ID:
+      return {
+        ...state,
+        AttivitaSportiva: action.payload as AttivitaSportiva,
+      };
+    default:
+      return state;
   }
 };

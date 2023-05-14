@@ -6,11 +6,13 @@ import Logo from "../image/logoMVS.jpg";
 import ComeFunziona from "./ComeFunziona";
 import { Link } from "react-router-dom";
 import Home from "./Home";
-import Prenotazioni from "./Prenotazioni";
+import Prenotazioni from "./Attivita/Prenotazioni";
 import Notifiche from "./Notifiche";
-import { RootState } from "../Redux/ActionType";
 import { useDispatch, useSelector } from "react-redux";
 import { USER } from "../Redux/ActionType";
+import { RootState } from "../Redux/Store";
+import Attivita from "./Attivita/Attivita";
+import Results from "./Attivita/results";
 
 function MyNavbar() {
   const user = useSelector((state: RootState) => state.user);
@@ -46,8 +48,8 @@ function MyNavbar() {
           <Link className="MyLink" to={"/Prenotazioni"} onClick={Prenotazioni}>
             <strong>Prenotazioni</strong>
           </Link>
-          <Link className="MyLink" to={"/Notifiche"} onClick={Notifiche}>
-            <strong>Notifiche</strong>
+          <Link className="MyLink" to={"/Results"} onClick={Results}>
+            <strong>Attività</strong>
           </Link>
         </Nav>
         <Nav className="me-2">

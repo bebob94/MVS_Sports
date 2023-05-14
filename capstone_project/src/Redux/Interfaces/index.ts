@@ -20,7 +20,8 @@ export interface Registration {
 }
 
 export interface MyAttivitaSportiva {
-  AttivitaSportiva: AttivitaSportiva[];
+  AllAttivitaSportive: AttivitaSportiva[];
+  AttivitaSportiva: AttivitaSportiva;
 }
 
 export interface AttivitaSportiva {
@@ -33,8 +34,8 @@ export interface AttivitaSportiva {
   tipoDiSport: String;
   numeroMassimoPartecipanti: Number;
   durataEvento: String; // formato "hh:mm"
-  eventi: [] | null;
-  recensioni: [] | null;
+  eventi: Evento[];
+  recensioni: Recensione[];
   user: {
     id: Number;
     name: String;
@@ -42,10 +43,13 @@ export interface AttivitaSportiva {
     indirizzo: String;
     username: String;
     email: String;
-    eventi: [] | null;
+    eventi: Evento[];
   };
 }
 
+export interface MyEvento {
+  Evento: Evento[];
+}
 export interface Evento {
   id: 1;
   orarioInizio: Date; // formato "hh:mm"
@@ -58,7 +62,7 @@ export interface Evento {
     indirizzo: String;
     username: String;
     email: String;
-    eventi: [] | null;
+    eventi: Evento[];
   };
   attivitaSportiva: {
     id: Number;
@@ -77,7 +81,7 @@ export interface Evento {
       indirizzo: String;
       username: String;
       email: String;
-      eventi: [] | null;
+      eventi: Evento[];
     };
   };
   notifica: {
@@ -97,30 +101,13 @@ export interface Evento {
         username: String;
         email: String;
       };
-      attivitaSportiva: {
-        id: Number;
-        nomeAttivita: String;
-        descrizioneAttivita: String;
-        indirizzo: String;
-        orarioApertura: Date; // formato "hh:mm"
-        orarioChiusura: Date; // formato "hh:mm"
-        tipoDiSport: String;
-        numeroMassimoPartecipanti: Number;
-        durataEvento: String; // formato "hh:mm"
-        user: {
-          id: Number;
-          name: String;
-          surname: String;
-          indirizzo: String;
-          username: String;
-          email: String;
-          eventi: [] | null;
-        };
-      };
     };
   };
 }
 
+export interface MyRecensione {
+  Recensione: Recensione[];
+}
 export interface Recensione {
   id: Number;
   valutazione: Number;
@@ -133,7 +120,7 @@ export interface Recensione {
     indirizzo: String;
     username: String;
     email: String;
-    eventi: [] | null;
+    eventi: Evento[];
   };
   attivitaSportiva: {
     id: Number;
@@ -152,11 +139,14 @@ export interface Recensione {
       indirizzo: String;
       username: String;
       email: String;
-      eventi: [] | null;
+      eventi: Evento[];
     };
   };
 }
 
+export interface MyNotifica {
+  Notifica: Notifica[];
+}
 export interface Notifica {
   id: Number;
   tipoNotifica: String;
@@ -191,7 +181,7 @@ export interface Notifica {
         indirizzo: String;
         username: String;
         email: String;
-        eventi: [] | null;
+        eventi: Evento[];
       };
     };
   };

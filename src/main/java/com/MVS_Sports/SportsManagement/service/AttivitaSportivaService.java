@@ -154,7 +154,7 @@ public class AttivitaSportivaService {
 		return attivitaSportivaRepositoryDao.findByNomeAttivitaContains(pag, s);
 	}
 	
-	//	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< CERCA ATTIVITA SPORTIVA PER PARTE DI TIPO DI SPORT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	//	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< CERCA ATTIVITA SPORTIVA DI TIPO DI SPORT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	public List<AttivitaSportiva> findByTipoDiSport(String s){
 		return attivitaSportivaRepositoryDao.findByTipoDiSport(s);
 	}

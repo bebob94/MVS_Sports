@@ -1,7 +1,24 @@
 import { Col, Row, Container } from "react-bootstrap";
 import Carosello from "./Carosello";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import {
+  ATTIVITA_SPORTIVA_FETCH,
+  fetchAttivita,
+} from "../Redux/ActionType/AttivitaSportive";
 
 function Home() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    (async () => {
+      let data = await fetchAttivita();
+
+      dispatch({
+        type: ATTIVITA_SPORTIVA_FETCH,
+        payload: data,
+      });
+    })();
+  }, []);
   return (
     <div className="MyContainer pt-5">
       <Row className="justify-content-center mt-5">
