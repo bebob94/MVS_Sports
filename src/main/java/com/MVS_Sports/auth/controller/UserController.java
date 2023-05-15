@@ -29,14 +29,21 @@ public class UserController {
 	//<<<<<<<<<<<<<<<<<<<<<<<<< INIZIO METODI GET>>>>>>>>>>>>>>>>>>>>>>>>>
 		@GetMapping("/{id}")
 		@PreAuthorize("hasRole('USER') or hasRole('COMPANY_OWNER') or hasRole('ADMIN')")
-		public ResponseEntity<User> trovaAttivitaSportivaTramiteId(@PathVariable Long id) {
+		public ResponseEntity<User> trovaUserTramiteId(@PathVariable Long id) {
 			return new ResponseEntity<User>(userService.findUserById(id),
+					HttpStatus.OK);
+		}
+		
+		@GetMapping("/username/{username}")
+		@PreAuthorize("hasRole('USER') or hasRole('COMPANY_OWNER') or hasRole('ADMIN')")
+		public ResponseEntity<User> trovaUserTramiteUsername(@PathVariable String username) {
+			return new ResponseEntity<User>(userService.findUserByUsername(username),
 					HttpStatus.OK);
 		}
 
 		@GetMapping("/all")
 		@PreAuthorize("hasRole('USER') or hasRole('COMPANY_OWNER') or hasRole('ADMIN')")
-		public ResponseEntity<List<User>> trovaAttivitaSportivaAll() {
+		public ResponseEntity<List<User>> trovaUserAll() {
 			return new ResponseEntity<List<User>>(userService.findAllUser(),
 					HttpStatus.OK);
 		}

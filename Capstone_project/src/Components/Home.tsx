@@ -6,19 +6,32 @@ import {
   ATTIVITA_SPORTIVA_FETCH,
   fetchAttivita,
 } from "../Redux/ActionType/AttivitaSportive";
+import { ALL_USERS, fetchUsers } from "../Redux/ActionType/user";
 
 function Home() {
   const dispatch = useDispatch();
+
   useEffect(() => {
     (async () => {
       let data = await fetchAttivita();
-
       dispatch({
         type: ATTIVITA_SPORTIVA_FETCH,
         payload: data,
       });
     })();
   }, []);
+
+  useEffect(() => {
+    (async () => {
+      let data = await fetchUsers();
+
+      dispatch({
+        type: ALL_USERS,
+        payload: data,
+      });
+    })();
+  }, []);
+
   return (
     <div className="MyContainer pt-5">
       <Row className="justify-content-center mt-5">

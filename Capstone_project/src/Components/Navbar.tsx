@@ -3,26 +3,23 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Logo from "../image/logoMVS.jpg";
-import ComeFunziona from "./ComeFunziona";
-import { Link } from "react-router-dom";
-import Home from "./Home";
-import Prenotazioni from "./Attivita/Prenotazioni";
-import Notifiche from "./Notifiche";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { USER } from "../Redux/ActionType";
 import { RootState } from "../Redux/Store";
-import Attivita from "./Attivita/Attivita";
-import Results from "./Attivita/results";
 
 function MyNavbar() {
   const user = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const handleSubmit = () => {
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
     dispatch({
       type: USER,
       payload: {},
     });
+    navigate("/Login");
   };
 
   return (
@@ -39,16 +36,16 @@ function MyNavbar() {
       />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="me-auto mt">
-          <Link className="MyLink" to={"/"} onClick={Home}>
+          <Link className="MyLink" to={"/"}>
             <strong>Home</strong>
           </Link>
-          <Link className="MyLink" to={"/ComeFunziona"} onClick={ComeFunziona}>
+          <Link className="MyLink" to={"/ComeFunziona"}>
             <strong>Come funziona</strong>
           </Link>
-          <Link className="MyLink" to={"/Prenotazioni"} onClick={Prenotazioni}>
+          <Link className="MyLink" to={"/Prenotazioni"}>
             <strong>Prenotazioni</strong>
           </Link>
-          <Link className="MyLink" to={"/Results"} onClick={Results}>
+          <Link className="MyLink" to={"/Results"}>
             <strong>Attività</strong>
           </Link>
         </Nav>
@@ -71,7 +68,9 @@ function MyNavbar() {
                   <NavDropdown.Item
                     href="#action/3.4"
                     className="text-dark"
-                    onClick={handleSubmit}
+                    onClick={(e) => {
+                      handleSubmit(e);
+                    }}
                   >
                     Esci
                   </NavDropdown.Item>

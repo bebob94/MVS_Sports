@@ -20,6 +20,7 @@ export const myfetch = async (params: User) => {
     return res;
   } catch (error) {}
 };
+
 export const registerFetch = async (body: Registration) => {
   let res = await fetch(url, {
     method: "POST",

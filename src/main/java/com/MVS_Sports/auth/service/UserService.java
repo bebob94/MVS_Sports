@@ -34,11 +34,17 @@ public class UserService {
 			return userRepositoryDao.findById(id).get();
 		}
 	}
-
-	
 //	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< CERCA TUTTE GLI USER >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	public List<User> findAllUser() {
 		return (List<User>) userRepositoryDao.findAll();
+	}
+	
+//	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< CERCA USER PER USERNAME >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	public User findUserByUsername(String username) {
+	
+			return userRepositoryDao.findByUsername(username).get();
+	
+		
 	}
 	
 	

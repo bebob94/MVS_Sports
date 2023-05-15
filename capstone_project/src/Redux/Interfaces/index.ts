@@ -1,5 +1,5 @@
 export interface User {
-  id: string;
+  id: Number;
   name: string;
   email: string;
   family_name: string;
@@ -13,10 +13,39 @@ export interface Roles {
   roleName: String;
 }
 export interface Registration {
-  id: String;
+  id: Number;
   username: String;
   accessToken: String;
   roles: Roles[];
+}
+
+export interface MyUser {
+  AllUsers: user[];
+  user: user;
+}
+
+export interface user {
+  id: Number;
+  name: String;
+  surname: String;
+  indirizzo: String;
+  username: String;
+  email: String;
+  password: String;
+  eventi: Evento[];
+  pagamenti: [];
+  notifiche: Notifica[];
+  attivitaSportiva: AttivitaSportiva;
+  recensioni: Recensione[];
+  roles: Roles[];
+  creditCard: null;
+}
+
+export interface userChange {
+  id?: Number;
+  name: String;
+  surname: String;
+  indirizzo: String;
 }
 
 export interface MyAttivitaSportiva {
@@ -36,73 +65,28 @@ export interface AttivitaSportiva {
   durataEvento: String; // formato "hh:mm"
   eventi: Evento[];
   recensioni: Recensione[];
-  user: {
-    id: Number;
-    name: String;
-    surname: String;
-    indirizzo: String;
-    username: String;
-    email: String;
-    eventi: Evento[];
-  };
+  user: user;
+}
+
+export interface AttivitaChange {
+  id?: Number;
+  nomeAttivita: String;
+  descrizioneAttivita: String;
+  indirizzo: String;
 }
 
 export interface MyEvento {
-  Evento: Evento[];
+  AllEventi: Evento[];
+  Evento: Evento;
 }
 export interface Evento {
   id: 1;
   orarioInizio: Date; // formato "hh:mm"
   orarioFine: Date; // formato "hh:mm"
   numeroPartecipanti: Number;
-  userCreatore: {
-    id: Number;
-    name: String;
-    surname: String;
-    indirizzo: String;
-    username: String;
-    email: String;
-    eventi: Evento[];
-  };
-  attivitaSportiva: {
-    id: Number;
-    nomeAttivita: String;
-    descrizioneAttivita: String;
-    indirizzo: String;
-    orarioApertura: Date; // formato "hh:mm"
-    orarioChiusura: Date; // formato "hh:mm"
-    tipoDiSport: String;
-    numeroMassimoPartecipanti: Number;
-    durataEvento: String; // formato "hh:mm"
-    user: {
-      id: Number;
-      name: String;
-      surname: String;
-      indirizzo: String;
-      username: String;
-      email: String;
-      eventi: Evento[];
-    };
-  };
-  notifica: {
-    id: Number;
-    tipoNotifica: String;
-    orarioNotifica: String; // formato "hh:mm"
-    evento: {
-      id: Number;
-      orarioInizio: String; // formato "hh:mm"
-      orarioFine: String; // formato "hh:mm"
-      numeroPartecipanti: Number;
-      userCreatore: {
-        id: Number;
-        name: String;
-        surname: String;
-        indirizzo: String;
-        username: String;
-        email: String;
-      };
-    };
-  };
+  userCreatore: user;
+  attivitaSportiva: AttivitaSportiva;
+  notifica: Notifica;
 }
 
 export interface MyRecensione {
@@ -113,35 +97,8 @@ export interface Recensione {
   valutazione: Number;
   testoRecensione: String;
   orarioRecensione: String; // formato "hh:mm"
-  user: {
-    id: Number;
-    name: String;
-    surname: String;
-    indirizzo: String;
-    username: String;
-    email: String;
-    eventi: Evento[];
-  };
-  attivitaSportiva: {
-    id: Number;
-    nomeAttivita: String;
-    descrizioneAttivita: String;
-    indirizzo: String;
-    orarioApertura: Date; // formato "hh:mm"
-    orarioChiusura: Date; // formato "hh:mm"
-    tipoDiSport: String;
-    numeroMassimoPartecipanti: Number;
-    durataEvento: String; // formato "hh:mm"
-    user: {
-      id: Number;
-      name: String;
-      surname: String;
-      indirizzo: String;
-      username: String;
-      email: String;
-      eventi: Evento[];
-    };
-  };
+  user: user;
+  attivitaSportiva: AttivitaSportiva;
 }
 
 export interface MyNotifica {
@@ -151,38 +108,5 @@ export interface Notifica {
   id: Number;
   tipoNotifica: String;
   orarioNotifica: String; // formato "hh:mm"
-  evento: {
-    id: Number;
-    orarioInizio: String; // formato "hh:mm"
-    orarioFine: String; // formato "hh:mm"
-    numeroPartecipanti: Number;
-    userCreatore: {
-      id: Number;
-      name: String;
-      surname: String;
-      indirizzo: String;
-      username: String;
-      email: String;
-    };
-    attivitaSportiva: {
-      id: Number;
-      nomeAttivita: String;
-      descrizioneAttivita: String;
-      indirizzo: String;
-      orarioApertura: Date; // formato "hh:mm"
-      orarioChiusura: Date; // formato "hh:mm"
-      tipoDiSport: String;
-      numeroMassimoPartecipanti: Number;
-      durataEvento: String; // formato "hh:mm"
-      user: {
-        id: Number;
-        name: String;
-        surname: String;
-        indirizzo: String;
-        username: String;
-        email: String;
-        eventi: Evento[];
-      };
-    };
-  };
+  evento: Evento;
 }

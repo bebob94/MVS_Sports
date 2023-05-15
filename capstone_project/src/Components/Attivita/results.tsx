@@ -17,12 +17,12 @@ function Results() {
 
   const handlePrenotaClick = async (id: Number) => {
     let data = await searchById(id);
-
     dispatch({
       type: ATTIVITA_SPORTIVA_FETCH_BY_ID,
       payload: data,
     });
   };
+
   return (
     <div className="MyContainer pt-5">
       <Container className=" MyAttivita">

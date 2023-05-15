@@ -19,6 +19,7 @@ import com.MVS_Sports.SportsManagement.repository.EventoRepository;
 import com.MVS_Sports.SportsManagement.repository.RecensioneRepository;
 import com.MVS_Sports.auth.entity.User;
 import com.MVS_Sports.auth.repository.UserRepository;
+import com.MVS_Sports.auth.service.UserService;
 
 import jakarta.persistence.EntityNotFoundException;
 
@@ -37,7 +38,7 @@ public class AttivitaSportivaService {
 	@Autowired
 	RecensioneRepository recensioniRepositoryDao;
 	
-	
+
 
 	
 //	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< CREA ATTIVITA SPORTIVA >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -52,6 +53,7 @@ public class AttivitaSportivaService {
 			as.setOrarioChiusura(attivitaSportiva.getOrarioChiusura());
 			as.setTipoDiSport(attivitaSportiva.getTipoDiSport());
 			as.setUser(u);
+			u.setAttivitaSportiva(as);
 			switch (attivitaSportiva.getTipoDiSport()) {
 			case CALCETTO: {
 				as.setNumeroMassimoPartecipanti(10l);
@@ -97,9 +99,12 @@ public class AttivitaSportivaService {
 			as.setEventi((List<Evento>) eventiRepositoryDao.findAll());
 			as.setRecensioni((List<Recensione>) recensioniRepositoryDao.findAll());
 			attivitaSportivaRepositoryDao.save(as);
+			userRepositoryDao.save(u);
 			System.out.println(as);
 			return "attività sportiva added successfully";
 	}
+	
+	
 	
 //	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< MODIFICA ATTIVITA SPORTIVA >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	public AttivitaSportiva updateAttivitaSportiva( AttivitaSportiva as) {

@@ -53,8 +53,9 @@ public class User {
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
 	private List<Notifica> notifiche;
     
+    @JsonIgnoreProperties({"user", "eventi", "recensioni"})
     @OneToOne
-    private AttivitaSportiva attivitaSportive;
+    private AttivitaSportiva attivitaSportiva;
     
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
 	private List<Recensione> recensioni;

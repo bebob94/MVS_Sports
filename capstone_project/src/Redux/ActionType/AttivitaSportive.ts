@@ -1,3 +1,5 @@
+import { AttivitaChange } from "../Interfaces";
+
 const beboKey = process.env.REACT_APP_BEBO_SECRET_KEY;
 
 export const ATTIVITA_SPORTIVA_FETCH = "ATTIVITA_SPORTIVA_FETCH";
@@ -68,6 +70,23 @@ export const searchById = async (value: Number | undefined) => {
     } else {
       console.log("error");
     }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< MODIFICA ATTIVITA >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+export const changeMyInfoAttivita = async (attivitaInfo: AttivitaChange) => {
+  try {
+    const requestOptions = {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${beboKey}`,
+      },
+      body: JSON.stringify(attivitaInfo),
+    };
   } catch (error) {
     console.log(error);
   }
