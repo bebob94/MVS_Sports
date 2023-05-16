@@ -1,16 +1,7 @@
 import { useState, useEffect, ChangeEvent } from "react";
-import {
-  Button,
-  Col,
-  Row,
-  Dropdown,
-  DropdownButton,
-  Form,
-  Modal,
-} from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
-
-import { RootState } from "../../Redux/Store";
+import { Button, Row, Form, Modal } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import DatePicker from "react-datepicker";
 import { NewEvento } from "../../Redux/Interfaces";
 import {
   ALL_EVENTI,
@@ -26,50 +17,40 @@ const ModalCreaEvento = ({
 }: {
   show: boolean;
   handleClose: () => void;
-  UserId: Number;
-  AttivitaId: Number;
+  UserId: number;
+  AttivitaId: number;
 }) => {
-  const [myYears, setMyYears] = useState<number[]>([]);
-
-  useEffect(() => {
-    const myState = () => {
-      const yearsArray = [];
-      for (let i = 1923; i < 2024; i++) {
-        yearsArray.push(i);
-      }
-      setMyYears(yearsArray.reverse());
-    };
-    myState();
-  }, []);
-
-  const myAttivita = useSelector(
-    (state: RootState) => state.attivitaSportiva.AttivitaSportiva
-  );
-  const myUser = useSelector((state: RootState) => state.user.user);
   const dispatch = useDispatch();
 
-  const [formData, setFormData] = useState(new FormData());
-
+  const [selectedDate, setSelectedDate] = useState<Date>(new Date());
+  const [numeroPartecipanti, setNumeroPartecipanti] = useState<number>(0);
   const [eventPayload, setEventPayload] = useState<NewEvento>({
     numeroPartecipanti: 0,
-    orarioInizio: new Date(),
+    orarioInizio: selectedDate,
   });
-  const handleChange = (e: any) => {
-    setEventPayload({
-      ...eventPayload,
-      [e.target.name]: e.target.value,
-    });
+
+  const handleDateChange = (date: Date) => {
+    setSelectedDate(date);
+  };
+
+  const handleNumeroPartecipantiChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setNumeroPartecipanti(Number(e.target.value));
   };
 
   useEffect(() => {
     setEventPayload({
-      numeroPartecipanti: 0,
-      orarioInizio: new Date(),
+      numeroPartecipanti: numeroPartecipanti,
+      orarioInizio: selectedDate,
     });
-  }, []);
+  }, [numeroPartecipanti, selectedDate]);
 
   const handleSubmit = async (obj: NewEvento) => {
-    let x = await CreaEvento(obj, AttivitaId, UserId);
+    const payload: NewEvento = {
+      ...obj,
+      numeroPartecipanti: numeroPartecipanti,
+    };
+
+    let x = await CreaEvento(payload, AttivitaId, UserId);
 
     let data = await fetchEventi();
     dispatch({
@@ -77,10 +58,8 @@ const ModalCreaEvento = ({
       payload: data,
     });
 
-    setEventPayload({
-      numeroPartecipanti: 0,
-      orarioInizio: new Date(),
-    });
+    setNumeroPartecipanti(0);
+    setSelectedDate(new Date());
   };
 
   return (
@@ -96,112 +75,21 @@ const ModalCreaEvento = ({
               <Form.Label className="mt-3">Numero Partecipanti*</Form.Label>
               <Form.Control
                 required
-                type="text"
+                type="number"
                 placeholder=""
                 autoFocus
                 name="Number"
-                value={eventPayload?.numeroPartecipanti.toString()}
-                onChange={(e) => handleChange(e)}
+                value={numeroPartecipanti}
+                onChange={handleNumeroPartecipantiChange}
               />
             </Form.Group>
-            <Row className="justify-content-around">
-              <Col xs={5}>
-                <DropdownButton
-                  variant="white"
-                  className="yearsDropdown ms-5"
-                  title="Month"
-                >
-                  <Dropdown.Item
-                    className="dropdown-basic-button"
-                    href="#/action-1"
-                  >
-                    January
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    className="dropdown-basic-button"
-                    href="#/action-2"
-                  >
-                    February
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    className="dropdown-basic-button"
-                    href="#/action-3"
-                  >
-                    March
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    className="dropdown-basic-button"
-                    href="#/action-1"
-                  >
-                    April
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    className="dropdown-basic-button"
-                    href="#/action-2"
-                  >
-                    May
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    className="dropdown-basic-button"
-                    href="#/action-3"
-                  >
-                    June
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    className="dropdown-basic-button"
-                    href="#/action-1"
-                  >
-                    July
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    className="dropdown-basic-button"
-                    href="#/action-2"
-                  >
-                    August
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    className="dropdown-basic-button"
-                    href="#/action-3"
-                  >
-                    September
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    className="dropdown-basic-button"
-                    href="#/action-1"
-                  >
-                    October
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    className="dropdown-basic-button"
-                    href="#/action-2"
-                  >
-                    November
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    className="dropdown-basic-button"
-                    href="#/action-3"
-                  >
-                    December
-                  </Dropdown.Item>
-                </DropdownButton>
-              </Col>
-              <Col xs={5}>
-                <DropdownButton
-                  variant="white"
-                  className="yearsDropdown ms-5"
-                  title="Year"
-                >
-                  {myYears.map((elem, i) => (
-                    <Dropdown.Item
-                      key={i}
-                      className="dropdown-basic-button"
-                      href="#/action-1"
-                    >
-                      {elem}
-                    </Dropdown.Item>
-                  ))}
-                </DropdownButton>
-              </Col>
+            <Row className="justify-content-around ms-1">
+              <DatePicker
+                selected={selectedDate}
+                onChange={handleDateChange}
+                showTimeSelect
+                dateFormat="Pp"
+              />
             </Row>
           </Form>
         </Modal.Body>

@@ -5,22 +5,35 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
   ATTIVITA_SPORTIVA_FETCH_BY_NAME,
+  ATTIVITA_SPORTIVA_FETCH_BY_TIPO_DI_SPORT,
   searchByName,
+  searchByTipoDiSport,
 } from "../../Redux/ActionType/AttivitaSportive";
 
 function Prenotazioni() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [search, setSearch] = useState("");
+  const [sport, setSport] = useState("");
 
   const handleSearch = (e: any) => {
     e.preventDefault();
     setSearch(e.target.value);
     console.log(e.target.value);
   };
-
   const handleSubmit = (e: any) => {
     e.preventDefault();
+    navigate("/Results");
+    console.log("enter");
+  };
+  const handleSubmit2 = async (e: any) => {
+    e.preventDefault();
+    let data = await searchByTipoDiSport(sport);
+
+    dispatch({
+      type: ATTIVITA_SPORTIVA_FETCH_BY_TIPO_DI_SPORT,
+      payload: data,
+    });
     navigate("/Results");
     console.log("enter");
   };
@@ -69,7 +82,13 @@ function Prenotazioni() {
           </Col>
           <Row className="mt-5">
             <Col xs={12} sm={5} md={5}>
-              <Form.Control as="select" defaultValue="" aria-label="Sport">
+              <Form.Control
+                as="select"
+                defaultValue=""
+                aria-label="Sport"
+                name="sport"
+                onChange={(e) => setSport(e.target.value)}
+              >
                 <option value="">Sport</option>
                 <option value="CALCETTO">Calcetto</option>
                 <option value="TENNIS_SINGOLO">Tennis singolo</option>
@@ -81,25 +100,19 @@ function Prenotazioni() {
               </Form.Control>
             </Col>
             <Col xs={5}>
-              <Button variant="primary" type="submit" className="mt-0">
-                <FaSearch /> Cerca
+              <Button
+                variant="primary"
+                type="submit"
+                className="mt-0"
+                onClick={(e) => {
+                  handleSubmit2(e);
+                }}
+              >
+                <FaSearch />
               </Button>
             </Col>
           </Row>
         </Row>
-      </Container>
-      <Container className="secondSection py-5 mb-5">
-        <h2>Cerca e prenota il tuo campo sportivo online!</h2>
-        <h4 className="mt-5 mb-5">
-          Con il nostro portale online, puoi cercare e prenotare campi sportivi
-          per vari sport. Una volta trovato il campo che desideri, puoi
-          prenotarlo online in modo sicuro e conveniente.
-        </h4>
-        <h4 className=" mb-5">
-          Siamo qui per semplificare la tua vita sportiva e offrirti
-          un'esperienza facile, veloce e conveniente nella ricerca e
-          prenotazione dei campi sportivi.
-        </h4>
       </Container>
     </div>
   );

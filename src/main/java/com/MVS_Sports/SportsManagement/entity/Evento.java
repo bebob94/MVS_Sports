@@ -1,6 +1,6 @@
 package com.MVS_Sports.SportsManagement.entity;
 
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import com.MVS_Sports.auth.entity.User;
@@ -37,8 +37,8 @@ public class Evento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    private LocalTime orarioInizio;
-    private LocalTime orarioFine;
+    private LocalDateTime orarioInizio;
+    private LocalDateTime orarioFine;
     private Long numeroPartecipanti;
     
     @JsonIgnoreProperties({"eventi","users", "roles","password","pagamenti","notifiche","attivitaSportive","recensioni","creditCard"})

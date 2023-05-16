@@ -1,5 +1,5 @@
 export interface User {
-  id: Number;
+  id: number;
   name: string;
   email: string;
   family_name: string;
@@ -9,11 +9,11 @@ export interface MyState {
   user: Registration;
 }
 export interface Roles {
-  id: Number;
+  id: number;
   roleName: String;
 }
 export interface Registration {
-  id: Number;
+  id: number;
   username: String;
   accessToken: String;
   roles: Roles[];
@@ -25,7 +25,7 @@ export interface MyUser {
 }
 
 export interface user {
-  id: Number;
+  id: number;
   name: String;
   surname: String;
   indirizzo: String;
@@ -42,7 +42,7 @@ export interface user {
 }
 
 export interface userChange {
-  id?: Number;
+  id?: number;
   name: String;
   surname: String;
   indirizzo: String;
@@ -54,14 +54,14 @@ export interface MyAttivitaSportiva {
 }
 
 export interface AttivitaSportiva {
-  id: Number;
+  id: number;
   nomeAttivita: String;
   descrizioneAttivita: String;
   indirizzo: String;
   orarioApertura: Date; // formato "hh:mm"
   orarioChiusura: Date; // formato "hh:mm"
   tipoDiSport: String;
-  numeroMassimoPartecipanti: Number;
+  numeroMassimoPartecipanti: number;
   durataEvento: String; // formato "hh:mm"
   eventi: Evento[];
   recensioni: Recensione[];
@@ -69,7 +69,7 @@ export interface AttivitaSportiva {
 }
 
 export interface AttivitaChange {
-  id?: Number;
+  id?: number;
   nomeAttivita: String;
   descrizioneAttivita: String;
   indirizzo: String;
@@ -80,17 +80,17 @@ export interface MyEvento {
   Evento: Evento;
 }
 export interface Evento {
-  id: Number;
+  id: number;
   orarioInizio: Date; // formato "hh:mm"
   orarioFine: Date; // formato "hh:mm"
-  numeroPartecipanti: Number;
+  numeroPartecipanti: number;
   userCreatore: user;
   attivitaSportiva: AttivitaSportiva;
   notifica: Notifica;
 }
 
 export interface NewEvento {
-  numeroPartecipanti: Number;
+  numeroPartecipanti: number;
   orarioInizio: Date;
 }
 
@@ -98,8 +98,8 @@ export interface MyRecensione {
   Recensione: Recensione[];
 }
 export interface Recensione {
-  id: Number;
-  valutazione: Number;
+  id: number;
+  valutazione: number;
   testoRecensione: String;
   orarioRecensione: String; // formato "hh:mm"
   user: user;
@@ -110,7 +110,7 @@ export interface MyNotifica {
   Notifica: Notifica[];
 }
 export interface Notifica {
-  id: Number;
+  id: number;
   tipoNotifica: String;
   orarioNotifica: String; // formato "hh:mm"
   evento: Evento;

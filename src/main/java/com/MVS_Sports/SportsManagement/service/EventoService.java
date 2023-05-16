@@ -41,9 +41,10 @@ public class EventoService {
 		
 		Evento e = new Evento();
 		e.setUserCreatore(userRepository.findById(id1).get());;
-		AttivitaSportiva attivitaSportiva = attivitaSportivaRepository.findById(id2).get();
+		AttivitaSportiva attivitaSportiva = attivitaSportivaRepository.findById(id2)
+			    .orElseThrow(() -> new RuntimeException("AttivitaSportiva non trovata"));
 		e.setAttivitaSportiva(attivitaSportiva);
-		LocalTime orarioInizio = evento.getOrarioInizio();
+		LocalDateTime orarioInizio = evento.getOrarioInizio();
 		e.setOrarioInizio(orarioInizio);
 		e.setOrarioFine(orarioInizio.plus(e.getAttivitaSportiva().getDurataEvento()));
 		e.setNumeroPartecipanti(evento.getNumeroPartecipanti());

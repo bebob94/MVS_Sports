@@ -7,6 +7,7 @@ import {
   fetchAttivita,
 } from "../../Redux/ActionType/AttivitaSportive";
 import ModalCreaEvento from "../Eventi/ModalCreaEvento";
+import "react-datepicker/dist/react-datepicker.css";
 
 function Attivita() {
   const dispatch = useDispatch();
@@ -41,9 +42,9 @@ function Attivita() {
         <Row>
           <Col xs={6} md={6}>
             <Col xs={8} md={8}>
-              <h2>{Attivita.nomeAttivita}</h2>
+              <h2>{Attivita?.nomeAttivita}</h2>
               <h4 className="mt-5">Descrizione attività</h4>
-              <h5 className="mt-4">{Attivita.descrizioneAttivita}</h5>
+              <h5 className="mt-4">{Attivita?.descrizioneAttivita}</h5>
             </Col>
             <Col xs={6} md={6} className="mt-5">
               <h4>Prenota un campo</h4>
@@ -58,8 +59,8 @@ function Attivita() {
                 <ModalCreaEvento
                   show={showModalPOST}
                   handleClose={handleCloseModalPOST}
-                  UserId={User.id}
-                  AttivitaId={Attivita.id}
+                  UserId={User?.id}
+                  AttivitaId={Attivita?.id}
                 />
               </Col>
             </Col>
@@ -71,15 +72,15 @@ function Attivita() {
                 <p className=" d-flex justify-content-between">
                   <p>
                     <strong className="me-4">Utente:</strong>{" "}
-                    {singRecensione.user.name} {singRecensione.user.surname}{" "}
+                    {singRecensione?.user?.name} {singRecensione?.user?.surname}{" "}
                   </p>
                   <p>
                     <strong className="me-4">Valutazione:</strong>{" "}
-                    {singRecensione.valutazione.toString()}
+                    {singRecensione?.valutazione?.toString()}
                   </p>
                 </p>
                 <p className="mb-5">
-                  <strong>{singRecensione.testoRecensione}</strong>
+                  <strong>{singRecensione?.testoRecensione}</strong>
                 </p>
               </div>
             ))}
