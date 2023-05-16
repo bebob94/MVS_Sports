@@ -80,13 +80,18 @@ export interface MyEvento {
   Evento: Evento;
 }
 export interface Evento {
-  id: 1;
+  id: Number;
   orarioInizio: Date; // formato "hh:mm"
   orarioFine: Date; // formato "hh:mm"
   numeroPartecipanti: Number;
   userCreatore: user;
   attivitaSportiva: AttivitaSportiva;
   notifica: Notifica;
+}
+
+export interface NewEvento {
+  numeroPartecipanti: Number;
+  orarioInizio: Date;
 }
 
 export interface MyRecensione {

@@ -208,8 +208,10 @@ button {
 
 .secondSection {
   background-color: #f8f9fa;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(25px);
   padding: 2em;
-  margin-top: 5em;
+  margin-top: 3em;
   border-radius: 10px;
   text-align: justify;
   font-size: 18px;
@@ -237,6 +239,8 @@ button {
     rgba(156, 13, 132, 1) 0%,
     rgba(222, 70, 132, 1) 100%
   ) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(25px);
   border: solid 3px #0c0c0c;
   color: black;
   box-shadow: rgb(143, 24, 103) 5px 5px 10px 5px;

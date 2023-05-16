@@ -11,7 +11,7 @@ import {
 
 function Results() {
   const allAttivita = useSelector(
-    (state: RootState) => state.attivitaSportiva.AllAttivitaSportive
+    (state: RootState) => state?.attivitaSportiva?.AllAttivitaSportive
   );
   const dispatch = useDispatch();
 
@@ -29,7 +29,7 @@ function Results() {
         {allAttivita && allAttivita.length > 0 ? (
           <Row className="justify-content-between">
             <h2>Aziende disponibili...</h2>
-            {allAttivita.map((attivita, i) => (
+            {allAttivita?.map((attivita, i) => (
               <Col key={i} sm={12} md={4} lg={4}>
                 <Link
                   to={`/Attivita/${attivita.id}`}
@@ -39,16 +39,16 @@ function Results() {
                   <Card className="my-3 p-3 rounded-4 myCards">
                     <Card.Body>
                       <Card.Title className="mb-4">
-                        <strong>{attivita.nomeAttivita}</strong>
+                        <strong>{attivita?.nomeAttivita}</strong>
                       </Card.Title>
                       <Card.Text className="my-5">
                         <strong>Descrizione:</strong>
                         <br />
-                        {attivita.descrizioneAttivita}
+                        {attivita?.descrizioneAttivita}
                       </Card.Text>
                       <Card.Text>
                         <strong>Sport: </strong>
-                        {attivita.tipoDiSport}
+                        {attivita?.tipoDiSport}
                       </Card.Text>
                       <div className="card-footer mt-auto"></div>
                     </Card.Body>

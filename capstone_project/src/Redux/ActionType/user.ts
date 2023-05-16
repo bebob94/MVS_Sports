@@ -69,17 +69,13 @@ export const userByUsername = async (value: String | undefined) => {
 
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< MODIFICA USER >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-export const changeMyInfo = async (userInfo: userChange) => {
-  try {
-    const requestOptions = {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${beboKey}`,
-      },
-      body: JSON.stringify(userInfo),
-    };
-  } catch (error) {
-    console.log(error);
-  }
+export const changeMyProfileInfo = async (params: userChange) => {
+  const requestOptions = await fetch(`http://localhost:8080/User`, {
+    method: "PUT",
+    headers: {
+      "Content-type": "application/json",
+      Authorization: `Bearer ${beboKey}`,
+    },
+    body: JSON.stringify(params),
+  });
 };

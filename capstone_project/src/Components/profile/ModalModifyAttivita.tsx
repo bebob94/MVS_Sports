@@ -10,6 +10,7 @@ import {
   changeMyInfoAttivita,
   searchById,
 } from "../../Redux/ActionType/AttivitaSportive";
+import { USER_BY_ID, userById } from "../../Redux/ActionType/user";
 
 const ModalModifyAttivita = ({
   AttivitaId,
@@ -27,10 +28,10 @@ const ModalModifyAttivita = ({
   const dispatch = useDispatch();
 
   const [AttivitaPayload, setAttivitaPayload] = useState<AttivitaChange>({
-    id: selectedAttivita?.id,
-    nomeAttivita: selectedAttivita?.nomeAttivita,
-    descrizioneAttivita: selectedAttivita?.descrizioneAttivita,
-    indirizzo: selectedAttivita?.indirizzo,
+    id: AttivitaId?.id,
+    nomeAttivita: AttivitaId?.nomeAttivita,
+    descrizioneAttivita: AttivitaId?.descrizioneAttivita,
+    indirizzo: AttivitaId?.indirizzo,
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -42,20 +43,24 @@ const ModalModifyAttivita = ({
 
   useEffect(() => {
     setAttivitaPayload({
-      id: selectedAttivita?.id,
-      nomeAttivita: selectedAttivita?.nomeAttivita,
-      descrizioneAttivita: selectedAttivita?.descrizioneAttivita,
-      indirizzo: selectedAttivita?.indirizzo,
+      id: AttivitaId?.id,
+      nomeAttivita: AttivitaId?.nomeAttivita,
+      descrizioneAttivita: AttivitaId?.descrizioneAttivita,
+      indirizzo: AttivitaId?.indirizzo,
     });
-  }, [selectedAttivita]);
+  }, [AttivitaId]);
 
   const handleSubmit = async (obj: AttivitaChange) => {
     let x = await changeMyInfoAttivita(obj);
-
+    let data2 = await userById(selectedAttivita.user.id);
     let data = await searchById(selectedAttivita.id);
     dispatch({
       type: ATTIVITA_SPORTIVA_FETCH_BY_ID,
       payload: data,
+    });
+    dispatch({
+      type: USER_BY_ID,
+      payload: data2,
     });
   };
 
@@ -68,7 +73,7 @@ const ModalModifyAttivita = ({
       </div>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Edit User</Modal.Title>
+          <Modal.Title>Modifica Attivita</Modal.Title>
         </Modal.Header>
         <h6>*Indicates required</h6>
         <Modal.Body>

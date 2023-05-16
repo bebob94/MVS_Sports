@@ -4,6 +4,7 @@ import {
   ATTIVITA_SPORTIVA_FETCH,
   ATTIVITA_SPORTIVA_FETCH_BY_ID,
   ATTIVITA_SPORTIVA_FETCH_BY_NAME,
+  ATTIVITA_SPORTIVA_FETCH_BY_TIPO_DI_SPORT,
 } from "../ActionType/AttivitaSportive";
 
 const initialState: MyAttivitaSportiva = {
@@ -22,6 +23,11 @@ export const AttivitaSportivaReducer = (
         AllAttivitaSportive: action.payload as AttivitaSportiva[],
       };
     case ATTIVITA_SPORTIVA_FETCH_BY_NAME:
+      return {
+        ...state,
+        AllAttivitaSportive: action.payload as AttivitaSportiva[],
+      };
+    case ATTIVITA_SPORTIVA_FETCH_BY_TIPO_DI_SPORT:
       return {
         ...state,
         AllAttivitaSportive: action.payload as AttivitaSportiva[],

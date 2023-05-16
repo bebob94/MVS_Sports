@@ -20,7 +20,7 @@ import com.MVS_Sports.auth.service.UserService;
 
 @RestController
 @RequestMapping("/User")
-@CrossOrigin(origins = "http://localhost:3000", maxAge = 6000000)
+@CrossOrigin(origins = "http://localhost:3000", maxAge = 6000000, allowCredentials = "true")
 public class UserController {
 	
 	@Autowired
@@ -62,8 +62,20 @@ public class UserController {
 		//<<<<<<<<<<<<<<<<<<<<<<<<< INIZIO METODI PUT>>>>>>>>>>>>>>>>>>>>>>>>>
 		@PutMapping()
 		@PreAuthorize("hasRole('ADMIN')  or hasRole('COMPANY_OWNER') or hasRole('ADMIN') ")
-		public ResponseEntity<?> updateUser(@RequestBody User u){
-			return new ResponseEntity<User>(userService.updateUser(u),HttpStatus.OK);
+		public ResponseEntity<?> updateUser(@RequestBody User u) {
+		    User existingUser = userService.findUserById(u.getId());
+
+		    if (existingUser != null) {
+		        existingUser.setName(u.getName());
+		        existingUser.setSurname(u.getSurname());
+		        existingUser.setIndirizzo(u.getIndirizzo());
+
+		        User updatedUser = userService.updateUser(existingUser);
+
+		        return new ResponseEntity<User>(updatedUser, HttpStatus.OK);
+		    } else {
+		        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		    }
 		}
 		//<<<<<<<<<<<<<<<<<<<<<<<<< FINE METODI PUT>>>>>>>>>>>>>>>>>>>>>>>>>
 		

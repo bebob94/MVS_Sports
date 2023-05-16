@@ -160,10 +160,10 @@ public class AttivitaSportivaService {
 	}
 	
 	//	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< CERCA ATTIVITA SPORTIVA DI TIPO DI SPORT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-	public List<AttivitaSportiva> findByTipoDiSport(String s){
+	public List<AttivitaSportiva> findByTipoDiSport(TipoDiSport s){
 		return attivitaSportivaRepositoryDao.findByTipoDiSport(s);
 	}
-	public Page<AttivitaSportiva> findByTipoDiSportPage(Pageable pag,String s){
+	public Page<AttivitaSportiva> findByTipoDiSportPage(Pageable pag,TipoDiSport s){
 		return attivitaSportivaRepositoryDao.findByTipoDiSport(pag, s);
 	}
 	

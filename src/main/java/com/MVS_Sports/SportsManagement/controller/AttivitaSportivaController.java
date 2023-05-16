@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.MVS_Sports.SportsManagement.Payload.AttivitaSportivaDto;
 import com.MVS_Sports.SportsManagement.entity.AttivitaSportiva;
+import com.MVS_Sports.SportsManagement.entity.TipoDiSport;
 import com.MVS_Sports.SportsManagement.service.AttivitaSportivaService;
 
 
@@ -46,7 +47,7 @@ public class AttivitaSportivaController {
 
 	@GetMapping("/tipoDiSport/{imp}")
 	@PreAuthorize("hasRole('USER') or hasRole('COMPANY_OWNER') or hasRole('ADMIN')")
-	public ResponseEntity<List<AttivitaSportiva>> trovaAttivitaSportivaByTipoDiSport(@PathVariable String imp) {
+	public ResponseEntity<List<AttivitaSportiva>> trovaAttivitaSportivaByTipoDiSport(@PathVariable TipoDiSport imp) {
 		return new ResponseEntity<List<AttivitaSportiva>>(attivitaSportivaService.findByTipoDiSport(imp),
 				HttpStatus.OK);
 	}
@@ -78,10 +79,22 @@ public class AttivitaSportivaController {
 	
 	//<<<<<<<<<<<<<<<<<<<<<<<<< INIZIO METODI PUT>>>>>>>>>>>>>>>>>>>>>>>>>
 	@PutMapping()
-	@PreAuthorize("hasRole('ADMIN')  or hasRole('COMPANY_OWNER')")
-	public ResponseEntity<?> updateAttivitaSportiva(@RequestBody AttivitaSportiva as){
-		return new ResponseEntity<AttivitaSportiva>(attivitaSportivaService.updateAttivitaSportiva(as),HttpStatus.OK);
-	} 
+	@PreAuthorize(" hasRole('USER') or hasRole('ADMIN')  or hasRole('COMPANY_OWNER')")
+	public ResponseEntity<?> updateAttivitaSportiva(@RequestBody AttivitaSportiva as) {
+	    AttivitaSportiva existingAttivita = attivitaSportivaService.findAttivitaSportivaById(as.getId());
+
+	    if (existingAttivita != null) {
+	        existingAttivita.setNomeAttivita(as.getNomeAttivita());
+	        existingAttivita.setDescrizioneAttivita(as.getDescrizioneAttivita());
+	        existingAttivita.setIndirizzo(as.getIndirizzo());
+
+	        AttivitaSportiva updatedAttivita = attivitaSportivaService.updateAttivitaSportiva(existingAttivita);
+
+	        return new ResponseEntity<AttivitaSportiva>(updatedAttivita, HttpStatus.OK);
+	    } else {
+	        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	    }
+	}
 	//<<<<<<<<<<<<<<<<<<<<<<<<< FINE METODI PUT>>>>>>>>>>>>>>>>>>>>>>>>>
 	
 	

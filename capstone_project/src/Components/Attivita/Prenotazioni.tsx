@@ -67,21 +67,21 @@ function Prenotazioni() {
               }}
             />
           </Col>
-          <Row>
-            <Col xs={12} sm={5} md={5} className="mt-5">
+          <Row className="mt-5">
+            <Col xs={12} sm={5} md={5}>
               <Form.Control as="select" defaultValue="" aria-label="Sport">
                 <option value="">Sport</option>
-                <option value="calcetto">Calcetto</option>
-                <option value="tennis_singolo">Tennis singolo</option>
-                <option value="tennis_doppio">Tennis doppio</option>
-                <option value="paddle">Paddle</option>
-                <option value="beach_tennis">Beach tennis</option>
-                <option value="beach_volley">Beach volley</option>
-                <option value="pallavolo">Pallavolo</option>
+                <option value="CALCETTO">Calcetto</option>
+                <option value="TENNIS_SINGOLO">Tennis singolo</option>
+                <option value="TENNIS_DOPPIO">Tennis doppio</option>
+                <option value="PADDLE">Paddle</option>
+                <option value="BEACH_TENNIS">Beach tennis</option>
+                <option value="BEACH_VOLLEY">Beach volley</option>
+                <option value="PALLAVOLO">Pallavolo</option>
               </Form.Control>
             </Col>
-            <Col xs={12}>
-              <Button variant="primary" type="submit">
+            <Col xs={5}>
+              <Button variant="primary" type="submit" className="mt-0">
                 <FaSearch /> Cerca
               </Button>
             </Col>

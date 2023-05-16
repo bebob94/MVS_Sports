@@ -14,13 +14,13 @@ import com.MVS_Sports.SportsManagement.entity.TipoDiSport;
 public interface AttivitaSportivaRepository extends PagingAndSortingRepository<AttivitaSportiva, Long>,CrudRepository<AttivitaSportiva, Long>{
 
 	Optional<AttivitaSportiva> findByNomeAttivita( String nomeAttivita);
-	Optional<AttivitaSportiva> findByTipoDiSport( TipoDiSport tipoDiSport);
+//	Optional<AttivitaSportiva> findByTipoDiSport( TipoDiSport tipoDiSport);
 	
 	public List<AttivitaSportiva> findByNomeAttivitaContains(String s);
 	public Page<AttivitaSportiva> findByNomeAttivitaContains(Pageable page,String s);
 	
-	public List<AttivitaSportiva> findByTipoDiSport(String s);
-	public Page<AttivitaSportiva> findByTipoDiSport(Pageable page,String s);
+	public List<AttivitaSportiva> findByTipoDiSport(TipoDiSport tipoDiSport);
+	public Page<AttivitaSportiva> findByTipoDiSport(Pageable page,TipoDiSport tipoDiSport);
 	
 	public List<AttivitaSportiva> findByIndirizzoContains(String s);
 	public Page<AttivitaSportiva> findByIndirizzoContains(Pageable page,String s);

@@ -7,9 +7,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../Redux/Store";
 import {
   ALL_USERS,
-  USER_BY_ID,
-  changeMyInfo,
   userById,
+  changeMyProfileInfo,
+  USER_BY_ID,
 } from "../../Redux/ActionType/user";
 
 const ModalModifyUtente = ({ userId }: { userId: user }) => {
@@ -22,10 +22,10 @@ const ModalModifyUtente = ({ userId }: { userId: user }) => {
   const dispatch = useDispatch();
 
   const [userPayload, setUserPayload] = useState<userChange>({
-    id: selectedUser.id,
-    name: selectedUser.name,
-    surname: selectedUser.surname,
-    indirizzo: selectedUser.indirizzo,
+    id: userId.id,
+    name: userId.name,
+    surname: userId.surname,
+    indirizzo: userId.indirizzo,
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -37,19 +37,25 @@ const ModalModifyUtente = ({ userId }: { userId: user }) => {
 
   useEffect(() => {
     setUserPayload({
-      id: selectedUser.id,
-      name: selectedUser.name,
-      surname: selectedUser.surname,
-      indirizzo: selectedUser.indirizzo,
+      id: userId.id,
+      name: userId.name,
+      surname: userId.surname,
+      indirizzo: userId.indirizzo,
     });
-  }, [selectedUser]);
+  }, [userId]);
 
   const handleSubmit = async (obj: userChange) => {
-    let x = await changeMyInfo(obj);
+    let x = await changeMyProfileInfo(obj);
 
     let data = await userById(selectedUser.id);
+    console.log(data);
+
     dispatch({
       type: USER_BY_ID,
+      payload: data,
+    });
+    dispatch({
+      type: ALL_USERS,
       payload: data,
     });
   };
@@ -63,7 +69,7 @@ const ModalModifyUtente = ({ userId }: { userId: user }) => {
       </div>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Edit User</Modal.Title>
+          <Modal.Title>Modifica Utente</Modal.Title>
         </Modal.Header>
         <h6>*Indicates required</h6>
         <Modal.Body>

@@ -1,3 +1,5 @@
+import { NewEvento } from "../Interfaces";
+
 const beboKey = process.env.REACT_APP_BEBO_SECRET_KEY;
 
 export const ALL_EVENTI = "ALL_EVENTI";
@@ -42,4 +44,26 @@ export const eventoById = async (value: Number | undefined) => {
   } catch (error) {
     console.log(error);
   }
+};
+
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< CREA EVENTO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+export const CreaEvento = async (
+  params: NewEvento,
+  idUser: Number,
+  idAttivita: Number
+) => {
+  const requestOptions = await fetch(
+    `http://localhost:8080/api/Evento/add/${idUser}/${idAttivita}`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${beboKey}`,
+      },
+      body: JSON.stringify(params),
+    }
+  );
+  let newEvent = await requestOptions.json();
+  return newEvent;
 };
