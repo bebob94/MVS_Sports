@@ -1,6 +1,7 @@
 import { useState, useEffect, ChangeEvent } from "react";
 import { Button, Row, Form, Modal } from "react-bootstrap";
 import { useDispatch } from "react-redux";
+import { format } from "date-fns";
 import DatePicker from "react-datepicker";
 import { NewEvento } from "../../Redux/Interfaces";
 import {
@@ -8,6 +9,8 @@ import {
   CreaEvento,
   fetchEventi,
 } from "../../Redux/ActionType/Evento";
+import { ALL_NOTIFICHE, fetchNotifiche } from "../../Redux/ActionType/Notifica";
+import { ALL_USERS, fetchUsers } from "../../Redux/ActionType/user";
 
 const ModalCreaEvento = ({
   show,
@@ -24,10 +27,6 @@ const ModalCreaEvento = ({
 
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
   const [numeroPartecipanti, setNumeroPartecipanti] = useState<number>(0);
-  const [eventPayload, setEventPayload] = useState<NewEvento>({
-    numeroPartecipanti: 0,
-    orarioInizio: selectedDate,
-  });
 
   const handleDateChange = (date: Date) => {
     setSelectedDate(date);
@@ -38,28 +37,42 @@ const ModalCreaEvento = ({
   };
 
   useEffect(() => {
-    setEventPayload({
-      numeroPartecipanti: numeroPartecipanti,
-      orarioInizio: selectedDate,
-    });
-  }, [numeroPartecipanti, selectedDate]);
+    setNumeroPartecipanti(numeroPartecipanti);
+    setSelectedDate(selectedDate);
+  }, [show]);
 
-  const handleSubmit = async (obj: NewEvento) => {
+  const handleSubmit = async () => {
+    const formattedDate = format(selectedDate, "yyyy-MM-dd'T'HH:mm:ss");
+    const orarioInizio = new Date(formattedDate);
+
     const payload: NewEvento = {
-      ...obj,
       numeroPartecipanti: numeroPartecipanti,
+      orarioInizio: orarioInizio,
     };
 
-    let x = await CreaEvento(payload, AttivitaId, UserId);
+    let newEvent = await CreaEvento(payload, UserId, AttivitaId);
 
     let data = await fetchEventi();
+    let data2 = await fetchNotifiche();
+    let data3 = await fetchUsers();
+
     dispatch({
       type: ALL_EVENTI,
       payload: data,
     });
+    dispatch({
+      type: ALL_NOTIFICHE,
+      payload: data2,
+    });
+    dispatch({
+      type: ALL_USERS,
+      payload: data3,
+    });
 
     setNumeroPartecipanti(0);
     setSelectedDate(new Date());
+
+    handleClose();
   };
 
   return (
@@ -97,10 +110,7 @@ const ModalCreaEvento = ({
           <Button
             className="Profile-Btn1"
             style={{ margin: "0", fontSize: "1.2em", fontWeight: "bolder" }}
-            onClick={() => {
-              handleSubmit(eventPayload);
-              handleClose();
-            }}
+            onClick={handleSubmit}
           >
             Save
           </Button>

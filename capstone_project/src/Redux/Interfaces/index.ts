@@ -1,3 +1,5 @@
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< REGISTRAZIONE E LOGIN >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
 export interface User {
   id: number;
   name: string;
@@ -19,6 +21,7 @@ export interface Registration {
   roles: Roles[];
 }
 
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< USER >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 export interface MyUser {
   AllUsers: user[];
   user: user;
@@ -48,6 +51,7 @@ export interface userChange {
   indirizzo: String;
 }
 
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< ATTIVITA SPORTIVA >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 export interface MyAttivitaSportiva {
   AllAttivitaSportive: AttivitaSportiva[];
   AttivitaSportiva: AttivitaSportiva;
@@ -75,6 +79,16 @@ export interface AttivitaChange {
   indirizzo: String;
 }
 
+export interface NewAttivita {
+  nomeAttivita: String;
+  descrizioneAttivita: String;
+  indirizzo: String;
+  orarioApertura: String;
+  orarioChiusura: String;
+  tipoDiSport: String;
+}
+
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< EVENTO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 export interface MyEvento {
   AllEventi: Evento[];
   Evento: Evento;
@@ -94,8 +108,10 @@ export interface NewEvento {
   orarioInizio: Date;
 }
 
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< RECENSIONE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 export interface MyRecensione {
-  Recensione: Recensione[];
+  ALLRecensione: Recensione[];
+  Recensione: Recensione;
 }
 export interface Recensione {
   id: number;
@@ -106,8 +122,15 @@ export interface Recensione {
   attivitaSportiva: AttivitaSportiva;
 }
 
+export interface NewRecensione {
+  valutazione: number;
+  testoRecensione: String;
+}
+
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< NOTIFICA >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 export interface MyNotifica {
-  Notifica: Notifica[];
+  AllNotifiche: [];
+  Notifica: Notifica;
 }
 export interface Notifica {
   id: number;

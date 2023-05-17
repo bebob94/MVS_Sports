@@ -51,6 +51,7 @@ const ModalModifyAttivita = ({
   }, [AttivitaId]);
 
   const handleSubmit = async (obj: AttivitaChange) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     let x = await changeMyInfoAttivita(obj);
     let data2 = await userById(selectedAttivita.user.id);
     let data = await searchById(selectedAttivita.id);

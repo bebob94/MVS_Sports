@@ -6,12 +6,16 @@ import { userReducer } from "../Reducers";
 import { AttivitaSportivaReducer } from "../Reducers/AttivitaSportive";
 import { EventoReducer } from "../Reducers/Evento";
 import { UserReducer } from "../Reducers/User";
+import { NotificaReducer } from "../Reducers/Notifica";
+import { RecensioneReducer } from "../Reducers/Recensioni";
 
 const reducers = combineReducers({
   user: userReducer,
   attivitaSportiva: AttivitaSportivaReducer,
   evento: EventoReducer,
   User: UserReducer,
+  Notifica: NotificaReducer,
+  Recensione: RecensioneReducer,
 });
 
 const persistConfig = {

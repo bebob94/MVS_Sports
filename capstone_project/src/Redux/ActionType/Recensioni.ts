@@ -1,13 +1,13 @@
-import { NewEvento } from "../Interfaces";
+import { NewEvento, NewRecensione } from "../Interfaces";
 
 const beboKey = process.env.REACT_APP_BEBO_SECRET_KEY;
 
-export const ALL_EVENTI = "ALL_EVENTI";
-export const EVENTO_BY_ID = "EVENTO_BY_ID";
+export const ALL_RECENSIONI = "ALL_RECENSIONI";
+export const RECENSIONE_BY_ID = "EVENTO_BY_ID";
 
-export const fetchEventi = async () => {
+export const fetchRecensioni = async () => {
   try {
-    let res = await fetch(`http://localhost:8080/api/Evento/all`, {
+    let res = await fetch(`http://localhost:8080/api/Recensione/all`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${beboKey}`,
@@ -26,10 +26,10 @@ export const fetchEventi = async () => {
   }
 };
 
-// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< RICERCA EVENTO PER ID >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-export const eventoById = async (value: Number | undefined) => {
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< RICERCA RECENSIONE PER ID >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+export const RecensioneById = async (value: Number | undefined) => {
   try {
-    let res = await fetch(`http://localhost:8080/api/Evento/${value}`, {
+    let res = await fetch(`http://localhost:8080/api/Recensione/${value}`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${beboKey}`,
@@ -46,16 +46,15 @@ export const eventoById = async (value: Number | undefined) => {
   }
 };
 
-// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< CREA EVENTO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-export const CreaEvento = async (
-  params: NewEvento,
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< CREA RECENSIONE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+export const CreaRecensione = async (
+  params: NewRecensione,
   idUser: number,
   idAttivita: number
 ) => {
   try {
     const res = await fetch(
-      `http://localhost:8080/api/Evento/add/${idUser}/${idAttivita}`,
+      `http://localhost:8080/api/Recensione/add/${idUser}/${idAttivita}`,
       {
         method: "POST",
         headers: {

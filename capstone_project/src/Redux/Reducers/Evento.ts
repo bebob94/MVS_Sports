@@ -15,7 +15,7 @@ export const EventoReducer = (
     case ALL_EVENTI:
       return {
         ...state,
-        AllAttivitaSportive: action.payload as Evento[],
+        AllEventi: action.payload as Evento[],
       };
 
     case EVENTO_BY_ID:

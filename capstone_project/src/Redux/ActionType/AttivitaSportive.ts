@@ -1,4 +1,4 @@
-import { AttivitaChange } from "../Interfaces";
+import { AttivitaChange, NewAttivita } from "../Interfaces";
 
 const beboKey = process.env.REACT_APP_BEBO_SECRET_KEY;
 
@@ -113,4 +113,28 @@ export const changeMyInfoAttivita = async (params: AttivitaChange) => {
       body: JSON.stringify(params),
     }
   );
+};
+
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< CREA ATTIVITA >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+export const CreaAttivita = async (params: NewAttivita, idUser: number) => {
+  try {
+    const res = await fetch(
+      `http://localhost:8080/api/AttivitaSportiva/add/${idUser}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${beboKey}`,
+        },
+        body: JSON.stringify(params),
+      }
+    );
+    console.log(res);
+
+    let data = await res.json();
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
 };

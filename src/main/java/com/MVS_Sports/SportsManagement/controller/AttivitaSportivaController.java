@@ -79,7 +79,7 @@ public class AttivitaSportivaController {
 	
 	//<<<<<<<<<<<<<<<<<<<<<<<<< INIZIO METODI PUT>>>>>>>>>>>>>>>>>>>>>>>>>
 	@PutMapping()
-	@PreAuthorize(" hasRole('USER') or hasRole('ADMIN')  or hasRole('COMPANY_OWNER')")
+	@PreAuthorize("  hasRole('ADMIN')  or hasRole('COMPANY_OWNER')")
 	public ResponseEntity<?> updateAttivitaSportiva(@RequestBody AttivitaSportiva as) {
 	    AttivitaSportiva existingAttivita = attivitaSportivaService.findAttivitaSportivaById(as.getId());
 

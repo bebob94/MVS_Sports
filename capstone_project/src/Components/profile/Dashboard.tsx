@@ -1,18 +1,27 @@
-import { Button, Modal, Container, Row, Col } from "react-bootstrap";
+import { Button, Container, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../Redux/Store";
 import { USER_BY_USERNAME, userByUsername } from "../../Redux/ActionType/user";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Error2 from "../Error2";
 import ModalModifyUtente from "./ModalModificaUtente";
 import ModalModifyAttivita from "./ModalModifyAttivita";
+import ModalCreateAttivita from "./ModalCreateAttivita";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
 
   const userLogged = useSelector((state: RootState) => state?.user.user);
-
   const user = useSelector((state: RootState) => state?.User.user);
+
+  const [showModalPOST, setShowModalPOST] = useState(false);
+
+  const handleShowModalPOST = () => {
+    setShowModalPOST(true);
+  };
+  const handleCloseModalPOST = () => {
+    setShowModalPOST(false);
+  };
 
   useEffect(() => {
     (async () => {
@@ -72,28 +81,50 @@ const Dashboard = () => {
                   <strong>
                     <h4 className="mt-5 mb-4">Attività</h4>
                   </strong>
-                  <p>
-                    <strong className="me-3">Nome: </strong>
-                    {user?.attivitaSportiva?.nomeAttivita}
-                  </p>
-                  <p>
-                    <strong className="me-3"> Descrizione: </strong>
-                    {user?.attivitaSportiva?.descrizioneAttivita}
-                  </p>
-                  <p>
-                    <strong className="me-3">Sport: </strong>{" "}
-                    {user?.attivitaSportiva?.tipoDiSport}
-                  </p>
-                  <p>
-                    <strong className="me-3">Indirizzo: </strong>
-                    {user?.attivitaSportiva?.indirizzo}
-                  </p>
                   {user.attivitaSportiva ? (
-                    <Col xs={1} className="mt-1">
-                      <ModalModifyAttivita AttivitaId={user.attivitaSportiva} />
-                    </Col>
+                    <>
+                      <p>
+                        <strong className="me-3">Nome: </strong>
+                        {user?.attivitaSportiva?.nomeAttivita}
+                      </p>
+                      <p>
+                        <strong className="me-3"> Descrizione: </strong>
+                        {user?.attivitaSportiva?.descrizioneAttivita}
+                      </p>
+                      <p>
+                        <strong className="me-3">Sport: </strong>{" "}
+                        {user?.attivitaSportiva?.tipoDiSport}
+                      </p>
+                      <p>
+                        <strong className="me-3">Indirizzo: </strong>
+                        {user?.attivitaSportiva?.indirizzo}
+                      </p>
+
+                      <Col xs={1} className="mt-1">
+                        <ModalModifyAttivita
+                          AttivitaId={user.attivitaSportiva}
+                        />
+                      </Col>
+                    </>
                   ) : (
-                    <></>
+                    <Col xs={6} md={6} className="mt-5">
+                      <h4>Aggiungi la tua Attività</h4>
+
+                      <Col xs={1} className="mt-3">
+                        <Button
+                          style={{ width: "150px" }}
+                          onClick={handleShowModalPOST}
+                          className=" rounded-4"
+                        >
+                          Aggiungi attività
+                        </Button>
+                        <ModalCreateAttivita
+                          show={showModalPOST}
+                          handleClose={handleCloseModalPOST}
+                          UserId={user?.id}
+                        />
+                      </Col>
+                    </Col>
                   )}
                 </Col>
               ) : (

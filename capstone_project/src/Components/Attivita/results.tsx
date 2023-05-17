@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../Redux/Store";
@@ -30,7 +30,7 @@ function Results() {
           <Row className="justify-content-between">
             <h2>Aziende disponibili...</h2>
             {allAttivita?.map((attivita, i) => (
-              <Col key={i} sm={12} md={4} lg={4}>
+              <Col key={i} sm={12} md={6} lg={4}>
                 <Link
                   to={`/Attivita/${attivita.id}`}
                   onClick={() => handlePrenotaClick(attivita.id)}
