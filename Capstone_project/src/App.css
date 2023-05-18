@@ -255,3 +255,7 @@ button {
   border-top: none;
   text-align: center;
 }
+
+.AddEvento {
+  width: 200px !important;
+}

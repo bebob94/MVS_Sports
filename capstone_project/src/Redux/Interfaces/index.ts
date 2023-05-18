@@ -108,6 +108,10 @@ export interface NewEvento {
   orarioInizio: Date;
 }
 
+export interface EventoChange {
+  id?: number;
+  numeroPartecipanti: number;
+}
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< RECENSIONE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 export interface MyRecensione {
   ALLRecensione: Recensione[];

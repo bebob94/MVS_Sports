@@ -1,4 +1,4 @@
-import { NewEvento } from "../Interfaces";
+import { EventoChange, NewEvento } from "../Interfaces";
 
 const beboKey = process.env.REACT_APP_BEBO_SECRET_KEY;
 
@@ -73,4 +73,16 @@ export const CreaEvento = async (
   } catch (error) {
     console.log(error);
   }
+};
+
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< MODIFICA ATTIVITA >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+export const changeMyInfoEvento = async (params: EventoChange) => {
+  const requestOptions = await fetch(`http://localhost:8080/api/Evento`, {
+    method: "PUT",
+    headers: {
+      "Content-type": "application/json",
+      Authorization: `Bearer ${beboKey}`,
+    },
+    body: JSON.stringify(params),
+  });
 };

@@ -45,6 +45,7 @@ public class Evento {
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     private User userCreatore;
     
+    
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JsonIgnore
     private List<User> users;

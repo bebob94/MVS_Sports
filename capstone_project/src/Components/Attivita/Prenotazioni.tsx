@@ -84,12 +84,11 @@ function Prenotazioni() {
             <Col xs={12} sm={5} md={5}>
               <Form.Control
                 as="select"
-                defaultValue=""
+                defaultValue=" "
                 aria-label="Sport"
                 name="sport"
                 onChange={(e) => setSport(e.target.value)}
               >
-                <option value="">Sport</option>
                 <option value="CALCETTO">Calcetto</option>
                 <option value="TENNIS_SINGOLO">Tennis singolo</option>
                 <option value="TENNIS_DOPPIO">Tennis doppio</option>

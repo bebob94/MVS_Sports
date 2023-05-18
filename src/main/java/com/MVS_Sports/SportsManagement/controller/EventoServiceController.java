@@ -48,8 +48,19 @@ public class EventoServiceController {
 		//<<<<<<<<<<<<<<<<<<<<<<<<< INIZIO METODI PUT>>>>>>>>>>>>>>>>>>>>>>>>>
 		@PutMapping()
 		@PreAuthorize("hasRole('ADMIN')  or hasRole('COMPANY_OWNER') or hasRole('ADMIN')")
-		public ResponseEntity<?> updateEvento(@RequestBody Evento e, List<User> users){
-			return new ResponseEntity<String>(eventoService.updateEvento(e,users),HttpStatus.OK);
+		public ResponseEntity<?> updateEvento(@RequestBody Evento e){
+			Evento existingEvento = eventoService.findEventoById(e.getId());
+			
+			if(existingEvento !=null) {
+				existingEvento.setNumeroPartecipanti(e.getNumeroPartecipanti());
+				
+				Evento updateEvento = eventoService.updateEvento(existingEvento);
+				
+				return new ResponseEntity<Evento>(updateEvento,HttpStatus.OK);
+			}else {
+				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			}
+			
 		}
 		//<<<<<<<<<<<<<<<<<<<<<<<<< FINE METODI PUT>>>>>>>>>>>>>>>>>>>>>>>>>
 		

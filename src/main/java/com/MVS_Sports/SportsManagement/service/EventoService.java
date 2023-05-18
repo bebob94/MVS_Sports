@@ -67,16 +67,12 @@ public class EventoService {
 	}
 	
 //	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< MODIFICA EVENTO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-	public String updateEvento( Evento e, List<User> users) {
+	public Evento updateEvento( Evento e) {
 		if (!eventoRepositoryDao.existsById(e.getId())) {
 			throw new EntityNotFoundException("Evento not exists!!!");
 		} else {
-			if(e.getNumeroPartecipanti() < e.getAttivitaSportiva().getNumeroMassimoPartecipanti()) {
-				
-				e.setUsers(users);
 				eventoRepositoryDao.save(e);
-			}
-			return "Evento update successfully";
+				return e;
 		}
 	}
 	

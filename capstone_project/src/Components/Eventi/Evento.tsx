@@ -8,6 +8,7 @@ import {
   ATTIVITA_SPORTIVA_FETCH_BY_ID,
   searchById,
 } from "../../Redux/ActionType/AttivitaSportive";
+import ModalModifyEvento from "./ModalModificaEvento";
 function Evento() {
   const evento = useSelector((state: RootState) => state?.evento.Evento);
   const dispatch = useDispatch();
@@ -75,6 +76,9 @@ function Evento() {
               <br />
               Dalle {formatTime(evento?.orarioInizio)} <br />
               Alle {formatTime(evento?.orarioFine)}
+            </Col>
+            <Col xs={1} className="mt-1">
+              <ModalModifyEvento eventoId={evento} />
             </Col>
           </Col>
         </Row>
