@@ -2,7 +2,7 @@ import React from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../Redux/Store";
-import Error from "../Error";
+import Error from "../Error/Error";
 import { Link } from "react-router-dom";
 import {
   ATTIVITA_SPORTIVA_FETCH_BY_ID,

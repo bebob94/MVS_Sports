@@ -58,15 +58,14 @@ function MyNavbar() {
                   <NavDropdown.Item href="/Dashboard" className="text-dark">
                     Dashboard
                   </NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.2" className="text-dark">
-                    Impostazioni
+                  <NavDropdown.Item href="/Eventi" className="text-dark">
+                    Eventi
                   </NavDropdown.Item>
                   <NavDropdown.Item href="/ComeFunziona" className="text-dark">
                     Come funziona
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item
-                    href="#action/3.4"
                     className="text-dark"
                     onClick={(e) => {
                       handleSubmit(e);

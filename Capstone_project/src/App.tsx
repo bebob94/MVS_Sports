@@ -12,6 +12,8 @@ import Attivita from "./Components/Attivita/Attivita";
 import Dashboard from "./Components/profile/Dashboard";
 import Results from "./Components/Attivita/results";
 import Prenotazioni from "./Components/Attivita/Prenotazioni";
+import Eventi from "./Components/Eventi/Eventi";
+import Evento from "./Components/Eventi/Evento";
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
           <Route path="/ComeFunziona" element={<ComeFunziona />} />
           <Route path="/Results" element={<Results />} />
           <Route path="/Attivita/:id" element={<Attivita />} />
+          <Route path="/Eventi/" element={<Eventi />} />
+          <Route path="/Evento/:id" element={<Evento />} />
         </Routes>
       </BrowserRouter>
     </div>

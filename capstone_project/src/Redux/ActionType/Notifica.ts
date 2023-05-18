@@ -24,7 +24,7 @@ export const fetchNotifiche = async () => {
 };
 
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< RICERCA NOTIFICA PER ID >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-export const eventoById = async (value: Number | undefined) => {
+export const notificaById = async (value: Number | undefined) => {
   try {
     let res = await fetch(`http://localhost:8080/api/Notifica/${value}`, {
       method: "GET",

@@ -15,13 +15,9 @@ import {
 } from "../../Redux/ActionType/AttivitaSportive";
 
 const ModalCreateRecensione = ({
-  show,
-  handleClose,
   UserId,
   AttivitaId,
 }: {
-  show: boolean;
-  handleClose: () => void;
   UserId: number;
   AttivitaId: number;
 }) => {
@@ -33,7 +29,14 @@ const ModalCreateRecensione = ({
   const handlevalutazioneChange = (e: ChangeEvent<HTMLInputElement>) => {
     setValutazione(Number(e.target.value));
   };
+  const [show, setShow] = useState(false);
 
+  const handleShow = () => {
+    setShow(true);
+  };
+  const handleClose = () => {
+    setShow(false);
+  };
   const handleTestoRecensioneChange = (e: ChangeEvent<HTMLInputElement>) => {
     setTestoRecensione(e.target.value);
   };
@@ -67,6 +70,13 @@ const ModalCreateRecensione = ({
 
   return (
     <>
+      <Button
+        style={{ width: "150px" }}
+        className=" rounded-4"
+        onClick={handleShow}
+      >
+        Crea una recensione
+      </Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Crea un evento</Modal.Title>

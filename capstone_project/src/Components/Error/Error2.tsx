@@ -1,7 +1,7 @@
 import { Alert, Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import Prenotazioni from "./Attivita/Prenotazioni";
-import Login from "./login_&_register/Login";
+import Prenotazioni from "../Attivita/Prenotazioni";
+import Login from "../login_&_register/Login";
 
 const Error2 = () => {
   return (

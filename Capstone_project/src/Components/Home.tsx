@@ -7,6 +7,7 @@ import {
   fetchAttivita,
 } from "../Redux/ActionType/AttivitaSportive";
 import { ALL_USERS, fetchUsers } from "../Redux/ActionType/user";
+import { ALL_EVENTI, fetchEventi } from "../Redux/ActionType/Evento";
 
 function Home() {
   const dispatch = useDispatch();
@@ -27,6 +28,17 @@ function Home() {
 
       dispatch({
         type: ALL_USERS,
+        payload: data,
+      });
+    })();
+  }, []);
+
+  useEffect(() => {
+    (async () => {
+      let data = await fetchEventi();
+
+      dispatch({
+        type: ALL_EVENTI,
         payload: data,
       });
     })();

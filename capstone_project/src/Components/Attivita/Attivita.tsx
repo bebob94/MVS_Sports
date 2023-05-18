@@ -6,7 +6,7 @@ import {
   ATTIVITA_SPORTIVA_FETCH,
   fetchAttivita,
 } from "../../Redux/ActionType/AttivitaSportive";
-import ModalCreaEvento from "../Eventi/ModalCreaEvento";
+import ModalCreaEvento from "./ModalCreaEvento";
 import "react-datepicker/dist/react-datepicker.css";
 import ModalCreateRecensione from "./ModalCreateRecensione";
 
@@ -17,15 +17,6 @@ function Attivita() {
     (state: RootState) => state.attivitaSportiva?.AttivitaSportiva
   );
   const User = useSelector((state: RootState) => state?.User.user);
-
-  const [showModalPOST, setShowModalPOST] = useState(false);
-
-  const handleShowModalPOST = () => {
-    setShowModalPOST(true);
-  };
-  const handleCloseModalPOST = () => {
-    setShowModalPOST(false);
-  };
 
   useEffect(() => {
     (async () => {
@@ -53,19 +44,7 @@ function Attivita() {
               <h4>Prenota un campo</h4>
 
               <Col xs={1} className="mt-3">
-                <Button
-                  style={{ width: "150px" }}
-                  onClick={handleShowModalPOST}
-                  className=" rounded-4"
-                >
-                  Prenota un campo
-                </Button>
-                <ModalCreaEvento
-                  show={showModalPOST}
-                  handleClose={handleCloseModalPOST}
-                  UserId={User?.id}
-                  AttivitaId={Attivita?.id}
-                />
+                <ModalCreaEvento UserId={User?.id} AttivitaId={Attivita?.id} />
               </Col>
             </Col>
           </Col>
@@ -92,16 +71,7 @@ function Attivita() {
               <h4>Crea una recensione</h4>
 
               <Col xs={1} className="mt-3">
-                <Button
-                  style={{ width: "150px" }}
-                  onClick={handleShowModalPOST}
-                  className=" rounded-4"
-                >
-                  Crea una recensione
-                </Button>
                 <ModalCreateRecensione
-                  show={showModalPOST}
-                  handleClose={handleCloseModalPOST}
                   UserId={User?.id}
                   AttivitaId={Attivita?.id}
                 />

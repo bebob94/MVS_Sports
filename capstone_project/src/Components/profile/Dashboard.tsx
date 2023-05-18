@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../Redux/Store";
 import { USER_BY_USERNAME, userByUsername } from "../../Redux/ActionType/user";
 import { useEffect, useState } from "react";
-import Error2 from "../Error2";
+import Error2 from "../Error/Error2";
 import ModalModifyUtente from "./ModalModificaUtente";
 import ModalModifyAttivita from "./ModalModifyAttivita";
 import ModalCreateAttivita from "./ModalCreateAttivita";

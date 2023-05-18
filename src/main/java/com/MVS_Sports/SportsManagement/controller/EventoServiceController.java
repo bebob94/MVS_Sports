@@ -49,7 +49,7 @@ public class EventoServiceController {
 		@PutMapping()
 		@PreAuthorize("hasRole('ADMIN')  or hasRole('COMPANY_OWNER') or hasRole('ADMIN')")
 		public ResponseEntity<?> updateEvento(@RequestBody Evento e, List<User> users){
-			return new ResponseEntity<Evento>(eventoService.updateEvento(e,users),HttpStatus.OK);
+			return new ResponseEntity<String>(eventoService.updateEvento(e,users),HttpStatus.OK);
 		}
 		//<<<<<<<<<<<<<<<<<<<<<<<<< FINE METODI PUT>>>>>>>>>>>>>>>>>>>>>>>>>
 		

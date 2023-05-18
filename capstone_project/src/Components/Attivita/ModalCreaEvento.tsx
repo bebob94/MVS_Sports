@@ -13,13 +13,9 @@ import { ALL_NOTIFICHE, fetchNotifiche } from "../../Redux/ActionType/Notifica";
 import { ALL_USERS, fetchUsers } from "../../Redux/ActionType/user";
 
 const ModalCreaEvento = ({
-  show,
-  handleClose,
   UserId,
   AttivitaId,
 }: {
-  show: boolean;
-  handleClose: () => void;
   UserId: number;
   AttivitaId: number;
 }) => {
@@ -27,6 +23,12 @@ const ModalCreaEvento = ({
 
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
   const [numeroPartecipanti, setNumeroPartecipanti] = useState<number>(0);
+
+  const [show, setShow] = useState(false);
+
+  const handleShow = () => setShow(true);
+
+  const handleClose = () => setShow(false);
 
   const handleDateChange = (date: Date) => {
     setSelectedDate(date);
@@ -77,6 +79,13 @@ const ModalCreaEvento = ({
 
   return (
     <>
+      <Button
+        style={{ width: "150px" }}
+        className=" rounded-4"
+        onClick={handleShow}
+      >
+        Prenota un campo
+      </Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Crea un evento</Modal.Title>
