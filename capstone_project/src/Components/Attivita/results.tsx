@@ -21,8 +21,6 @@ function Results() {
 
   const handlePrenotaClick = async (id: Number) => {
     let data = await searchById(id);
-    console.log(data);
-
     dispatch({
       type: ATTIVITA_SPORTIVA_FETCH_BY_ID,
       payload: data,
@@ -53,11 +51,11 @@ function Results() {
               <h2>Aziende disponibili...</h2>
             </Row>
             <Row>
-              {allAttivita?.map((attivita, i) => (
+              {currentItems?.map((attivita, i) => (
                 <Col key={i} sm={12} md={6} lg={4}>
                   <Link
-                    onClick={() => handlePrenotaClick(attivita.id)}
                     to={`/Attivita/${attivita.id}`}
+                    onClick={() => handlePrenotaClick(attivita.id)}
                     className="MyLink"
                   >
                     <Card className="my-3 pb-3 rounded-4 myCards">

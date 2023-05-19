@@ -280,7 +280,7 @@ button {
 .notification-badge {
   position: absolute;
   top: 40px;
-  right: 320px;
+  right: 75px;
   background-color: red;
   color: white;
   font-size: 12px;
@@ -290,4 +290,12 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.notification-text {
+  position: absolute;
+  color: red;
+  right: 75px;
+  top: 80px;
+  transition: opacity 0.3s ease-in-out;
 }

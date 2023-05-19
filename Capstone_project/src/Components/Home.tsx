@@ -1,18 +1,33 @@
 import { Col, Row, Container } from "react-bootstrap";
 import Carosello from "./Carosello";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import {
   ATTIVITA_SPORTIVA_FETCH,
   fetchAttivita,
 } from "../Redux/ActionType/AttivitaSportive";
-import { ALL_USERS, fetchUsers } from "../Redux/ActionType/user";
+import {
+  ALL_USERS,
+  USER_BY_USERNAME,
+  fetchUsers,
+  userByUsername,
+} from "../Redux/ActionType/user";
 import { ALL_EVENTI, fetchEventi } from "../Redux/ActionType/Evento";
 import { ALL_NOTIFICHE, fetchNotifiche } from "../Redux/ActionType/Notifica";
+import { RootState } from "../Redux/Store";
 
 function Home() {
   const dispatch = useDispatch();
-
+  const user = useSelector((state: RootState) => state?.user.user);
+  useEffect(() => {
+    (async () => {
+      let data = await userByUsername(user.username);
+      dispatch({
+        type: USER_BY_USERNAME,
+        payload: data,
+      });
+    })();
+  }, []);
   useEffect(() => {
     (async () => {
       let data = await fetchAttivita();

@@ -16,9 +16,7 @@ function MyNavbar() {
   const newNotifications = useSelector(
     (state: RootState) => state.notifica.NewNotifications
   );
-  const myNotification = useSelector(
-    (state: RootState) => state?.notifica.AllNotifiche
-  );
+
   const handleSubmit = (e: any) => {
     e.preventDefault();
     dispatch({
@@ -27,10 +25,21 @@ function MyNavbar() {
     });
     navigate("/Login");
   };
+
   const handleNotificationClick = () => {
     dispatch({
       type: RESET_NOTIFICHE,
     });
+  };
+
+  const [showNotificationText, setShowNotificationText] = useState(false);
+
+  const handleIconHover = () => {
+    setShowNotificationText(true);
+  };
+
+  const handleIconLeave = () => {
+    setShowNotificationText(false);
   };
 
   return (
@@ -39,7 +48,7 @@ function MyNavbar() {
         src={Logo}
         alt="M.V.S.Sports icon"
         style={{ height: "100px", borderRadius: "50%" }}
-        className=" ms-3 mt-3 me-4"
+        className="ms-3 mt-3 me-4"
       />
       <Navbar.Toggle
         aria-controls="basic-navbar-nav"
@@ -63,19 +72,13 @@ function MyNavbar() {
         <Nav className="me-2">
           {user.user.username ? (
             <>
-              <Link
-                className="MyLink"
-                to={"/Eventi"}
-                onClick={handleNotificationClick}
-              >
-                <i className="bi bi-bell  me-4"></i>
-                {newNotifications > 0 && (
-                  <div className="notification-badge">{newNotifications}</div>
-                )}
-              </Link>
               <strong className="mt-2 me-4">Benvenuto</strong>
-              <strong style={{ marginRight: "6em" }}>
-                <NavDropdown title={user.user.username} id="basic-nav-dropdown">
+              <strong>
+                <NavDropdown
+                  title={user.user.username}
+                  id="basic-nav-dropdown"
+                  className="me-3"
+                >
                   <NavDropdown.Item href="/Dashboard" className="text-dark">
                     Dashboard
                   </NavDropdown.Item>
@@ -95,7 +98,25 @@ function MyNavbar() {
                     Esci
                   </NavDropdown.Item>
                 </NavDropdown>
-              </strong>
+              </strong>{" "}
+              <Link
+                className="MyLink pt-2"
+                to={"/Eventi"}
+                onClick={handleNotificationClick}
+                onMouseEnter={handleIconHover}
+                onMouseLeave={handleIconLeave}
+              >
+                <i className="bi bi-bell me-5"></i>
+                {newNotifications > 0 && (
+                  <div className="notification-badge">{newNotifications}</div>
+                )}
+              </Link>
+              <h5
+                className="notification-text"
+                style={{ opacity: showNotificationText ? "1" : "0" }}
+              >
+                Sono stati creati {newNotifications} nuovi eventi
+              </h5>
             </>
           ) : (
             <>
