@@ -133,7 +133,7 @@ export interface NewRecensione {
 
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< NOTIFICA >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 export interface MyNotifica {
-  AllNotifiche: [];
+  AllNotifiche: Notifica[];
   notification: Notifica;
   NewNotifications: number;
 }

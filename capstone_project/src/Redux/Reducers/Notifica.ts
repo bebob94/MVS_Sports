@@ -37,7 +37,7 @@ export const NotificaReducer = (
     case RESET_NOTIFICHE:
       return {
         ...state,
-        NewNotifications: action.payload,
+        NewNotifications: 0,
       };
     default:
       return state;

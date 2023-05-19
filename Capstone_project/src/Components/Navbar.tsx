@@ -13,10 +13,12 @@ function MyNavbar() {
   const user = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  // const myNotification = useSelector(
-  //   (state: RootState) => state?.notifica.
-  // );
+  const newNotifications = useSelector(
+    (state: RootState) => state.notifica.NewNotifications
+  );
+  const myNotification = useSelector(
+    (state: RootState) => state?.notifica.AllNotifiche
+  );
   const handleSubmit = (e: any) => {
     e.preventDefault();
     dispatch({
@@ -28,9 +30,9 @@ function MyNavbar() {
   const handleNotificationClick = () => {
     dispatch({
       type: RESET_NOTIFICHE,
-      payload: 0,
     });
   };
+
   return (
     <Navbar bg="transparent" expand="lg" className="pt-0 fixed-top myNav">
       <img
@@ -66,13 +68,10 @@ function MyNavbar() {
                 to={"/Eventi"}
                 onClick={handleNotificationClick}
               >
-                <i
-                  className="bi bi-bell mt-2 me-4"
-                  style={{ color: "white" }}
-                ></i>
-                {/* {newNotifications > 0 && (
+                <i className="bi bi-bell  me-4"></i>
+                {newNotifications > 0 && (
                   <div className="notification-badge">{newNotifications}</div>
-                )} */}
+                )}
               </Link>
               <strong className="mt-2 me-4">Benvenuto</strong>
               <strong style={{ marginRight: "6em" }}>
