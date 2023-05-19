@@ -9,7 +9,11 @@ import {
   CreaEvento,
   fetchEventi,
 } from "../../Redux/ActionType/Evento";
-import { ALL_NOTIFICHE, fetchNotifiche } from "../../Redux/ActionType/Notifica";
+import {
+  ALL_NOTIFICHE,
+  CREA_NOTIFICA,
+  fetchNotifiche,
+} from "../../Redux/ActionType/Notifica";
 import { ALL_USERS, fetchUsers } from "../../Redux/ActionType/user";
 
 const ModalCreaEvento = ({
@@ -61,6 +65,9 @@ const ModalCreaEvento = ({
     dispatch({
       type: ALL_EVENTI,
       payload: data,
+    });
+    dispatch({
+      type: CREA_NOTIFICA,
     });
     dispatch({
       type: ALL_NOTIFICHE,

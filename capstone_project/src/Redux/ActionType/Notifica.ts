@@ -1,7 +1,8 @@
 const beboKey = process.env.REACT_APP_BEBO_SECRET_KEY;
 export const ALL_NOTIFICHE = "ALL_NOTIFICHE";
 export const NOTIFICA_BY_ID = "NOTIFICA_BY_ID";
-
+export const CREA_NOTIFICA = "CREA_NOTIFICA";
+export const RESET_NOTIFICHE = "RESET_NOTIFICHE";
 export const fetchNotifiche = async () => {
   try {
     let res = await fetch(`http://localhost:8080/api/Notifica/all`, {

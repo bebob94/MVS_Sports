@@ -74,9 +74,21 @@ strong {
   height: 100%;
   min-height: 55em;
   width: 100%;
-  background-color: #000;
+  background-image: url(./image/3d-illustration-black-abstract-art-style-design-website-backgrounds-advertising_258743-185.avif);
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.DashboardContainer {
+  height: 100%;
+  min-height: 55em;
+  width: 100%;
+  background-color: gray;
+  color: black !important;
+}
+
+.DashboardContainer strong {
+  color: black !important;
 }
 
 .myButton {
@@ -231,23 +243,23 @@ button {
 .myCards {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
-  height: 25rem;
+  height: 30rem;
   width: 20rem;
   background: linear-gradient(
     90deg,
-    rgba(156, 13, 132, 1) 0%,
-    rgba(222, 70, 132, 1) 100%
+    rgba(88, 3, 3, 0.856) 10%,
+    rgba(202, 112, 9, 0.829) 100%
   ) !important;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(25px);
   border: solid 3px #0c0c0c;
-  color: black;
-  box-shadow: rgb(143, 24, 103) 5px 5px 10px 5px;
+
   transition: all 0.3s ease-in-out;
 }
 .myCards:hover {
   transform: translateY(-5px);
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: black 5px 5px 10px 5px;
+  text-decoration: none !important;
 }
 
 .card-footer {
@@ -258,4 +270,24 @@ button {
 
 .AddEvento {
   width: 200px !important;
+}
+
+.page-footer {
+  background-color: #000;
+  color: white;
+}
+
+.notification-badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

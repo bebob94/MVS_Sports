@@ -7,6 +7,7 @@ import Error2 from "../Error/Error2";
 import ModalModifyUtente from "./ModalModificaUtente";
 import ModalModifyAttivita from "./ModalModifyAttivita";
 import ModalCreateAttivita from "./ModalCreateAttivita";
+import Pagination from "react-bootstrap/Pagination";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -15,6 +16,8 @@ const Dashboard = () => {
   const user = useSelector((state: RootState) => state?.User.user);
 
   const [showModalPOST, setShowModalPOST] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const eventsPerPage = 3;
 
   const handleShowModalPOST = () => {
     setShowModalPOST(true);
@@ -35,10 +38,20 @@ const Dashboard = () => {
     })();
   }, []);
 
+  // Paginazione
+  const indexOfLastEvent = currentPage * eventsPerPage;
+  const indexOfFirstEvent = indexOfLastEvent - eventsPerPage;
+  const currentEvents = user?.eventi?.slice(
+    indexOfFirstEvent,
+    indexOfLastEvent
+  );
+
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+
   return (
-    <div className="MyContainer pt-5">
+    <div className="DashboardContainer pt-5">
       {user?.username ? (
-        <Container className="mt-5 text-light">
+        <Container className="mt-5 ">
           <Row>
             <Col md={8}>
               <h1 className="mb-5 mt-4">
@@ -46,27 +59,32 @@ const Dashboard = () => {
               </h1>
             </Col>
           </Row>
-          <Row>
+          <Row
+            style={{ borderBottom: "2px solid black", paddingBottom: "30px" }}
+          >
+            <strong className="me-3">
+              <h2 className="mb-2">I miei dati:</h2>
+            </strong>
             <Col md={6}>
-              <strong className="me-3">
-                <h2 className="mb-5">I miei dati</h2>
+              <strong>
+                <h4 className="mt-5 mb-4">Utente</h4>
               </strong>
-              <p>
+              <p className=" mb-4">
                 {" "}
                 <strong className="me-3">Nome: </strong>
                 {user?.name}
               </p>
-              <p>
+              <p className=" mb-4">
                 {" "}
                 <strong className="me-3">Cognome: </strong>
                 {user?.surname}
               </p>
-              <p>
+              <p className=" mb-4">
                 {" "}
                 <strong className="me-3">Email: </strong>
                 {user?.email}
               </p>
-              <p>
+              <p className=" mb-5">
                 {" "}
                 <strong className="me-3">Indirizzo: </strong>
                 {user?.indirizzo}
@@ -138,7 +156,7 @@ const Dashboard = () => {
             </Col>
           </Row>
           <Row>
-            {user?.eventi.map((event, i) => (
+            {currentEvents.map((event, i) => (
               <Col key={i} md={4} className=" mb-5">
                 <h3 className=" mb-3">{event?.attivitaSportiva.tipoDiSport}</h3>
                 <strong>
@@ -153,6 +171,24 @@ const Dashboard = () => {
                 </strong>
               </Col>
             ))}
+          </Row>
+          <Row>
+            <Col>
+              <Pagination>
+                {Array.from(
+                  { length: Math.ceil(user?.eventi.length / eventsPerPage) },
+                  (_, index) => (
+                    <Pagination.Item
+                      key={index + 1}
+                      active={index + 1 === currentPage}
+                      onClick={() => paginate(index + 1)}
+                    >
+                      {index + 1}
+                    </Pagination.Item>
+                  )
+                )}
+              </Pagination>
+            </Col>
           </Row>
         </Container>
       ) : (

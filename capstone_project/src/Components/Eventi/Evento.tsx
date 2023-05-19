@@ -25,7 +25,7 @@ function Evento() {
     });
   };
   return (
-    <div className="MyContainer pt-5">
+    <div className="MyContainer  pt-5">
       <Container className=" MyAttivita mt-3">
         <Row className="justify-content-between">
           <Col sm={12} md={6} lg={4}>

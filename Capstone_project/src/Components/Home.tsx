@@ -8,6 +8,7 @@ import {
 } from "../Redux/ActionType/AttivitaSportive";
 import { ALL_USERS, fetchUsers } from "../Redux/ActionType/user";
 import { ALL_EVENTI, fetchEventi } from "../Redux/ActionType/Evento";
+import { ALL_NOTIFICHE, fetchNotifiche } from "../Redux/ActionType/Notifica";
 
 function Home() {
   const dispatch = useDispatch();
@@ -39,6 +40,16 @@ function Home() {
 
       dispatch({
         type: ALL_EVENTI,
+        payload: data,
+      });
+    })();
+  }, []);
+  useEffect(() => {
+    (async () => {
+      let data = await fetchNotifiche();
+
+      dispatch({
+        type: ALL_NOTIFICHE,
         payload: data,
       });
     })();

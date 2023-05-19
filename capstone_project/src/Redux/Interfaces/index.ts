@@ -134,7 +134,8 @@ export interface NewRecensione {
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< NOTIFICA >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 export interface MyNotifica {
   AllNotifiche: [];
-  Notifica: Notifica;
+  notification: Notifica;
+  NewNotifications: number;
 }
 export interface Notifica {
   id: number;

@@ -76,8 +76,8 @@ const ModalModifyEvento = ({ eventoId }: { eventoId: Evento }) => {
         <h6 className="mb-5">*Indicates required</h6>
         <h5 className="ms-3">
           Numero giocatori mancanti:{" "}
-          {selectedEvento.attivitaSportiva.numeroMassimoPartecipanti -
-            selectedEvento.numeroPartecipanti}
+          {selectedEvento?.attivitaSportiva.numeroMassimoPartecipanti -
+            selectedEvento?.numeroPartecipanti}
         </h5>
         <Modal.Body>
           <Form>
@@ -99,8 +99,8 @@ const ModalModifyEvento = ({ eventoId }: { eventoId: Evento }) => {
           <Button
             disabled={
               selectedEvento &&
-              selectedEvento.numeroPartecipanti + numeroPartecipanti >
-                selectedEvento.attivitaSportiva.numeroMassimoPartecipanti
+              selectedEvento?.numeroPartecipanti + numeroPartecipanti >
+                selectedEvento?.attivitaSportiva.numeroMassimoPartecipanti
             }
             className="Profile-Btn1"
             style={{ margin: "0", fontSize: "1.2em", fontWeight: "bolder" }}

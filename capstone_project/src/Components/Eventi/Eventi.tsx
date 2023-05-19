@@ -45,59 +45,64 @@ function Eventi() {
     <div className="MyContainer pt-5">
       <Container className=" MyAttivita">
         {Eventi && Eventi.length > 0 ? (
-          <Row className="justify-content-between">
+          <Row>
             <h2>Eventi disponibili...</h2>
             {Eventi?.map((evento, i) => (
-              <div key={i}>
-                {evento.numeroPartecipanti <
-                evento.attivitaSportiva.numeroMassimoPartecipanti ? (
-                  <Col
-                    sm={12}
-                    md={6}
-                    lg={4}
-                    className="mt-4 p-3 rounded-4"
-                    style={{ border: "solid 1px white" }}
+              <Col
+                xs={12}
+                md={4}
+                lg={4}
+                className={`my-5 mx-5  rounded-4  ${
+                  evento.numeroPartecipanti >=
+                  evento.attivitaSportiva.numeroMassimoPartecipanti
+                    ? "d-none"
+                    : ""
+                }`}
+                style={{
+                  border: "solid 1px white",
+                  width: "20rem",
+                  backgroundColor: " brown",
+                }}
+                key={i}
+              >
+                <Col className="mb-4">
+                  <strong>Sport: </strong> <br />
+                  {evento?.attivitaSportiva.tipoDiSport}
+                </Col>
+                <Col className="my-5">
+                  <strong>Utente: </strong>
+                  <br />
+                  {evento?.userCreatore.name.toString()}{" "}
+                  {evento?.userCreatore.surname.toString()}
+                </Col>
+                <Col className="my-5">
+                  <strong>Orario:</strong>
+                  <br />
+                  Dalle {formatTime(evento?.orarioInizio)} <br />
+                  Alle {formatTime(evento?.orarioFine)}
+                </Col>
+                <Col className="my-5">
+                  <strong>Numero partecipanti:</strong>
+                  <br />
+                  {evento?.numeroPartecipanti}
+                </Col>
+                <Col className="mt-5">
+                  <strong>Numero massimo partecipanti:</strong>
+                  <br />
+                  {evento?.attivitaSportiva.numeroMassimoPartecipanti}
+                </Col>
+                <Col className="mt-3 d-flex justify-content-center">
+                  <Link
+                    to={`/Evento/${evento.id}`}
+                    onClick={() => handlePrenotaClick(evento.id)}
+                    className="MyLink"
                   >
-                    <Col className="mb-4">
-                      <strong>Sport: </strong> <br />
-                      {evento?.attivitaSportiva.tipoDiSport}
-                    </Col>
-                    <Col className="my-5">
-                      <strong>Utente: </strong>
-                      <br />
-                      {evento?.userCreatore.name.toString()}{" "}
-                      {evento?.userCreatore.surname.toString()}
-                    </Col>
-                    <Col className="my-5">
-                      <strong>Orario:</strong>
-                      <br />
-                      Dalle {formatTime(evento?.orarioInizio)} <br />
-                      Alle {formatTime(evento?.orarioFine)}
-                    </Col>
-                    <Col className="my-5">
-                      <strong>Numero partecipanti:</strong>
-                      <br />
-                      {evento?.numeroPartecipanti}
-                    </Col>
-                    <Col className="mt-5">
-                      <strong>Numero massimo partecipanti:</strong>
-                      <br />
-                      {evento?.attivitaSportiva.numeroMassimoPartecipanti}
-                    </Col>
-                    <Col className="mt-3 d-flex justify-content-center">
-                      <Link
-                        to={`/Evento/${evento.id}`}
-                        onClick={() => handlePrenotaClick(evento.id)}
-                        className="MyLink"
-                      >
-                        <Button id="modal-btn">Aggiungiti all'evento</Button>
-                      </Link>
-                    </Col>
-                  </Col>
-                ) : (
-                  <></>
-                )}
-              </div>
+                    <Button id="modal-btn" className="mb-3">
+                      Aggiungiti all'evento
+                    </Button>
+                  </Link>
+                </Col>
+              </Col>
             ))}
           </Row>
         ) : (

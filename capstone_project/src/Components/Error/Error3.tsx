@@ -1,6 +1,5 @@
 import { Alert, Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import Prenotazioni from "../Attivita/Prenotazioni";
 
 const Error3 = () => {
   return (
@@ -8,11 +7,7 @@ const Error3 = () => {
       <Col xs={7}>
         <Alert variant="danger" className="mt-3">
           Error 404: Nessun Evento disponibile, Vuoi crearne uno?{" "}
-          <Link
-            to={"/Prenotazioni"}
-            onClick={Prenotazioni}
-            style={{ color: "blue" }}
-          >
+          <Link to={"/Prenotazioni"} style={{ color: "blue" }}>
             {" "}
             Prenotazioni
           </Link>

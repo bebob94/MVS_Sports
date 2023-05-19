@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Form, Button, Row, Col, Container } from "react-bootstrap";
+import { Form, Button, Row, Col, Container, InputGroup } from "react-bootstrap";
 import { FaSearch } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -56,16 +56,10 @@ function Prenotazioni() {
       <Container className="prenotazioniColor py-5 mt-5">
         <Row>
           <Col xs={12} md={6} className="mt-5">
-            <h2>Cerca il tuo campo preferito!</h2>
-            <h3 className="mt-5">
-              <strong>
-                Stai cercando un centro sportivo nel Sarrabus per prenotare un
-                campo da calcetto, pallavolo, tennis? Oppure preferisci giocare
-                a padel/paddle, beach tennis o beach volley?
-              </strong>
-            </h3>
-          </Col>
-          <Col xs={12} md={6} className="mt-5">
+            <h2 className="mb-5">
+              {" "}
+              <strong>Cerca il tuo campo preferito! </strong>
+            </h2>
             <input
               type="text"
               value={search}
@@ -80,8 +74,16 @@ function Prenotazioni() {
               }}
             />
           </Col>
-          <Row className="mt-5">
-            <Col xs={12} sm={5} md={5}>
+
+          <Col xs={12} md={5} className="mt-5">
+            <h3 className="mb-5">
+              <strong>
+                Stai cercando un centro sportivo nel Sarrabus per prenotare un
+                campo da calcetto, pallavolo, tennis? Oppure preferisci giocare
+                a padel/paddle, beach tennis o beach volley?
+              </strong>
+            </h3>
+            <InputGroup>
               <Form.Control
                 as="select"
                 defaultValue=" "
@@ -97,8 +99,6 @@ function Prenotazioni() {
                 <option value="BEACH_VOLLEY">Beach volley</option>
                 <option value="PALLAVOLO">Pallavolo</option>
               </Form.Control>
-            </Col>
-            <Col xs={5}>
               <Button
                 variant="primary"
                 type="submit"
@@ -109,8 +109,8 @@ function Prenotazioni() {
               >
                 <FaSearch />
               </Button>
-            </Col>
-          </Row>
+            </InputGroup>
+          </Col>
         </Row>
       </Container>
     </div>

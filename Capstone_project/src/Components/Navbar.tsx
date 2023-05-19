@@ -6,6 +6,7 @@ import Logo from "../image/logoMVS.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { USER } from "../Redux/ActionType";
+import { RESET_NOTIFICHE } from "../Redux/ActionType/Notifica";
 import { RootState } from "../Redux/Store";
 
 function MyNavbar() {
@@ -13,6 +14,9 @@ function MyNavbar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  // const myNotification = useSelector(
+  //   (state: RootState) => state?.notifica.
+  // );
   const handleSubmit = (e: any) => {
     e.preventDefault();
     dispatch({
@@ -21,7 +25,12 @@ function MyNavbar() {
     });
     navigate("/Login");
   };
-
+  const handleNotificationClick = () => {
+    dispatch({
+      type: RESET_NOTIFICHE,
+      payload: 0,
+    });
+  };
   return (
     <Navbar bg="transparent" expand="lg" className="pt-0 fixed-top myNav">
       <img
@@ -52,6 +61,19 @@ function MyNavbar() {
         <Nav className="me-2">
           {user.user.username ? (
             <>
+              <Link
+                className="MyLink"
+                to={"/Eventi"}
+                onClick={handleNotificationClick}
+              >
+                <i
+                  className="bi bi-bell mt-2 me-4"
+                  style={{ color: "white" }}
+                ></i>
+                {/* {newNotifications > 0 && (
+                  <div className="notification-badge">{newNotifications}</div>
+                )} */}
+              </Link>
               <strong className="mt-2 me-4">Benvenuto</strong>
               <strong style={{ marginRight: "6em" }}>
                 <NavDropdown title={user.user.username} id="basic-nav-dropdown">
