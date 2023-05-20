@@ -16,8 +16,6 @@ export const fetchNotifiche = async () => {
       console.log(data);
 
       return data;
-    } else {
-      console.log("error");
     }
   } catch (error) {
     console.log(error);
@@ -36,8 +34,6 @@ export const notificaById = async (value: Number | undefined) => {
     if (res.ok) {
       let data = await res.json();
       return data;
-    } else {
-      console.log("error");
     }
   } catch (error) {
     console.log(error);

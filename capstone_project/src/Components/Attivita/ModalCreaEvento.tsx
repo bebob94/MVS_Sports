@@ -1,4 +1,4 @@
-import { useState, useEffect, ChangeEvent } from "react";
+import React, { useState, useEffect, ChangeEvent } from "react";
 import { Button, Row, Form, Modal } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { format } from "date-fns";
@@ -84,6 +84,8 @@ const ModalCreaEvento = ({
     handleClose();
   };
 
+  const currentDate = new Date();
+
   return (
     <>
       <Button
@@ -127,6 +129,7 @@ const ModalCreaEvento = ({
             className="Profile-Btn1"
             style={{ margin: "0", fontSize: "1.2em", fontWeight: "bolder" }}
             onClick={handleSubmit}
+            disabled={selectedDate < currentDate}
           >
             Save
           </Button>

@@ -7,16 +7,40 @@ import { format } from "date-fns";
 import {
   ALL_EVENTI,
   EVENTO_BY_ID,
+  deleteEvento,
   eventoById,
   fetchEventi,
 } from "../../Redux/ActionType/Evento";
 import Error3 from "../Error/Error3";
+import { Evento } from "../../Redux/Interfaces";
 
 function Eventi() {
   const Eventi = useSelector((state: RootState) => state?.evento.AllEventi);
   const dispatch = useDispatch();
 
   useEffect(() => {
+    const checkAndDeleteEvento = async (evento: Evento) => {
+      const today = new Date();
+      const eventStartTime = new Date(evento.orarioInizio);
+      if (
+        eventStartTime < today ||
+        evento.numeroPartecipanti >=
+          evento.attivitaSportiva.numeroMassimoPartecipanti
+      ) {
+        await deleteEvento(evento.id);
+      }
+    };
+
+    // Effettua il controllo e l'eliminazione per ogni evento
+    const checkAndDeleteEventi = async () => {
+      if (Eventi && Eventi.length > 0) {
+        Eventi.forEach(async (evento) => {
+          await checkAndDeleteEvento(evento);
+        });
+      }
+    };
+
+    checkAndDeleteEventi();
     (async () => {
       let data = await fetchEventi();
 
@@ -52,12 +76,7 @@ function Eventi() {
                 xs={12}
                 md={4}
                 lg={4}
-                className={`my-5 mx-5  rounded-4  ${
-                  evento.numeroPartecipanti >=
-                  evento.attivitaSportiva.numeroMassimoPartecipanti
-                    ? "d-none"
-                    : ""
-                }`}
+                className={`my-5 mx-5  rounded-4 `}
                 style={{
                   border: "solid 1px white",
                   width: "20rem",

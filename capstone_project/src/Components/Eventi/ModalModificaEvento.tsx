@@ -60,12 +60,13 @@ const ModalModifyEvento = ({ eventoId }: { eventoId: Evento }) => {
       type: ALL_EVENTI,
       payload: data,
     });
+    alert("Grazie per aver partecipato a questo evento");
   };
 
   return (
     <>
-      <div className="d-flex">
-        <Button className="AddEvento px-2" onClick={handleShow}>
+      <div>
+        <Button className="AddEvento py-2 " onClick={handleShow}>
           Partecipa ad evento
         </Button>
       </div>

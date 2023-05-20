@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
@@ -11,11 +11,20 @@ import { RootState } from "../Redux/Store";
 
 function MyNavbar() {
   const user = useSelector((state: RootState) => state.user);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
   const newNotifications = useSelector(
     (state: RootState) => state.notifica.NewNotifications
   );
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [showNotificationText, setShowNotificationText] = useState(false);
+
+  const handleIconHover = () => {
+    setShowNotificationText(true);
+  };
+
+  const handleIconLeave = () => {
+    setShowNotificationText(false);
+  };
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
@@ -30,16 +39,6 @@ function MyNavbar() {
     dispatch({
       type: RESET_NOTIFICHE,
     });
-  };
-
-  const [showNotificationText, setShowNotificationText] = useState(false);
-
-  const handleIconHover = () => {
-    setShowNotificationText(true);
-  };
-
-  const handleIconLeave = () => {
-    setShowNotificationText(false);
   };
 
   return (

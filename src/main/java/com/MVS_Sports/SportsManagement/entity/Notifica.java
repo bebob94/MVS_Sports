@@ -48,12 +48,9 @@ public class Notifica {
 	 	@OneToOne
 	 	private Evento evento;
 	 	
-	 	 @JsonIgnoreProperties({"eventi", "users", "recensioni"})
+	 	@JsonIgnore
 	 	@ManyToOne
 	 	private AttivitaSportiva attivitaSportiva;
 	 	
-	 	@JsonIgnore
-	 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
-	    private List<User> users;
-	 
+	 	
 }

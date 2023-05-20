@@ -9,6 +9,7 @@ import {
   searchById,
 } from "../../Redux/ActionType/AttivitaSportive";
 import ModalModifyEvento from "./ModalModificaEvento";
+import { deleteEvento } from "../../Redux/ActionType/Evento";
 function Evento() {
   const evento = useSelector((state: RootState) => state?.evento.Evento);
   const dispatch = useDispatch();
@@ -24,18 +25,35 @@ function Evento() {
       payload: data,
     });
   };
+
+  useEffect(() => {
+    const checkAndDeleteEvento = async () => {
+      if (
+        evento.numeroPartecipanti >=
+        evento.attivitaSportiva.numeroMassimoPartecipanti
+      ) {
+        await deleteEvento(evento.id);
+      }
+    };
+
+    checkAndDeleteEvento();
+  }, [evento]);
+
   return (
     <div className="MyContainer  pt-5">
       <Container className=" MyAttivita mt-3">
-        <Row className="justify-content-between">
+        <Row
+          className="justify-content-between"
+          style={{ borderBottom: "4px solid white", paddingBottom: "30px" }}
+        >
           <Col sm={12} md={6} lg={4}>
             <Col className="mb-4">
               <strong>Sport: </strong> <br />
-              {evento?.attivitaSportiva.tipoDiSport}
+              {evento?.attivitaSportiva?.tipoDiSport}
             </Col>
             <Col className="mb-4">
               <strong>Attivita: </strong> <br />
-              {evento?.attivitaSportiva.nomeAttivita}
+              {evento?.attivitaSportiva?.nomeAttivita}
             </Col>
             <Col className="mb-4">
               <strong>Descrizione: </strong> <br />
@@ -46,7 +64,7 @@ function Evento() {
               {evento?.attivitaSportiva.indirizzo}
             </Col>
             <Col className="mb-4">
-              <strong>Massimo partecipanti: </strong> <br />
+              <strong>Massimo partecipanti: </strong>
               {evento?.attivitaSportiva.numeroMassimoPartecipanti}
             </Col>
             <Link
@@ -61,25 +79,39 @@ function Evento() {
             </Link>
           </Col>
           <Col sm={12} md={6} lg={4}>
-            <Col className="my-5">
+            <Col className="my-4">
               <strong>Utente: </strong>
               <br />
               {evento?.userCreatore.name.toString()}{" "}
               {evento?.userCreatore.surname.toString()}
             </Col>
-            <Col className="mb-4">
-              <strong>partecipanti Attuali: </strong> <br />
+            <Col className="mb-5">
+              <strong>Email utente: </strong>
+              {evento?.userCreatore.email}
+            </Col>
+            <Col className="mb-5">
+              <strong>partecipanti Attuali: </strong>
               {evento?.numeroPartecipanti}
             </Col>
             <Col className="my-5">
               <strong>Orario:</strong>
               <br />
-              Dalle {formatTime(evento?.orarioInizio)} <br />
-              Alle {formatTime(evento?.orarioFine)}
+              <p className="mt-2">
+                {" "}
+                Dalle {formatTime(evento?.orarioInizio)}
+              </p>{" "}
+              <p> Alle {formatTime(evento?.orarioFine)}</p>
             </Col>
             <Col xs={1} className="mt-1">
               <ModalModifyEvento eventoId={evento} />
             </Col>
+          </Col>
+        </Row>
+        <Row className="justify-content-center mt-5">
+          <Col xs={12} className="text-center">
+            <Link to="/Eventi" className="MyLink">
+              <strong> Torna alla pagina Eventi</strong>
+            </Link>
           </Col>
         </Row>
       </Container>

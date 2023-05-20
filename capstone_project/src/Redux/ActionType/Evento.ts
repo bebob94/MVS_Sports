@@ -1,4 +1,4 @@
-import { EventoChange, NewEvento } from "../Interfaces";
+import { Evento, EventoChange, NewEvento } from "../Interfaces";
 
 const beboKey = process.env.REACT_APP_BEBO_SECRET_KEY;
 
@@ -18,8 +18,6 @@ export const fetchEventi = async () => {
       console.log(data);
 
       return data;
-    } else {
-      console.log("error");
     }
   } catch (error) {
     console.log(error);
@@ -38,8 +36,6 @@ export const eventoById = async (value: Number | undefined) => {
     if (res.ok) {
       let data = await res.json();
       return data;
-    } else {
-      console.log("error");
     }
   } catch (error) {
     console.log(error);
@@ -75,7 +71,7 @@ export const CreaEvento = async (
   }
 };
 
-// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< MODIFICA ATTIVITA >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< MODIFICA EVENTO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 export const changeMyInfoEvento = async (params: EventoChange) => {
   const requestOptions = await fetch(`http://localhost:8080/api/Evento`, {
     method: "PUT",
@@ -85,4 +81,18 @@ export const changeMyInfoEvento = async (params: EventoChange) => {
     },
     body: JSON.stringify(params),
   });
+};
+
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< ELIMINA EVENTO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+export const deleteEvento = async (params: number) => {
+  const requestOptions = await fetch(
+    `http://localhost:8080/api/Evento/${params}`,
+    {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${beboKey}`,
+      },
+    }
+  );
 };

@@ -19,8 +19,6 @@ export const fetchUsers = async () => {
       console.log(data);
 
       return data;
-    } else {
-      console.log("error");
     }
   } catch (error) {
     console.log(error);
@@ -39,8 +37,6 @@ export const userById = async (value: Number | undefined) => {
     if (res.ok) {
       let data = await res.json();
       return data;
-    } else {
-      console.log("error");
     }
   } catch (error) {
     console.log(error);
@@ -58,9 +54,8 @@ export const userByUsername = async (value: String | undefined) => {
     });
     if (res.ok) {
       let data = await res.json();
+      console.log(data);
       return data;
-    } else {
-      console.log("error");
     }
   } catch (error) {
     console.log(error);

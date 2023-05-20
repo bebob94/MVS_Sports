@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.MVS_Sports.auth.entity.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Entity;
@@ -47,14 +48,15 @@ public class AttivitaSportiva {
 	private TipoDiSport tipoDiSport;
 	private Long numeroMassimoPartecipanti;
 	private Duration durataEvento;
-
+	
+	 @JsonIgnore
 	@OneToMany(mappedBy = "attivitaSportiva", fetch = FetchType.EAGER)
 	private List<Evento> eventi;
 
 	@OneToMany(mappedBy = "attivitaSportiva", fetch = FetchType.EAGER)
 	private List<Recensione> recensioni;
 	
-	@JsonIgnoreProperties({"roles","password","pagamenti","notifiche","attivitaSportive","recensioni","creditCard"})
+	@JsonIgnoreProperties({"roles","eventi","password","pagamenti","notifiche","attivitaSportive","recensioni","creditCard"})
 	 @OneToOne
 	 private User user;
 

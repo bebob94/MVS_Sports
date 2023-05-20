@@ -21,7 +21,7 @@ function Attivita() {
   useEffect(() => {
     (async () => {
       let data = await fetchAttivita();
-      console.log(User.id);
+      console.log(User?.id);
 
       dispatch({
         type: ATTIVITA_SPORTIVA_FETCH,
@@ -32,13 +32,17 @@ function Attivita() {
 
   return (
     <div className="MyContainer pt-5">
-      <Container className=" MyAttivita">
+      <Container className=" MyAttivita mt-5">
         <Row>
           <Col xs={6} md={6}>
             <Col xs={8} md={8}>
               <h2>{Attivita?.nomeAttivita}</h2>
-              <h4 className="mt-5">Descrizione attività</h4>
+              <h4 className="mt-5">Descrizione attività:</h4>
               <h5 className="mt-4">{Attivita?.descrizioneAttivita}</h5>
+              <h4 className="mt-5">
+                Numero massimo partecipanti:{" "}
+                {Attivita?.numeroMassimoPartecipanti}
+              </h4>
             </Col>
             <Col xs={6} md={6} className="mt-5">
               <h4>Prenota un campo</h4>

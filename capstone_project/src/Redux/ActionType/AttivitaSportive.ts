@@ -17,13 +17,12 @@ export const fetchAttivita = async () => {
         Authorization: `Bearer ${beboKey}`,
       },
     });
+    console.log(res.ok);
     if (res.ok) {
       let data = await res.json();
       console.log(data);
 
       return data;
-    } else {
-      console.log("error");
     }
   } catch (error) {
     console.log(error);
@@ -46,8 +45,6 @@ export const searchByName = async (value: string | undefined) => {
     if (res.ok) {
       let data = await res.json();
       return data;
-    } else {
-      console.log("error");
     }
   } catch (error) {
     console.log(error);
@@ -69,8 +66,6 @@ export const searchById = async (value: Number | undefined) => {
     if (res.ok) {
       let data = await res.json();
       return data;
-    } else {
-      console.log("error");
     }
   } catch (error) {
     console.log(error);
@@ -91,8 +86,6 @@ export const searchByTipoDiSport = async (value: String | undefined) => {
     if (res.ok) {
       let data = await res.json();
       return data;
-    } else {
-      console.log("error");
     }
   } catch (error) {
     console.log(error);

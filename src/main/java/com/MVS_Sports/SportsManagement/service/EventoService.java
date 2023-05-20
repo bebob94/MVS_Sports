@@ -58,7 +58,6 @@ public class EventoService {
 	    n.setTipoNotifica(TipoNotifica.NUOVO_EVENTO_AVVIATO);
 	    n.setOrarioNotifica(LocalDateTime.now());
 	    n.setAttivitaSportiva(evento.getAttivitaSportiva());
-	    n.setUsers(userRepository.findAll());
 	    n.setEvento(evento);
 	    notificaRepository.save(n);
 	    evento.setNotifica(n);
@@ -67,13 +66,18 @@ public class EventoService {
 	}
 	
 //	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< MODIFICA EVENTO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-	public Evento updateEvento( Evento e) {
-		if (!eventoRepositoryDao.existsById(e.getId())) {
-			throw new EntityNotFoundException("Evento not exists!!!");
-		} else {
-				eventoRepositoryDao.save(e);
-				return e;
-		}
+	public Evento updateEvento(Evento e) {
+	    if (!eventoRepositoryDao.existsById(e.getId())) {
+	        throw new EntityNotFoundException("Evento not exists!!!");
+	    } else {
+	        Evento updatedEvento = eventoRepositoryDao.save(e);
+	        Notifica notifica = updatedEvento.getNotifica();
+	        if (notifica != null && notifica.getEvento() == null) {
+	            notifica.setEvento(updatedEvento); // Aggiorna l'evento nella notifica
+	            notificaRepository.save(notifica);
+	        }
+	        return updatedEvento;
+	    }
 	}
 	
 //	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< CERCA EVENTO PER ID>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -103,13 +107,19 @@ public class EventoService {
 	
 	//	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< RIMUOVI EVENTO PER ID >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	public String removeEventoById(Long id) {
-		if (!eventoRepositoryDao.existsById(id)) {
-			throw new EntityNotFoundException("Evento not exists!!!");
-		} else {
-			
-			eventoRepositoryDao.deleteById(id);
-			return "Evento eliminato";
-		}
+	    if (!eventoRepositoryDao.existsById(id)) {
+	        throw new EntityNotFoundException("Evento not exists!!!");
+	    } else {
+	        Evento evento = eventoRepositoryDao.findById(id).orElse(null);
+	        if (evento != null) {
+	            Notifica notifica = evento.getNotifica();
+	            if (notifica != null && notifica.getEvento() == null) {
+	                notificaRepository.delete(notifica); // Elimina la notifica associata all'evento
+	            }
+	        }
+	        eventoRepositoryDao.deleteById(id);
+	        return "Evento eliminato";
+	    }
 	}
 	
 	

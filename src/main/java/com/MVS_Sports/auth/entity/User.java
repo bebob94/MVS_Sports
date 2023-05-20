@@ -42,16 +42,13 @@ public class User {
     @Column(nullable = false)
     private String password;
     
-    private String CreditCard;
+   
     
     @OneToMany(mappedBy = "userCreatore", fetch = FetchType.EAGER)
 	private List<Evento> eventi;
     
-    @OneToMany(mappedBy = "user",  fetch = FetchType.EAGER)
-    private List <Pagamento> pagamenti;
    
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
-	private List<Notifica> notifiche;
+    
     
     @JsonIgnoreProperties({"user", "eventi", "recensioni"})
     @OneToOne

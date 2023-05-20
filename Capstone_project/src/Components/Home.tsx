@@ -22,6 +22,7 @@ function Home() {
   useEffect(() => {
     (async () => {
       let data = await userByUsername(user.username);
+
       dispatch({
         type: USER_BY_USERNAME,
         payload: data,

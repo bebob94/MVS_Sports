@@ -54,8 +54,8 @@ function Results() {
               {currentItems?.map((attivita, i) => (
                 <Col key={i} sm={12} md={6} lg={4}>
                   <Link
-                    to={`/Attivita/${attivita.id}`}
-                    onClick={() => handlePrenotaClick(attivita.id)}
+                    to={`/Attivita/${attivita?.id}`}
+                    onClick={() => handlePrenotaClick(attivita?.id)}
                     className="MyLink"
                   >
                     <Card className="my-3 pb-3 rounded-4 myCards">

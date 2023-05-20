@@ -18,8 +18,6 @@ export const fetchRecensioni = async () => {
       console.log(data);
 
       return data;
-    } else {
-      console.log("error");
     }
   } catch (error) {
     console.log(error);
@@ -38,8 +36,6 @@ export const RecensioneById = async (value: Number | undefined) => {
     if (res.ok) {
       let data = await res.json();
       return data;
-    } else {
-      console.log("error");
     }
   } catch (error) {
     console.log(error);
