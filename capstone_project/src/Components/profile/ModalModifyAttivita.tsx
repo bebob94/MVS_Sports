@@ -55,7 +55,7 @@ const ModalModifyAttivita = ({
   const handleSubmit = async (obj: AttivitaChange) => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     let x = await changeMyInfoAttivita(obj);
-    let data = await searchById(selectedAttivita.id);
+    let data = await searchById(selectedUser.attivitaSportiva.id);
     dispatch({
       type: ATTIVITA_SPORTIVA_FETCH_BY_ID,
       payload: data,

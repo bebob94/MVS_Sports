@@ -1,6 +1,6 @@
 import React, { useState, useEffect, ChangeEvent } from "react";
 import { Button, Row, Form, Modal } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { format } from "date-fns";
 import DatePicker from "react-datepicker";
 import { NewEvento } from "../../Redux/Interfaces";
@@ -15,6 +15,7 @@ import {
   fetchNotifiche,
 } from "../../Redux/ActionType/Notifica";
 import { ALL_USERS, fetchUsers } from "../../Redux/ActionType/user";
+import { RootState } from "../../Redux/Store";
 
 const ModalCreaEvento = ({
   UserId,
@@ -24,6 +25,9 @@ const ModalCreaEvento = ({
   AttivitaId: number;
 }) => {
   const dispatch = useDispatch();
+  const attivita = useSelector(
+    (state: RootState) => state?.attivitaSportiva.AttivitaSportiva
+  );
 
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
   const [numeroPartecipanti, setNumeroPartecipanti] = useState<number>(0);
@@ -129,7 +133,10 @@ const ModalCreaEvento = ({
             className="Profile-Btn1"
             style={{ margin: "0", fontSize: "1.2em", fontWeight: "bolder" }}
             onClick={handleSubmit}
-            disabled={selectedDate < currentDate}
+            disabled={
+              selectedDate < currentDate ||
+              numeroPartecipanti > attivita.numeroMassimoPartecipanti
+            }
           >
             Save
           </Button>

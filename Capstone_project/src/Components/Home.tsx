@@ -28,8 +28,7 @@ function Home() {
         payload: data,
       });
     })();
-  }, []);
-  useEffect(() => {
+
     (async () => {
       let data = await fetchAttivita();
       dispatch({
@@ -37,35 +36,12 @@ function Home() {
         payload: data,
       });
     })();
-  }, []);
 
-  useEffect(() => {
     (async () => {
       let data = await fetchUsers();
 
       dispatch({
         type: ALL_USERS,
-        payload: data,
-      });
-    })();
-  }, []);
-
-  useEffect(() => {
-    (async () => {
-      let data = await fetchEventi();
-
-      dispatch({
-        type: ALL_EVENTI,
-        payload: data,
-      });
-    })();
-  }, []);
-  useEffect(() => {
-    (async () => {
-      let data = await fetchNotifiche();
-
-      dispatch({
-        type: ALL_NOTIFICHE,
         payload: data,
       });
     })();

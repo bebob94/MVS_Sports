@@ -1,10 +1,14 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { useState, useEffect, ChangeEvent } from "react";
-import { Button, Row, Form, Modal } from "react-bootstrap";
+import React, { useState } from "react";
+import { Button, Form, Modal } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { NewAttivita, NewRecensione } from "../../Redux/Interfaces";
+import { NewAttivita } from "../../Redux/Interfaces";
+import {
+  ATTIVITA_SPORTIVA_FETCH_BY_ID,
+  CreaAttivita,
+  searchById,
+} from "../../Redux/ActionType/AttivitaSportive";
 import { ALL_USERS, USER_BY_ID, userById } from "../../Redux/ActionType/user";
-import { CreaAttivita } from "../../Redux/ActionType/AttivitaSportive";
+import { AttivitaSportiva } from "../../Redux/Interfaces";
 
 const ModalCreateAttivita = ({
   show,
@@ -17,36 +21,48 @@ const ModalCreateAttivita = ({
 }) => {
   const dispatch = useDispatch();
 
-  const [AttivitaPayload, setAttivitaPayload] = useState<NewAttivita>({
-    nomeAttivita: "",
-    descrizioneAttivita: "",
-    indirizzo: "",
-    orarioApertura: "",
-    orarioChiusura: "",
-    tipoDiSport: "",
-  });
+  const [nomeAttivita, setNomeAttivita] = useState("");
+  const [descrizioneAttivita, setDescrizioneAttivita] = useState("");
+  const [indirizzo, setIndirizzo] = useState("");
+  const [orarioApertura, setOrarioApertura] = useState("");
+  const [orarioChiusura, setOrarioChiusura] = useState("");
+  const [tipoDiSport, setTipoDiSport] = useState("");
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setAttivitaPayload({
-      ...AttivitaPayload,
-      [e.target.name]: e.target.value,
-    });
-  };
+  const handleSubmit = async () => {
+    const AttivitaPayload: NewAttivita = {
+      nomeAttivita,
+      descrizioneAttivita,
+      indirizzo,
+      orarioApertura,
+      orarioChiusura,
+      tipoDiSport,
+    };
 
-  const handleSubmit = async (obj: NewAttivita) => {
-    let x = await CreaAttivita(obj, UserId);
+    try {
+      const response = await CreaAttivita(AttivitaPayload, UserId);
+      const attivitaSportiva = await searchById(response.id);
 
-    let data = await userById(UserId);
-    console.log(data);
+      dispatch({
+        type: ATTIVITA_SPORTIVA_FETCH_BY_ID,
+        payload: attivitaSportiva,
+      });
 
-    dispatch({
-      type: USER_BY_ID,
-      payload: data,
-    });
-    dispatch({
-      type: ALL_USERS,
-      payload: data,
-    });
+      const userData = await userById(UserId);
+
+      dispatch({
+        type: USER_BY_ID,
+        payload: userData,
+      });
+
+      dispatch({
+        type: ALL_USERS,
+        payload: userData,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+
+    handleClose();
   };
 
   return (
@@ -65,75 +81,58 @@ const ModalCreateAttivita = ({
                 type="text"
                 placeholder=""
                 autoFocus
-                name="name"
-                value={AttivitaPayload.nomeAttivita.toString()}
-                onChange={handleChange}
+                value={nomeAttivita}
+                onChange={(e) => setNomeAttivita(e.target.value)}
               />
               <Form.Label className="mt-3">Descrizione attivita*</Form.Label>
               <Form.Control
                 required
                 type="text"
                 placeholder=""
-                name="surname"
-                value={AttivitaPayload.descrizioneAttivita.toString()}
-                onChange={handleChange}
+                value={descrizioneAttivita}
+                onChange={(e) => setDescrizioneAttivita(e.target.value)}
               />
               <Form.Label className="mt-3">Indirizzo*</Form.Label>
               <Form.Control
                 required
                 as="textarea"
                 placeholder=""
-                name="indirizzo"
-                value={AttivitaPayload.indirizzo.toString()}
-                onChange={handleChange}
+                value={indirizzo}
+                onChange={(e) => setIndirizzo(e.target.value)}
               />
-              <Form.Label className="mt-3">Orario inizio*</Form.Label>
+              <Form.Label className="mt-3">Orario apertura*</Form.Label>
               <Form.Control
                 required
                 as="textarea"
                 placeholder=""
-                name="orarioApertura"
-                value={AttivitaPayload.orarioApertura.toString()}
-                onChange={handleChange}
+                value={orarioApertura}
+                onChange={(e) => setOrarioApertura(e.target.value)}
               />
-              <Form.Label className="mt-3">Indirizzo*</Form.Label>
+              <Form.Label className="mt-3">Orario chiusura*</Form.Label>
               <Form.Control
                 required
                 as="textarea"
                 placeholder=""
-                name="indirizzo"
-                value={AttivitaPayload.orarioChiusura.toString()}
-                onChange={handleChange}
+                value={orarioChiusura}
+                onChange={(e) => setOrarioChiusura(e.target.value)}
               />
+              <Form.Label className="mt-3">Tipo di sport*</Form.Label>
               <Form.Control
-                as="select"
-                defaultValue=""
-                aria-label="Sport"
-                name="sport"
-                onChange={handleChange}
-              >
-                <option value="">Sport</option>
-                <option value="CALCETTO">Calcetto</option>
-                <option value="TENNIS_SINGOLO">Tennis singolo</option>
-                <option value="TENNIS_DOPPIO">Tennis doppio</option>
-                <option value="PADDLE">Paddle</option>
-                <option value="BEACH_TENNIS">Beach tennis</option>
-                <option value="BEACH_VOLLEY">Beach volley</option>
-                <option value="PALLAVOLO">Pallavolo</option>
-              </Form.Control>
+                required
+                as="textarea"
+                placeholder=""
+                value={tipoDiSport}
+                onChange={(e) => setTipoDiSport(e.target.value)}
+              />
             </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button
-            className="Profile-Btn1"
-            style={{ margin: "0", fontSize: "1.2em", fontWeight: "bolder" }}
-            onClick={() => {
-              handleSubmit(AttivitaPayload);
-              handleClose();
-            }}
-          >
-            Save
+          <Button variant="secondary" onClick={handleClose}>
+            Chiudi
+          </Button>
+          <Button variant="primary" onClick={handleSubmit}>
+            Crea
           </Button>
         </Modal.Footer>
       </Modal>

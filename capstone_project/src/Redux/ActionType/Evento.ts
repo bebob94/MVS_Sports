@@ -15,8 +15,6 @@ export const fetchEventi = async () => {
     });
     if (res.ok) {
       let data = await res.json();
-      console.log(data);
-
       return data;
     }
   } catch (error) {
@@ -61,10 +59,7 @@ export const CreaEvento = async (
         body: JSON.stringify(params),
       }
     );
-    console.log(res);
-
     let data = await res.json();
-    console.log(data);
     return data;
   } catch (error) {
     console.log(error);

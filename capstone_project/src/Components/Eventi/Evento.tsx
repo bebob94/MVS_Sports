@@ -26,19 +26,6 @@ function Evento() {
     });
   };
 
-  useEffect(() => {
-    const checkAndDeleteEvento = async () => {
-      if (
-        evento.numeroPartecipanti >=
-        evento.attivitaSportiva.numeroMassimoPartecipanti
-      ) {
-        await deleteEvento(evento.id);
-      }
-    };
-
-    checkAndDeleteEvento();
-  }, [evento]);
-
   return (
     <div className="MyContainer  pt-5">
       <Container className=" MyAttivita mt-3">
@@ -57,7 +44,7 @@ function Evento() {
             </Col>
             <Col className="mb-4">
               <strong>Descrizione: </strong> <br />
-              {evento?.attivitaSportiva.descrizioneAttivita}
+              {evento?.attivitaSportiva?.descrizioneAttivita}
             </Col>
             <Col className="mb-4">
               <strong>Indirizzo: </strong> <br />

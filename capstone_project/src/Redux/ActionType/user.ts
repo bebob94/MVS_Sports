@@ -16,8 +16,6 @@ export const fetchUsers = async () => {
     });
     if (res.ok) {
       let data = await res.json();
-      console.log(data);
-
       return data;
     }
   } catch (error) {

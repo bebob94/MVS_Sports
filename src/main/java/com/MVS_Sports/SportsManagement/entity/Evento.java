@@ -55,7 +55,7 @@ public class Evento {
     private AttivitaSportiva attivitaSportiva;
     
     @JsonIgnoreProperties({"evento", "users"})
- 	@OneToOne
+ 	@OneToOne(cascade = CascadeType.ALL)
  	private Notifica notifica;
     
 }

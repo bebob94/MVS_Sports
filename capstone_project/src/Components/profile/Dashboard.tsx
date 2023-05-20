@@ -29,7 +29,6 @@ const Dashboard = () => {
   useEffect(() => {
     (async () => {
       let data = await userByUsername(userLogged.username);
-      console.log(data);
 
       dispatch({
         type: USER_BY_USERNAME,
@@ -53,7 +52,7 @@ const Dashboard = () => {
       {user?.username ? (
         <Container className="mt-5 ">
           <Row>
-            <Col md={8}>
+            <Col md={8} className="mt-5 ">
               <h1 className="mb-5 mt-4">
                 Benvenuto {user?.name} {user?.surname}!
               </h1>
@@ -126,8 +125,6 @@ const Dashboard = () => {
                     </>
                   ) : (
                     <Col xs={6} md={6} className="mt-5">
-                      <h4>Aggiungi la tua Attività</h4>
-
                       <Col xs={1} className="mt-3">
                         <Button
                           style={{ width: "150px" }}

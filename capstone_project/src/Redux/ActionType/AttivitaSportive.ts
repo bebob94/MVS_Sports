@@ -17,11 +17,8 @@ export const fetchAttivita = async () => {
         Authorization: `Bearer ${beboKey}`,
       },
     });
-    console.log(res.ok);
     if (res.ok) {
       let data = await res.json();
-      console.log(data);
-
       return data;
     }
   } catch (error) {
@@ -122,10 +119,7 @@ export const CreaAttivita = async (params: NewAttivita, idUser: number) => {
         body: JSON.stringify(params),
       }
     );
-    console.log(res);
-
     let data = await res.json();
-    console.log(data);
     return data;
   } catch (error) {
     console.log(error);

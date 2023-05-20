@@ -91,6 +91,7 @@ function Prenotazioni() {
                 name="sport"
                 onChange={(e) => setSport(e.target.value)}
               >
+                <option value=""></option>
                 <option value="CALCETTO">Calcetto</option>
                 <option value="TENNIS_SINGOLO">Tennis singolo</option>
                 <option value="TENNIS_DOPPIO">Tennis doppio</option>
