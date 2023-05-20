@@ -17,14 +17,13 @@ function ComeFunziona() {
           <h3 className="HomeText ms-4">
             <Typewriter
               options={{
-                delay: 30,
+                delay: 25,
               }}
               onInit={(typewriter: any) => {
                 typewriter
                   .typeString(
                     "Decidi lo sport, seleziona il centro sportivo, scegli la data e l'ora che preferisci..."
                   )
-
                   .start();
               }}
             />
@@ -36,11 +35,11 @@ function ComeFunziona() {
           <h3 className="HomeText me-4 mt-4">
             <Typewriter
               options={{
-                delay: 30,
+                delay: 25,
               }}
               onInit={(typewriter: any) => {
                 typewriter
-                  .pauseFor(4500)
+                  .pauseFor(3500)
                   .typeString(
                     "Se non raggiungiamo il numero di giocatori necessari?"
                   )
@@ -56,11 +55,11 @@ function ComeFunziona() {
           <h3 className="HomeText ms-4 mt-4">
             <Typewriter
               options={{
-                delay: 30,
+                delay: 25,
               }}
               onInit={(typewriter: any) => {
                 typewriter
-                  .pauseFor(7000)
+                  .pauseFor(6000)
                   .typeString(
                     "Nessun problema, noi ci occuperemo di inviare una notifica a tutti gli utenti iscritti..."
                   )
@@ -76,11 +75,11 @@ function ComeFunziona() {
           <h3 className="HomeText ms-4">
             <Typewriter
               options={{
-                delay: 30,
+                delay: 25,
               }}
               onInit={(typewriter: any) => {
                 typewriter
-                  .pauseFor(10100)
+                  .pauseFor(9100)
                   .typeString(
                     "Saranno loro ad aggiungersi alla tua prenotazione!!"
                   )
@@ -96,11 +95,11 @@ function ComeFunziona() {
           <h3 className="HomeText ms-4">
             <Typewriter
               options={{
-                delay: 30,
+                delay: 25,
               }}
               onInit={(typewriter: any) => {
                 typewriter
-                  .pauseFor(13000)
+                  .pauseFor(11000)
                   .typeString(
                     "Cosa aspetti? Prenota il tuo campo direttamente da qui!!"
                   )

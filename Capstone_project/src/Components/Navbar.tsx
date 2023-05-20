@@ -42,11 +42,11 @@ function MyNavbar() {
   };
 
   return (
-    <Navbar bg="transparent" expand="lg" className="pt-0 fixed-top myNav">
+    <Navbar bg="dark" expand="lg" className="pt-0 fixed-top myNav">
       <img
         src={Logo}
         alt="M.V.S.Sports icon"
-        style={{ height: "100px", borderRadius: "50%" }}
+        style={{ height: "80px", borderRadius: "50%" }}
         className="ms-3 mt-3 me-4"
       />
       <Navbar.Toggle

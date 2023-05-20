@@ -12,8 +12,6 @@ import {
   fetchUsers,
   userByUsername,
 } from "../Redux/ActionType/user";
-import { ALL_EVENTI, fetchEventi } from "../Redux/ActionType/Evento";
-import { ALL_NOTIFICHE, fetchNotifiche } from "../Redux/ActionType/Notifica";
 import { RootState } from "../Redux/Store";
 
 function Home() {
@@ -49,17 +47,13 @@ function Home() {
 
   return (
     <div className="MyContainer pt-5">
-      <Container className="HomeContainer mt-5">
-        <h2 className="HomeText2">PRENOTA ONLINE IL TUO CAMPO DA GIOCO</h2>
-        <h3 className="HomeSubtext">
+      <Container className="HomeContainer ">
+        <h3 className="HomeText2">PRENOTA ONLINE IL TUO CAMPO DA GIOCO</h3>
+        <h5 className="HomeSubtext">
           NON TROVI ABBASTANZA COMPAGNI? NON TI PREOCUPARE, CI PENSIAMO NOI!!
-        </h3>
+        </h5>
       </Container>
-      <Row className="justify-content-center mt-2">
-        <Col xs={12} md={6} className=" mt-5">
-          <Carosello />
-        </Col>
-      </Row>
+      <Carosello />
     </div>
   );
 }
