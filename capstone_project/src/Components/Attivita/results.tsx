@@ -17,7 +17,7 @@ function Results() {
   );
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 6;
+  const itemsPerPage = 4;
 
   const handlePrenotaClick = async (id: Number) => {
     let data = await searchById(id);
@@ -48,43 +48,53 @@ function Results() {
         {allAttivita && allAttivita.length > 0 ? (
           <>
             <Row className="justify-content-between">
-              <h2>Aziende disponibili...</h2>
+              <h1 className="mb-5">RISULTATI RICERCA</h1>
             </Row>
             <Row>
               {currentItems?.map((attivita, i) => (
-                <Col key={i} sm={12} md={6} lg={4}>
+                <Col key={i} xs={12} className="mb-3">
                   <Link
                     to={`/Attivita/${attivita?.id}`}
                     onClick={() => handlePrenotaClick(attivita?.id)}
-                    className="MyLink"
+                    style={{ textDecoration: "none" }}
                   >
-                    <Card className="my-3 pb-3 rounded-4 myCards">
-                      <Card.Img
-                        variant="top"
-                        src={logoMVS}
-                        style={{ width: "100%", height: "13em" }}
-                      />
-                      <Card.Body>
-                        <Card.Title className="mb-4">
-                          <strong>{attivita?.nomeAttivita}</strong>
-                        </Card.Title>
-                        <Card.Text className="my-3">
-                          <strong>Descrizione:</strong>
-                          <br />
-                          {attivita?.descrizioneAttivita}
-                        </Card.Text>
-                        <Card.Text>
-                          <strong>Sport: </strong>
-                          {attivita?.tipoDiSport}
-                        </Card.Text>
-                        <div className="card-footer mt-auto"></div>
-                      </Card.Body>
+                    <Card className="mt-3 rounded-4 transparent-card">
+                      <Row>
+                        <Col xs={3}>
+                          <Card.Img
+                            variant="left"
+                            src={logoMVS}
+                            style={{ width: "100%", height: "100%" }}
+                            className="rounded-4"
+                          />
+                        </Col>
+                        <Col xs={9}>
+                          <Card.Body>
+                            <Card.Title className="mt-3 mb-4">
+                              <strong>{attivita?.nomeAttivita}</strong>
+                            </Card.Title>
+                            <Card.Text className="my-3">
+                              <strong>Descrizione:</strong>
+                              <br />
+                              {attivita?.descrizioneAttivita}
+                            </Card.Text>
+                            <Card.Text>
+                              <strong>Indirizzo: </strong> <br />
+                              {attivita?.indirizzo}
+                            </Card.Text>
+                            <Card.Text>
+                              <strong>Sport: </strong> <br />
+                              {attivita?.tipoDiSport}
+                            </Card.Text>
+                          </Card.Body>
+                        </Col>
+                      </Row>
                     </Card>
                   </Link>
                 </Col>
               ))}
             </Row>
-            <Row className="justify-content-center">
+            <Row className="justify-content-center mt-4">
               <Pagination>
                 <Pagination.First onClick={() => handlePageChange(1)} />
                 <Pagination.Prev

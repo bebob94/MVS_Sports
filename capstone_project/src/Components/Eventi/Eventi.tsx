@@ -59,8 +59,8 @@ function Eventi() {
   };
 
   return (
-    <div className="MyContainer pt-5">
-      <Container className=" MyAttivita mb-2">
+    <div className="MyContainer pt-5 ">
+      <Container className=" MyAttivita ">
         {Eventi && Eventi.length > 0 ? (
           <Row>
             <h2>Eventi disponibili...</h2>
@@ -71,12 +71,7 @@ function Eventi() {
                   xs={12}
                   md={4}
                   lg={4}
-                  className={`my-5 mx-5  rounded-4 `}
-                  style={{
-                    border: "solid 1px white",
-                    width: "20rem",
-                    backgroundColor: " brown",
-                  }}
+                  className={`my-5 mx-5  rounded-4 transparent-card`}
                   key={i}
                 >
                   <Col className="mb-4">

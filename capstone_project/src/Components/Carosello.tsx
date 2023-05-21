@@ -2,13 +2,12 @@ import React from "react";
 import Carousel from "react-bootstrap/Carousel";
 import calcetto from "../image/calcetto-calcio-a-5.jpg";
 import pallavolo from "../image/pallavolo-3.jpg";
-import tennisSingolo from "../image/tennis singolo.jpg";
 import tennisDoppio from "../image/tennis-doppio.jpg";
 import beachTennis from "../image/beach tennis.jpg";
 import beachVolley from "../image/beach-volley-min.jpg";
 import paddle from "../image/paddle.jpg";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Row, Col } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 
 function Carosello() {
   return (

@@ -64,7 +64,7 @@ strong {
   height: 100%;
   min-height: 55em;
   width: 100%;
-  background-image: url(./image/3d-illustration-black-abstract-art-style-design-website-backgrounds-advertising_258743-185.avif);
+  background-image: url(./image/1903_SportsDayImage.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -73,7 +73,7 @@ strong {
   height: 100%;
   min-height: 55em;
   width: 100%;
-  background-color: gray;
+  background-color: rgb(216, 209, 209);
   color: black !important;
 }
 
@@ -231,32 +231,22 @@ button {
 }
 
 /* cards del componente results  */
-.myCards {
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
-  height: 30rem;
-  width: 20rem;
-  background: linear-gradient(
-    90deg,
-    rgba(88, 3, 3, 0.856) 10%,
-    rgba(202, 112, 9, 0.829) 100%
-  ) !important;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(25px);
-  border: solid 3px #0c0c0c;
-
-  transition: all 0.3s ease-in-out;
-}
-.myCards:hover {
-  transform: translateY(-5px);
-  box-shadow: black 5px 5px 10px 5px;
-  text-decoration: none !important;
-}
 
 .card-footer {
   background-color: transparent;
   border-top: none;
   text-align: center;
+}
+
+.transparent-card {
+  background-color: rgba(92, 88, 88, 0.822); /* Colore di sfondo con opacità */
+  color: white;
+  transition: all 0.3s ease-in-out;
+}
+.transparent-card:hover {
+  transform: translateY(-5px);
+  box-shadow: black 5px 5px 10px 5px;
+  text-decoration: none !important;
 }
 
 .AddEvento {
@@ -268,10 +258,14 @@ button {
   color: white;
 }
 
+.bi-bell {
+  font-size: larger;
+}
+
 .notification-badge {
   position: absolute;
-  top: 40px;
-  right: 75px;
+  top: 30px;
+  right: 78px;
   background-color: red;
   color: white;
   font-size: 12px;

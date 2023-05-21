@@ -62,8 +62,8 @@ export interface AttivitaSportiva {
   nomeAttivita: String;
   descrizioneAttivita: String;
   indirizzo: String;
-  orarioApertura: Date; // formato "hh:mm"
-  orarioChiusura: Date; // formato "hh:mm"
+  orarioApertura: String; // formato "hh:mm"
+  orarioChiusura: String; // formato "hh:mm"
   tipoDiSport: String;
   numeroMassimoPartecipanti: number;
   durataEvento: String; // formato "hh:mm"

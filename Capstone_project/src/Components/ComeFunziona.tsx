@@ -41,7 +41,7 @@ function ComeFunziona() {
                 typewriter
                   .pauseFor(3500)
                   .typeString(
-                    "Se non raggiungiamo il numero di giocatori necessari?"
+                    "Se non riusciamo a raggiungere il numero di giocatori necessari?"
                   )
 
                   .start();

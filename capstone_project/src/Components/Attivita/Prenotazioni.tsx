@@ -56,14 +56,18 @@ function Prenotazioni() {
     <div className="MyContainer py-5">
       <Container className="prenotazioniColor py-5 mt-5">
         <Row>
-          <Col xs={12} md={6} className="my-5">
-            <h3 className="my-5">
+          <Col xs={12} md={6} className="mb-5 mt-2">
+            <h1 className="mb-3">
+              <strong>I NOSTRI CENTRI SPORTIVI</strong>
+            </h1>{" "}
+            <br />
+            <h4 className="mt-5">
               <strong>
                 Stai cercando un centro sportivo nel Sarrabus per prenotare un
                 campo da calcetto, pallavolo, tennis? Oppure preferisci giocare
                 a padel/paddle, beach tennis o beach volley?
               </strong>
-            </h3>
+            </h4>
             <InputGroup>
               <Form.Control
                 as="select"
@@ -98,12 +102,12 @@ function Prenotazioni() {
             <img
               src={banner}
               alt="Banner pubblicitario"
-              className="rounded-4"
+              className="rounded-4 mt-5"
               style={{ height: "25em", marginLeft: "10em" }}
             />
           </Col>
 
-          <Col xs={12} md={5} className="mt-5">
+          <Col xs={12} md={5} className="mt-3">
             <h2 className="mb-2">
               <strong>Cerca il tuo campo preferito!</strong>
             </h2>

@@ -39,11 +39,11 @@ const Footer = () => (
         <Col md={3} lg={4} xl={3} className="mx-auto mb-4">
           <h6 className="text-uppercase fw-bold mb-4">
             <FaGem className="me-3" />
-            Company name
+            M.V.S.sports
           </h6>
           <p>
-            Here you can use rows and columns to organize your footer content.
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Siamo un'azienda che vi aiuterà nella ricerca dei vostri centri
+            sportivi e vi aiuterà a prenotare in modo semplice e innovativo.
           </p>
         </Col>
 
@@ -71,7 +71,7 @@ const Footer = () => (
 
           <p>
             <a href="#" className="text-reset">
-              Settings
+              About Us
             </a>
           </p>
           <p>

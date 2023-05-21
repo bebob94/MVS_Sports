@@ -34,7 +34,7 @@ const ModalModifyEvento = ({ eventoId }: { eventoId: Evento }) => {
 
   useEffect(() => {
     setEventoPayload({
-      id: eventoId.id,
+      id: eventoId?.id,
       numeroPartecipanti: EventoPayload.numeroPartecipanti,
     });
   }, [eventoId]);
