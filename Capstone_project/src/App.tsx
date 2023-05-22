@@ -14,6 +14,7 @@ import Prenotazioni from "./Components/Attivita/Prenotazioni";
 import Eventi from "./Components/Eventi/Eventi";
 import Evento from "./Components/Eventi/Evento";
 import Footer from "./Components/Footer";
+import AboutUs from "./Components/AboutUs";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Home />} />
           <Route path="/Dashboard" element={<Dashboard />} />
+          <Route path="/AboutUs" element={<AboutUs />} />
           <Route path="/Prenotazioni" element={<Prenotazioni />} />
           <Route path="/ComeFunziona" element={<ComeFunziona />} />
           <Route path="/Results" element={<Results />} />

@@ -47,7 +47,7 @@ function Home() {
 
   return (
     <div className="MyContainer pt-5">
-      <Container className="HomeContainer ">
+      <Container style={{ marginTop: "5em " }}>
         <h3 className="HomeText2">PRENOTA ONLINE IL TUO CAMPO DA GIOCO</h3>
         <h5 className="HomeSubtext">
           NON TROVI ABBASTANZA COMPAGNI? NON TI PREOCUPARE, CI PENSIAMO NOI!!

@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import {
   ATTIVITA_SPORTIVA_FETCH_BY_NAME,
   ATTIVITA_SPORTIVA_FETCH_BY_TIPO_DI_SPORT,
+  ATTIVITA_SPORTIVA_FETCH,
+  fetchAttivita,
   searchByName,
   searchByTipoDiSport,
 } from "../../Redux/ActionType/AttivitaSportive";
@@ -40,6 +42,13 @@ function Prenotazioni() {
   };
 
   useEffect(() => {
+    (async () => {
+      let data = await fetchAttivita();
+      dispatch({
+        type: ATTIVITA_SPORTIVA_FETCH,
+        payload: data,
+      });
+    })();
     if (search) {
       (async () => {
         let data = await searchByName(search);

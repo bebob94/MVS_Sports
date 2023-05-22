@@ -73,8 +73,10 @@ strong {
   height: 100%;
   min-height: 55em;
   width: 100%;
-  background-color: rgb(216, 209, 209);
+  background-color: rgb(233, 227, 227);
   color: black !important;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 .DashboardContainer strong {
@@ -89,7 +91,7 @@ strong {
 }
 
 .myCarousel {
-  height: 35em !important;
+  height: 30em !important;
   width: 35em !important;
 }
 
@@ -265,7 +267,7 @@ button {
 .notification-badge {
   position: absolute;
   top: 30px;
-  right: 78px;
+  right: 130px;
   background-color: red;
   color: white;
   font-size: 12px;
@@ -281,6 +283,6 @@ button {
   position: absolute;
   color: red;
   right: 75px;
-  top: 80px;
+  top: 70px;
   transition: opacity 0.3s ease-in-out;
 }

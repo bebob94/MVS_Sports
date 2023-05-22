@@ -69,9 +69,9 @@ function MyNavbar() {
           </Link>
         </Nav>
         <Nav className="me-2">
-          {user.user.username ? (
+          {user.user && user.user.username ? (
             <>
-              <strong className="mt-2 me-4">Benvenuto</strong>
+              <strong className="mt-2 me-2">Benvenuto</strong>
               <strong>
                 <NavDropdown
                   title={user.user.username}
@@ -86,6 +86,9 @@ function MyNavbar() {
                   </NavDropdown.Item>
                   <NavDropdown.Item href="/ComeFunziona" className="text-dark">
                     Come funziona
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="/AboutUs" className="text-dark">
+                    AboutUs
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item
@@ -105,25 +108,35 @@ function MyNavbar() {
                 onMouseEnter={handleIconHover}
                 onMouseLeave={handleIconLeave}
               >
-                <i className="bi bi-bell me-5"></i>
+                <i className="bi bi-bell " style={{ marginRight: "100px" }}></i>
                 {newNotifications > 0 && (
                   <div className="notification-badge">{newNotifications}</div>
                 )}
               </Link>
               <h5
                 className="notification-text"
-                style={{ opacity: showNotificationText ? "1" : "0" }}
+                style={{
+                  opacity: showNotificationText ? "1" : "0",
+                }}
               >
-                Sono stati creati {newNotifications} nuovi eventi
+                {newNotifications === 1
+                  ? `È stato creato ${newNotifications} nuovo evento`
+                  : `Sono stati creati ${newNotifications} nuovi eventi`}
               </h5>
             </>
           ) : (
             <>
               <Link to={"/login"} className="MyLink">
-                <strong>Accedi</strong>
+                <span>
+                  {" "}
+                  <strong>Accedi</strong>
+                </span>
               </Link>
               <Link to={"/register"} className="MyLink">
-                <strong>Registrati</strong>
+                <span style={{ marginRight: "100px" }}>
+                  {" "}
+                  <strong>Registrati</strong>
+                </span>
               </Link>
             </>
           )}

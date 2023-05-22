@@ -50,7 +50,9 @@ function Results() {
             <Row className="justify-content-between">
               <h1 className="mb-5">RISULTATI RICERCA</h1>
             </Row>
-            <Row>
+            <Row
+              style={{ borderBottom: "4px solid white", paddingBottom: "30px" }}
+            >
               {currentItems?.map((attivita, i) => (
                 <Col key={i} xs={12} className="mb-3">
                   <Link
@@ -93,6 +95,13 @@ function Results() {
                   </Link>
                 </Col>
               ))}
+            </Row>
+            <Row className="justify-content-center mt-5">
+              <Col xs={12} className="text-center">
+                <Link to="/Prenotazioni" className="MyLink">
+                  <strong> Torna alla pagina Prenotazioni</strong>
+                </Link>
+              </Col>
             </Row>
             <Row className="justify-content-center mt-4">
               <Pagination>

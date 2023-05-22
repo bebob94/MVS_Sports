@@ -64,7 +64,7 @@ const ModalModifyUtente = ({ userId }: { userId: user }) => {
     <>
       <div className="d-flex">
         <Button id="modal-btn" className="d-flex" onClick={handleShow}>
-          <GiPencil />
+          Modifica Utente
         </Button>
       </div>
       <Modal show={show} onHide={handleClose}>

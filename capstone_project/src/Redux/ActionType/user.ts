@@ -1,5 +1,4 @@
 import { userChange } from "../Interfaces";
-
 const beboKey = process.env.REACT_APP_BEBO_SECRET_KEY;
 
 export const ALL_USERS = "ALL_USERS";
@@ -72,3 +71,6 @@ export const changeMyProfileInfo = async (params: userChange) => {
     body: JSON.stringify(params),
   });
 };
+function RootState(a: unknown, b: unknown): boolean {
+  throw new Error("Function not implemented.");
+}

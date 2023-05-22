@@ -13,7 +13,7 @@ import {
 } from "../../Redux/ActionType/Evento";
 import Error3 from "../Error/Error3";
 import { Evento } from "../../Redux/Interfaces";
-
+import { it } from "date-fns/locale";
 function Eventi() {
   const Eventi = useSelector((state: RootState) => state?.evento.AllEventi);
   const dispatch = useDispatch();
@@ -29,7 +29,7 @@ function Eventi() {
     // Effettua il controllo e l'eliminazione per ogni evento
     const checkAndDeleteEventi = async () => {
       if (Eventi && Eventi.length > 0) {
-        Eventi.forEach(async (evento) => {
+        Eventi.forEach(async (evento: Evento) => {
           await checkAndDeleteEvento(evento);
         });
       }
@@ -53,7 +53,9 @@ function Eventi() {
   };
 
   const formatTime = (time: string | number | Date) => {
-    const startTime = format(new Date(time), "HH:mm EEEE dd/MM/yyyy    ");
+    const startTime = format(new Date(time), "HH:mm EEEE dd/MM/yyyy", {
+      locale: it,
+    });
 
     return ` ${startTime} `;
   };

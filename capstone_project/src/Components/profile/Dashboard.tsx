@@ -8,6 +8,9 @@ import ModalModifyUtente from "./ModalModificaUtente";
 import ModalModifyAttivita from "./ModalModifyAttivita";
 import ModalCreateAttivita from "./ModalCreateAttivita";
 import Pagination from "react-bootstrap/Pagination";
+import { format } from "date-fns";
+import { it } from "date-fns/locale";
+import { deleteEvento } from "../../Redux/ActionType/Evento";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -37,6 +40,19 @@ const Dashboard = () => {
     })();
   }, []);
 
+  const handleDelete = async (id: number) => {
+    const confirmDelete = window.confirm("Sicuro di voler eliminare l'evento?");
+    if (confirmDelete) {
+      let x = await deleteEvento(id);
+      let data = await userByUsername(userLogged.username);
+
+      dispatch({
+        type: USER_BY_USERNAME,
+        payload: data,
+      });
+    }
+  };
+
   // Paginazione
   const indexOfLastEvent = currentPage * eventsPerPage;
   const indexOfFirstEvent = indexOfLastEvent - eventsPerPage;
@@ -46,6 +62,14 @@ const Dashboard = () => {
   );
 
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+
+  const formatTime = (time: string | number | Date) => {
+    const startTime = format(new Date(time), "HH:mm EEEE dd/MM/yyyy", {
+      locale: it,
+    });
+
+    return ` ${startTime} `;
+  };
 
   return (
     <div className="DashboardContainer pt-5">
@@ -155,10 +179,26 @@ const Dashboard = () => {
           <Row>
             {currentEvents.map((event, i) => (
               <Col key={i} md={4} className=" mb-5">
-                <h3 className=" mb-3">{event?.attivitaSportiva.tipoDiSport}</h3>
+                <h3>
+                  {event?.attivitaSportiva.tipoDiSport}
+                  <Button
+                    variant="link"
+                    className="transparent-button"
+                    style={{
+                      fontSize: "30px",
+                      color: "black",
+                      textDecoration: "none",
+                      marginLeft: "125px",
+                      marginBottom: "60px",
+                    }}
+                    onClick={() => handleDelete(event?.id)}
+                  >
+                    x
+                  </Button>
+                </h3>
                 <strong>
-                  <p>Inizio: {event?.orarioInizio.toLocaleString()}</p>
-                  <p>Fine: {event?.orarioFine.toLocaleString()}</p>
+                  <p>Inizio: {formatTime(event?.orarioInizio)}</p>
+                  <p>Fine: {formatTime(event?.orarioFine)}</p>
                   <p>Partecipanti: {event?.numeroPartecipanti.toString()}</p>
                   <p>
                     Creato da: {event?.userCreatore.name}{" "}

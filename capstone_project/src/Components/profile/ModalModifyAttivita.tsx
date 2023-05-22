@@ -72,7 +72,7 @@ const ModalModifyAttivita = ({
     <>
       <div className="d-flex">
         <Button id="modal-btn" className="d-flex" onClick={handleShow}>
-          <GiPencil />
+          Modifica Attività
         </Button>
       </div>
       <Modal show={show} onHide={handleClose}>

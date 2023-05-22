@@ -1,9 +1,9 @@
 import React from "react";
 import Carousel from "react-bootstrap/Carousel";
 import calcetto from "../image/calcetto-calcio-a-5.jpg";
-import pallavolo from "../image/pallavolo-3.jpg";
+import pallavolo from "../image/pallavolo-3 (1).jpg";
 import tennisDoppio from "../image/tennis-doppio.jpg";
-import beachTennis from "../image/beach tennis.jpg";
+import beachTennis from "../image/Beach-Tenis-Fest-Verao-2023-Credito-LEO-BORGES-17-600x400.jpg";
 import beachVolley from "../image/beach-volley-min.jpg";
 import paddle from "../image/paddle.jpg";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -12,7 +12,7 @@ import { Row } from "react-bootstrap";
 function Carosello() {
   return (
     <Row className="justify-content-center ">
-      <Carousel prevIcon="" nextIcon="" indicators={false} className="mb-5">
+      <Carousel prevIcon="" nextIcon="" indicators={false} className="my-5">
         <Carousel.Item>
           <img
             className="d-block mx-auto myCarousel rounded-4"

@@ -8,15 +8,9 @@ import {
 } from "react-icons/bs";
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import {
-  AiFillFacebook,
-  AiOutlineTwitter,
-  AiFillGoogleCircle,
-  AiFillInstagram,
-  AiFillLinkedin,
-  AiFillGithub,
-} from "react-icons/ai";
-import { FaGem, FaHome, FaEnvelope, FaPhone, FaPrint } from "react-icons/fa";
+
+import { FaGem, FaHome, FaEnvelope, FaPhone } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Footer = () => (
   <footer className="page-footer   pt-4">
@@ -27,12 +21,27 @@ const Footer = () => (
         </Col>
 
         <Col>
-          <BsFacebook className="m-3" />
-          <BsTwitter className="m-3" />
-          <BsGoogle className="m-3" />
-          <BsInstagram className="m-3" />
-          <BsLinkedin className="m-3" />
-          <BsGithub className="m-3" />
+          <Link className="MyLink" to={""}>
+            <BsFacebook className="m-3" />
+          </Link>
+          <Link className="MyLink" to={""}>
+            <BsTwitter className="m-3" />
+          </Link>
+          <Link className="MyLink" to={""}>
+            <BsGoogle className="m-3" />
+          </Link>
+          <Link className="MyLink" to={""}>
+            <BsInstagram className="m-3" />
+          </Link>
+          <Link
+            className="MyLink"
+            to={"https://www.linkedin.com/in/alberto-macis-052273153/"}
+          >
+            <BsLinkedin className="m-3" />
+          </Link>
+          <Link className="MyLink" to={"https://github.com/bebob94"}>
+            <BsGithub className="m-3" />{" "}
+          </Link>
         </Col>
       </Row>
       <Row className="mt-3">
@@ -70,19 +79,19 @@ const Footer = () => (
           <h6 className="text-uppercase fw-bold mb-4">Useful links</h6>
 
           <p>
-            <a href="#" className="text-reset">
+            <Link className="MyLink" to={"/AboutUs"}>
               About Us
-            </a>
+            </Link>
           </p>
           <p>
-            <a href="#" className="text-reset">
+            <Link className="MyLink" to={"/login"}>
               sign In
-            </a>
+            </Link>
           </p>
           <p>
-            <a href="#" className="text-reset">
+            <Link className="MyLink" to={"/register"}>
               sign Up
-            </a>
+            </Link>
           </p>
         </Col>
 
