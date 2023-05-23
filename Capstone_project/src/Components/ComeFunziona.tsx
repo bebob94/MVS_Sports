@@ -51,7 +51,7 @@ function ComeFunziona() {
         </Col>
       </Row>
       <Row>
-        <Col xs={8}>
+        <Col xs={10}>
           <h3 className="HomeText ms-4 mt-4">
             <Typewriter
               options={{
@@ -61,7 +61,7 @@ function ComeFunziona() {
                 typewriter
                   .pauseFor(6000)
                   .typeString(
-                    "Nessun problema, noi ci occuperemo di inviare una notifica a tutti gli utenti iscritti..."
+                    "Nessun problema, noi invieremo una notifica a tutti gli iscritti e loro si aggiungeranno alla tua prenotazione"
                   )
 
                   .start();
@@ -71,35 +71,15 @@ function ComeFunziona() {
         </Col>
       </Row>
       <Row>
-        <Col xs={5}>
-          <h3 className="HomeText ms-4">
+        <Col xs={6}>
+          <h3 className="HomeText ms-4  mt-4">
             <Typewriter
               options={{
                 delay: 25,
               }}
               onInit={(typewriter: any) => {
                 typewriter
-                  .pauseFor(9100)
-                  .typeString(
-                    "Saranno loro ad aggiungersi alla tua prenotazione!!"
-                  )
-
-                  .start();
-              }}
-            />
-          </h3>
-        </Col>
-      </Row>
-      <Row>
-        <Col xs={7}>
-          <h3 className="HomeText ms-4">
-            <Typewriter
-              options={{
-                delay: 25,
-              }}
-              onInit={(typewriter: any) => {
-                typewriter
-                  .pauseFor(11000)
+                  .pauseFor(9600)
                   .typeString(
                     "Cosa aspetti? Prenota il tuo campo direttamente da qui!!"
                   )
@@ -110,8 +90,9 @@ function ComeFunziona() {
           </h3>
         </Col>
       </Row>
+
       <Row className="justify-content-center">
-        <Col xs={2}>
+        <Col xs={4} md={2}>
           {showButton && (
             <Link className="MyLink text-center" to={"/Prenotazioni"}>
               <h3 className="HomeText mt-3 myButton">Prenota ora</h3>

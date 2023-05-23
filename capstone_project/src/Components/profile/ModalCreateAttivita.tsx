@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { NewAttivita } from "../../Redux/Interfaces";
 import {
   ATTIVITA_SPORTIVA_FETCH_BY_ID,
@@ -9,6 +9,7 @@ import {
 } from "../../Redux/ActionType/AttivitaSportive";
 import { ALL_USERS, USER_BY_ID, userById } from "../../Redux/ActionType/user";
 import { AttivitaSportiva } from "../../Redux/Interfaces";
+import { RootState } from "../../Redux/Store";
 
 const ModalCreateAttivita = ({
   show,
@@ -20,7 +21,7 @@ const ModalCreateAttivita = ({
   UserId: number;
 }) => {
   const dispatch = useDispatch();
-
+  const token = useSelector((state: RootState) => state?.user.user.accessToken);
   const [nomeAttivita, setNomeAttivita] = useState("");
   const [descrizioneAttivita, setDescrizioneAttivita] = useState("");
   const [indirizzo, setIndirizzo] = useState("");
@@ -39,15 +40,15 @@ const ModalCreateAttivita = ({
     };
 
     try {
-      const response = await CreaAttivita(AttivitaPayload, UserId);
-      const attivitaSportiva = await searchById(response.id);
+      const response = await CreaAttivita(AttivitaPayload, UserId, token);
+      const attivitaSportiva = await searchById(response.id, token);
 
       dispatch({
         type: ATTIVITA_SPORTIVA_FETCH_BY_ID,
         payload: attivitaSportiva,
       });
 
-      const userData = await userById(UserId);
+      const userData = await userById(UserId, token);
 
       dispatch({
         type: USER_BY_ID,

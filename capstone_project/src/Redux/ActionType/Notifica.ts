@@ -3,12 +3,13 @@ export const ALL_NOTIFICHE = "ALL_NOTIFICHE";
 export const NOTIFICA_BY_ID = "NOTIFICA_BY_ID";
 export const CREA_NOTIFICA = "CREA_NOTIFICA";
 export const RESET_NOTIFICHE = "RESET_NOTIFICHE";
-export const fetchNotifiche = async () => {
+
+export const fetchNotifiche = async (token: String) => {
   try {
     let res = await fetch(`http://localhost:8080/api/Notifica/all`, {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${beboKey}`,
+        Authorization: `Bearer ${token}`,
       },
     });
     if (res.ok) {
@@ -23,12 +24,15 @@ export const fetchNotifiche = async () => {
 };
 
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< RICERCA NOTIFICA PER ID >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-export const notificaById = async (value: Number | undefined) => {
+export const notificaById = async (
+  value: Number | undefined,
+  token: String
+) => {
   try {
     let res = await fetch(`http://localhost:8080/api/Notifica/${value}`, {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${beboKey}`,
+        Authorization: `Bearer ${token}`,
       },
     });
     if (res.ok) {

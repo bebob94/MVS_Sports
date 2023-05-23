@@ -21,7 +21,7 @@ const ModalModifyAttivita = ({
     (state: RootState) => state?.attivitaSportiva?.AttivitaSportiva
   );
   const selectedUser = useSelector((state: RootState) => state?.User.user);
-
+  const token = useSelector((state: RootState) => state?.user.user.accessToken);
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -54,13 +54,13 @@ const ModalModifyAttivita = ({
 
   const handleSubmit = async (obj: AttivitaChange) => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    let x = await changeMyInfoAttivita(obj);
-    let data = await searchById(selectedUser.attivitaSportiva.id);
+    let x = await changeMyInfoAttivita(obj, token);
+    let data = await searchById(selectedUser.attivitaSportiva.id, token);
     dispatch({
       type: ATTIVITA_SPORTIVA_FETCH_BY_ID,
       payload: data,
     });
-    let data2 = await userById(selectedUser.id);
+    let data2 = await userById(selectedUser.id, token);
 
     dispatch({
       type: USER_BY_ID,

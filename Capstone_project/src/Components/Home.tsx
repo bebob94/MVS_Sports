@@ -17,9 +17,10 @@ import { RootState } from "../Redux/Store";
 function Home() {
   const dispatch = useDispatch();
   const user = useSelector((state: RootState) => state?.user.user);
+  const token = useSelector((state: RootState) => state?.user.user.accessToken);
   useEffect(() => {
     (async () => {
-      let data = await userByUsername(user.username);
+      let data = await userByUsername(user.username, token);
 
       dispatch({
         type: USER_BY_USERNAME,
@@ -28,7 +29,7 @@ function Home() {
     })();
 
     (async () => {
-      let data = await fetchAttivita();
+      let data = await fetchAttivita(token);
       dispatch({
         type: ATTIVITA_SPORTIVA_FETCH,
         payload: data,
@@ -36,7 +37,7 @@ function Home() {
     })();
 
     (async () => {
-      let data = await fetchUsers();
+      let data = await fetchUsers(token);
 
       dispatch({
         type: ALL_USERS,

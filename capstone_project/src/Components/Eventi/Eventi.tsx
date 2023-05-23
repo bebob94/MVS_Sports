@@ -17,13 +17,13 @@ import { it } from "date-fns/locale";
 function Eventi() {
   const Eventi = useSelector((state: RootState) => state?.evento.AllEventi);
   const dispatch = useDispatch();
-
+  const token = useSelector((state: RootState) => state?.user.user.accessToken);
   useEffect(() => {
     const checkAndDeleteEvento = async (evento: Evento) => {
       const today = new Date();
       const eventStartTime = new Date(evento.orarioInizio);
       if (eventStartTime < today) {
-        await deleteEvento(evento.id);
+        await deleteEvento(evento.id, token);
       }
     };
     // Effettua il controllo e l'eliminazione per ogni evento
@@ -36,7 +36,7 @@ function Eventi() {
     };
     checkAndDeleteEventi();
     (async () => {
-      let data = await fetchEventi();
+      let data = await fetchEventi(token);
       dispatch({
         type: ALL_EVENTI,
         payload: data,
@@ -45,7 +45,7 @@ function Eventi() {
   }, []);
 
   const handlePrenotaClick = async (id: Number) => {
-    let data = await eventoById(id);
+    let data = await eventoById(id, token);
     dispatch({
       type: EVENTO_BY_ID,
       payload: data,
@@ -73,7 +73,7 @@ function Eventi() {
                   xs={12}
                   md={4}
                   lg={4}
-                  className={`my-5 mx-5  rounded-4 transparent-card`}
+                  className={`my-5 me-3  rounded-4 transparent-card`}
                   key={i}
                 >
                   <Col className="mb-4">

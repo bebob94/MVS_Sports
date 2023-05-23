@@ -15,7 +15,7 @@ import {
 const ModalModifyUtente = ({ userId }: { userId: user }) => {
   const selectedUser = useSelector((state: RootState) => state?.User.user);
   const [show, setShow] = useState(false);
-
+  const token = useSelector((state: RootState) => state?.user.user.accessToken);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -45,9 +45,9 @@ const ModalModifyUtente = ({ userId }: { userId: user }) => {
   }, [userId]);
 
   const handleSubmit = async (obj: userChange) => {
-    let x = await changeMyProfileInfo(obj);
+    let x = await changeMyProfileInfo(obj, token);
 
-    let data = await userById(selectedUser.id);
+    let data = await userById(selectedUser.id, token);
     console.log(data);
 
     dispatch({

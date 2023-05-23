@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Form, Button, Row, Col, Container, InputGroup } from "react-bootstrap";
 import { FaSearch } from "react-icons/fa";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
   ATTIVITA_SPORTIVA_FETCH_BY_NAME,
@@ -12,26 +12,36 @@ import {
   searchByTipoDiSport,
 } from "../../Redux/ActionType/AttivitaSportive";
 import banner from "../../image/pubbli.jpg";
+import { RootState } from "../../Redux/Store";
 
 function Prenotazioni() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [search, setSearch] = useState("");
   const [sport, setSport] = useState("");
+  const token = useSelector((state: RootState) => state?.user.user.accessToken);
 
   const handleSearch = (e: any) => {
     e.preventDefault();
     setSearch(e.target.value);
     console.log(e.target.value);
   };
-  const handleSubmit = (e: any) => {
+
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
+    let data = await searchByName(search, token);
+
+    dispatch({
+      type: ATTIVITA_SPORTIVA_FETCH_BY_NAME,
+      payload: data,
+    });
     navigate("/Results");
     console.log("enter");
   };
+
   const handleSubmit2 = async (e: any) => {
     e.preventDefault();
-    let data = await searchByTipoDiSport(sport);
+    let data = await searchByTipoDiSport(sport, token);
 
     dispatch({
       type: ATTIVITA_SPORTIVA_FETCH_BY_TIPO_DI_SPORT,
@@ -43,23 +53,13 @@ function Prenotazioni() {
 
   useEffect(() => {
     (async () => {
-      let data = await fetchAttivita();
+      let data = await fetchAttivita(token);
       dispatch({
         type: ATTIVITA_SPORTIVA_FETCH,
         payload: data,
       });
     })();
-    if (search) {
-      (async () => {
-        let data = await searchByName(search);
-
-        dispatch({
-          type: ATTIVITA_SPORTIVA_FETCH_BY_NAME,
-          payload: data,
-        });
-      })();
-    }
-  }, [search]);
+  }, []);
 
   return (
     <div className="MyContainer py-5">
@@ -77,7 +77,7 @@ function Prenotazioni() {
                 a padel/paddle, beach tennis o beach volley?
               </strong>
             </h4>
-            <InputGroup>
+            <InputGroup className="mb-5">
               <Form.Control
                 as="select"
                 defaultValue=""
@@ -85,14 +85,102 @@ function Prenotazioni() {
                 name="sport"
                 onChange={(e) => setSport(e.target.value)}
               >
-                <option value="">Seleziona uno sport</option>
-                <option value="CALCETTO">Calcetto</option>
-                <option value="TENNIS_SINGOLO">Tennis singolo</option>
-                <option value="TENNIS_DOPPIO">Tennis doppio</option>
-                <option value="PADDLE">Paddle</option>
-                <option value="BEACH_TENNIS">Beach tennis</option>
-                <option value="BEACH_VOLLEY">Beach volley</option>
-                <option value="PALLAVOLO">Pallavolo</option>
+                <option
+                  style={{
+                    overflow: "hidden",
+                    overflowWrap: "break-word",
+                    width: "100%",
+                    display: "inline-block",
+                    whiteSpace: "pre-line",
+                  }}
+                  value=""
+                >
+                  Seleziona uno sport
+                </option>
+                <option
+                  style={{
+                    overflow: "hidden",
+                    overflowWrap: "break-word",
+                    width: "100%",
+                    display: "inline-block",
+                    whiteSpace: "pre-line",
+                  }}
+                  value="CALCETTO"
+                >
+                  Calcetto
+                </option>
+                <option
+                  style={{
+                    overflow: "hidden",
+                    overflowWrap: "break-word",
+                    width: "100%",
+                    display: "inline-block",
+                    whiteSpace: "pre-line",
+                  }}
+                  value="TENNIS_SINGOLO"
+                >
+                  Tennis singolo
+                </option>
+                <option
+                  style={{
+                    overflow: "hidden",
+                    overflowWrap: "break-word",
+                    width: "100%",
+                    display: "inline-block",
+                    whiteSpace: "pre-line",
+                  }}
+                  value="TENNIS_DOPPIO"
+                >
+                  Tennis doppio
+                </option>
+                <option
+                  style={{
+                    overflow: "hidden",
+                    overflowWrap: "break-word",
+                    width: "100%",
+                    display: "inline-block",
+                    whiteSpace: "pre-line",
+                  }}
+                  value="PADDLE"
+                >
+                  Paddle
+                </option>
+                <option
+                  style={{
+                    overflow: "hidden",
+                    overflowWrap: "break-word",
+                    width: "100%",
+                    display: "inline-block",
+                    whiteSpace: "pre-line",
+                  }}
+                  value="BEACH_TENNIS"
+                >
+                  Beach tennis
+                </option>
+                <option
+                  style={{
+                    overflow: "hidden",
+                    overflowWrap: "break-word",
+                    width: "100%",
+                    display: "inline-block",
+                    whiteSpace: "pre-line",
+                  }}
+                  value="BEACH_VOLLEY"
+                >
+                  Beach volley
+                </option>
+                <option
+                  style={{
+                    overflow: "hidden",
+                    overflowWrap: "break-word",
+                    width: "100%",
+                    display: "inline-block",
+                    whiteSpace: "pre-line",
+                  }}
+                  value="PALLAVOLO"
+                >
+                  Pallavolo
+                </option>
               </Form.Control>
               <Button
                 variant="primary"
@@ -107,21 +195,12 @@ function Prenotazioni() {
             </InputGroup>
           </Col>
 
-          <Col xs={5} className="text-center mt-5  ">
-            <img
-              src={banner}
-              alt="Banner pubblicitario"
-              className="rounded-4 mt-5"
-              style={{ height: "25em", marginLeft: "10em" }}
-            />
-          </Col>
-
-          <Col xs={12} md={5} className="mt-3">
-            <h2 className="mb-2">
+          <Col xs={12} md={7} className="mt-5">
+            <h2 className="mb-2 mt-5">
               <strong>Cerca il tuo campo preferito!</strong>
             </h2>
             <input
-              style={{ width: "20em" }}
+              style={{ width: "18em" }}
               type="text"
               value={search}
               placeholder="Cerca per nome, indirizzo o parola chiave"

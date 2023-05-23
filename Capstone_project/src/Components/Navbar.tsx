@@ -16,15 +16,6 @@ function MyNavbar() {
   );
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [showNotificationText, setShowNotificationText] = useState(false);
-
-  const handleIconHover = () => {
-    setShowNotificationText(true);
-  };
-
-  const handleIconLeave = () => {
-    setShowNotificationText(false);
-  };
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
@@ -105,24 +96,12 @@ function MyNavbar() {
                 className="MyLink pt-2"
                 to={"/Eventi"}
                 onClick={handleNotificationClick}
-                onMouseEnter={handleIconHover}
-                onMouseLeave={handleIconLeave}
               >
                 <i className="bi bi-bell " style={{ marginRight: "100px" }}></i>
                 {newNotifications > 0 && (
                   <div className="notification-badge">{newNotifications}</div>
                 )}
               </Link>
-              <h5
-                className="notification-text"
-                style={{
-                  opacity: showNotificationText ? "1" : "0",
-                }}
-              >
-                {newNotifications === 1
-                  ? `È stato creato ${newNotifications} nuovo evento`
-                  : `Sono stati creati ${newNotifications} nuovi eventi`}
-              </h5>
             </>
           ) : (
             <>

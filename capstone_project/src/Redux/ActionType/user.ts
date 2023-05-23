@@ -5,12 +5,12 @@ export const ALL_USERS = "ALL_USERS";
 export const USER_BY_ID = "USER_BY_ID";
 export const USER_BY_USERNAME = "USER_BY_USERNAME";
 
-export const fetchUsers = async () => {
+export const fetchUsers = async (token: String) => {
   try {
     let res = await fetch(`http://localhost:8080/User/all`, {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${beboKey}`,
+        Authorization: `Bearer ${token}`,
       },
     });
     if (res.ok) {
@@ -23,12 +23,12 @@ export const fetchUsers = async () => {
 };
 
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< RICERCA USER PER ID >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-export const userById = async (value: Number | undefined) => {
+export const userById = async (value: Number | undefined, token: String) => {
   try {
     let res = await fetch(`http://localhost:8080/User/${value}`, {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${beboKey}`,
+        Authorization: `Bearer ${token}`,
       },
     });
     if (res.ok) {
@@ -41,12 +41,15 @@ export const userById = async (value: Number | undefined) => {
 };
 
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< RICERCA USER PER USERNAME>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-export const userByUsername = async (value: String | undefined) => {
+export const userByUsername = async (
+  value: String | undefined,
+  token: String
+) => {
   try {
     let res = await fetch(`http://localhost:8080/User/username/${value}`, {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${beboKey}`,
+        Authorization: `Bearer ${token}`,
       },
     });
     if (res.ok) {
@@ -61,12 +64,15 @@ export const userByUsername = async (value: String | undefined) => {
 
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< MODIFICA USER >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-export const changeMyProfileInfo = async (params: userChange) => {
+export const changeMyProfileInfo = async (
+  params: userChange,
+  token: String
+) => {
   const requestOptions = await fetch(`http://localhost:8080/User`, {
     method: "PUT",
     headers: {
       "Content-type": "application/json",
-      Authorization: `Bearer ${beboKey}`,
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(params),
   });

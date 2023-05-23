@@ -9,17 +9,20 @@ import {
   searchById,
 } from "../../Redux/ActionType/AttivitaSportive";
 import ModalModifyEvento from "./ModalModificaEvento";
-import { deleteEvento } from "../../Redux/ActionType/Evento";
+import { it } from "date-fns/locale";
+
 function Evento() {
   const evento = useSelector((state: RootState) => state?.evento.Evento);
   const dispatch = useDispatch();
-
+  const token = useSelector((state: RootState) => state?.user.user.accessToken);
   const formatTime = (time: string | number | Date) => {
-    const startTime = format(new Date(time), "HH:mm EEEE dd/MM/yyyy");
+    const startTime = format(new Date(time), "HH:mm EEEE dd/MM/yyyy", {
+      locale: it,
+    });
     return ` ${startTime} `;
   };
   const handlePrenotaClick = async (id: Number) => {
-    let data = await searchById(id);
+    let data = await searchById(id, token);
     dispatch({
       type: ATTIVITA_SPORTIVA_FETCH_BY_ID,
       payload: data,
@@ -29,20 +32,19 @@ function Evento() {
   return (
     <div className="MyContainer  pt-5">
       <Container className=" MyAttivita mt-3">
-        <Row
-          className="justify-content-between"
-          style={{ borderBottom: "4px solid white", paddingBottom: "30px" }}
-        >
+        <Row className="justify-content-between transparent-card rounded-4 py-3">
           <Col sm={12} md={6} lg={4}>
             <Col className="mb-4">
               <strong>Sport: </strong> <br />
               {evento?.attivitaSportiva?.tipoDiSport}
             </Col>
             <Col className="mb-4">
+              {" "}
               <strong>Attivita: </strong> <br />
               {evento?.attivitaSportiva?.nomeAttivita}
             </Col>
             <Col className="mb-4">
+              {" "}
               <strong>Descrizione: </strong> <br />
               {evento?.attivitaSportiva?.descrizioneAttivita}
             </Col>
@@ -77,17 +79,17 @@ function Evento() {
               {evento?.userCreatore.email}
             </Col>
             <Col className="mb-5">
+              {" "}
               <strong>partecipanti Attuali: </strong>
               {evento?.numeroPartecipanti}
             </Col>
             <Col className="my-5">
+              {" "}
               <strong>Orario:</strong>
               <br />
-              <p className="mt-2">
-                {" "}
-                Dalle {formatTime(evento?.orarioInizio)}
-              </p>{" "}
-              <p> Alle {formatTime(evento?.orarioFine)}</p>
+              Dalle {formatTime(evento?.orarioInizio)}
+              <br />
+              Alle {formatTime(evento?.orarioFine)}
             </Col>
             <Col xs={1} className="mt-1">
               <ModalModifyEvento eventoId={evento} />

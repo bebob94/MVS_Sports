@@ -5,12 +5,12 @@ const beboKey = process.env.REACT_APP_BEBO_SECRET_KEY;
 export const ALL_RECENSIONI = "ALL_RECENSIONI";
 export const RECENSIONE_BY_ID = "EVENTO_BY_ID";
 
-export const fetchRecensioni = async () => {
+export const fetchRecensioni = async (token: String) => {
   try {
     let res = await fetch(`http://localhost:8080/api/Recensione/all`, {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${beboKey}`,
+        Authorization: `Bearer ${token}`,
       },
     });
     if (res.ok) {
@@ -25,12 +25,15 @@ export const fetchRecensioni = async () => {
 };
 
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< RICERCA RECENSIONE PER ID >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-export const RecensioneById = async (value: Number | undefined) => {
+export const RecensioneById = async (
+  value: Number | undefined,
+  token: String
+) => {
   try {
     let res = await fetch(`http://localhost:8080/api/Recensione/${value}`, {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${beboKey}`,
+        Authorization: `Bearer ${token}`,
       },
     });
     if (res.ok) {
@@ -46,7 +49,8 @@ export const RecensioneById = async (value: Number | undefined) => {
 export const CreaRecensione = async (
   params: NewRecensione,
   idUser: number,
-  idAttivita: number
+  idAttivita: number,
+  token: String
 ) => {
   try {
     const res = await fetch(
@@ -55,7 +59,7 @@ export const CreaRecensione = async (
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${beboKey}`,
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(params),
       }

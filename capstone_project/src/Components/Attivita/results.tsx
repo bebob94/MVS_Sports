@@ -15,12 +15,13 @@ function Results() {
   const allAttivita = useSelector(
     (state: RootState) => state?.attivitaSportiva?.AllAttivitaSportive
   );
+  const token = useSelector((state: RootState) => state?.user.user.accessToken);
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 4;
 
   const handlePrenotaClick = async (id: Number) => {
-    let data = await searchById(id);
+    let data = await searchById(id, token);
     dispatch({
       type: ATTIVITA_SPORTIVA_FETCH_BY_ID,
       payload: data,
@@ -62,7 +63,7 @@ function Results() {
                   >
                     <Card className="mt-3 rounded-4 transparent-card">
                       <Row>
-                        <Col xs={3}>
+                        <Col xs={6} md={3}>
                           <Card.Img
                             variant="left"
                             src={logoMVS}
@@ -70,7 +71,7 @@ function Results() {
                             className="rounded-4"
                           />
                         </Col>
-                        <Col xs={9}>
+                        <Col xs={6} md={9}>
                           <Card.Body>
                             <Card.Title className="mt-3 mb-4">
                               <strong>{attivita?.nomeAttivita}</strong>

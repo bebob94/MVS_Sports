@@ -5,12 +5,12 @@ const beboKey = process.env.REACT_APP_BEBO_SECRET_KEY;
 export const ALL_EVENTI = "ALL_EVENTI";
 export const EVENTO_BY_ID = "EVENTO_BY_ID";
 
-export const fetchEventi = async () => {
+export const fetchEventi = async (token: String) => {
   try {
     let res = await fetch(`http://localhost:8080/api/Evento/all`, {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${beboKey}`,
+        Authorization: `Bearer ${token}`,
       },
     });
     if (res.ok) {
@@ -23,12 +23,12 @@ export const fetchEventi = async () => {
 };
 
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< RICERCA EVENTO PER ID >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-export const eventoById = async (value: Number | undefined) => {
+export const eventoById = async (value: Number | undefined, token: String) => {
   try {
     let res = await fetch(`http://localhost:8080/api/Evento/${value}`, {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${beboKey}`,
+        Authorization: `Bearer ${token}`,
       },
     });
     if (res.ok) {
@@ -45,7 +45,8 @@ export const eventoById = async (value: Number | undefined) => {
 export const CreaEvento = async (
   params: NewEvento,
   idUser: number,
-  idAttivita: number
+  idAttivita: number,
+  token: String
 ) => {
   try {
     const res = await fetch(
@@ -54,7 +55,7 @@ export const CreaEvento = async (
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${beboKey}`,
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(params),
       }
@@ -67,26 +68,29 @@ export const CreaEvento = async (
 };
 
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< MODIFICA EVENTO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-export const changeMyInfoEvento = async (params: EventoChange) => {
+export const changeMyInfoEvento = async (
+  params: EventoChange,
+  token: String
+) => {
   const requestOptions = await fetch(`http://localhost:8080/api/Evento`, {
     method: "PUT",
     headers: {
       "Content-type": "application/json",
-      Authorization: `Bearer ${beboKey}`,
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(params),
   });
 };
 
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< ELIMINA EVENTO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-export const deleteEvento = async (params: number) => {
+export const deleteEvento = async (params: number, token: String) => {
   const requestOptions = await fetch(
     `http://localhost:8080/api/Evento/${params}`,
     {
       method: "DELETE",
       headers: {
         "Content-type": "application/json",
-        Authorization: `Bearer ${beboKey}`,
+        Authorization: `Bearer ${token}`,
       },
     }
   );

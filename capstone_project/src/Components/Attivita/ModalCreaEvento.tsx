@@ -28,7 +28,7 @@ const ModalCreaEvento = ({
   const attivita = useSelector(
     (state: RootState) => state?.attivitaSportiva.AttivitaSportiva
   );
-
+  const token = useSelector((state: RootState) => state?.user.user.accessToken);
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
   const [numeroPartecipanti, setNumeroPartecipanti] = useState<number>(0);
 
@@ -60,11 +60,11 @@ const ModalCreaEvento = ({
       orarioInizio: orarioInizio,
     };
 
-    let newEvent = await CreaEvento(payload, UserId, AttivitaId);
+    let newEvent = await CreaEvento(payload, UserId, AttivitaId, token);
 
-    let data = await fetchEventi();
-    let data2 = await fetchNotifiche();
-    let data3 = await fetchUsers();
+    let data = await fetchEventi(token);
+    let data2 = await fetchNotifiche(token);
+    let data3 = await fetchUsers(token);
 
     dispatch({
       type: ALL_EVENTI,

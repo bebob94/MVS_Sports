@@ -1,9 +1,7 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { useState, useEffect, ChangeEvent } from "react";
+import React, { useState } from "react";
 import { Button, Row, Form, Modal } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { NewRecensione } from "../../Redux/Interfaces";
-import { ALL_USERS, fetchUsers } from "../../Redux/ActionType/user";
 import {
   ALL_RECENSIONI,
   CreaRecensione,
@@ -13,6 +11,8 @@ import {
   ATTIVITA_SPORTIVA_FETCH_BY_ID,
   searchById,
 } from "../../Redux/ActionType/AttivitaSportive";
+import StarRatings from "react-star-ratings";
+import { RootState } from "../../Redux/Store";
 
 const ModalCreateRecensione = ({
   UserId,
@@ -22,38 +22,43 @@ const ModalCreateRecensione = ({
   AttivitaId: number;
 }) => {
   const dispatch = useDispatch();
-
+  const token = useSelector((state: RootState) => state?.user.user.accessToken);
   const [valutazione, setValutazione] = useState<number>(0);
   const [testoRecensione, setTestoRecensione] = useState<String>("");
 
-  const handlevalutazioneChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setValutazione(Number(e.target.value));
+  const handlevalutazioneChange = (rate: number) => {
+    setValutazione(rate);
   };
+
   const [show, setShow] = useState(false);
 
   const handleShow = () => {
     setShow(true);
   };
+
   const handleClose = () => {
     setShow(false);
   };
-  const handleTestoRecensioneChange = (e: ChangeEvent<HTMLInputElement>) => {
+
+  const handleTestoRecensioneChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
     setTestoRecensione(e.target.value);
   };
-
-  useEffect(() => {
-    setValutazione(valutazione);
-    setTestoRecensione(testoRecensione);
-  }, [show]);
 
   const handleSubmit = async () => {
     const payload: NewRecensione = {
       valutazione: valutazione,
       testoRecensione: testoRecensione,
     };
-    let newRecensione = await CreaRecensione(payload, UserId, AttivitaId);
-    let data = await fetchRecensioni();
-    let data2 = await searchById(AttivitaId);
+    let newRecensione = await CreaRecensione(
+      payload,
+      UserId,
+      AttivitaId,
+      token
+    );
+    let data = await fetchRecensioni(token);
+    let data2 = await searchById(AttivitaId, token);
     console.log(data2);
     dispatch({
       type: ALL_RECENSIONI,
@@ -86,14 +91,14 @@ const ModalCreateRecensione = ({
           <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label className="mt-3">Valutazione*</Form.Label>
-              <Form.Control
-                required
-                type="number"
-                placeholder=""
-                autoFocus
-                name="Number"
-                value={valutazione}
-                onChange={handlevalutazioneChange}
+              <br />
+              <StarRatings
+                rating={valutazione}
+                starRatedColor="blue"
+                changeRating={handlevalutazioneChange}
+                numberOfStars={10}
+                starDimension="30px"
+                starSpacing="1px"
               />
             </Form.Group>
 

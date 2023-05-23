@@ -17,7 +17,7 @@ const Dashboard = () => {
 
   const userLogged = useSelector((state: RootState) => state?.user.user);
   const user = useSelector((state: RootState) => state?.User.user);
-
+  const token = useSelector((state: RootState) => state?.user.user.accessToken);
   const [showModalPOST, setShowModalPOST] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const eventsPerPage = 3;
@@ -31,7 +31,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     (async () => {
-      let data = await userByUsername(userLogged.username);
+      let data = await userByUsername(userLogged.username, token);
 
       dispatch({
         type: USER_BY_USERNAME,
@@ -43,8 +43,8 @@ const Dashboard = () => {
   const handleDelete = async (id: number) => {
     const confirmDelete = window.confirm("Sicuro di voler eliminare l'evento?");
     if (confirmDelete) {
-      let x = await deleteEvento(id);
-      let data = await userByUsername(userLogged.username);
+      let x = await deleteEvento(id, token);
+      let data = await userByUsername(userLogged.username, token);
 
       dispatch({
         type: USER_BY_USERNAME,

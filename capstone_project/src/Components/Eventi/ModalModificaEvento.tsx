@@ -14,6 +14,7 @@ const ModalModifyEvento = ({ eventoId }: { eventoId: Evento }) => {
   const selectedEvento = useSelector(
     (state: RootState) => state?.evento.Evento
   );
+  const token = useSelector((state: RootState) => state?.user.user.accessToken);
   const [show, setShow] = useState(false);
   const [numeroPartecipanti, setNumeroPartecipanti] = useState(0);
 
@@ -47,9 +48,9 @@ const ModalModifyEvento = ({ eventoId }: { eventoId: Evento }) => {
       numeroPartecipanti: updatedNumeroPartecipanti,
     };
 
-    let x = await changeMyInfoEvento(updatedObj);
+    let x = await changeMyInfoEvento(updatedObj, token);
 
-    let data = await eventoById(selectedEvento.id);
+    let data = await eventoById(selectedEvento.id, token);
     console.log(data);
 
     dispatch({

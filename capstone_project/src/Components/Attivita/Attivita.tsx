@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { Row, Col, Container } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Row, Col, Container, Pagination } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../Redux/Store";
 import {
@@ -12,7 +12,9 @@ import ModalCreateRecensione from "./ModalCreateRecensione";
 
 function Attivita() {
   const dispatch = useDispatch();
-
+  const [currentPage, setCurrentPage] = useState(1);
+  const reviewsPerPage = 2; // Numero di recensioni per pagina
+  const token = useSelector((state: RootState) => state?.user.user.accessToken);
   const Attivita = useSelector(
     (state: RootState) => state.attivitaSportiva?.AttivitaSportiva
   );
@@ -20,7 +22,7 @@ function Attivita() {
 
   useEffect(() => {
     (async () => {
-      let data = await fetchAttivita();
+      let data = await fetchAttivita(token);
       console.log(User?.id);
 
       dispatch({
@@ -34,6 +36,21 @@ function Attivita() {
     return time.substring(0, 5); // Estrae i primi 5 caratteri della stringa
   };
 
+  const handlePageChange = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+  };
+
+  // Calcola l'indice di inizio e fine delle recensioni da visualizzare
+  const indexOfLastReview = currentPage * reviewsPerPage;
+  const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
+  const currentReviews = Attivita?.recensioni?.slice(
+    indexOfFirstReview,
+    indexOfLastReview
+  );
+
+  const totalReviews = Attivita?.recensioni?.length;
+  const totalPages = Math.ceil(totalReviews / reviewsPerPage);
+
   return (
     <div className="MyContainer py-5">
       <Container className="MyAttivita mt-5">
@@ -41,8 +58,8 @@ function Attivita() {
           className="py-5 px-5 rounded-4"
           style={{ backgroundColor: "rgba(92, 88, 88, 0.822)" }}
         >
-          <Col xs={6} md={6}>
-            <Col xs={8} md={8}>
+          <Col xs={12} md={6}>
+            <Col xs={12} md={8}>
               <h1 className="mb-4">{Attivita?.nomeAttivita}</h1>
               <h4 className="mt-5">Descrizione attività:</h4>
               <p>{Attivita?.descrizioneAttivita}</p>
@@ -65,33 +82,70 @@ function Attivita() {
               </Col>
             </Col>
           </Col>
-          <Col xs={6} md={6}>
-            <h2 className="mt-5">Recensioni attività</h2>
-            {Attivita?.recensioni?.map((singRecensione, i) => (
-              <div className="my-5" key={i}>
-                <h6>
-                  <p className="mb-3">
-                    <strong>Utente:</strong>
-                    <br /> {singRecensione?.user?.name}{" "}
-                    {singRecensione?.user?.surname}{" "}
-                  </p>
-                  <p className="mb-3">
-                    <strong>Valutazione:</strong>
-                    {"      "}
-                    {singRecensione?.valutazione?.toString()}
-                  </p>
-                </h6>
-                <p className="mb-5">
-                  <strong>Testo recensione:</strong>
-                  <br />
+          <Col xs={12} md={6}>
+            <h2 className="my-5">Recensioni attività</h2>
+            {currentReviews?.map((singRecensione, i) => (
+              <div
+                key={i}
+                style={{
+                  borderBottom: "2px solid white",
+                }}
+              >
+                <h5 className="mt-3">
+                  <strong>Utente:</strong>
+                </h5>
+                <p>
+                  {" "}
+                  {singRecensione?.user?.name} {singRecensione?.user?.surname}{" "}
+                </p>
+                <h5 className="mb-3">
+                  <strong>Valutazione:</strong>
+                  {"      "}
+                  {singRecensione?.valutazione?.toString()}
+                </h5>
+
+                <h5>
+                  <strong>Testo recensione:</strong>{" "}
+                </h5>
+                <p>
                   <strong>{singRecensione?.testoRecensione}</strong>
                 </p>
               </div>
             ))}
-            <Col xs={6} md={6} style={{ marginTop: "10em" }}>
+
+            {totalPages > 1 && (
+              <Pagination className="mt-3">
+                <Pagination.First
+                  onClick={() => handlePageChange(1)}
+                  disabled={currentPage === 1}
+                />
+                <Pagination.Prev
+                  onClick={() => handlePageChange(currentPage - 1)}
+                  disabled={currentPage === 1}
+                />
+                {Array.from({ length: totalPages }, (_, index) => (
+                  <Pagination.Item
+                    key={index + 1}
+                    active={currentPage === index + 1}
+                    onClick={() => handlePageChange(index + 1)}
+                  >
+                    {index + 1}
+                  </Pagination.Item>
+                ))}
+                <Pagination.Next
+                  onClick={() => handlePageChange(currentPage + 1)}
+                  disabled={currentPage === totalPages}
+                />
+                <Pagination.Last
+                  onClick={() => handlePageChange(totalPages)}
+                  disabled={currentPage === totalPages}
+                />
+              </Pagination>
+            )}
+            <Col xs={6} md={6} className="mt-5">
               <h4>Crea una recensione</h4>
 
-              <Col xs={1} className="mt-3">
+              <Col xs={1}>
                 <ModalCreateRecensione
                   UserId={User?.id}
                   AttivitaId={Attivita?.id}
