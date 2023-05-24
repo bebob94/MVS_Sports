@@ -6,7 +6,7 @@ const Error3 = () => {
     <Row>
       <Col xs={7}>
         <Alert variant="danger" className="mt-3">
-          Error 404: Nessun Evento disponibile, Vuoi crearne uno?{" "}
+          Nessun Evento disponibile, Vuoi crearne uno?{" "}
           <Link to={"/Prenotazioni"} style={{ color: "blue" }}>
             {" "}
             Prenotazioni

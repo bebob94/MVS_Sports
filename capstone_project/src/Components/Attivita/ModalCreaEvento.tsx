@@ -17,6 +17,10 @@ import {
 import { ALL_USERS, fetchUsers } from "../../Redux/ActionType/user";
 import { RootState } from "../../Redux/Store";
 import { it } from "date-fns/locale";
+import {
+  ATTIVITA_SPORTIVA_FETCH_BY_ID,
+  searchById,
+} from "../../Redux/ActionType/AttivitaSportive";
 
 const ModalCreaEvento = ({
   UserId,
@@ -34,21 +38,25 @@ const ModalCreaEvento = ({
   const [numeroPartecipanti, setNumeroPartecipanti] = useState<number>(0);
   const [show, setShow] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
+  const [isDateValid, setIsDateValid] = useState(true); // Aggiunto stato per indicare se la data è valida o meno
 
   const handleShow = () => setShow(true);
 
   const handleClose = () => setShow(false);
 
   const handleDateChange = (date: Date) => {
+    let isValid = true;
+
     attivita?.eventi?.forEach((evento) => {
-      if (isSameSecond(new Date(evento.orarioInizio), date)) {
-        setShowAlert(true);
-      } else {
-        setShowAlert(false);
+      const eventoDataInizio = new Date(evento.orarioInizio);
+      const eventoDataFine = new Date(evento.orarioFine);
+
+      if (date >= eventoDataInizio && date < eventoDataFine) {
+        isValid = false;
       }
     });
-    console.log(showAlert);
 
+    setIsDateValid(isValid);
     setSelectedDate(date);
   };
 
@@ -67,7 +75,7 @@ const ModalCreaEvento = ({
     let data = await fetchEventi(token);
     let data2 = await fetchNotifiche(token);
     let data3 = await fetchUsers(token);
-
+    let data4 = await searchById(AttivitaId, token);
     dispatch({
       type: ALL_EVENTI,
       payload: data,
@@ -82,6 +90,10 @@ const ModalCreaEvento = ({
     dispatch({
       type: ALL_USERS,
       payload: data3,
+    });
+    dispatch({
+      type: ATTIVITA_SPORTIVA_FETCH_BY_ID,
+      payload: data4,
     });
 
     setNumeroPartecipanti(0);
@@ -142,10 +154,10 @@ const ModalCreaEvento = ({
               </div>
             </Row>
           </Form>
-          {showAlert && (
-            <div className="alert alert-danger mt-3" role="alert">
-              Prenotazione già esistente in questa data.
-            </div>
+          {!isDateValid && (
+            <p style={{ color: "red" }}>
+              Prenotazione già presente in questa data.
+            </p>
           )}
         </Modal.Body>
         <Modal.Footer>
@@ -156,7 +168,8 @@ const ModalCreaEvento = ({
             disabled={
               selectedDate < currentDate ||
               numeroPartecipanti > attivita.numeroMassimoPartecipanti ||
-              showAlert
+              showAlert ||
+              !isDateValid
             }
           >
             Save
