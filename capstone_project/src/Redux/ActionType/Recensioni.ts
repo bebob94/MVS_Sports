@@ -73,3 +73,16 @@ export const CreaRecensione = async (
     console.log(error);
   }
 };
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< ELIMINA RECENSIONE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+export const deleteRecensione = async (params: number, token: String) => {
+  const requestOptions = await fetch(
+    `http://localhost:8080/api/Recensione/${params}`,
+    {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+};

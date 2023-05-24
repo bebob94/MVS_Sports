@@ -49,7 +49,7 @@ public class AttivitaSportiva {
 	private Long numeroMassimoPartecipanti;
 	private Duration durataEvento;
 	
-	 @JsonIgnore
+	 
 	@OneToMany(mappedBy = "attivitaSportiva", fetch = FetchType.EAGER)
 	private List<Evento> eventi;
 

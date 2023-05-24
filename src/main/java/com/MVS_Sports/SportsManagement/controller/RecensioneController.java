@@ -46,7 +46,7 @@ public class RecensioneController {
 		
 		//<<<<<<<<<<<<<<<<<<<<<<<<< INIZIO METODI DELETE>>>>>>>>>>>>>>>>>>>>>>>>>
 		@DeleteMapping("/{id}")
-		@PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
+		@PreAuthorize("hasRole('ADMIN') or hasRole('COMPANY_OWNER') or hasRole('USER')")
 		public ResponseEntity<String> eliminaRecensione( @PathVariable Long id){
 			return new ResponseEntity<String>(recensioneService.removeRecensioneById(id), HttpStatus.OK);
 		}
@@ -65,7 +65,7 @@ public class RecensioneController {
 		//<<<<<<<<<<<<<<<<<<<<<<<<< INIZIO METODI POST>>>>>>>>>>>>>>>>>>>>>>>>>
 		@PostMapping(value="/add/{id1}/{id2}")
 		@PreAuthorize("hasRole('ADMIN') or hasRole('USER')  or hasRole('COMPANY_OWNER')")
-		public ResponseEntity<String> postAttivitaSportiva(@RequestBody RecensioneDto recensione,@PathVariable Long id1,@PathVariable Long id2){
+		public ResponseEntity<String> posRecensione(@RequestBody RecensioneDto recensione,@PathVariable Long id1,@PathVariable Long id2){
 			return new ResponseEntity<String>(recensioneService.creaRecensione(recensione, id1, id2),HttpStatus.CREATED);
 		}
 		//<<<<<<<<<<<<<<<<<<<<<<<<< FINE METODI POST>>>>>>>>>>>>>>>>>>>>>>>>>

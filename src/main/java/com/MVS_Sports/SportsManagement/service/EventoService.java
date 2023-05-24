@@ -43,7 +43,7 @@ public class EventoService {
 		e.setUserCreatore(userRepository.findById(id1).get());;
 		AttivitaSportiva attivitaSportiva = attivitaSportivaRepository.findById(id2).get();
 		e.setAttivitaSportiva(attivitaSportiva);
-		LocalDateTime orarioInizio = evento.getOrarioInizio();
+		LocalDateTime orarioInizio = evento.getOrarioInizio().plusHours(2);;
 		e.setOrarioInizio(orarioInizio);
 		e.setOrarioFine(orarioInizio.plus(e.getAttivitaSportiva().getDurataEvento()));
 		e.setNumeroPartecipanti(evento.getNumeroPartecipanti());

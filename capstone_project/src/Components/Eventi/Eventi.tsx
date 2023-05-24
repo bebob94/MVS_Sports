@@ -81,6 +81,11 @@ function Eventi() {
                     {evento?.attivitaSportiva.tipoDiSport}
                   </Col>
                   <Col className="my-5">
+                    <strong>Attività: </strong>
+                    <br />
+                    {evento?.attivitaSportiva.nomeAttivita.toString()}{" "}
+                  </Col>
+                  <Col className="my-5">
                     <strong>Utente: </strong>
                     <br />
                     {evento?.userCreatore.name.toString()}{" "}

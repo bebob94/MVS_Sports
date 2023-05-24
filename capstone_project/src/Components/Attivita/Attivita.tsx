@@ -1,20 +1,24 @@
 import React, { useEffect, useState } from "react";
-import { Row, Col, Container, Pagination } from "react-bootstrap";
+import { Row, Col, Container, Pagination, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../Redux/Store";
 import {
   ATTIVITA_SPORTIVA_FETCH,
   fetchAttivita,
+  searchById,
 } from "../../Redux/ActionType/AttivitaSportive";
 import ModalCreaEvento from "./ModalCreaEvento";
 import "react-datepicker/dist/react-datepicker.css";
 import ModalCreateRecensione from "./ModalCreateRecensione";
+import { deleteRecensione } from "../../Redux/ActionType/Recensioni";
+import { ATTIVITA_SPORTIVA_FETCH_BY_ID } from "../../Redux/ActionType/AttivitaSportive";
 
 function Attivita() {
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
   const reviewsPerPage = 2; // Numero di recensioni per pagina
   const token = useSelector((state: RootState) => state?.user.user.accessToken);
+  const userLoged = useSelector((state: RootState) => state?.user.user);
   const Attivita = useSelector(
     (state: RootState) => state.attivitaSportiva?.AttivitaSportiva
   );
@@ -38,6 +42,19 @@ function Attivita() {
 
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
+  };
+
+  const handleDelete = async (id: number) => {
+    const confirmDelete = window.confirm("Sicuro di voler eliminare l'evento?");
+    if (confirmDelete) {
+      let x = await deleteRecensione(id, token);
+      let data = await searchById(Attivita.id, token);
+
+      dispatch({
+        type: ATTIVITA_SPORTIVA_FETCH_BY_ID,
+        payload: data,
+      });
+    }
   };
 
   // Calcola l'indice di inizio e fine delle recensioni da visualizzare
@@ -91,8 +108,26 @@ function Attivita() {
                   borderBottom: "2px solid white",
                 }}
               >
-                <h5 className="mt-3">
+                <h5>
                   <strong>Utente:</strong>
+                  {singRecensione?.user?.username === userLoged?.username ? (
+                    <Button
+                      variant="link"
+                      className="transparent-button"
+                      style={{
+                        fontSize: "30px",
+                        color: "black",
+                        textDecoration: "none",
+                        marginLeft: "10em",
+                        marginBottom: "60px",
+                      }}
+                      onClick={() => handleDelete(singRecensione?.id)}
+                    >
+                      x
+                    </Button>
+                  ) : (
+                    <></>
+                  )}
                 </h5>
                 <p>
                   {" "}
