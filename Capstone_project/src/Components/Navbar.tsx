@@ -69,17 +69,25 @@ function MyNavbar() {
                   id="basic-nav-dropdown"
                   className="me-3"
                 >
-                  <NavDropdown.Item href="/Dashboard" className="text-dark">
-                    Dashboard
+                  <NavDropdown.Item>
+                    <Link className="MyLink text-dark" to={"/Dashboard"}>
+                      Dashboard
+                    </Link>
                   </NavDropdown.Item>
-                  <NavDropdown.Item href="/Eventi" className="text-dark">
-                    Eventi
+                  <NavDropdown.Item>
+                    <Link className="MyLink text-dark" to={"/Eventi"}>
+                      Eventi
+                    </Link>
                   </NavDropdown.Item>
-                  <NavDropdown.Item href="/ComeFunziona" className="text-dark">
-                    Come funziona
+                  <NavDropdown.Item>
+                    <Link className="MyLink text-dark" to={"/ComeFunziona"}>
+                      Come funziona
+                    </Link>
                   </NavDropdown.Item>
-                  <NavDropdown.Item href="/AboutUs" className="text-dark">
-                    AboutUs
+                  <NavDropdown.Item>
+                    <Link className="MyLink text-dark" to={"/AboutUs"}>
+                      AboutUs
+                    </Link>
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item

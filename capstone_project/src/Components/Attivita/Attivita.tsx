@@ -108,31 +108,39 @@ function Attivita() {
                   borderBottom: "2px solid white",
                 }}
               >
-                <h5>
-                  <strong>Utente:</strong>
-                  {singRecensione?.user?.username === userLoged?.username ? (
-                    <Button
-                      variant="link"
-                      className="transparent-button"
-                      style={{
-                        fontSize: "30px",
-                        color: "black",
-                        textDecoration: "none",
-                        marginLeft: "10em",
-                        marginBottom: "60px",
-                      }}
-                      onClick={() => handleDelete(singRecensione?.id)}
-                    >
-                      x
-                    </Button>
-                  ) : (
-                    <></>
-                  )}
-                </h5>
-                <p>
-                  {" "}
-                  {singRecensione?.user?.name} {singRecensione?.user?.surname}{" "}
-                </p>
+                <Row>
+                  <Col xs={10} className="mt-5">
+                    <h5>
+                      <strong>Utente:</strong>
+                    </h5>
+                    <p>
+                      {" "}
+                      {singRecensione?.user?.name}{" "}
+                      {singRecensione?.user?.surname}{" "}
+                    </p>
+                  </Col>
+                  <Col xs={2} className="mt-2">
+                    {" "}
+                    {singRecensione?.user?.username === userLoged?.username ? (
+                      <Button
+                        variant="link"
+                        className="transparent-button "
+                        style={{
+                          fontSize: "30px",
+                          color: "white",
+                          textDecoration: "none",
+                          marginTop: "0",
+                          paddingTop: "0",
+                        }}
+                        onClick={() => handleDelete(singRecensione?.id)}
+                      >
+                        x
+                      </Button>
+                    ) : (
+                      <></>
+                    )}
+                  </Col>
+                </Row>
                 <h5 className="mb-3">
                   <strong>Valutazione:</strong>
                   {"      "}
