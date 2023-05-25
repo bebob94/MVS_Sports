@@ -45,7 +45,9 @@ function Attivita() {
   };
 
   const handleDelete = async (id: number) => {
-    const confirmDelete = window.confirm("Sicuro di voler eliminare l'evento?");
+    const confirmDelete = window.confirm(
+      "Sicuro di voler eliminare la recensione?"
+    );
     if (confirmDelete) {
       let x = await deleteRecensione(id, token);
       let data = await searchById(Attivita.id, token);

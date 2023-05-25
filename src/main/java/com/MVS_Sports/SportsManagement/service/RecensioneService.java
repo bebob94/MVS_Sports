@@ -31,7 +31,7 @@ public class RecensioneService {
 //	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< CREA RECENSIONE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	public String creaRecensione(RecensioneDto recensione, Long id1, Long id2) {
 		Recensione r = new Recensione();
-		if(recensione.getValutazione()>0 &  recensione.getValutazione() <10 ) {
+		if(recensione.getValutazione()>0 &  recensione.getValutazione() <=10 ) {
 			r.setValutazione(recensione.getValutazione());
 			r.setTestoRecensione(recensione.getTestoRecensione());
 			r.setOrarioRecensione(LocalDateTime.now());
@@ -41,6 +41,7 @@ public class RecensioneService {
 			return "Recensione added successfully";
 		}else {
 			return "error valutation";
+			
 		}
 	}
 	

@@ -64,48 +64,64 @@ function Eventi() {
     <div className="MyContainer pt-5 ">
       <Container className=" MyAttivita ">
         {Eventi && Eventi.length > 0 ? (
-          <Row>
+          <Row className=" justify-content-around">
             <h2>Eventi disponibili...</h2>
             {Eventi?.map((evento, i) =>
               evento.attivitaSportiva.numeroMassimoPartecipanti >
               evento.numeroPartecipanti ? (
                 <Col
                   xs={12}
-                  md={4}
-                  lg={4}
-                  className={`my-5 me-3  rounded-4 transparent-card`}
+                  md={3}
+                  lg={3}
+                  className={`my-5 mx-1 rounded-4 transparent-card`}
                   key={i}
                 >
                   <Col className="mb-4">
-                    <strong>Sport: </strong> <br />
-                    {evento?.attivitaSportiva.tipoDiSport}
+                    <p className="mt-3">
+                      <strong>Sport: </strong> <br />
+                      {evento?.attivitaSportiva.tipoDiSport}
+                    </p>
                   </Col>
-                  <Col className="my-5">
-                    <strong>Attività: </strong>
-                    <br />
-                    {evento?.attivitaSportiva.nomeAttivita.toString()}{" "}
+                  <Col className="my-4">
+                    <p>
+                      <strong>Attività: </strong>
+                      <br />
+                      {evento?.attivitaSportiva.nomeAttivita.toString()}{" "}
+                    </p>
                   </Col>
-                  <Col className="my-5">
-                    <strong>Utente: </strong>
-                    <br />
-                    {evento?.userCreatore.name.toString()}{" "}
-                    {evento?.userCreatore.surname.toString()}
+                  <Col className="my-4">
+                    <p>
+                      {" "}
+                      <strong>Utente: </strong>
+                      <br />
+                      {evento?.userCreatore.name.toString()}{" "}
+                      {evento?.userCreatore.surname.toString()}
+                    </p>
                   </Col>
-                  <Col className="my-5">
-                    <strong>Orario:</strong>
-                    <br />
-                    Dalle {formatTime(evento?.orarioInizio)} <br />
-                    Alle {formatTime(evento?.orarioFine)}
+                  <Col className="my-4">
+                    <p>
+                      {" "}
+                      <strong>Orario:</strong>
+                      <br />
+                      Dalle {formatTime(evento?.orarioInizio)} <br />
+                      Alle {formatTime(evento?.orarioFine)}
+                    </p>
                   </Col>
-                  <Col className="my-5">
-                    <strong>Numero partecipanti:</strong>
-                    <br />
-                    {evento?.numeroPartecipanti}
+                  <Col className="my-4">
+                    <p>
+                      {" "}
+                      <strong>Numero partecipanti:</strong>
+                      <br />
+                      {evento?.numeroPartecipanti}
+                    </p>
                   </Col>
                   <Col className="mt-5">
-                    <strong>Numero massimo partecipanti:</strong>
-                    <br />
-                    {evento?.attivitaSportiva.numeroMassimoPartecipanti}
+                    <p>
+                      {" "}
+                      <strong>Numero massimo partecipanti:</strong>
+                      <br />
+                      {evento?.attivitaSportiva.numeroMassimoPartecipanti}
+                    </p>
                   </Col>
                   <Col className="mt-3 d-flex justify-content-center">
                     <Link
@@ -113,7 +129,7 @@ function Eventi() {
                       onClick={() => handlePrenotaClick(evento.id)}
                       className="MyLink"
                     >
-                      <Button id="modal-btn" className="mb-3">
+                      <Button id="modal-btn" className="mb-4">
                         Aggiungiti all'evento
                       </Button>
                     </Link>

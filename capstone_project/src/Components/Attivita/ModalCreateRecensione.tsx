@@ -117,11 +117,7 @@ const ModalCreateRecensione = ({
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button
-            className="Profile-Btn1"
-            style={{ margin: "0", fontSize: "1.2em", fontWeight: "bolder" }}
-            onClick={handleSubmit}
-          >
+          <Button className="ModalButton " onClick={handleSubmit}>
             Save
           </Button>
         </Modal.Footer>

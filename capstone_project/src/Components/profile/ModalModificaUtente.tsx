@@ -62,8 +62,8 @@ const ModalModifyUtente = ({ userId }: { userId: user }) => {
 
   return (
     <>
-      <div className="d-flex">
-        <Button id="modal-btn" className="d-flex" onClick={handleShow}>
+      <div>
+        <Button className="ModalButton" onClick={handleShow}>
           Modifica Utente
         </Button>
       </div>
@@ -108,8 +108,7 @@ const ModalModifyUtente = ({ userId }: { userId: user }) => {
         </Modal.Body>
         <Modal.Footer>
           <Button
-            className="Profile-Btn1"
-            style={{ margin: "0", fontSize: "1.2em", fontWeight: "bolder" }}
+            className="ModalButton "
             onClick={() => {
               handleSubmit(userPayload);
               handleClose();

@@ -33,7 +33,7 @@ function Evento() {
     <div className="MyContainer  pt-5">
       <Container className=" MyAttivita mt-3">
         <Row className="justify-content-between transparent-card rounded-4 py-3">
-          <Col sm={12} md={6} lg={4}>
+          <Col sm={12} md={6} lg={4} className="ms-4">
             <Col className="mb-4">
               <strong>Sport: </strong> <br />
               {evento?.attivitaSportiva?.tipoDiSport}

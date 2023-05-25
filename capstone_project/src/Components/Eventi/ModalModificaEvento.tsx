@@ -104,8 +104,7 @@ const ModalModifyEvento = ({ eventoId }: { eventoId: Evento }) => {
               selectedEvento?.numeroPartecipanti + numeroPartecipanti >
                 selectedEvento?.attivitaSportiva.numeroMassimoPartecipanti
             }
-            className="Profile-Btn1"
-            style={{ margin: "0", fontSize: "1.2em", fontWeight: "bolder" }}
+            className="ModalButton "
             onClick={() => {
               handleSubmit(numeroPartecipanti);
               handleClose();

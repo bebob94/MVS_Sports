@@ -90,6 +90,20 @@ strong {
   transform: scale(1.2);
 }
 
+.ModalButton {
+  background-color: transparent;
+  color: black;
+  border: 1px solid black;
+}
+
+.ModalButton:hover {
+  opacity: 0.8;
+  transform: scale(1.2);
+  background-color: transparent;
+  border: 1px solid black;
+  color: black;
+}
+
 .myCarousel {
   height: 30em !important;
   width: 35em !important;

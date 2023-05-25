@@ -129,10 +129,10 @@ const ModalCreateAttivita = ({
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="ModalButton " onClick={handleClose}>
             Chiudi
           </Button>
-          <Button variant="primary" onClick={handleSubmit}>
+          <Button variant="ModalButton " onClick={handleSubmit}>
             Crea
           </Button>
         </Modal.Footer>

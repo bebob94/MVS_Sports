@@ -162,8 +162,7 @@ const ModalCreaEvento = ({
         </Modal.Body>
         <Modal.Footer>
           <Button
-            className="Profile-Btn1"
-            style={{ margin: "0", fontSize: "1.2em", fontWeight: "bolder" }}
+            className="ModalButton "
             onClick={handleSubmit}
             disabled={
               selectedDate < currentDate ||
