@@ -27,23 +27,6 @@ function Home() {
         payload: data,
       });
     })();
-
-    (async () => {
-      let data = await fetchAttivita(token);
-      dispatch({
-        type: ATTIVITA_SPORTIVA_FETCH,
-        payload: data,
-      });
-    })();
-
-    (async () => {
-      let data = await fetchUsers(token);
-
-      dispatch({
-        type: ALL_USERS,
-        payload: data,
-      });
-    })();
   }, []);
 
   return (

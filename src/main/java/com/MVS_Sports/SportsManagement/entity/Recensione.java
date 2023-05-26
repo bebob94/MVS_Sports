@@ -35,7 +35,7 @@ public class Recensione {
 	  	private String testoRecensione;
 	  	private LocalDateTime orarioRecensione;
 	  	
-	  	@JsonIgnoreProperties({"eventi","recensioni", "users", "roles","password","pagamenti","notifiche","attivitaSportive","recensioni","creditCard"})
+	  	@JsonIgnoreProperties({"eventi", "users", "roles","password","pagamenti","notifiche","attivitaSportiva"})
 	  	@ManyToOne
 	 	private User user;
 	 	

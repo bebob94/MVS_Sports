@@ -41,24 +41,6 @@ const ModalCreateAttivita = ({
 
     try {
       const response = await CreaAttivita(AttivitaPayload, UserId, token);
-      const attivitaSportiva = await searchById(response.id, token);
-
-      dispatch({
-        type: ATTIVITA_SPORTIVA_FETCH_BY_ID,
-        payload: attivitaSportiva,
-      });
-
-      const userData = await userById(UserId, token);
-
-      dispatch({
-        type: USER_BY_ID,
-        payload: userData,
-      });
-
-      dispatch({
-        type: ALL_USERS,
-        payload: userData,
-      });
     } catch (error) {
       console.log(error);
     }

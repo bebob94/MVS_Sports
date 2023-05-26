@@ -45,7 +45,7 @@ public class AttivitaSportivaService {
 	public String creaAttivitaSportiva(AttivitaSportivaDto attivitaSportiva, Long id) {
 		User u = userRepositoryDao.findById(id).get();
 		AttivitaSportiva as =new AttivitaSportiva();
-		System.out.println(as);
+		
 			as.setNomeAttivita(attivitaSportiva.getNomeAttivita());
 			as.setDescrizioneAttivita(attivitaSportiva.getDescrizioneAttivita());
 			as.setIndirizzo(attivitaSportiva.getIndirizzo());
@@ -53,7 +53,6 @@ public class AttivitaSportivaService {
 			as.setOrarioChiusura(attivitaSportiva.getOrarioChiusura());
 			as.setTipoDiSport(attivitaSportiva.getTipoDiSport());
 			as.setUser(u);
-			u.setAttivitaSportiva(as);
 			switch (attivitaSportiva.getTipoDiSport()) {
 			case CALCETTO: {
 				as.setNumeroMassimoPartecipanti(10l);
@@ -96,10 +95,9 @@ public class AttivitaSportivaService {
 				as.setNumeroMassimoPartecipanti(null);
 			
 		}
-			as.setEventi((List<Evento>) eventiRepositoryDao.findAll());
-			as.setRecensioni((List<Recensione>) recensioniRepositoryDao.findAll());
+		
 			attivitaSportivaRepositoryDao.save(as);
-			userRepositoryDao.save(u);
+			
 			System.out.println(as);
 			return "attività sportiva added successfully";
 	}

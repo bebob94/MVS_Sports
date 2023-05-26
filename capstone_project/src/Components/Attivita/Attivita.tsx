@@ -27,7 +27,6 @@ function Attivita() {
   useEffect(() => {
     (async () => {
       let data = await fetchAttivita(token);
-      console.log(User?.id);
 
       dispatch({
         type: ATTIVITA_SPORTIVA_FETCH,
@@ -85,9 +84,9 @@ function Attivita() {
               <h4 className="mt-4">Sport:</h4>
               <p>{Attivita?.tipoDiSport}</p>
               <h4 className="mt-4">Orario Apertura:</h4>
-              <p>{formatTime(Attivita?.orarioApertura.toString())}</p>
+              <p>{formatTime(Attivita?.orarioApertura?.toString())}</p>
               <h4 className="mt-4">Orario chiusura</h4>
-              <p>{formatTime(Attivita?.orarioChiusura.toString())}</p>
+              <p>{formatTime(Attivita?.orarioChiusura?.toString())}</p>
               <h4 className="mt-4">
                 Numero massimo partecipanti:{" "}
                 {Attivita?.numeroMassimoPartecipanti}

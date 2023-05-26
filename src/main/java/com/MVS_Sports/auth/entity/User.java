@@ -41,21 +41,16 @@ public class User {
     private String email;
     @Column(nullable = false)
     private String password;
-    
-   
+     
     
     @OneToMany(mappedBy = "userCreatore", fetch = FetchType.EAGER)
 	private List<Evento> eventi;
-    
-   
-    
-    
+ 
     @JsonIgnoreProperties({"user", "eventi", "recensioni"})
     @OneToOne
     private AttivitaSportiva attivitaSportiva;
     
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
-	private List<Recensione> recensioni;
+    
     
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinTable(name = "users_roles",

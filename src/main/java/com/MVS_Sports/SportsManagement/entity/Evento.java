@@ -41,20 +41,16 @@ public class Evento {
     private LocalDateTime orarioFine;
     private Long numeroPartecipanti;
     
-    @JsonIgnoreProperties({"eventi","users", "roles","password","pagamenti","notifiche","attivitaSportive","attivitaSportiva","recensioni","creditCard"})
+    @JsonIgnoreProperties({"eventi","users", "roles","password","pagamenti","notifiche","attivitaSportiva"})
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     private User userCreatore;
     
     
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
-    @JsonIgnore
-    private List<User> users;
-    
-    @JsonIgnoreProperties({"eventi", "user","users", "recensioni"})
+    @JsonIgnoreProperties({"eventi", "user"})
     @ManyToOne
     private AttivitaSportiva attivitaSportiva;
     
-    @JsonIgnoreProperties({"evento", "users"})
+    @JsonIgnoreProperties({"evento"})
  	@OneToOne(cascade = CascadeType.ALL)
  	private Notifica notifica;
     

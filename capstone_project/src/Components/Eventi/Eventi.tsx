@@ -18,6 +18,7 @@ function Eventi() {
   const Eventi = useSelector((state: RootState) => state?.evento.AllEventi);
   const dispatch = useDispatch();
   const token = useSelector((state: RootState) => state?.user.user.accessToken);
+
   useEffect(() => {
     const checkAndDeleteEvento = async (evento: Evento) => {
       const today = new Date();

@@ -1,14 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { Evento, EventoChange } from "../../Redux/Interfaces";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/Store";
-import {
-  ALL_EVENTI,
-  EVENTO_BY_ID,
-  changeMyInfoEvento,
-  eventoById,
-} from "../../Redux/ActionType/Evento";
+import { changeMyInfoEvento } from "../../Redux/ActionType/Evento";
 
 const ModalModifyEvento = ({ eventoId }: { eventoId: Evento }) => {
   const selectedEvento = useSelector(
@@ -20,8 +15,6 @@ const ModalModifyEvento = ({ eventoId }: { eventoId: Evento }) => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
-  const dispatch = useDispatch();
 
   const [EventoPayload, setEventoPayload] = useState<EventoChange>({
     numeroPartecipanti: 0,
@@ -50,17 +43,6 @@ const ModalModifyEvento = ({ eventoId }: { eventoId: Evento }) => {
 
     let x = await changeMyInfoEvento(updatedObj, token);
 
-    let data = await eventoById(selectedEvento.id, token);
-    console.log(data);
-
-    dispatch({
-      type: EVENTO_BY_ID,
-      payload: data,
-    });
-    dispatch({
-      type: ALL_EVENTI,
-      payload: data,
-    });
     alert("Grazie per aver partecipato a questo evento");
   };
 

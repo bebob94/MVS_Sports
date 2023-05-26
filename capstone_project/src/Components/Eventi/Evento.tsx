@@ -1,33 +1,22 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/Store";
 import { Link } from "react-router-dom";
 import { format } from "date-fns";
-import {
-  ATTIVITA_SPORTIVA_FETCH_BY_ID,
-  searchById,
-} from "../../Redux/ActionType/AttivitaSportive";
+
 import ModalModifyEvento from "./ModalModificaEvento";
 import { it } from "date-fns/locale";
 
 function Evento() {
   const evento = useSelector((state: RootState) => state?.evento.Evento);
-  const dispatch = useDispatch();
-  const token = useSelector((state: RootState) => state?.user.user.accessToken);
   const formatTime = (time: string | number | Date) => {
     const startTime = format(new Date(time), "HH:mm EEEE dd/MM/yyyy", {
       locale: it,
     });
     return ` ${startTime} `;
   };
-  const handlePrenotaClick = async (id: Number) => {
-    let data = await searchById(id, token);
-    dispatch({
-      type: ATTIVITA_SPORTIVA_FETCH_BY_ID,
-      payload: data,
-    });
-  };
+  const handlePrenotaClick = async (id: Number) => {};
 
   return (
     <div className="MyContainer  pt-5">
@@ -50,15 +39,15 @@ function Evento() {
             </Col>
             <Col className="mb-4">
               <strong>Indirizzo: </strong> <br />
-              {evento?.attivitaSportiva.indirizzo}
+              {evento?.attivitaSportiva?.indirizzo}
             </Col>
             <Col className="mb-4">
               <strong>Massimo partecipanti: </strong>
-              {evento?.attivitaSportiva.numeroMassimoPartecipanti}
+              {evento?.attivitaSportiva?.numeroMassimoPartecipanti}
             </Col>
             <Link
-              to={`/Attivita/${evento?.attivitaSportiva.id}`}
-              onClick={() => handlePrenotaClick(evento?.attivitaSportiva.id)}
+              to={`/Attivita/${evento?.attivitaSportiva?.id}`}
+              onClick={() => handlePrenotaClick(evento?.attivitaSportiva?.id)}
               className="MyLink"
             >
               <Button id="modal-btn" className="d-flex">
@@ -71,12 +60,12 @@ function Evento() {
             <Col className="my-4">
               <strong>Utente: </strong>
               <br />
-              {evento?.userCreatore.name.toString()}{" "}
-              {evento?.userCreatore.surname.toString()}
+              {evento?.userCreatore?.name?.toString()}{" "}
+              {evento?.userCreatore?.surname?.toString()}
             </Col>
             <Col className="mb-5">
               <strong>Email utente: </strong>
-              {evento?.userCreatore.email}
+              {evento?.userCreatore?.email}
             </Col>
             <Col className="mb-5">
               {" "}

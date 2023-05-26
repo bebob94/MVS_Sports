@@ -44,7 +44,7 @@ public class Notifica {
 	 	private TipoNotifica tipoNotifica;
 	 	private LocalDateTime orarioNotifica;
 	 
-	 	@JsonIgnoreProperties({"users", "recensioni", "attivitaSportiva", "notifica"})
+	 	@JsonIgnoreProperties({ "recensioni", "attivitaSportiva", "notifica"})
 	 	@OneToOne(cascade = CascadeType.ALL)
 	 	private Evento evento;
 	 	

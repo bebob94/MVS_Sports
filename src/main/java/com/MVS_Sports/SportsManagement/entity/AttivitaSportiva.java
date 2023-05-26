@@ -53,11 +53,11 @@ public class AttivitaSportiva {
 	@OneToMany(mappedBy = "attivitaSportiva", fetch = FetchType.EAGER)
 	private List<Evento> eventi;
 
-	 @JsonIgnoreProperties({"attivitaSportive"})
+	
 	@OneToMany(mappedBy = "attivitaSportiva", fetch = FetchType.EAGER)
 	private List<Recensione> recensioni;
 	
-	@JsonIgnoreProperties({"roles","eventi","password","pagamenti","notifiche","attivitaSportive","recensioni","creditCard"})
+	@JsonIgnoreProperties({"roles","eventi","password","pagamenti","notifiche","attivitaSportiva"})
 	 @OneToOne
 	 private User user;
 

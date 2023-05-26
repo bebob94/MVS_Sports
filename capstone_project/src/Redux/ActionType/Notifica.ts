@@ -1,4 +1,3 @@
-const beboKey = process.env.REACT_APP_BEBO_SECRET_KEY;
 export const ALL_NOTIFICHE = "ALL_NOTIFICHE";
 export const NOTIFICA_BY_ID = "NOTIFICA_BY_ID";
 export const CREA_NOTIFICA = "CREA_NOTIFICA";
@@ -14,7 +13,6 @@ export const fetchNotifiche = async (token: String) => {
     });
     if (res.ok) {
       let data = await res.json();
-      console.log(data);
 
       return data;
     }

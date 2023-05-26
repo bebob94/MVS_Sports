@@ -60,8 +60,6 @@ export const CreaEvento = async (
         body: JSON.stringify(params),
       }
     );
-    let data = await res.json();
-    return data;
   } catch (error) {
     console.log(error);
   }

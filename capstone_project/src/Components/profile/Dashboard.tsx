@@ -11,12 +11,19 @@ import Pagination from "react-bootstrap/Pagination";
 import { format } from "date-fns";
 import { it } from "date-fns/locale";
 import { deleteEvento } from "../../Redux/ActionType/Evento";
+import {
+  ATTIVITA_SPORTIVA_FETCH_BY_ID,
+  searchById,
+} from "../../Redux/ActionType/AttivitaSportive";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
 
   const userLogged = useSelector((state: RootState) => state?.user.user);
   const user = useSelector((state: RootState) => state?.User.user);
+  const Attivita = useSelector(
+    (state: RootState) => state?.attivitaSportiva?.AttivitaSportiva
+  );
   const token = useSelector((state: RootState) => state?.user.user.accessToken);
   const [showModalPOST, setShowModalPOST] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
@@ -35,6 +42,14 @@ const Dashboard = () => {
 
       dispatch({
         type: USER_BY_USERNAME,
+        payload: data,
+      });
+    })();
+    (async () => {
+      let data = await searchById(user.id, token);
+
+      dispatch({
+        type: ATTIVITA_SPORTIVA_FETCH_BY_ID,
         payload: data,
       });
     })();
@@ -122,29 +137,27 @@ const Dashboard = () => {
                   <strong>
                     <h4 className="mt-5 mb-4">Attività</h4>
                   </strong>
-                  {user.attivitaSportiva ? (
+                  {Attivita ? (
                     <>
                       <p>
                         <strong className="me-3">Nome: </strong>
-                        {user?.attivitaSportiva?.nomeAttivita}
+                        {Attivita?.nomeAttivita}
                       </p>
                       <p>
                         <strong className="me-3"> Descrizione: </strong>
-                        {user?.attivitaSportiva?.descrizioneAttivita}
+                        {Attivita?.descrizioneAttivita}
                       </p>
                       <p>
                         <strong className="me-3">Sport: </strong>{" "}
-                        {user?.attivitaSportiva?.tipoDiSport}
+                        {Attivita?.tipoDiSport}
                       </p>
                       <p>
                         <strong className="me-3">Indirizzo: </strong>
-                        {user?.attivitaSportiva?.indirizzo}
+                        {Attivita?.indirizzo}
                       </p>
 
                       <Col xs={1} className="mt-1">
-                        <ModalModifyAttivita
-                          AttivitaId={user.attivitaSportiva}
-                        />
+                        <ModalModifyAttivita AttivitaId={Attivita} />
                       </Col>
                     </>
                   ) : (
@@ -153,7 +166,7 @@ const Dashboard = () => {
                         <Button
                           style={{ width: "150px" }}
                           onClick={handleShowModalPOST}
-                          className=" rounded-4"
+                          className="ModalButton rounded-4"
                         >
                           Aggiungi attività
                         </Button>
@@ -199,6 +212,10 @@ const Dashboard = () => {
                 <strong>
                   <p>Inizio: {formatTime(event?.orarioInizio)}</p>
                   <p>Fine: {formatTime(event?.orarioFine)}</p>
+                  <p>
+                    Massimo Partecipanti:{" "}
+                    {event?.attivitaSportiva?.numeroMassimoPartecipanti}
+                  </p>
                   <p>Partecipanti: {event?.numeroPartecipanti.toString()}</p>
                   <p>
                     Creato da: {event?.userCreatore.name}{" "}

@@ -63,7 +63,7 @@ function Results() {
                   >
                     <Card className="mt-3 rounded-4 transparent-card">
                       <Row>
-                        <Col xs={6} md={3}>
+                        <Col xs={12} md={3}>
                           <Card.Img
                             variant="left"
                             src={logoMVS}
