@@ -78,7 +78,7 @@ public class EventoServiceController {
 		//<<<<<<<<<<<<<<<<<<<<<<<<< INIZIO METODI DELETE>>>>>>>>>>>>>>>>>>>>>>>>>
 		@DeleteMapping("/{id}")
 		@PreAuthorize("hasRole('ADMIN') or hasRole('COMPANY_OWNER') or hasRole('ADMIN')")
-		public ResponseEntity<String> eliminaUser( @PathVariable Long id){
+		public ResponseEntity<String> eliminaEvento( @PathVariable Long id){
 			return new ResponseEntity<String>(eventoService.removeEventoById(id), HttpStatus.OK);
 		}
 		//<<<<<<<<<<<<<<<<<<<<<<<<< FINE METODI DELETE>>>>>>>>>>>>>>>>>>>>>>>>>

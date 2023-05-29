@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.MVS_Sports.SportsManagement.entity.Notifica;
 import com.MVS_Sports.SportsManagement.service.NotificaService;
+
+import jakarta.persistence.EntityNotFoundException;
 
 @RestController
 @RequestMapping("/api/Notifica")
@@ -37,4 +40,17 @@ public class NotificaController {
 						HttpStatus.OK);
 			}
 			//<<<<<<<<<<<<<<<<<<<<<<<<< FINE METODI GET>>>>>>>>>>>>>>>>>>>>>>>>>
+			
+			//<<<<<<<<<<<<<<<<<<<<<<<<< INIZIO METODI DELETE>>>>>>>>>>>>>>>>>>>>>>>>>
+			@DeleteMapping("/user/{usersId}")
+			@PreAuthorize("hasRole('ADMIN') or hasRole('COMPANY_OWNER') or hasRole('ADMIN')")
+			public ResponseEntity<String> deleteNotificationsByUserId(@PathVariable Long usersId) {
+			    try {
+			        notificaService.removeNotificheByUserId(usersId);
+			        return new ResponseEntity<>("Notifiche eliminate per l'utente con ID: " + usersId, HttpStatus.OK);
+			    } catch (EntityNotFoundException e) {
+			        return new ResponseEntity<>("L'utente con ID " + usersId + " non ha notifiche.", HttpStatus.NOT_FOUND);
+			    }
+			}
+			//<<<<<<<<<<<<<<<<<<<<<<<<< FINE METODI DELETE>>>>>>>>>>>>>>>>>>>>>>>>>
 }

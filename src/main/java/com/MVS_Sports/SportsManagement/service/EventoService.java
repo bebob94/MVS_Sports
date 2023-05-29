@@ -2,6 +2,7 @@ package com.MVS_Sports.SportsManagement.service;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +41,8 @@ public class EventoService {
 	public String creaEvento(EventoDto evento, Long id1, Long id2 ) {
 		
 		Evento e = new Evento();
-		e.setUserCreatore(userRepository.findById(id1).get());;
+		User u = userRepository.findById(id1).get();
+		e.setUserCreatore(u);
 		AttivitaSportiva attivitaSportiva = attivitaSportivaRepository.findById(id2).get();
 		e.setAttivitaSportiva(attivitaSportiva);
 		LocalDateTime orarioInizio = evento.getOrarioInizio().plusHours(2);;
@@ -48,18 +50,24 @@ public class EventoService {
 		e.setOrarioFine(orarioInizio.plus(e.getAttivitaSportiva().getDurataEvento()));
 		e.setNumeroPartecipanti(evento.getNumeroPartecipanti());
 		eventoRepositoryDao.save(e);
-		creaNotificaPerEvento(e.getId());
+		creaNotificaPerEvento(e.getId(), u.getId());
+		
 		return "evento added successfully";
 	}
 	
-	public String creaNotificaPerEvento(Long idEvento) {
+	public String creaNotificaPerEvento(Long idEvento, Long idUser) {
 	    Evento evento = eventoRepositoryDao.findById(idEvento).get();
 	    Notifica n = new Notifica();
 	    n.setTipoNotifica(TipoNotifica.NUOVO_EVENTO_AVVIATO);
 	    n.setOrarioNotifica(LocalDateTime.now());
+	    n.setUsers(userRepository.findAll());
 	    n.setAttivitaSportiva(evento.getAttivitaSportiva());
 	    n.setEvento(evento);
 	    notificaRepository.save(n);
+	    List<User> userList = userRepository.findAll();
+	    for (User user : userList) {
+	        user.getNotifiche().add(n);
+	    }
 	    evento.setNotifica(n);
 	    eventoRepositoryDao.save(evento);
 	    return "Notifica added successfully";
@@ -113,14 +121,20 @@ public class EventoService {
 	        Evento evento = eventoRepositoryDao.findById(id).orElse(null);
 	        if (evento != null) {
 	            Notifica notifica = evento.getNotifica();
-	            if (notifica != null && notifica.getEvento() == null) {
+	            if (notifica != null) {
+	                List<User> users = notifica.getUsers();
+	                for (User user : users) {
+	                    user.getNotifiche().remove(notifica); // Rimuovi la relazione tra l'utente e la notifica
+	                }
+	                notifica.setUsers(Collections.emptyList()); // Rimuovi tutti i riferimenti agli utenti nella notifica
 	                notificaRepository.delete(notifica); // Elimina la notifica associata all'evento
 	            }
 	        }
-	        eventoRepositoryDao.deleteById(id);
+	        eventoRepositoryDao.deleteById(id); // Elimina l'evento
 	        return "Evento eliminato";
 	    }
 	}
+
 	
 	
 }

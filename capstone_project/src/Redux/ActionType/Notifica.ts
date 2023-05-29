@@ -1,19 +1,5 @@
 export const ALL_NOTIFICHE = "ALL_NOTIFICHE";
 export const NOTIFICA_BY_ID = "NOTIFICA_BY_ID";
-export const CREA_NOTIFICA = "CREA_NOTIFICA";
-export const RESET_NOTIFICHE = "RESET_NOTIFICHE";
-
-export const resetNotificationsForUser = () => {
-  return (dispatch, getState) => {
-    const { user } = getState();
-    const currentUser = user.user.username;
-
-    dispatch({
-      type: RESET_NOTIFICHE,
-      payload: currentUser,
-    });
-  };
-};
 
 export const fetchNotifiche = async (token: String) => {
   try {
@@ -52,4 +38,18 @@ export const notificaById = async (
   } catch (error) {
     console.log(error);
   }
+};
+
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< ELIMINA NOTIFICHE PER ID UTENTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+export const deleteNotifiche = async (params: number, token: String) => {
+  const requestOptions = await fetch(
+    `http://localhost:8080/api/Notifica/user/${params}`,
+    {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
 };

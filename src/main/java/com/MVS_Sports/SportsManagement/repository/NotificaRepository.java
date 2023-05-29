@@ -21,5 +21,5 @@ public interface NotificaRepository extends PagingAndSortingRepository<Notifica,
 	public List<Notifica> findByTipoNotificaContains(String s);
 	public Page<Notifica> findByTipoNotificaContains(Pageable page,String s);
 	
-
+	List<Notifica> findByUsersId(Long usersId);
 }

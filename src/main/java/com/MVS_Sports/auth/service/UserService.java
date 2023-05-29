@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.MVS_Sports.SportsManagement.entity.Notifica;
 import com.MVS_Sports.auth.entity.User;
 import com.MVS_Sports.auth.repository.UserRepository;
 
@@ -44,8 +45,8 @@ public class UserService {
 	
 			return userRepositoryDao.findByUsername(username).get();
 	
-		
 	}
+	
 	
 	
 //	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< RIMUOVI USER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

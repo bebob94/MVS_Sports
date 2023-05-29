@@ -8,12 +8,13 @@ import {
   CreaEvento,
   fetchEventi,
 } from "../../Redux/ActionType/Evento";
+import { ALL_NOTIFICHE, fetchNotifiche } from "../../Redux/ActionType/Notifica";
 import {
-  ALL_NOTIFICHE,
-  CREA_NOTIFICA,
-  fetchNotifiche,
-} from "../../Redux/ActionType/Notifica";
-import { ALL_USERS, fetchUsers } from "../../Redux/ActionType/user";
+  ALL_USERS,
+  USER_BY_ID,
+  fetchUsers,
+  userById,
+} from "../../Redux/ActionType/user";
 import { RootState } from "../../Redux/Store";
 import { it } from "date-fns/locale";
 import {
@@ -75,13 +76,12 @@ const ModalCreaEvento = ({
     let data2 = await fetchNotifiche(token);
     let data3 = await fetchUsers(token);
     let data4 = await searchById(AttivitaId, token);
+    let data5 = await userById(UserId, token);
     dispatch({
       type: ALL_EVENTI,
       payload: data,
     });
-    dispatch({
-      type: CREA_NOTIFICA,
-    });
+
     dispatch({
       type: ALL_NOTIFICHE,
       payload: data2,
@@ -89,6 +89,10 @@ const ModalCreaEvento = ({
     dispatch({
       type: ALL_USERS,
       payload: data3,
+    });
+    dispatch({
+      type: USER_BY_ID,
+      payload: data5,
     });
     dispatch({
       type: ATTIVITA_SPORTIVA_FETCH_BY_ID,

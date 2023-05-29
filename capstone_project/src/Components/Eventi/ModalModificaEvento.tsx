@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { Evento, EventoChange } from "../../Redux/Interfaces";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../Redux/Store";
-import { changeMyInfoEvento } from "../../Redux/ActionType/Evento";
+import {
+  EVENTO_BY_ID,
+  changeMyInfoEvento,
+  eventoById,
+} from "../../Redux/ActionType/Evento";
 
 const ModalModifyEvento = ({ eventoId }: { eventoId: Evento }) => {
   // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< USE_NAVIGATE, USE_SELECTORE, USE_STATE, USE_DISPATCH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  const dispatch = useDispatch();
   const selectedEvento = useSelector(
     (state: RootState) => state?.evento.Evento
   );
@@ -46,6 +51,11 @@ const ModalModifyEvento = ({ eventoId }: { eventoId: Evento }) => {
       numeroPartecipanti: updatedNumeroPartecipanti,
     };
     let x = await changeMyInfoEvento(updatedObj, token);
+    let data = await eventoById(eventoId?.id, token);
+    dispatch({
+      type: EVENTO_BY_ID,
+      payload: data,
+    });
     alert("Grazie per aver partecipato a questo evento");
   };
   // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FUNZIONI DEL COMPONENTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

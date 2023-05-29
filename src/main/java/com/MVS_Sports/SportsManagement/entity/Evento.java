@@ -50,7 +50,7 @@ public class Evento {
     @ManyToOne
     private AttivitaSportiva attivitaSportiva;
     
-    @JsonIgnoreProperties({"evento"})
+    @JsonIgnoreProperties({"evento", "users"})
  	@OneToOne(cascade = CascadeType.ALL)
  	private Notifica notifica;
     

@@ -127,7 +127,6 @@ export interface NewRecensione {
 export interface MyNotifica {
   AllNotifiche: Notifica[];
   notification: Notifica;
-  NewNotifications: number;
 }
 export interface Notifica {
   id: number;

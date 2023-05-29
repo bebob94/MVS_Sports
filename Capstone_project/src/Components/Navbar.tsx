@@ -5,18 +5,30 @@ import Logo from "../image/logoMVS.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { USER } from "../Redux/ActionType";
-import { resetNotificationsForUser } from "../Redux/Actions/Notifica";
+import {
+  ALL_NOTIFICHE,
+  deleteNotifiche,
+  fetchNotifiche,
+} from "../Redux/ActionType/Notifica";
 import { RootState } from "../Redux/Store";
+import {
+  USER_BY_ID,
+  USER_BY_USERNAME,
+  userById,
+  userByUsername,
+} from "../Redux/ActionType/user";
 
 function MyNavbar() {
-  const user = useSelector((state) => state.user);
-  const newNotifications = useSelector(
-    (state) => state.notifica.NewNotifications
-  );
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< USE_NAVIGATE, USE_SELECTORE, USE_STATE, USE_DISPATCH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  const user = useSelector((state: RootState) => state?.user);
+  const User = useSelector((state: RootState) => state?.User?.user);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< USE_NAVIGATE, USE_SELECTORE, USE_STATE, USE_DISPATCH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-  const handleSubmit = (e) => {
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FUNZIONI DEL COMPONENTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  const handleSubmit = (e: any) => {
     e.preventDefault();
     dispatch({
       type: USER,
@@ -25,9 +37,18 @@ function MyNavbar() {
     navigate("/Login");
   };
 
-  const handleNotificationClick = () => {
-    dispatch(resetNotificationsForUser());
+  const handleDeletNotifications = async () => {
+    console.log(User);
+
+    let x = await deleteNotifiche(User?.id, user?.user?.accessToken);
+    let data = await userById(User?.id, user?.user?.accessToken);
+
+    dispatch({
+      type: USER_BY_ID,
+      payload: data,
+    });
   };
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FUNZIONI DEL COMPONENTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   return (
     <Navbar bg="dark" expand="lg" className="pt-0 fixed-top myNav">
@@ -92,11 +113,13 @@ function MyNavbar() {
               <Link
                 className="MyLink pt-2"
                 to={"/Eventi"}
-                onClick={handleNotificationClick}
+                onClick={handleDeletNotifications}
               >
                 <i className="bi bi-bell " style={{ marginRight: "100px" }}></i>
-                {newNotifications > 0 && (
-                  <div className="notification-badge">{newNotifications}</div>
+                {User?.notifiche && User?.notifiche?.length > 0 && (
+                  <div className="notification-badge">
+                    {User?.notifiche?.length}
+                  </div>
                 )}
               </Link>
             </>

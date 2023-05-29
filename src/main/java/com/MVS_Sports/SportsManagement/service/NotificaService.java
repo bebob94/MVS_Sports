@@ -9,8 +9,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.MVS_Sports.SportsManagement.entity.AttivitaSportiva;
+import com.MVS_Sports.SportsManagement.entity.Evento;
 import com.MVS_Sports.SportsManagement.entity.Notifica;
 import com.MVS_Sports.SportsManagement.repository.NotificaRepository;
+import com.MVS_Sports.auth.entity.User;
 
 import jakarta.persistence.EntityNotFoundException;
 
@@ -20,19 +23,14 @@ public class NotificaService {
 	@Autowired
 	NotificaRepository NotificaRepositoryDao;
 	
-	@Autowired
-	@Qualifier("Notifica")
-	private ObjectProvider<Notifica> NotificaProvider;
+
 	
 //	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< SALVA NOTIFICA >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	public void saveNotifica(Notifica n) {
 		NotificaRepositoryDao.save(n);
 	}
 	
-//	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< CREA NOTIFICA >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-	public void creaNotifica() {
-		saveNotifica(NotificaProvider.getObject());
-	}
+
 	
 //	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< MODIFICA NOTIFICA >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	public void updateNotifica( Notifica n) {
@@ -77,6 +75,17 @@ public class NotificaService {
 			return "Notifica eliminato";
 		}
 	}
+	
+//	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< RIMUOVI NOTIFICHE PER ID UTENTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	public void removeNotificheByUserId(Long userId) {
+	    List<Notifica> notifiche = NotificaRepositoryDao.findByUsersId(userId);
+	    for (Notifica notifica : notifiche) {
+	        notifica.getUsers().removeIf(user -> user.getId().equals(userId));
+	    }
+	    NotificaRepositoryDao.saveAll(notifiche);
+	}
+
+
 	
 //	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< CERCA NOTIFICA PER PARTE DI TIPO NOTIFICA >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	public List<Notifica> findByNomeAttivitaContains(String s){

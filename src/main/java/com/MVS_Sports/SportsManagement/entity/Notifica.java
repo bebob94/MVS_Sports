@@ -48,9 +48,13 @@ public class Notifica {
 	 	@OneToOne(cascade = CascadeType.ALL)
 	 	private Evento evento;
 	 	
+	 	
 	 	@JsonIgnore
 	 	@ManyToOne
 	 	private AttivitaSportiva attivitaSportiva;
 	 	
+	 	@JsonIgnore
+	 	@ManyToMany
+	 	private List<User> users;;
 	 	
 }
