@@ -1,14 +1,8 @@
 import React, { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { NewAttivita } from "../../Redux/Interfaces";
-import {
-  ATTIVITA_SPORTIVA_FETCH_BY_ID,
-  CreaAttivita,
-  searchById,
-} from "../../Redux/ActionType/AttivitaSportive";
-import { ALL_USERS, USER_BY_ID, userById } from "../../Redux/ActionType/user";
-import { AttivitaSportiva } from "../../Redux/Interfaces";
+import { CreaAttivita } from "../../Redux/ActionType/AttivitaSportive";
 import { RootState } from "../../Redux/Store";
 
 const ModalCreateAttivita = ({
@@ -20,7 +14,7 @@ const ModalCreateAttivita = ({
   handleClose: () => void;
   UserId: number;
 }) => {
-  const dispatch = useDispatch();
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< USE_NAVIGATE, USE_SELECTORE, USE_STATE, USE_DISPATCH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   const token = useSelector((state: RootState) => state?.user.user.accessToken);
   const [nomeAttivita, setNomeAttivita] = useState("");
   const [descrizioneAttivita, setDescrizioneAttivita] = useState("");
@@ -28,7 +22,9 @@ const ModalCreateAttivita = ({
   const [orarioApertura, setOrarioApertura] = useState("");
   const [orarioChiusura, setOrarioChiusura] = useState("");
   const [tipoDiSport, setTipoDiSport] = useState("");
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< USE_NAVIGATE, USE_SELECTORE, USE_STATE, USE_DISPATCH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FUNZIONI DEL COMPONENTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   const handleSubmit = async () => {
     const AttivitaPayload: NewAttivita = {
       nomeAttivita,
@@ -38,15 +34,14 @@ const ModalCreateAttivita = ({
       orarioChiusura,
       tipoDiSport,
     };
-
     try {
       const response = await CreaAttivita(AttivitaPayload, UserId, token);
     } catch (error) {
       console.log(error);
     }
-
     handleClose();
   };
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FUNZIONI DEL COMPONENTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   return (
     <>

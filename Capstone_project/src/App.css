@@ -1,15 +1,11 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
-
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< GENERICO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
 .body {
   text-align: center;
 }
-
 strong {
   color: white !important;
-}
-
-#basic-nav-dropdown {
-  color: white;
 }
 .HomeContainer {
   display: flex;
@@ -17,6 +13,14 @@ strong {
   justify-content: center;
   align-items: center;
   height: 40vh;
+}
+.MyContainer {
+  height: 100%;
+  min-height: 55em;
+  width: 100%;
+  background-image: url(./image/1903_SportsDayImage.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .HomeText {
   color: white;
@@ -27,7 +31,17 @@ strong {
   border: 1px solid #0c0c0c;
   box-shadow: black 2px 2px 10px 10px;
 }
-
+.HomeText2 {
+  color: white;
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.HomeSubtext {
+  font-size: 2rem;
+  text-align: center;
+  color: white;
+}
 .myButton {
   background-color: #115fb3;
   color: #fff;
@@ -38,99 +52,31 @@ strong {
   transition: all 0.3s ease-in-out;
   box-shadow: black 2px 2px 10px 10px;
 }
-
 .myButton:hover {
   background-color: #0d479c;
 }
-.HomeText2 {
-  color: white;
-  font-size: 3rem;
-  text-align: center;
-  margin-bottom: 3rem;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
-.HomeSubtext {
-  font-size: 2rem;
-  text-align: center;
-  color: white;
+html {
+  font-family: "Nunito", sans-serif;
+  color: #fff;
 }
-
-.MyLink {
-  text-decoration: none !important;
-  margin: 0 15px !important;
-}
-
-.MyContainer {
-  height: 100%;
-  min-height: 55em;
-  width: 100%;
-  background-image: url(./image/1903_SportsDayImage.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.DashboardContainer {
-  height: 100%;
-  min-height: 55em;
-  width: 100%;
-  background-color: rgb(233, 227, 227);
-  color: black !important;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
-}
-
-.DashboardContainer strong {
-  color: black !important;
-}
-
 .myButton {
   background-color: green;
 }
 .myButton:hover {
   transform: scale(1.2);
 }
+/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< GENERICO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
 
-.ModalButton {
-  background-color: transparent;
-  color: black;
-  border: 1px solid black;
-}
-
-.ModalButton:hover {
-  opacity: 0.8;
-  transform: scale(1.2);
-  background-color: transparent;
-  border: 1px solid black;
-  color: black;
-}
-
+/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< HOME >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
 .myCarousel {
   height: 30em !important;
   width: 35em !important;
 }
-
-@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  font-family: "Nunito", sans-serif;
-  color: #fff;
-}
-
-.myRegister {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 1rem 0.5rem;
-}
-
 section {
   width: 100%;
   max-width: 420px;
@@ -142,142 +88,12 @@ section {
   background-color: white;
   border-radius: 0.5rem;
 }
+/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< HOME >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
 
-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  flex-grow: 1;
-  padding-bottom: 1rem;
-}
-
-a,
-a:visited {
-  color: #fff;
-}
-
-input[type="text"],
-input[type="password"],
-button,
-textarea {
-  font-family: "Nunito", sans-serif;
-  font-size: 22px;
-  padding: 0.25rem;
-  border-radius: 0.5rem;
-}
-
-label,
-button {
-  margin-top: 1rem;
-}
-
-button {
-  padding: 0.5rem;
-}
-
-.instructions {
-  font-size: 0.75rem;
-  border-radius: 0.5rem;
-  background: #000;
-  color: #fff;
-  padding: 0.25rem;
-  position: relative;
-  bottom: -10px;
-}
-
-.instructions > svg {
-  margin-right: 0.25rem;
-}
-
-.offscreen {
-  position: absolute;
-  left: -9999px;
-}
-
-.hide {
-  display: none;
-}
-
-.valid {
-  color: limegreen;
-  margin-left: 0.25rem;
-}
-
-.invalid {
-  color: red;
-  margin-left: 0.25rem;
-}
-
-.errmsg {
-  background-color: lightpink;
-  color: firebrick;
-  font-weight: bold;
-  padding: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.line {
-  display: inline-block;
-}
-
-/* Prenotazioni css */
-.prenotazioniColor {
-  color: white;
-}
-
-.secondSection {
-  background-color: #f8f9fa;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(25px);
-  padding: 2em;
-  margin-top: 3em;
-  border-radius: 10px;
-  text-align: justify;
-  font-size: 18px;
-  line-height: 1.5;
-}
-
-.MyLink2 {
-  color: blue !important;
-}
-
-.MyAttivita {
-  color: white !important ;
-  padding-top: 5em !important;
-}
-
-/* cards del componente results  */
-
-.card-footer {
-  background-color: transparent;
-  border-top: none;
-  text-align: center;
-}
-
-.transparent-card {
-  background-color: rgba(92, 88, 88, 0.822); /* Colore di sfondo con opacità */
-  color: white;
-  transition: all 0.3s ease-in-out;
-}
-.transparent-card:hover {
-  transform: translateY(-5px);
-  box-shadow: black 5px 5px 10px 5px;
-  text-decoration: none !important;
-}
-
-.AddEvento {
-  width: 200px !important;
-}
-
-.page-footer {
-  background-color: #000;
-  color: white;
-}
-
+/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< NAVBAR >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
 .bi-bell {
   font-size: larger;
 }
-
 .notification-badge {
   position: absolute;
   top: 30px;
@@ -292,7 +108,6 @@ button {
   align-items: center;
   justify-content: center;
 }
-
 .notification-text {
   position: absolute;
   color: red;
@@ -300,3 +115,169 @@ button {
   top: 70px;
   transition: opacity 0.3s ease-in-out;
 }
+#basic-nav-dropdown {
+  color: white;
+}
+.MyLink {
+  text-decoration: none !important;
+  margin: 0 15px !important;
+}
+/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< NAVBAR >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+
+/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< DASHBOARD >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+.DashboardContainer {
+  height: 100%;
+  min-height: 55em;
+  width: 100%;
+  background-color: rgb(233, 227, 227);
+  color: black !important;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+.DashboardContainer strong {
+  color: black !important;
+}
+.AddEvento {
+  width: 200px !important;
+}
+/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< DASHBOARD >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+
+/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< MODAL >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+.ModalButton {
+  background-color: transparent;
+  color: black;
+  border: 1px solid black;
+}
+.ModalButton:hover {
+  opacity: 0.8;
+  transform: scale(1.2);
+  background-color: transparent;
+  border: 1px solid black;
+  color: black;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  flex-grow: 1;
+  padding-bottom: 1rem;
+}
+/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< MODAL >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+
+/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< REGISTER >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+.myRegister {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 1rem 0.5rem;
+}
+a,
+a:visited {
+  color: #fff;
+}
+input[type="text"],
+input[type="password"],
+button,
+textarea {
+  font-family: "Nunito", sans-serif;
+  font-size: 22px;
+  padding: 0.25rem;
+  border-radius: 0.5rem;
+}
+label,
+button {
+  margin-top: 1rem;
+}
+button {
+  padding: 0.5rem;
+}
+.instructions {
+  font-size: 0.75rem;
+  border-radius: 0.5rem;
+  background: #000;
+  color: #fff;
+  padding: 0.25rem;
+  position: relative;
+  bottom: -10px;
+}
+.instructions > svg {
+  margin-right: 0.25rem;
+}
+.offscreen {
+  position: absolute;
+  left: -9999px;
+}
+.hide {
+  display: none;
+}
+.valid {
+  color: limegreen;
+  margin-left: 0.25rem;
+}
+.invalid {
+  color: red;
+  margin-left: 0.25rem;
+}
+.errmsg {
+  background-color: lightpink;
+  color: firebrick;
+  font-weight: bold;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.line {
+  display: inline-block;
+}
+/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< REGISTER >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+
+/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< PRENOTAZIONI >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+.prenotazioniColor {
+  color: white;
+}
+.secondSection {
+  background-color: #f8f9fa;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(25px);
+  padding: 2em;
+  margin-top: 3em;
+  border-radius: 10px;
+  text-align: justify;
+  font-size: 18px;
+  line-height: 1.5;
+}
+.MyLink2 {
+  color: blue !important;
+}
+.MyAttivita {
+  color: white !important ;
+  padding-top: 5em !important;
+}
+/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< PRENOTAZIONI >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+
+/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< CARDS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+.card-footer {
+  background-color: transparent;
+  border-top: none;
+  text-align: center;
+}
+.transparent-card {
+  background-color: rgba(92, 88, 88, 0.822); /* Colore di sfondo con opacità */
+  color: white;
+  transition: all 0.3s ease-in-out;
+}
+.transparent-card:hover {
+  transform: translateY(-5px);
+  box-shadow: black 5px 5px 10px 5px;
+  text-decoration: none !important;
+}
+/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< CARDS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+
+/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FOOTER >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+.page-footer {
+  background-color: #000;
+  color: white;
+}
+/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FOOTER >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/

@@ -11,26 +11,29 @@ import {
   searchByName,
   searchByTipoDiSport,
 } from "../../Redux/ActionType/AttivitaSportive";
-import banner from "../../image/pubbli.jpg";
 import { RootState } from "../../Redux/Store";
 
 function Prenotazioni() {
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< USE_NAVIGATE, USE_SELECTORE, USE_STATE, USE_DISPATCH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [search, setSearch] = useState("");
   const [sport, setSport] = useState("");
   const token = useSelector((state: RootState) => state?.user.user.accessToken);
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< USE_NAVIGATE, USE_SELECTORE, USE_STATE, USE_DISPATCH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FUNZIONI DEL COMPONENTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  // ricerca
   const handleSearch = (e: any) => {
     e.preventDefault();
     setSearch(e.target.value);
     console.log(e.target.value);
   };
 
+  // Prima spedizione dati
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     let data = await searchByName(search, token);
-
     dispatch({
       type: ATTIVITA_SPORTIVA_FETCH_BY_NAME,
       payload: data,
@@ -39,10 +42,10 @@ function Prenotazioni() {
     console.log("enter");
   };
 
+  // Seconda spedizione dati
   const handleSubmit2 = async (e: any) => {
     e.preventDefault();
     let data = await searchByTipoDiSport(sport, token);
-
     dispatch({
       type: ATTIVITA_SPORTIVA_FETCH_BY_TIPO_DI_SPORT,
       payload: data,
@@ -51,6 +54,7 @@ function Prenotazioni() {
     console.log("enter");
   };
 
+  // Aggiornamento pagina
   useEffect(() => {
     (async () => {
       let data = await fetchAttivita(token);
@@ -60,6 +64,7 @@ function Prenotazioni() {
       });
     })();
   }, []);
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FUNZIONI DEL COMPONENTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   return (
     <div className="MyContainer py-5">

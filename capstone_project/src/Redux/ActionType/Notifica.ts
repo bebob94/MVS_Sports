@@ -3,6 +3,18 @@ export const NOTIFICA_BY_ID = "NOTIFICA_BY_ID";
 export const CREA_NOTIFICA = "CREA_NOTIFICA";
 export const RESET_NOTIFICHE = "RESET_NOTIFICHE";
 
+export const resetNotificationsForUser = () => {
+  return (dispatch, getState) => {
+    const { user } = getState();
+    const currentUser = user.user.username;
+
+    dispatch({
+      type: RESET_NOTIFICHE,
+      payload: currentUser,
+    });
+  };
+};
+
 export const fetchNotifiche = async (token: String) => {
   try {
     let res = await fetch(`http://localhost:8080/api/Notifica/all`, {

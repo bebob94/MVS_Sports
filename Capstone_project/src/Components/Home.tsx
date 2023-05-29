@@ -1,23 +1,18 @@
-import { Col, Row, Container } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import Carosello from "./Carosello";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import {
-  ATTIVITA_SPORTIVA_FETCH,
-  fetchAttivita,
-} from "../Redux/ActionType/AttivitaSportive";
-import {
-  ALL_USERS,
-  USER_BY_USERNAME,
-  fetchUsers,
-  userByUsername,
-} from "../Redux/ActionType/user";
+import { USER_BY_USERNAME, userByUsername } from "../Redux/ActionType/user";
 import { RootState } from "../Redux/Store";
 
 function Home() {
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< USE_NAVIGATE, USE_SELECTORE, USE_STATE, USE_DISPATCH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   const dispatch = useDispatch();
   const user = useSelector((state: RootState) => state?.user.user);
   const token = useSelector((state: RootState) => state?.user.user.accessToken);
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< USE_NAVIGATE, USE_SELECTORE, USE_STATE, USE_DISPATCH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FUNZIONI DEL COMPONENTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   useEffect(() => {
     (async () => {
       let data = await userByUsername(user.username, token);
@@ -28,6 +23,7 @@ function Home() {
       });
     })();
   }, []);
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FUNZIONI DEL COMPONENTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   return (
     <div className="MyContainer pt-5">

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
@@ -6,18 +5,18 @@ import Logo from "../image/logoMVS.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { USER } from "../Redux/ActionType";
-import { RESET_NOTIFICHE } from "../Redux/ActionType/Notifica";
+import { resetNotificationsForUser } from "../Redux/Actions/Notifica";
 import { RootState } from "../Redux/Store";
 
 function MyNavbar() {
-  const user = useSelector((state: RootState) => state.user);
+  const user = useSelector((state) => state.user);
   const newNotifications = useSelector(
-    (state: RootState) => state.notifica.NewNotifications
+    (state) => state.notifica.NewNotifications
   );
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     dispatch({
       type: USER,
@@ -27,9 +26,7 @@ function MyNavbar() {
   };
 
   const handleNotificationClick = () => {
-    dispatch({
-      type: RESET_NOTIFICHE,
-    });
+    dispatch(resetNotificationsForUser());
   };
 
   return (
@@ -67,28 +64,20 @@ function MyNavbar() {
                 <NavDropdown
                   title={user.user.username}
                   id="basic-nav-dropdown"
-                  className="me-3"
+                  className="me-3 "
                 >
-                  <NavDropdown.Item>
-                    <Link className="MyLink text-dark" to={"/Dashboard"}>
-                      Dashboard
-                    </Link>
-                  </NavDropdown.Item>
-                  <NavDropdown.Item>
-                    <Link className="MyLink text-dark" to={"/Eventi"}>
-                      Eventi
-                    </Link>
-                  </NavDropdown.Item>
-                  <NavDropdown.Item>
-                    <Link className="MyLink text-dark" to={"/ComeFunziona"}>
-                      Come funziona
-                    </Link>
-                  </NavDropdown.Item>
-                  <NavDropdown.Item>
-                    <Link className="MyLink text-dark" to={"/AboutUs"}>
-                      AboutUs
-                    </Link>
-                  </NavDropdown.Item>
+                  <Link className="MyLink  text-dark" to={"/Dashboard"}>
+                    <p className="my-0  mx-3 ">Dashboard</p>
+                  </Link>
+                  <Link className="MyLink my-0 text-dark" to={"/Eventi"}>
+                    <p className="my-0  mx-3">Eventi</p>
+                  </Link>
+                  <Link className="MyLink my-0 text-dark" to={"/ComeFunziona"}>
+                    <p className="my-0  mx-3">Come funziona</p>
+                  </Link>
+                  <Link className="MyLink my-0 text-dark" to={"/AboutUs"}>
+                    <p className="my-0  mx-3">AboutUs</p>
+                  </Link>
                   <NavDropdown.Divider />
                   <NavDropdown.Item
                     className="text-dark"

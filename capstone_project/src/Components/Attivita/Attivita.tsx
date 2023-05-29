@@ -14,16 +14,25 @@ import { deleteRecensione } from "../../Redux/ActionType/Recensioni";
 import { ATTIVITA_SPORTIVA_FETCH_BY_ID } from "../../Redux/ActionType/AttivitaSportive";
 
 function Attivita() {
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< USE_NAVIGATE, USE_SELECTORE, USE_STATE, USE_DISPATCH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   const dispatch = useDispatch();
-  const [currentPage, setCurrentPage] = useState(1);
-  const reviewsPerPage = 2; // Numero di recensioni per pagina
   const token = useSelector((state: RootState) => state?.user.user.accessToken);
   const userLoged = useSelector((state: RootState) => state?.user.user);
   const Attivita = useSelector(
     (state: RootState) => state.attivitaSportiva?.AttivitaSportiva
   );
   const User = useSelector((state: RootState) => state?.User.user);
+  const [currentPage, setCurrentPage] = useState(1);
+  const reviewsPerPage = 2;
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< USE_NAVIGATE, USE_SELECTORE, USE_STATE, USE_DISPATCH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FUNZIONI DEL COMPONENTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  //  Formattazione orario
+  const formatTime = (time: string) => {
+    return time.substring(0, 5);
+  };
+
+  // Aggiornamento pagina
   useEffect(() => {
     (async () => {
       let data = await fetchAttivita(token);
@@ -35,14 +44,7 @@ function Attivita() {
     })();
   }, [Attivita]);
 
-  const formatTime = (time: string) => {
-    return time.substring(0, 5); // Estrae i primi 5 caratteri della stringa
-  };
-
-  const handlePageChange = (pageNumber: number) => {
-    setCurrentPage(pageNumber);
-  };
-
+  // Eliminazione evento
   const handleDelete = async (id: number) => {
     const confirmDelete = window.confirm(
       "Sicuro di voler eliminare la recensione?"
@@ -58,16 +60,19 @@ function Attivita() {
     }
   };
 
-  // Calcola l'indice di inizio e fine delle recensioni da visualizzare
+  // Paginazione
+  const handlePageChange = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+  };
   const indexOfLastReview = currentPage * reviewsPerPage;
   const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
   const currentReviews = Attivita?.recensioni?.slice(
     indexOfFirstReview,
     indexOfLastReview
   );
-
   const totalReviews = Attivita?.recensioni?.length;
   const totalPages = Math.ceil(totalReviews / reviewsPerPage);
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FUNZIONI DEL COMPONENTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   return (
     <div className="MyContainer py-5">

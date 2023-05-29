@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 
 import { user, userChange } from "../../Redux/Interfaces";
-import { GiPencil } from "react-icons/gi";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../Redux/Store";
 import {
@@ -13,21 +12,22 @@ import {
 } from "../../Redux/ActionType/user";
 
 const ModalModifyUtente = ({ userId }: { userId: user }) => {
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< USE_NAVIGATE, USE_SELECTORE, USE_STATE, USE_DISPATCH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   const selectedUser = useSelector((state: RootState) => state?.User.user);
   const [show, setShow] = useState(false);
   const token = useSelector((state: RootState) => state?.user.user.accessToken);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
   const dispatch = useDispatch();
-
   const [userPayload, setUserPayload] = useState<userChange>({
     id: userId.id,
     name: userId.name,
     surname: userId.surname,
     indirizzo: userId.indirizzo,
   });
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< USE_NAVIGATE, USE_SELECTORE, USE_STATE, USE_DISPATCH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FUNZIONI DEL COMPONENTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserPayload({
       ...userPayload,
@@ -35,6 +35,7 @@ const ModalModifyUtente = ({ userId }: { userId: user }) => {
     });
   };
 
+  // Aggiornamento pagina
   useEffect(() => {
     setUserPayload({
       id: userId.id,
@@ -44,12 +45,11 @@ const ModalModifyUtente = ({ userId }: { userId: user }) => {
     });
   }, [userId]);
 
+  // Spedizione dati
   const handleSubmit = async (obj: userChange) => {
     let x = await changeMyProfileInfo(obj, token);
-
     let data = await userById(selectedUser.id, token);
     console.log(data);
-
     dispatch({
       type: USER_BY_ID,
       payload: data,
@@ -59,6 +59,7 @@ const ModalModifyUtente = ({ userId }: { userId: user }) => {
       payload: data,
     });
   };
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FUNZIONI DEL COMPONENTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   return (
     <>

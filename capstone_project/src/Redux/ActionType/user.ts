@@ -1,5 +1,4 @@
 import { userChange } from "../Interfaces";
-const beboKey = process.env.REACT_APP_BEBO_SECRET_KEY;
 
 export const ALL_USERS = "ALL_USERS";
 export const USER_BY_ID = "USER_BY_ID";

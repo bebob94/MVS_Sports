@@ -1,5 +1,4 @@
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< REGISTRAZIONE E LOGIN >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
 export interface User {
   id: number;
   name: string;
@@ -26,7 +25,6 @@ export interface MyUser {
   AllUsers: user[];
   user: user;
 }
-
 export interface user {
   id: number;
   name: String;
@@ -43,7 +41,6 @@ export interface user {
   roles: Roles[];
   creditCard: null;
 }
-
 export interface userChange {
   id?: number;
   name: String;
@@ -56,7 +53,6 @@ export interface MyAttivitaSportiva {
   AllAttivitaSportive: AttivitaSportiva[];
   AttivitaSportiva: AttivitaSportiva;
 }
-
 export interface AttivitaSportiva {
   id: number;
   nomeAttivita: String;
@@ -71,14 +67,12 @@ export interface AttivitaSportiva {
   recensioni: Recensione[];
   user: user;
 }
-
 export interface AttivitaChange {
   id?: number;
   nomeAttivita: String;
   descrizioneAttivita: String;
   indirizzo: String;
 }
-
 export interface NewAttivita {
   nomeAttivita: String;
   descrizioneAttivita: String;
@@ -102,16 +96,15 @@ export interface Evento {
   attivitaSportiva: AttivitaSportiva;
   notifica: Notifica;
 }
-
 export interface NewEvento {
   numeroPartecipanti: number;
   orarioInizio: Date;
 }
-
 export interface EventoChange {
   id?: number;
   numeroPartecipanti: number;
 }
+
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< RECENSIONE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 export interface MyRecensione {
   ALLRecensione: Recensione[];
@@ -125,7 +118,6 @@ export interface Recensione {
   user: user;
   attivitaSportiva: AttivitaSportiva;
 }
-
 export interface NewRecensione {
   valutazione: number;
   testoRecensione: String;

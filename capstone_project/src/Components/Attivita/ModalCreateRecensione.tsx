@@ -21,31 +21,34 @@ const ModalCreateRecensione = ({
   UserId: number;
   AttivitaId: number;
 }) => {
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< USE_NAVIGATE, USE_SELECTORE, USE_STATE, USE_DISPATCH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   const dispatch = useDispatch();
   const token = useSelector((state: RootState) => state?.user.user.accessToken);
   const [valutazione, setValutazione] = useState<number>(0);
   const [testoRecensione, setTestoRecensione] = useState<String>("");
-
-  const handlevalutazioneChange = (rate: number) => {
-    setValutazione(rate);
-  };
-
   const [show, setShow] = useState(false);
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< USE_NAVIGATE, USE_SELECTORE, USE_STATE, USE_DISPATCH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FUNZIONI DEL COMPONENTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   const handleShow = () => {
     setShow(true);
   };
-
   const handleClose = () => {
     setShow(false);
   };
 
+  // Modifica valutazione recensione
+  const handlevalutazioneChange = (rate: number) => {
+    setValutazione(rate);
+  };
+  // Modifica testo recensione
   const handleTestoRecensioneChange = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
     setTestoRecensione(e.target.value);
   };
 
+  // Spedizione dati
   const handleSubmit = async () => {
     const payload: NewRecensione = {
       valutazione: valutazione,
@@ -72,6 +75,7 @@ const ModalCreateRecensione = ({
     setTestoRecensione("");
     handleClose();
   };
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FUNZIONI DEL COMPONENTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   return (
     <>
@@ -84,7 +88,7 @@ const ModalCreateRecensione = ({
       </Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Crea un evento</Modal.Title>
+          <Modal.Title>Crea una recensione</Modal.Title>
         </Modal.Header>
         <h6>*Indicates required</h6>
         <Modal.Body>

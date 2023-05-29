@@ -1,7 +1,4 @@
 import { AttivitaChange, NewAttivita } from "../Interfaces";
-
-const beboKey = process.env.REACT_APP_BEBO_SECRET_KEY;
-
 export const ATTIVITA_SPORTIVA_FETCH = "ATTIVITA_SPORTIVA_FETCH";
 export const ATTIVITA_SPORTIVA_FETCH_BY_NAME =
   "ATTIVITA_SPORTIVA_FETCH_BY_NAME";
@@ -27,7 +24,6 @@ export const fetchAttivita = async (token: String) => {
 };
 
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< RICERCA ATTIVITA SPORTIVE PER INDIRIZZO O PER NOME>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
 export const searchByName = async (
   value: string | undefined,
   token: String

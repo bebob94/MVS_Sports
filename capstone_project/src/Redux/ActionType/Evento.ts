@@ -1,6 +1,4 @@
-import { Evento, EventoChange, NewEvento } from "../Interfaces";
-
-const beboKey = process.env.REACT_APP_BEBO_SECRET_KEY;
+import { EventoChange, NewEvento } from "../Interfaces";
 
 export const ALL_EVENTI = "ALL_EVENTI";
 export const EVENTO_BY_ID = "EVENTO_BY_ID";

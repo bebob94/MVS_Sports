@@ -7,6 +7,7 @@ import { USER } from "../../Redux/ActionType";
 const LOGIN_URL = "/api/auth/login";
 
 const Login = () => {
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< USE_NAVIGATE, USE_SELECTORE, USE_STATE, USE_DISPATCH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   const { setAuth }: any = useContext(AuthContext);
   const userRef = useRef<HTMLInputElement>(null);
   const errRef = useRef<HTMLInputElement>(null);
@@ -17,7 +18,9 @@ const Login = () => {
   const [pwd, setPwd] = useState("");
   const [errMsg, setErrMsg] = useState("");
   const [success, setSuccess] = useState(false);
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< USE_NAVIGATE, USE_SELECTORE, USE_STATE, USE_DISPATCH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FUNZIONI DEL COMPONENTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   useEffect(() => {
     userRef.current?.focus();
   }, []);
@@ -32,6 +35,7 @@ const Login = () => {
     }
   }, [success]);
 
+  // Spedizione dati
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
@@ -50,7 +54,6 @@ const Login = () => {
         type: USER,
         payload: { id, username: user, accessToken, roles },
       });
-
       setUser("");
       setPwd("");
       setSuccess(true);
@@ -59,6 +62,7 @@ const Login = () => {
       errRef.current?.focus();
     }
   };
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FUNZIONI DEL COMPONENTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   return (
     <div className="MyContainer myRegister">

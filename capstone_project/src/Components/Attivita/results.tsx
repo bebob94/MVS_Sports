@@ -12,6 +12,7 @@ import logoMVS from "../../image/logoMVS.jpg";
 import Pagination from "react-bootstrap/Pagination";
 
 function Results() {
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< USE_NAVIGATE, USE_SELECTORE, USE_STATE, USE_DISPATCH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   const allAttivita = useSelector(
     (state: RootState) => state?.attivitaSportiva?.AllAttivitaSportive
   );
@@ -19,7 +20,10 @@ function Results() {
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 4;
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< USE_NAVIGATE, USE_SELECTORE, USE_STATE, USE_DISPATCH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FUNZIONI DEL COMPONENTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  // Spedizione dati
   const handlePrenotaClick = async (id: Number) => {
     let data = await searchById(id, token);
     dispatch({
@@ -27,21 +31,19 @@ function Results() {
       payload: data,
     });
   };
-
   // Calcola l'indice dell'ultimo elemento della pagina corrente
   const indexOfLastItem = currentPage * itemsPerPage;
   // Calcola l'indice del primo elemento della pagina corrente
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   // Ottieni gli elementi da mostrare sulla pagina corrente
   const currentItems = allAttivita?.slice(indexOfFirstItem, indexOfLastItem);
-
   // Calcola il numero totale di pagine
   const totalPages = Math.ceil(allAttivita?.length / itemsPerPage);
-
   // Cambia pagina
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
   };
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FUNZIONI DEL COMPONENTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   return (
     <div className="MyContainer pt-5">
@@ -71,7 +73,7 @@ function Results() {
                             className="rounded-4"
                           />
                         </Col>
-                        <Col xs={6} md={9}>
+                        <Col xs={12} md={9}>
                           <Card.Body>
                             <Card.Title className="mt-3 mb-4">
                               <strong>{attivita?.nomeAttivita}</strong>

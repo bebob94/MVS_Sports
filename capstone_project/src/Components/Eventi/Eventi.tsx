@@ -14,11 +14,23 @@ import {
 import Error3 from "../Error/Error3";
 import { Evento } from "../../Redux/Interfaces";
 import { it } from "date-fns/locale";
+
 function Eventi() {
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< USE_NAVIGATE, USE_SELECTORE, USE_STATE, USE_DISPATCH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   const Eventi = useSelector((state: RootState) => state?.evento.AllEventi);
   const dispatch = useDispatch();
   const token = useSelector((state: RootState) => state?.user.user.accessToken);
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< USE_NAVIGATE, USE_SELECTORE, USE_STATE, USE_DISPATCH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FUNZIONI DEL COMPONENTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  const formatTime = (time: string | number | Date) => {
+    const startTime = format(new Date(time), "HH:mm EEEE dd/MM/yyyy", {
+      locale: it,
+    });
+    return ` ${startTime} `;
+  };
+
+  // Controllo ed eleminazione eventi passati
   useEffect(() => {
     const checkAndDeleteEvento = async (evento: Evento) => {
       const today = new Date();
@@ -27,7 +39,7 @@ function Eventi() {
         await deleteEvento(evento.id, token);
       }
     };
-    // Effettua il controllo e l'eliminazione per ogni evento
+    //
     const checkAndDeleteEventi = async () => {
       if (Eventi && Eventi.length > 0) {
         Eventi.forEach(async (evento: Evento) => {
@@ -35,7 +47,9 @@ function Eventi() {
         });
       }
     };
+    //
     checkAndDeleteEventi();
+    //
     (async () => {
       let data = await fetchEventi(token);
       dispatch({
@@ -45,6 +59,7 @@ function Eventi() {
     })();
   }, []);
 
+  // Spedizione dati
   const handlePrenotaClick = async (id: Number) => {
     let data = await eventoById(id, token);
     dispatch({
@@ -52,14 +67,7 @@ function Eventi() {
       payload: data,
     });
   };
-
-  const formatTime = (time: string | number | Date) => {
-    const startTime = format(new Date(time), "HH:mm EEEE dd/MM/yyyy", {
-      locale: it,
-    });
-
-    return ` ${startTime} `;
-  };
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FUNZIONI DEL COMPONENTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   return (
     <div className="MyContainer pt-5 ">

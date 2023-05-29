@@ -17,8 +17,8 @@ import {
 } from "../../Redux/ActionType/AttivitaSportive";
 
 const Dashboard = () => {
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< USE_NAVIGATE, USE_SELECTORE, USE_STATE, USE_DISPATCH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   const dispatch = useDispatch();
-
   const userLogged = useSelector((state: RootState) => state?.user.user);
   const user = useSelector((state: RootState) => state?.User.user);
   const Attivita = useSelector(
@@ -28,18 +28,19 @@ const Dashboard = () => {
   const [showModalPOST, setShowModalPOST] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const eventsPerPage = 3;
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< USE_NAVIGATE, USE_SELECTORE, USE_STATE, USE_DISPATCH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FUNZIONI DEL COMPONENTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   const handleShowModalPOST = () => {
     setShowModalPOST(true);
   };
   const handleCloseModalPOST = () => {
     setShowModalPOST(false);
   };
-
+  // Fetch del componente
   useEffect(() => {
     (async () => {
       let data = await userByUsername(userLogged.username, token);
-
       dispatch({
         type: USER_BY_USERNAME,
         payload: data,
@@ -47,7 +48,6 @@ const Dashboard = () => {
     })();
     (async () => {
       let data = await searchById(user.id, token);
-
       dispatch({
         type: ATTIVITA_SPORTIVA_FETCH_BY_ID,
         payload: data,
@@ -55,12 +55,12 @@ const Dashboard = () => {
     })();
   }, []);
 
+  // Funzione delete
   const handleDelete = async (id: number) => {
     const confirmDelete = window.confirm("Sicuro di voler eliminare l'evento?");
     if (confirmDelete) {
       let x = await deleteEvento(id, token);
       let data = await userByUsername(userLogged.username, token);
-
       dispatch({
         type: USER_BY_USERNAME,
         payload: data,
@@ -75,16 +75,14 @@ const Dashboard = () => {
     indexOfFirstEvent,
     indexOfLastEvent
   );
-
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
-
   const formatTime = (time: string | number | Date) => {
     const startTime = format(new Date(time), "HH:mm EEEE dd/MM/yyyy", {
       locale: it,
     });
-
     return ` ${startTime} `;
   };
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FUNZIONI DEL COMPONENTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   return (
     <div className="DashboardContainer pt-5">

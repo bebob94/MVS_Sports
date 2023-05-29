@@ -1,7 +1,6 @@
-import React, { useState, useEffect, ChangeEvent } from "react";
+import React, { useState, ChangeEvent } from "react";
 import { Button, Row, Form, Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { parseISO, isSameSecond } from "date-fns";
 import DatePicker from "react-datepicker";
 import { NewEvento } from "../../Redux/Interfaces";
 import {
@@ -29,6 +28,7 @@ const ModalCreaEvento = ({
   UserId: number;
   AttivitaId: number;
 }) => {
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< USE_NAVIGATE, USE_SELECTORE, USE_STATE, USE_DISPATCH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   const dispatch = useDispatch();
   const attivita = useSelector(
     (state: RootState) => state?.attivitaSportiva.AttivitaSportiva
@@ -38,40 +38,39 @@ const ModalCreaEvento = ({
   const [numeroPartecipanti, setNumeroPartecipanti] = useState<number>(0);
   const [show, setShow] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
-  const [isDateValid, setIsDateValid] = useState(true); // Aggiunto stato per indicare se la data è valida o meno
+  const [isDateValid, setIsDateValid] = useState(true);
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< USE_NAVIGATE, USE_SELECTORE, USE_STATE, USE_DISPATCH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FUNZIONI DEL COMPONENTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   const handleShow = () => setShow(true);
-
   const handleClose = () => setShow(false);
 
+  // Controllo dat e orario eventi
   const handleDateChange = (date: Date) => {
     let isValid = true;
-
     attivita?.eventi?.forEach((evento) => {
       const eventoDataInizio = new Date(evento.orarioInizio);
       const eventoDataFine = new Date(evento.orarioFine);
-
       if (date >= eventoDataInizio && date < eventoDataFine) {
         isValid = false;
       }
     });
-
     setIsDateValid(isValid);
     setSelectedDate(date);
   };
 
+  // Modifica numero partecipanti
   const handleNumeroPartecipantiChange = (e: ChangeEvent<HTMLInputElement>) => {
     setNumeroPartecipanti(Number(e.target.value));
   };
 
+  // Spedizione dati
   const handleSubmit = async () => {
     const payload: NewEvento = {
       numeroPartecipanti: numeroPartecipanti,
       orarioInizio: selectedDate,
     };
-
     let newEvent = await CreaEvento(payload, UserId, AttivitaId, token);
-
     let data = await fetchEventi(token);
     let data2 = await fetchNotifiche(token);
     let data3 = await fetchUsers(token);
@@ -95,13 +94,14 @@ const ModalCreaEvento = ({
       type: ATTIVITA_SPORTIVA_FETCH_BY_ID,
       payload: data4,
     });
-
     setNumeroPartecipanti(0);
     setSelectedDate(new Date());
     handleClose();
   };
 
+  // Controllo data odierna
   const currentDate = new Date();
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FUNZIONI DEL COMPONENTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   return (
     <>

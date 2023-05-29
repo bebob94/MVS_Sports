@@ -12,10 +12,10 @@ const USERNAME_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const EMAIL_REGEX = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 const PASSWORD_REGEX =
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-
 const REGISTER_URL = "/api/auth/register";
 
 const Register = () => {
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< USE_NAVIGATE, USE_SELECTORE, USE_STATE, USE_DISPATCH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   const userRef = useRef<HTMLInputElement>(null);
   const errRef = useRef<HTMLParagraphElement>(null);
 
@@ -43,10 +43,11 @@ const Register = () => {
   const [success, setSuccess] = useState<boolean>(false);
 
   const [isChecked, setIsChecked] = useState<boolean>(false);
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< USE_NAVIGATE, USE_SELECTORE, USE_STATE, USE_DISPATCH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FUNZIONI DEL COMPONENTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   const handleCheckboxChange = () => {
     // setIsChecked(event.target.checked);
-
     setIsChecked(!isChecked);
     console.log(!isChecked);
   };
@@ -101,7 +102,6 @@ const Register = () => {
         }
       );
       console.log(response?.data);
-      // console.log(response?.accessToken);
       console.log(JSON.stringify(response));
       setSuccess(true);
       //clear state and controlled inputs
@@ -127,6 +127,7 @@ const Register = () => {
       }
     }
   };
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FUNZIONI DEL COMPONENTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   return (
     <div className="MyContainer myRegister">

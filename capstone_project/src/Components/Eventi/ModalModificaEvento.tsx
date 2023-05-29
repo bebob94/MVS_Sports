@@ -6,26 +6,30 @@ import { RootState } from "../../Redux/Store";
 import { changeMyInfoEvento } from "../../Redux/ActionType/Evento";
 
 const ModalModifyEvento = ({ eventoId }: { eventoId: Evento }) => {
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< USE_NAVIGATE, USE_SELECTORE, USE_STATE, USE_DISPATCH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   const selectedEvento = useSelector(
     (state: RootState) => state?.evento.Evento
   );
   const token = useSelector((state: RootState) => state?.user.user.accessToken);
   const [show, setShow] = useState(false);
   const [numeroPartecipanti, setNumeroPartecipanti] = useState(0);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
   const [EventoPayload, setEventoPayload] = useState<EventoChange>({
     numeroPartecipanti: 0,
   });
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< USE_NAVIGATE, USE_SELECTORE, USE_STATE, USE_DISPATCH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FUNZIONI DEL COMPONENTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  // Cambiamento input
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     const parsedValue = parseFloat(value);
     setNumeroPartecipanti(isNaN(parsedValue) ? 0 : parsedValue);
   };
 
+  // Aggiornamento pagina
   useEffect(() => {
     setEventoPayload({
       id: eventoId?.id,
@@ -33,6 +37,7 @@ const ModalModifyEvento = ({ eventoId }: { eventoId: Evento }) => {
     });
   }, [eventoId]);
 
+  // Spedizione dati
   const handleSubmit = async (numeroPartecipanti: number) => {
     const updatedNumeroPartecipanti =
       selectedEvento.numeroPartecipanti + numeroPartecipanti;
@@ -40,11 +45,10 @@ const ModalModifyEvento = ({ eventoId }: { eventoId: Evento }) => {
       ...EventoPayload,
       numeroPartecipanti: updatedNumeroPartecipanti,
     };
-
     let x = await changeMyInfoEvento(updatedObj, token);
-
     alert("Grazie per aver partecipato a questo evento");
   };
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FUNZIONI DEL COMPONENTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   return (
     <>

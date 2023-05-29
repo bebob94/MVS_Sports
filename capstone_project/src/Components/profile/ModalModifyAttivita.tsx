@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
-
 import { AttivitaChange, AttivitaSportiva } from "../../Redux/Interfaces";
-import { GiPencil } from "react-icons/gi";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../Redux/Store";
 import {
@@ -17,25 +15,25 @@ const ModalModifyAttivita = ({
 }: {
   AttivitaId: AttivitaSportiva;
 }) => {
-  const selectedAttivita = useSelector(
-    (state: RootState) => state?.attivitaSportiva?.AttivitaSportiva
-  );
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< USE_NAVIGATE, USE_SELECTORE, USE_STATE, USE_DISPATCH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
   const selectedUser = useSelector((state: RootState) => state?.User.user);
   const token = useSelector((state: RootState) => state?.user.user.accessToken);
   const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
   const dispatch = useDispatch();
-
   const [AttivitaPayload, setAttivitaPayload] = useState<AttivitaChange>({
     id: AttivitaId?.id,
     nomeAttivita: AttivitaId?.nomeAttivita,
     descrizioneAttivita: AttivitaId?.descrizioneAttivita,
     indirizzo: AttivitaId?.indirizzo,
   });
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< USE_NAVIGATE, USE_SELECTORE, USE_STATE, USE_DISPATCH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FUNZIONI DEL COMPONENTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  // Modifiche input
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setAttivitaPayload({
       ...AttivitaPayload,
@@ -43,6 +41,7 @@ const ModalModifyAttivita = ({
     });
   };
 
+  // Aggiornamento pagina
   useEffect(() => {
     setAttivitaPayload({
       id: AttivitaId?.id,
@@ -52,6 +51,7 @@ const ModalModifyAttivita = ({
     });
   }, [AttivitaId]);
 
+  // Spedizion dati
   const handleSubmit = async (obj: AttivitaChange) => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     let x = await changeMyInfoAttivita(obj, token);
@@ -61,12 +61,12 @@ const ModalModifyAttivita = ({
       payload: data,
     });
     let data2 = await userById(selectedUser.id, token);
-
     dispatch({
       type: USER_BY_ID,
       payload: data2,
     });
   };
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FUNZIONI DEL COMPONENTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   return (
     <>
