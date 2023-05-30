@@ -133,4 +133,5 @@ export interface Notifica {
   tipoNotifica: String;
   orarioNotifica: String; // formato "hh:mm"
   evento: Evento;
+  attivitaSportiva: AttivitaSportiva;
 }

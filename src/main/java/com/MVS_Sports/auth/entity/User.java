@@ -42,7 +42,7 @@ public class User {
     @Column(nullable = false)
     private String password;
      
-    
+    @JsonIgnoreProperties({"notifica"})
     @OneToMany(mappedBy = "userCreatore", fetch = FetchType.EAGER)
 	private List<Evento> eventi;
  
@@ -50,7 +50,7 @@ public class User {
     @OneToOne
     private AttivitaSportiva attivitaSportiva;
     
-    @JsonIgnoreProperties({"evento", "users"})
+    
     @ManyToMany(mappedBy = "users", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Notifica> notifiche;
     

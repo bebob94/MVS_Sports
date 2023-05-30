@@ -5,26 +5,20 @@ import Logo from "../image/logoMVS.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { USER } from "../Redux/ActionType";
-import {
-  ALL_NOTIFICHE,
-  deleteNotifiche,
-  fetchNotifiche,
-} from "../Redux/ActionType/Notifica";
+import { deleteNotifiche } from "../Redux/ActionType/Notifica";
 import { RootState } from "../Redux/Store";
-import {
-  USER_BY_ID,
-  USER_BY_USERNAME,
-  userById,
-  userByUsername,
-} from "../Redux/ActionType/user";
+import { USER_BY_ID, userById } from "../Redux/ActionType/user";
+
+import { format } from "date-fns";
+import { it } from "date-fns/locale";
 
 function MyNavbar() {
   // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< USE_NAVIGATE, USE_SELECTORE, USE_STATE, USE_DISPATCH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   const user = useSelector((state: RootState) => state?.user);
   const User = useSelector((state: RootState) => state?.User?.user);
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< USE_NAVIGATE, USE_SELECTORE, USE_STATE, USE_DISPATCH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FUNZIONI DEL COMPONENTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -38,15 +32,20 @@ function MyNavbar() {
   };
 
   const handleDeletNotifications = async () => {
-    console.log(User);
-
     let x = await deleteNotifiche(User?.id, user?.user?.accessToken);
     let data = await userById(User?.id, user?.user?.accessToken);
-
     dispatch({
       type: USER_BY_ID,
       payload: data,
     });
+    navigate("/Eventi");
+  };
+
+  const formatTime = (time: string | number | Date) => {
+    const startTime = format(new Date(time), "HH:mm EEEE dd/MM/yyyy", {
+      locale: it,
+    });
+    return ` ${startTime} `;
   };
   // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FUNZIONI DEL COMPONENTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -110,18 +109,38 @@ function MyNavbar() {
                   </NavDropdown.Item>
                 </NavDropdown>
               </strong>{" "}
-              <Link
-                className="MyLink pt-2"
-                to={"/Eventi"}
-                onClick={handleDeletNotifications}
+              {User?.notifiche && User?.notifiche?.length > 0 && (
+                <div className="notification-badge">
+                  {User?.notifiche?.length}
+                </div>
+              )}
+              <NavDropdown
+                title={<i className="bi bi-bell "></i>}
+                id="basic-nav-dropdown"
+                style={{ width: "20em" }}
               >
-                <i className="bi bi-bell " style={{ marginRight: "100px" }}></i>
-                {User?.notifiche && User?.notifiche?.length > 0 && (
-                  <div className="notification-badge">
-                    {User?.notifiche?.length}
-                  </div>
+                {User?.notifiche.length === 0 ? (
+                  <p className="mx-3 pt-2">Nessuna notifica</p>
+                ) : (
+                  User?.notifiche.map((notifica, i) => (
+                    <NavDropdown.Item
+                      key={i}
+                      className=" text-dark ms-0"
+                      onClick={handleDeletNotifications}
+                    >
+                      <p className="my-0"> Nuova prenotazione avviata </p>
+                      <p className="my-0">
+                        {notifica?.attivitaSportiva?.nomeAttivita}
+                      </p>
+                      <p className="my-0">
+                        {formatTime(notifica?.evento?.orarioInizio)}
+                      </p>
+
+                      <NavDropdown.Divider />
+                    </NavDropdown.Item>
+                  ))
                 )}
-              </Link>
+              </NavDropdown>
             </>
           ) : (
             <>

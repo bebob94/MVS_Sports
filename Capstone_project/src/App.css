@@ -97,7 +97,7 @@ section {
 .notification-badge {
   position: absolute;
   top: 30px;
-  right: 130px;
+  right: 310px;
   background-color: red;
   color: white;
   font-size: 12px;
