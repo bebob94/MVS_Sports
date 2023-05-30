@@ -50,7 +50,7 @@ function ComeFunziona() {
       </Row>
       {showRow1 && (
         <Row className="justify-content-end">
-          <Col xs={6}>
+          <Col xs={7}>
             <h3 className="HomeText me-4 mt-4">
               <Typewriter
                 options={{
@@ -72,7 +72,7 @@ function ComeFunziona() {
       )}
       {showRow2 && (
         <Row>
-          <Col xs={10}>
+          <Col xs={11}>
             <h3 className="HomeText ms-4 mt-4">
               <Typewriter
                 options={{
@@ -117,7 +117,7 @@ function ComeFunziona() {
       <Row className="justify-content-center">
         <Col xs={4} md={2}>
           {showButton && (
-            <Link className="MyLink text-center" to={"/Prenotazioni"}>
+            <Link className="MyLink text-center" to={"/"}>
               <h3 className="HomeText mt-3 myButton">Prenota ora</h3>
             </Link>
           )}

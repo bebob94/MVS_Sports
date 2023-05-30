@@ -14,7 +14,7 @@ import { FaGem, FaHome, FaEnvelope, FaPhone } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Footer = () => (
-  <footer className="page-footer   pt-4">
+  <footer className="page-footer">
     <Container fluid className="text-center text-md-left">
       <Row className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
         <Col className="me-5 d-none d-lg-block">

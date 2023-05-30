@@ -114,11 +114,12 @@ section {
 }
 .dropdown-menu {
   background-color: black;
+  border: 1px solid #9bd339;
 }
 .notification-badge {
   position: absolute;
   top: 13px;
-  right: 310px;
+  right: 280px;
   background-color: #9bd339;
   color: white;
   font-size: 12px;
@@ -250,9 +251,7 @@ button {
 /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< REGISTER >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
 
 /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< PRENOTAZIONI >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-.prenotazioniColor {
-  color: white;
-}
+
 .secondSection {
   background-color: #f8f9fa;
   backdrop-filter: blur(10px);
@@ -286,8 +285,14 @@ button {
 }
 .transparent-card:hover {
   transform: translateY(-5px);
-  box-shadow: black 5px 5px 10px 5px;
   text-decoration: none !important;
+  box-shadow: #9bd339 0px 0px 5px 5px;
+}
+
+.homeCard {
+  background-color: black;
+  color: #9bd339;
+  transition: all 0.3s ease-in-out;
   box-shadow: #9bd339 0px 0px 5px 5px;
 }
 /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< CARDS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/

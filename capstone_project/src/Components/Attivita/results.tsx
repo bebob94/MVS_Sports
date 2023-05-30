@@ -8,7 +8,6 @@ import {
   ATTIVITA_SPORTIVA_FETCH_BY_ID,
   searchById,
 } from "../../Redux/ActionType/AttivitaSportive";
-import logoMVS from "../../image/logoMVS.jpg";
 import Pagination from "react-bootstrap/Pagination";
 
 function Results() {
@@ -68,7 +67,10 @@ function Results() {
         {allAttivita && allAttivita.length > 0 ? (
           <>
             <Row
-              style={{ borderBottom: "4px solid white", paddingBottom: "30px" }}
+              style={{
+                borderBottom: "4px solid  #9bd339",
+                paddingBottom: "30px",
+              }}
             >
               {currentItems?.map((attivita, i) => (
                 <Col key={i} xs={12} className="mb-3">
@@ -115,8 +117,8 @@ function Results() {
             </Row>
             <Row className="justify-content-center mt-5">
               <Col xs={12} className="text-center">
-                <Link to="/Prenotazioni" className="MyLink">
-                  <strong> Torna alla pagina Prenotazioni</strong>
+                <Link to="/" className="MyLink" style={{ color: " #9bd339" }}>
+                  <strong> Torna alla Home</strong>
                 </Link>
               </Col>
             </Row>

@@ -32,13 +32,18 @@ function MyNavbar() {
   };
 
   const handleDeletNotifications = async () => {
-    let x = await deleteNotifiche(User?.id, user?.user?.accessToken);
-    let data = await userById(User?.id, user?.user?.accessToken);
-    dispatch({
-      type: USER_BY_ID,
-      payload: data,
-    });
-    navigate("/Eventi");
+    const confirmDelete = window.confirm(
+      "vuoi andare alla sezione prenotazioni?"
+    );
+    if (confirmDelete) {
+      let x = await deleteNotifiche(User?.id, user?.user?.accessToken);
+      let data = await userById(User?.id, user?.user?.accessToken);
+      dispatch({
+        type: USER_BY_ID,
+        payload: data,
+      });
+      navigate("/Eventi");
+    }
   };
 
   const formatTime = (time: string | number | Date) => {
@@ -69,7 +74,7 @@ function MyNavbar() {
             <Link className="MyLink" to={"/ComeFunziona"}>
               <strong className="navText">Come funziona</strong>
             </Link>
-            <Link className="MyLink" to={"/Prenotazioni"}>
+            <Link className="MyLink" to={"/Eventi"}>
               <strong className="navText">Prenotazioni</strong>
             </Link>
             <Link className="MyLink" to={"/Results"}>
@@ -92,7 +97,7 @@ function MyNavbar() {
                       <p className="my-2  mx-3 ">Dashboard</p>
                     </Link>
                     <Link className="navText my-0 text-dark" to={"/Eventi"}>
-                      <p className="my-2  mx-3">Eventi</p>
+                      <p className="my-2  mx-3">Prenotazioni</p>
                     </Link>
                     <Link
                       className="navText my-0 text-dark"
@@ -103,9 +108,13 @@ function MyNavbar() {
                     <Link className="navText my-0 text-dark" to={"/AboutUs"}>
                       <p className="my-2  mx-3">AboutUs</p>
                     </Link>
-                    <NavDropdown.Divider />
+
                     <NavDropdown.Item
                       className="navText"
+                      style={{
+                        backgroundColor: "black",
+                        borderTop: "1px solid #9bd339",
+                      }}
                       onClick={(e) => {
                         handleSubmit(e);
                       }}
@@ -122,7 +131,7 @@ function MyNavbar() {
                 <NavDropdown
                   title={<i className="bi bi-bell "></i>}
                   id="basic-nav-dropdown"
-                  style={{ width: "20em" }}
+                  style={{ width: "18em" }}
                 >
                   {User?.notifiche.length === 0 ? (
                     <p className="mx-3 pt-2 navText">Nessuna notifica</p>
@@ -130,10 +139,14 @@ function MyNavbar() {
                     User?.notifiche.map((notifica, i) => (
                       <NavDropdown.Item
                         key={i}
-                        className=" text-dark ms-0"
+                        className=" ms-0"
                         onClick={handleDeletNotifications}
+                        style={{
+                          backgroundColor: "black",
+                          borderBottom: "1px solid #9bd339",
+                        }}
                       >
-                        <p className="my-0 navText">
+                        <p className="my-0 mb-2 navText">
                           {" "}
                           Nuova prenotazione avviata{" "}
                         </p>
@@ -143,7 +156,6 @@ function MyNavbar() {
                         <p className="my-0 navText">
                           {formatTime(notifica?.evento?.orarioInizio)}
                         </p>
-                        <hr />
                       </NavDropdown.Item>
                     ))
                   )}
@@ -151,13 +163,13 @@ function MyNavbar() {
               </>
             ) : (
               <>
-                <Link to={"/login"} className="MyLink">
+                <Link to={"/login"} className="navText me-3">
                   <span>
                     {" "}
                     <strong>Accedi</strong>
                   </span>
                 </Link>
-                <Link to={"/register"} className="MyLink">
+                <Link to={"/register"} className="navText me-5">
                   <span style={{ marginRight: "100px" }}>
                     {" "}
                     <strong>Registrati</strong>
