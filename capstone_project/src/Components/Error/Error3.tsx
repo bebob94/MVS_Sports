@@ -5,7 +5,7 @@ const Error3 = () => {
   return (
     <Row>
       <Col xs={7}>
-        <Alert variant="danger" className="mt-3">
+        <Alert variant="success" className="mt-3">
           Nessun Evento disponibile, Vuoi crearne uno?{" "}
           <Link to={"/Prenotazioni"} style={{ color: "blue" }}>
             {" "}

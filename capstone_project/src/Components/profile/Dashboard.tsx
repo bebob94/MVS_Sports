@@ -87,7 +87,7 @@ const Dashboard = () => {
   return (
     <div className="DashboardContainer pt-5">
       {user?.username ? (
-        <Container className="mt-5 ">
+        <Container>
           <Row>
             <Col md={8} className="mt-5 ">
               <h1 className="mb-5 mt-4">

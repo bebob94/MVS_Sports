@@ -111,7 +111,7 @@ const ModalCreaEvento = ({
     <>
       <Button
         style={{ width: "150px" }}
-        className=" rounded-4"
+        className="myButton rounded-4"
         onClick={handleShow}
       >
         Prenota un campo

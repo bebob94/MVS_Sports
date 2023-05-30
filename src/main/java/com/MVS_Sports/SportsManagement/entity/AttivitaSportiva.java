@@ -43,6 +43,7 @@ public class AttivitaSportiva {
 	private String indirizzo;
 	private LocalTime orarioApertura;
 	private LocalTime orarioChiusura;
+	private String image;
 
 	@Enumerated(EnumType.STRING)
 	private TipoDiSport tipoDiSport;

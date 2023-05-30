@@ -63,7 +63,11 @@ const ModalModifyEvento = ({ eventoId }: { eventoId: Evento }) => {
   return (
     <>
       <div>
-        <Button className="AddEvento py-2 " onClick={handleShow}>
+        <Button
+          className="myButton py-2 "
+          style={{ width: "10rem" }}
+          onClick={handleShow}
+        >
           Partecipa ad evento
         </Button>
       </div>

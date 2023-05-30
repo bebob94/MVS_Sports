@@ -47,12 +47,26 @@ function Results() {
 
   return (
     <div className="MyContainer pt-5">
+      <Row className="justify-content-center">
+        <Col xs={3}>
+          <h4
+            className=" text-center"
+            style={{
+              color: " #9bd339",
+              backgroundColor: "black",
+              borderBottomLeftRadius: "5rem",
+              borderBottomRightRadius: "5rem",
+              paddingTop: "0.8rem",
+            }}
+          >
+            {" "}
+            <strong>Risultati ricerca</strong>{" "}
+          </h4>
+        </Col>
+      </Row>
       <Container className="MyAttivita">
         {allAttivita && allAttivita.length > 0 ? (
           <>
-            <Row className="justify-content-between">
-              <h1 className="mb-5">RISULTATI RICERCA</h1>
-            </Row>
             <Row
               style={{ borderBottom: "4px solid white", paddingBottom: "30px" }}
             >
@@ -68,7 +82,7 @@ function Results() {
                         <Col xs={12} md={3}>
                           <Card.Img
                             variant="left"
-                            src={logoMVS}
+                            src={attivita?.image}
                             style={{ width: "100%", height: "100%" }}
                             className="rounded-4"
                           />

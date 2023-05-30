@@ -60,12 +60,13 @@ export interface AttivitaSportiva {
   indirizzo: String;
   orarioApertura: String; // formato "hh:mm"
   orarioChiusura: String; // formato "hh:mm"
-  tipoDiSport: String;
+  tipoDiSport: string;
   numeroMassimoPartecipanti: number;
   durataEvento: String; // formato "hh:mm"
   eventi: Evento[];
   recensioni: Recensione[];
   user: user;
+  image: string;
 }
 export interface AttivitaChange {
   id?: number;

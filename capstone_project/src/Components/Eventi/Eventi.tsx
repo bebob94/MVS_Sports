@@ -71,10 +71,26 @@ function Eventi() {
 
   return (
     <div className="MyContainer pt-5 ">
+      <Row className="justify-content-center">
+        <Col xs={3}>
+          <h4
+            className="  text-center"
+            style={{
+              color: " #9bd339",
+              backgroundColor: "black",
+              borderBottomLeftRadius: "5rem",
+              borderBottomRightRadius: "5rem",
+              paddingTop: "0.8rem",
+            }}
+          >
+            {" "}
+            <strong>Prenotazioni disponibili</strong>{" "}
+          </h4>
+        </Col>
+      </Row>
       <Container className=" MyAttivita ">
         {Eventi && Eventi.length > 0 ? (
-          <Row className=" justify-content-around">
-            <h2>Eventi disponibili...</h2>
+          <Row className=" justify-content-around ">
             {Eventi?.map((evento, i) =>
               evento.attivitaSportiva.numeroMassimoPartecipanti >
               evento.numeroPartecipanti ? (
@@ -82,7 +98,7 @@ function Eventi() {
                   xs={12}
                   md={3}
                   lg={3}
-                  className={`my-5 mx-1 rounded-4 transparent-card`}
+                  className={`mb-5 mx-1 rounded-4 transparent-card`}
                   key={i}
                 >
                   <Col className="mb-4">
@@ -138,8 +154,8 @@ function Eventi() {
                       onClick={() => handlePrenotaClick(evento.id)}
                       className="MyLink"
                     >
-                      <Button id="modal-btn" className="mb-4">
-                        Aggiungiti all'evento
+                      <Button id="modal-btn" className="mb-4 myButton">
+                        Aggiungiti alla prenotazione
                       </Button>
                     </Link>
                   </Col>

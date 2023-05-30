@@ -55,7 +55,7 @@ function Evento() {
               onClick={() => handlePrenotaClick(evento?.attivitaSportiva?.id)}
               className="MyLink"
             >
-              <Button id="modal-btn" className="d-flex">
+              <Button id="modal-btn" className="d-flex myButton">
                 {" "}
                 Dettagli Azienda
               </Button>{" "}
@@ -92,7 +92,7 @@ function Evento() {
         </Row>
         <Row className="justify-content-center mt-5">
           <Col xs={12} className="text-center">
-            <Link to="/Eventi" className="MyLink">
+            <Link to="/Eventi" className="navText">
               <strong> Torna alla pagina Eventi</strong>
             </Link>
           </Col>

@@ -81,7 +81,7 @@ const ModalCreateRecensione = ({
     <>
       <Button
         style={{ width: "150px" }}
-        className=" rounded-4"
+        className="myButton rounded-4"
         onClick={handleShow}
       >
         Crea una recensione

@@ -5,11 +5,11 @@ const Error = () => {
   return (
     <Row>
       <Col xs={7}>
-        <Alert variant="danger" className="mt-3">
-          Attività non trovate, per favore ripeta la ricerca.{" "}
-          <Link to={"/Prenotazioni"} style={{ color: "blue" }}>
+        <Alert variant="success" className="mt-3">
+          Attività non trovate, per favore effettui il login.{" "}
+          <Link to={"/Login"} style={{ color: "blue" }}>
             {" "}
-            Indietro
+            Login
           </Link>
         </Alert>
       </Col>

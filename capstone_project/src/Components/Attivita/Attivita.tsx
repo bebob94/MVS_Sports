@@ -77,13 +77,15 @@ function Attivita() {
   return (
     <div className="MyContainer py-5">
       <Container className="MyAttivita mt-5">
-        <Row
-          className="py-5 px-5 rounded-4"
-          style={{ backgroundColor: "rgba(92, 88, 88, 0.822)" }}
-        >
+        <Row className="py-5 px-5 rounded-4 transparent-card">
           <Col xs={12} md={6}>
+            <h1 className="mb-1">{Attivita?.nomeAttivita}</h1>
             <Col xs={12} md={8}>
-              <h1 className="mb-4">{Attivita?.nomeAttivita}</h1>
+              <img
+                src={Attivita?.image}
+                alt={Attivita?.tipoDiSport}
+                style={{ height: "15rem", width: "20rem" }}
+              />
               <h4 className="mt-5">Descrizione attività:</h4>
               <p>{Attivita?.descrizioneAttivita}</p>
               <h4 className="mt-4">Sport:</h4>
@@ -98,8 +100,6 @@ function Attivita() {
               </h4>
             </Col>
             <Col xs={6} md={6} className="mt-5">
-              <h4>Prenota un campo</h4>
-
               <Col xs={1} className="mt-3">
                 <ModalCreaEvento UserId={User?.id} AttivitaId={Attivita?.id} />
               </Col>
@@ -156,9 +156,7 @@ function Attivita() {
                 <h5>
                   <strong>Testo recensione:</strong>{" "}
                 </h5>
-                <p>
-                  <strong>{singRecensione?.testoRecensione}</strong>
-                </p>
+                <p>{singRecensione?.testoRecensione}</p>
               </div>
             ))}
 
@@ -192,8 +190,6 @@ function Attivita() {
               </Pagination>
             )}
             <Col xs={6} md={6} className="mt-5">
-              <h4>Crea una recensione</h4>
-
               <Col xs={1}>
                 <ModalCreateRecensione
                   UserId={User?.id}
