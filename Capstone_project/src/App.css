@@ -67,13 +67,15 @@ html {
   font-family: "Nunito", sans-serif;
   color: #fff;
 }
-
+.bi-trash3-fill {
+  font-size: 25px;
+}
 /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< GENERICO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
 
 /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< HOME >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
 .myCarousel {
-  height: 30em !important;
-  width: 35em !important;
+  height: 30rem;
+  width: 100%;
 }
 section {
   width: 100%;
@@ -85,6 +87,13 @@ section {
   padding: 1rem;
   background-color: white;
   border-radius: 0.5rem;
+}
+.homeCard {
+  background-color: black;
+  color: #9bd339;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 0px 0px 0px, 0px 0px 0px 0px, 0px 0px 0px 0px,
+    #9bd339 5px -5px 5px;
 }
 /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< HOME >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
 
@@ -130,7 +139,6 @@ section {
   align-items: center;
   justify-content: center;
 }
-
 #basic-nav-dropdown {
   color: white;
 }
@@ -286,13 +294,6 @@ button {
 .transparent-card:hover {
   transform: translateY(-5px);
   text-decoration: none !important;
-  box-shadow: #9bd339 0px 0px 5px 5px;
-}
-
-.homeCard {
-  background-color: black;
-  color: #9bd339;
-  transition: all 0.3s ease-in-out;
   box-shadow: #9bd339 0px 0px 5px 5px;
 }
 /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< CARDS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/

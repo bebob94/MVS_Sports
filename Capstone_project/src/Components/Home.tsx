@@ -77,9 +77,9 @@ function Home() {
   // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FUNZIONI DEL COMPONENTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   return (
-    <div className="MyContainer pt-5">
-      <Row style={{ height: "100vh" }}>
-        <Col xs={12} md={3} className="homeCard rounded-4 pt-5 ps-4">
+    <div className="MyContainer pt-5" style={{ height: "100vh" }}>
+      <Row style={{ height: "100%" }}>
+        <Col xs={12} md={3} className="homeCard pt-5 ps-5 ">
           <h5 style={{ marginBottom: "12rem", marginTop: "5rem" }}>
             <strong>
               Non trovi abbastanza compagni? <br />
@@ -237,7 +237,7 @@ function Home() {
             />
           </Col>
         </Col>
-        <Col xs={4}>
+        <Col xs={12} md={4}>
           <h4
             className=" text-center"
             style={{
@@ -252,7 +252,7 @@ function Home() {
             <strong>Prenota online il tuo campo da gioco</strong>{" "}
           </h4>
         </Col>
-        <Col xs={12} md={4} style={{ marginTop: "8rem" }}>
+        <Col xs={12} md={4}>
           <Carosello />
         </Col>
       </Row>

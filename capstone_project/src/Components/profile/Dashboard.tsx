@@ -204,7 +204,7 @@ const Dashboard = () => {
                     }}
                     onClick={() => handleDelete(event?.id)}
                   >
-                    x
+                    <i className="bi bi-trash3-fill"></i>
                   </Button>
                 </h3>
                 <strong>

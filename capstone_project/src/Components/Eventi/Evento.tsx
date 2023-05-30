@@ -61,7 +61,7 @@ function Evento() {
               </Button>{" "}
             </Link>
           </Col>
-          <Col sm={12} md={6} lg={4}>
+          <Col sm={12} md={6} lg={4} className="ms-4">
             <Col className="my-4">
               <strong>Utente: </strong>
               <br />
@@ -70,6 +70,7 @@ function Evento() {
             </Col>
             <Col className="mb-5">
               <strong>Email utente: </strong>
+              <br />
               {evento?.userCreatore?.email}
             </Col>
             <Col className="mb-5">

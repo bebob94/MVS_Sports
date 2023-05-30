@@ -140,7 +140,7 @@ function Attivita() {
                         }}
                         onClick={() => handleDelete(singRecensione?.id)}
                       >
-                        x
+                        <i className="bi bi-trash3-fill"></i>
                       </Button>
                     ) : (
                       <></>

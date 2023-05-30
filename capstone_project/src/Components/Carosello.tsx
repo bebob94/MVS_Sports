@@ -15,14 +15,14 @@ function Carosello() {
       <Carousel prevIcon="" nextIcon="" indicators={false} className="my-2">
         <Carousel.Item>
           <img
-            className="d-block mx-auto myCarousel rounded-4"
+            className="d-block  myCarousel rounded-4"
             src={calcetto}
             alt="Calcetto"
           />
         </Carousel.Item>
         <Carousel.Item>
           <img
-            className="d-block mx-auto myCarousel rounded-4"
+            className="d-block  myCarousel rounded-4"
             src={pallavolo}
             alt="Pallavolo"
           />
@@ -30,28 +30,28 @@ function Carosello() {
 
         <Carousel.Item>
           <img
-            className="d-block mx-auto myCarousel rounded-4"
+            className="d-block  myCarousel rounded-4"
             src={tennisDoppio}
             alt="Tennis doppio"
           />
         </Carousel.Item>
         <Carousel.Item>
           <img
-            className="d-block mx-auto myCarousel rounded-4"
+            className="d-block  myCarousel rounded-4"
             src={beachTennis}
             alt="Beach tennis"
           />
         </Carousel.Item>
         <Carousel.Item>
           <img
-            className="d-block mx-auto myCarousel rounded-4"
+            className="d-block  myCarousel rounded-4"
             src={beachVolley}
             alt="Beach volley"
           />
         </Carousel.Item>
         <Carousel.Item>
           <img
-            className="d-block mx-auto myCarousel rounded-4"
+            className="d-block  myCarousel rounded-4"
             src={paddle}
             alt="Paddle"
           />

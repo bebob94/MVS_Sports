@@ -30,7 +30,7 @@ function ComeFunziona() {
   return (
     <div className="MyContainer">
       <Row>
-        <Col xs={8} style={{ marginTop: "10em" }}>
+        <Col xs={12} md={8} style={{ marginTop: "10em" }}>
           <h3 className="HomeText ms-4">
             <Typewriter
               options={{
@@ -50,7 +50,7 @@ function ComeFunziona() {
       </Row>
       {showRow1 && (
         <Row className="justify-content-end">
-          <Col xs={7}>
+          <Col xs={12} md={7}>
             <h3 className="HomeText me-4 mt-4">
               <Typewriter
                 options={{
@@ -72,7 +72,7 @@ function ComeFunziona() {
       )}
       {showRow2 && (
         <Row>
-          <Col xs={11}>
+          <Col xs={12} md={11}>
             <h3 className="HomeText ms-4 mt-4">
               <Typewriter
                 options={{
@@ -94,7 +94,7 @@ function ComeFunziona() {
       )}
       {showRow3 && (
         <Row>
-          <Col xs={6}>
+          <Col xs={12} md={6}>
             <h3 className="HomeText ms-4  mt-4">
               <Typewriter
                 options={{
