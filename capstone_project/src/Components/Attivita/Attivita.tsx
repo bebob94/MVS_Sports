@@ -85,8 +85,9 @@ function Attivita() {
                 src={Attivita?.image}
                 alt={Attivita?.tipoDiSport}
                 style={{ height: "15rem", width: "20rem" }}
+                className="rounded-4 mt-2"
               />
-              <h4 className="mt-5">Descrizione attività:</h4>
+              <h4 className="mt-2">Descrizione attività:</h4>
               <p>{Attivita?.descrizioneAttivita}</p>
               <h4 className="mt-4">Sport:</h4>
               <p>{Attivita?.tipoDiSport}</p>
@@ -99,14 +100,14 @@ function Attivita() {
                 {Attivita?.numeroMassimoPartecipanti}
               </h4>
             </Col>
-            <Col xs={6} md={6} className="mt-5">
+            <Col xs={6} md={6} className="mt-3">
               <Col xs={1} className="mt-3">
                 <ModalCreaEvento UserId={User?.id} AttivitaId={Attivita?.id} />
               </Col>
             </Col>
           </Col>
-          <Col xs={12} md={6}>
-            <h2 className="my-5">Recensioni attività</h2>
+          <Col xs={12} md={6} className="mt-3">
+            <h2 className="mt-5 mb-3">Recensioni attività</h2>
             {currentReviews?.map((singRecensione, i) => (
               <div
                 key={i}
@@ -115,7 +116,7 @@ function Attivita() {
                 }}
               >
                 <Row>
-                  <Col xs={10} className="mt-5">
+                  <Col xs={10} className="mt-3">
                     <h5>
                       <strong>Utente:</strong>
                     </h5>

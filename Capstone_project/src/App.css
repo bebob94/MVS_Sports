@@ -331,5 +331,9 @@ button {
   --bs-pagination-active-bg: rgb(4, 58, 20);
   --bs-pagination-active-border-color: rgb(4, 58, 20);
   --bs-pagination-disabled-border-color: rgb(4, 58, 20);
+  --bs-pagination-hover-color: none;
+  --bs-pagination-hover-bg: none;
+  --bs-pagination-hover-border-color: #9bd339;
 }
+
 /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< PAGINATION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
