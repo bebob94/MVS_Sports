@@ -56,17 +56,21 @@ function MyNavbar() {
 
   return (
     <>
-      <img
-        src={Logo}
-        alt="M.V.S.Sports icon"
-        className="ms-3 mt-3 me-4 myImage"
-      />
+      <img src={Logo} alt="M.V.S.Sports icon" className=" mt-2 myImage" />
       <Navbar expand="lg" className=" pt-0 fixed-top myNav">
         <Navbar.Toggle
           aria-controls="basic-navbar-nav"
-          style={{ backgroundColor: "white", marginRight: "1em" }}
+          style={{
+            backgroundColor: "white",
+            marginRight: "1em",
+            marginLeft: "10em",
+          }}
         />
-        <Navbar.Collapse id="basic-navbar-nav">
+        <Navbar.Collapse
+          id="basic-navbar-nav"
+          style={{ marginLeft: "10em", backgroundColor: "black" }}
+          className="rounded-2"
+        >
           <Nav className="me-auto mt">
             <Link className="MyLink " to={"/"}>
               <strong className="navText">Home</strong>

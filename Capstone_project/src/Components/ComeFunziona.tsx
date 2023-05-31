@@ -29,7 +29,7 @@ function ComeFunziona() {
 
   return (
     <div className="MyContainer">
-      <Row>
+      <Row style={{ width: "100%" }}>
         <Col xs={12} md={8} style={{ marginTop: "10em" }}>
           <h3 className="HomeText ms-4">
             <Typewriter
@@ -49,7 +49,7 @@ function ComeFunziona() {
         </Col>
       </Row>
       {showRow1 && (
-        <Row className="justify-content-end">
+        <Row className="justify-content-end" style={{ width: "100%" }}>
           <Col xs={12} md={7}>
             <h3 className="HomeText me-4 mt-4">
               <Typewriter
@@ -71,7 +71,7 @@ function ComeFunziona() {
         </Row>
       )}
       {showRow2 && (
-        <Row>
+        <Row style={{ width: "100%" }}>
           <Col xs={12} md={11}>
             <h3 className="HomeText ms-4 mt-4">
               <Typewriter
@@ -93,7 +93,7 @@ function ComeFunziona() {
         </Row>
       )}
       {showRow3 && (
-        <Row>
+        <Row style={{ width: "100%" }}>
           <Col xs={12} md={6}>
             <h3 className="HomeText ms-4  mt-4">
               <Typewriter
@@ -114,7 +114,7 @@ function ComeFunziona() {
           </Col>
         </Row>
       )}
-      <Row className="justify-content-center">
+      <Row className="justify-content-center" style={{ width: "100%" }}>
         <Col xs={4} md={2}>
           {showButton && (
             <Link className="MyLink text-center" to={"/"}>

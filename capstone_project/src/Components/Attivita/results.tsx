@@ -46,7 +46,7 @@ function Results() {
 
   return (
     <div className="MyContainer pt-5">
-      <Row className="justify-content-center">
+      <Row className="justify-content-center" style={{ width: "100%" }}>
         <Col xs={3}>
           <h4
             className=" text-center"

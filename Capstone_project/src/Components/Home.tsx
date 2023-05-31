@@ -78,7 +78,7 @@ function Home() {
 
   return (
     <div className="MyContainer pt-5" style={{ height: "100vh" }}>
-      <Row style={{ height: "100%" }}>
+      <Row style={{ height: "100%", width: "100%" }}>
         <Col xs={12} md={3} className="homeCard pt-5 ps-5 ">
           <h5 style={{ marginBottom: "12rem", marginTop: "5rem" }}>
             <strong>
