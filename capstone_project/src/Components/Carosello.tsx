@@ -12,7 +12,7 @@ import { Row } from "react-bootstrap";
 function Carosello() {
   return (
     <Row className="justify-content-center ">
-      <Carousel prevIcon="" nextIcon="" indicators={false} className="my-2">
+      <Carousel prevIcon="" nextIcon="" indicators={false}>
         <Carousel.Item>
           <img
             className="d-block  myCarousel rounded-4"

@@ -130,7 +130,7 @@ const Register = () => {
   // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FUNZIONI DEL COMPONENTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   return (
-    <div className="MyContainer myRegister mt-5">
+    <div className="MyContainer myRegister mt-5 pb-3">
       {success ? (
         <section>
           <h1>Success!</h1>
@@ -141,7 +141,7 @@ const Register = () => {
           </p>
         </section>
       ) : (
-        <section className="mt-5">
+        <section>
           <p
             ref={errRef}
             className={errMsg ? "errmsg" : "offscreen"}

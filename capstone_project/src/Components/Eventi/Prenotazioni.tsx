@@ -15,7 +15,7 @@ import Error3 from "../Error/Error3";
 import { Evento } from "../../Redux/Interfaces";
 import { it } from "date-fns/locale";
 
-function Eventi() {
+function Prenotazioni() {
   // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< USE_NAVIGATE, USE_SELECTORE, USE_STATE, USE_DISPATCH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   const Eventi = useSelector((state: RootState) => state?.evento.AllEventi);
   const dispatch = useDispatch();
@@ -73,7 +73,7 @@ function Eventi() {
     <div className="MyContainer pt-5 ">
       <Row className="justify-content-center" style={{ width: "100%" }}>
         <Col xs={3}>
-          <h4
+          <h5
             className="  text-center"
             style={{
               color: " #9bd339",
@@ -85,7 +85,7 @@ function Eventi() {
           >
             {" "}
             <strong>Prenotazioni disponibili</strong>{" "}
-          </h4>
+          </h5>
         </Col>
       </Row>
       <Container className=" MyAttivita ">
@@ -173,4 +173,4 @@ function Eventi() {
   );
 }
 
-export default Eventi;
+export default Prenotazioni;

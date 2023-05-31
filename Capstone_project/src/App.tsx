@@ -9,11 +9,11 @@ import Login from "./Components/login_&_register/Login";
 import Attivita from "./Components/Attivita/Attivita";
 import Dashboard from "./Components/profile/Dashboard";
 import Results from "./Components/Attivita/results";
-import Eventi from "./Components/Eventi/Eventi";
 import Evento from "./Components/Eventi/Evento";
 import Footer from "./Components/Footer";
 import AboutUs from "./Components/AboutUs";
 import Home from "./Components/Home";
+import Prenotazioni from "./Components/Eventi/Prenotazioni";
 
 function App() {
   return (
@@ -29,7 +29,7 @@ function App() {
           <Route path="/ComeFunziona" element={<ComeFunziona />} />
           <Route path="/Results" element={<Results />} />
           <Route path="/Attivita/:id" element={<Attivita />} />
-          <Route path="/Eventi/" element={<Eventi />} />
+          <Route path="/Eventi/" element={<Prenotazioni />} />
           <Route path="/Evento/:id" element={<Evento />} />
         </Routes>
         <Footer />

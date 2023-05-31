@@ -21,7 +21,6 @@
   background-size: cover;
 }
 .HomeText {
-  color: white;
   background-color: black;
   margin-bottom: 1.5em;
   border-radius: 15px;
@@ -73,19 +72,8 @@ html {
 
 /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< HOME >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
 .myCarousel {
-  height: 30rem;
+  height: 25rem;
   width: 100%;
-}
-section {
-  width: 100%;
-  max-width: 420px;
-  min-height: 400px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding: 1rem;
-  background-color: white;
-  border-radius: 0.5rem;
 }
 .homeCard {
   background-color: black;
@@ -94,6 +82,11 @@ section {
   box-shadow: 0px 0px 0px 0px, 0px 0px 0px 0px, 0px 0px 0px 0px,
     #9bd339 5px -5px 5px;
 }
+@media (max-width: 575px) {
+  .carosello-col {
+    display: none;
+  }
+}
 /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< HOME >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
 
 /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< NAVBAR >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
@@ -101,13 +94,13 @@ section {
   font-size: larger;
   color: #9bd339;
 }
+
 .myNav {
   background-color: black;
   height: 4rem;
-  padding-left: 7em;
   z-index: 1;
   display: flex;
-  align-items: end;
+  align-items: center;
   color: #9bd339 !important;
 }
 .navText {
@@ -119,6 +112,8 @@ section {
   border-radius: 50%;
   position: absolute;
   z-index: 30 !important;
+
+  margin-left: 2em;
 }
 .dropdown-menu {
   background-color: black;
@@ -127,7 +122,7 @@ section {
 .notification-badge {
   position: absolute;
   top: 13px;
-  right: 280px;
+  right: 225px;
   background-color: #9bd339;
   color: white;
   font-size: 12px;
@@ -167,6 +162,7 @@ section {
 /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< DASHBOARD >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
 
 /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< MODAL >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+
 .ModalButton {
   background-color: transparent;
   color: black;
@@ -191,25 +187,46 @@ form {
 /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< REGISTER >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
 .myRegister {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  padding: 1rem 0.5rem;
+}
+section {
+  width: 100%;
+  max-width: 420px;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 1rem;
+  background-color: black;
+  color: #9bd339;
+  border-radius: 0.5rem;
 }
 a,
 a:visited {
-  color: #fff;
+  color: #9bd339;
 }
 input[type="text"],
 input[type="password"],
 input[type="email"],
-button,
 textarea {
   font-family: "Nunito", sans-serif;
   font-size: 22px;
   padding: 0.25rem;
   border-radius: 0.5rem;
+  color: #9bd339;
+  background-color: rgb(4, 58, 20);
+}
+button {
+  font-family: "Nunito", sans-serif;
+  font-size: 22px;
+  padding: 0.25rem;
+  border-radius: 0.5rem;
+  background-color: #9bd339;
+}
+button:hover {
+  border: 2px solid rgb(4, 58, 20);
+  transform: scale(1.02);
 }
 label,
 button {
@@ -222,7 +239,7 @@ button {
   font-size: 0.75rem;
   border-radius: 0.5rem;
   background: #000;
-  color: #fff;
+  color: #9bd339;
   padding: 0.25rem;
   position: relative;
   bottom: -10px;
@@ -300,6 +317,19 @@ button {
 /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FOOTER >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
 .page-footer {
   background-color: #000;
-  color: white;
+  color: #9bd339;
 }
 /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FOOTER >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+
+/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< PAGINATION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+.pagination {
+  --bs-pagination-color: #9bd339;
+  --bs-pagination-bg: black;
+  --bs-pagination-disabled-bg: transparent;
+  --bs-pagination-border-color: rgb(4, 58, 20);
+  --bs-pagination-active-color: white;
+  --bs-pagination-active-bg: rgb(4, 58, 20);
+  --bs-pagination-active-border-color: rgb(4, 58, 20);
+  --bs-pagination-disabled-border-color: rgb(4, 58, 20);
+}
+/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< PAGINATION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/

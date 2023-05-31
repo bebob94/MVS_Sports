@@ -56,14 +56,14 @@ function MyNavbar() {
 
   return (
     <>
-      <img src={Logo} alt="M.V.S.Sports icon" className=" mt-2 myImage" />
+      <img src={Logo} alt="M.V.S.Sports icon" className=" mt-3 myImage" />
       <Navbar expand="lg" className=" pt-0 fixed-top myNav">
         <Navbar.Toggle
           aria-controls="basic-navbar-nav"
           style={{
-            backgroundColor: "white",
+            backgroundColor: "#9bd339",
             marginRight: "1em",
-            marginLeft: "10em",
+            marginLeft: "15em",
           }}
         />
         <Navbar.Collapse
@@ -71,7 +71,7 @@ function MyNavbar() {
           style={{ marginLeft: "10em", backgroundColor: "black" }}
           className="rounded-2"
         >
-          <Nav className="me-auto mt">
+          <Nav className="me-auto ">
             <Link className="MyLink " to={"/"}>
               <strong className="navText">Home</strong>
             </Link>
@@ -85,10 +85,10 @@ function MyNavbar() {
               <strong className="navText">Attività</strong>
             </Link>
           </Nav>
-          <Nav className="me-2">
+          <Nav>
             {user.user && user.user.username ? (
               <>
-                <strong className="mt-2 me-2">Benvenuto</strong>
+                <strong className="mt-2  me-2">Benvenuto</strong>
                 <strong>
                   <NavDropdown
                     title={
@@ -135,7 +135,7 @@ function MyNavbar() {
                 <NavDropdown
                   title={<i className="bi bi-bell "></i>}
                   id="basic-nav-dropdown"
-                  style={{ width: "18em" }}
+                  style={{ width: "15em" }}
                 >
                   {User?.notifiche.length === 0 ? (
                     <p className="mx-3 pt-2 navText">Nessuna notifica</p>

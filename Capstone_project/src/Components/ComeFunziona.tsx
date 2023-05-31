@@ -28,10 +28,27 @@ function ComeFunziona() {
   // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FUNZIONI DEL COMPONENTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   return (
-    <div className="MyContainer">
+    <div className="MyContainer pt-5">
+      <Row className="justify-content-center " style={{ width: "100%" }}>
+        <Col xs={3}>
+          <h5
+            className=" text-center"
+            style={{
+              color: " #9bd339",
+              backgroundColor: "black",
+              borderBottomLeftRadius: "5rem",
+              borderBottomRightRadius: "5rem",
+              paddingTop: "0.8rem",
+            }}
+          >
+            {" "}
+            <strong>Come funziona</strong>{" "}
+          </h5>
+        </Col>
+      </Row>
       <Row style={{ width: "100%" }}>
-        <Col xs={12} md={8} style={{ marginTop: "10em" }}>
-          <h3 className="HomeText ms-4">
+        <Col xs={12} md={11} style={{ marginTop: "5em" }}>
+          <h4 className="HomeText ms-4">
             <Typewriter
               options={{
                 delay: 25,
@@ -45,13 +62,13 @@ function ComeFunziona() {
                   .start();
               }}
             />
-          </h3>
+          </h4>
         </Col>
       </Row>
       {showRow1 && (
         <Row className="justify-content-end" style={{ width: "100%" }}>
-          <Col xs={12} md={7}>
-            <h3 className="HomeText me-4 mt-4">
+          <Col xs={12} md={9}>
+            <h4 className="HomeText me-4 mt-4">
               <Typewriter
                 options={{
                   delay: 25,
@@ -66,14 +83,14 @@ function ComeFunziona() {
                     .start();
                 }}
               />
-            </h3>
+            </h4>
           </Col>
         </Row>
       )}
       {showRow2 && (
         <Row style={{ width: "100%" }}>
-          <Col xs={12} md={11}>
-            <h3 className="HomeText ms-4 mt-4">
+          <Col xs={12} md={12}>
+            <h4 className="HomeText ms-4 mt-4">
               <Typewriter
                 options={{
                   delay: 25,
@@ -88,14 +105,14 @@ function ComeFunziona() {
                     .start();
                 }}
               />
-            </h3>
+            </h4>
           </Col>
         </Row>
       )}
       {showRow3 && (
         <Row style={{ width: "100%" }}>
-          <Col xs={12} md={6}>
-            <h3 className="HomeText ms-4  mt-4">
+          <Col xs={12} md={7}>
+            <h4 className="HomeText ms-4  mt-4">
               <Typewriter
                 options={{
                   delay: 25,
@@ -110,7 +127,7 @@ function ComeFunziona() {
                     .start();
                 }}
               />
-            </h3>
+            </h4>
           </Col>
         </Row>
       )}

@@ -111,7 +111,7 @@ function Attivita() {
               <div
                 key={i}
                 style={{
-                  borderBottom: "2px solid white",
+                  borderBottom: "2px solid rgb(4, 58, 20)",
                 }}
               >
                 <Row>

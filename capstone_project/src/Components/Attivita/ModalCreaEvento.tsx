@@ -166,7 +166,7 @@ const ModalCreaEvento = ({
         </Modal.Body>
         <Modal.Footer>
           <Button
-            className="ModalButton "
+            className="ModalButton"
             onClick={handleSubmit}
             disabled={
               selectedDate < currentDate ||

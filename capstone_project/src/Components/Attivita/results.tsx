@@ -48,7 +48,7 @@ function Results() {
     <div className="MyContainer pt-5">
       <Row className="justify-content-center" style={{ width: "100%" }}>
         <Col xs={3}>
-          <h4
+          <h5
             className=" text-center"
             style={{
               color: " #9bd339",
@@ -60,7 +60,7 @@ function Results() {
           >
             {" "}
             <strong>Risultati ricerca</strong>{" "}
-          </h4>
+          </h5>
         </Col>
       </Row>
       <Container className="MyAttivita">

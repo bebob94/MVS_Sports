@@ -74,19 +74,27 @@ function Home() {
       });
     })();
   }, []);
+
   // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FUNZIONI DEL COMPONENTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   return (
     <div className="MyContainer pt-5" style={{ height: "100vh" }}>
       <Row style={{ height: "100%", width: "100%" }}>
-        <Col xs={12} md={3} className="homeCard pt-5 ps-5 ">
+        <Col
+          xs={12}
+          md={3}
+          className="homeCard pt-5 ps-3 "
+          style={{
+            background: "linear-gradient(rgb(4, 58, 20),black)",
+          }}
+        >
           <h5 style={{ marginBottom: "12rem", marginTop: "5rem" }}>
             <strong>
               Non trovi abbastanza compagni? <br />
               Non ti preoccupare, ci pensiamo noi!!
             </strong>
           </h5>
-          <Col xs={12} md={10} style={{ marginBottom: "12rem" }}>
+          <Col xs={12} md={11} style={{ marginBottom: "12rem" }}>
             <h6>
               <strong> Ricerca i campi in base allo sport!</strong>
             </h6>
@@ -99,6 +107,7 @@ function Home() {
                   height: "3rem",
                   backgroundColor: " rgb(4, 58, 20)",
                   color: " #9bd339",
+                  borderColor: "black",
                 }}
                 name="sport"
                 onChange={(e) => setSport(e.target.value)}
@@ -201,7 +210,11 @@ function Home() {
                 </option>
               </Form.Control>
               <Button
-                style={{ color: " rgb(4, 58, 20)", backgroundColor: "#9bd339" }}
+                style={{
+                  color: " rgb(4, 58, 20)",
+                  backgroundColor: "#9bd339",
+                  borderColor: "black",
+                }}
                 type="submit"
                 className="mt-0"
                 onClick={(e) => {
@@ -213,7 +226,7 @@ function Home() {
             </InputGroup>
           </Col>
 
-          <Col xs={12} md={9} className="my-5 ">
+          <Col xs={12} md={11} className="my-5 ">
             <h6>
               <strong>Ricerca i campi per parola chiave!</strong>
             </h6>
@@ -222,6 +235,7 @@ function Home() {
                 width: "100%",
                 backgroundColor: " rgb(4, 58, 20)",
                 color: " #9bd339",
+                borderColor: "black",
               }}
               type="text"
               value={search}
@@ -238,7 +252,7 @@ function Home() {
           </Col>
         </Col>
         <Col xs={12} md={4}>
-          <h4
+          <h5
             className=" text-center"
             style={{
               color: " #9bd339",
@@ -246,13 +260,20 @@ function Home() {
               borderBottomLeftRadius: "5rem",
               borderBottomRightRadius: "5rem",
               paddingTop: "0.8rem",
+              paddingBottom: "0.2rem",
+              marginLeft: "5em",
             }}
           >
             {" "}
-            <strong>Prenota online il tuo campo da gioco</strong>{" "}
-          </h4>
+            <strong>Prenota il tuo campo da gioco</strong>{" "}
+          </h5>
         </Col>
-        <Col xs={12} md={4}>
+        <Col
+          xs={12}
+          md={4}
+          className="carosello-col"
+          style={{ marginTop: "10em" }}
+        >
           <Carosello />
         </Col>
       </Row>
