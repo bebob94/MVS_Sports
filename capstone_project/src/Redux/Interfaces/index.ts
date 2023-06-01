@@ -11,12 +11,12 @@ export interface MyState {
 }
 export interface Roles {
   id: number;
-  roleName: String;
+  roleName: string;
 }
 export interface Registration {
   id: number;
-  username: String;
-  accessToken: String;
+  username: string;
+  accessToken: string;
   roles: Roles[];
 }
 
@@ -27,12 +27,12 @@ export interface MyUser {
 }
 export interface user {
   id: number;
-  name: String;
-  surname: String;
-  indirizzo: String;
-  username: String;
-  email: String;
-  password: String;
+  name: string;
+  surname: string;
+  indirizzo: string;
+  username: string;
+  email: string;
+  password: string;
   eventi: Evento[];
   pagamenti: [];
   notifiche: Notifica[];
@@ -43,9 +43,9 @@ export interface user {
 }
 export interface userChange {
   id?: number;
-  name: String;
-  surname: String;
-  indirizzo: String;
+  name: string;
+  surname: string;
+  indirizzo: string;
 }
 
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< ATTIVITA SPORTIVA >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -55,14 +55,14 @@ export interface MyAttivitaSportiva {
 }
 export interface AttivitaSportiva {
   id: number;
-  nomeAttivita: String;
-  descrizioneAttivita: String;
-  indirizzo: String;
-  orarioApertura: String; // formato "hh:mm"
-  orarioChiusura: String; // formato "hh:mm"
+  nomeAttivita: string;
+  descrizioneAttivita: string;
+  indirizzo: string;
+  orarioApertura: string; // formato "hh:mm"
+  orarioChiusura: string; // formato "hh:mm"
   tipoDiSport: string;
   numeroMassimoPartecipanti: number;
-  durataEvento: String; // formato "hh:mm"
+  durataEvento: string; // formato "hh:mm"
   eventi: Evento[];
   recensioni: Recensione[];
   user: user;
@@ -70,17 +70,17 @@ export interface AttivitaSportiva {
 }
 export interface AttivitaChange {
   id?: number;
-  nomeAttivita: String;
-  descrizioneAttivita: String;
-  indirizzo: String;
+  nomeAttivita: string;
+  descrizioneAttivita: string;
+  indirizzo: string;
 }
 export interface NewAttivita {
-  nomeAttivita: String;
-  descrizioneAttivita: String;
-  indirizzo: String;
-  orarioApertura: String;
-  orarioChiusura: String;
-  tipoDiSport: String;
+  nomeAttivita: string;
+  descrizioneAttivita: string;
+  indirizzo: string;
+  orarioApertura: string;
+  orarioChiusura: string;
+  tipoDiSport: string;
 }
 
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< EVENTO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -114,14 +114,14 @@ export interface MyRecensione {
 export interface Recensione {
   id: number;
   valutazione: number;
-  testoRecensione: String;
-  orarioRecensione: String; // formato "hh:mm"
+  testoRecensione: string;
+  orarioRecensione: string; // formato "hh:mm"
   user: user;
   attivitaSportiva: AttivitaSportiva;
 }
 export interface NewRecensione {
   valutazione: number;
-  testoRecensione: String;
+  testoRecensione: string;
 }
 
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< NOTIFICA >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -131,8 +131,8 @@ export interface MyNotifica {
 }
 export interface Notifica {
   id: number;
-  tipoNotifica: String;
-  orarioNotifica: String; // formato "hh:mm"
+  tipoNotifica: string;
+  orarioNotifica: string; // formato "hh:mm"
   evento: Evento;
   attivitaSportiva: AttivitaSportiva;
 }

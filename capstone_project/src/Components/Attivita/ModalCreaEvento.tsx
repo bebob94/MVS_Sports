@@ -81,7 +81,6 @@ const ModalCreaEvento = ({
       type: ALL_EVENTI,
       payload: data,
     });
-
     dispatch({
       type: ALL_NOTIFICHE,
       payload: data2,

@@ -25,7 +25,7 @@ const ModalCreateRecensione = ({
   const dispatch = useDispatch();
   const token = useSelector((state: RootState) => state?.user.user.accessToken);
   const [valutazione, setValutazione] = useState<number>(0);
-  const [testoRecensione, setTestoRecensione] = useState<String>("");
+  const [testoRecensione, setTestoRecensione] = useState<string>("");
   const [show, setShow] = useState(false);
   // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< USE_NAVIGATE, USE_SELECTORE, USE_STATE, USE_DISPATCH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 

@@ -4,7 +4,6 @@
 .body {
   text-align: center;
 }
-
 .HomeContainer {
   display: flex;
   flex-direction: column;
@@ -93,6 +92,18 @@ html {
 /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< HOME >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
 
 /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< NAVBAR >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+@media (max-width: 575px) {
+  .myCollapse {
+    background: linear-gradient(rgb(4, 58, 20), black) !important;
+    position: absolute !important;
+    top: 100% !important;
+    right: 0 !important;
+  }
+  .myNav {
+    display: flex !important;
+    justify-content: end !important;
+  }
+}
 .bi-bell {
   font-size: larger;
   color: #9bd339;
@@ -112,9 +123,9 @@ html {
 .myImage {
   height: 80px;
   border-radius: 50%;
-  position: absolute;
   z-index: 30 !important;
   margin-left: 2em;
+  position: fixed;
 }
 .dropdown-menu {
   background: linear-gradient(rgb(4, 58, 20), black);

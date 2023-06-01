@@ -56,6 +56,7 @@ const ModalModifyEvento = ({ eventoId }: { eventoId: Evento }) => {
       type: EVENTO_BY_ID,
       payload: data,
     });
+
     alert("Grazie per aver partecipato a questo evento");
   };
   // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FUNZIONI DEL COMPONENTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

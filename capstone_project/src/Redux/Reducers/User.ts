@@ -1,5 +1,5 @@
 import { PayloadAction } from "@reduxjs/toolkit";
-import { MyUser, user } from "../Interfaces";
+import { MyUser, user, Evento } from "../Interfaces/index";
 import { ALL_USERS, USER_BY_ID, USER_BY_USERNAME } from "../ActionType/user";
 
 const inizialState: MyUser = {
@@ -9,7 +9,7 @@ const inizialState: MyUser = {
 
 export const UserReducer = (
   state = inizialState,
-  action: PayloadAction<user[] | user>
+  action: PayloadAction<user[] | user | Evento>
 ) => {
   switch (action.type) {
     case ALL_USERS:
@@ -28,6 +28,7 @@ export const UserReducer = (
         ...state,
         user: action.payload as user,
       };
+
     default:
       return state;
   }

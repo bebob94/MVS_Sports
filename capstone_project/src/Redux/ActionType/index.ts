@@ -1,4 +1,4 @@
-import { User, Registration } from "../Interfaces";
+import { User, Registration } from "../Interfaces/index";
 
 export const USER = "USER";
 

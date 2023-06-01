@@ -72,7 +72,7 @@ function MyNavbar() {
             marginLeft: "10em",
             background: "lineargradient(rgb(4, 58, 20), black)",
           }}
-          className="rounded-2"
+          className="rounded-2 myCollapse"
         >
           <Nav className="me-auto ">
             <Link className="MyLink " to={"/"}>
@@ -88,7 +88,7 @@ function MyNavbar() {
               <strong className="navText">Prenotazioni disponibili</strong>
             </Link>
           </Nav>
-          <Nav>
+          <Nav className="mt-2">
             {user.user && user.user.username ? (
               <>
                 <strong className="mt-2  me-2">Benvenuto</strong>

@@ -135,7 +135,7 @@ function ComeFunziona() {
         <Col xs={4} md={2}>
           {showButton && (
             <Link className="MyLink text-center" to={"/"}>
-              <h3 className="HomeText mt-3 myButton">Prenota ora</h3>
+              <h3 className=" mt-3 myButton">Prenota ora</h3>
             </Link>
           )}
         </Col>

@@ -200,7 +200,7 @@ const Dashboard = () => {
             )}
           </Row>
           <Row className="justify-content-between">
-            <h2 className="mt-2 mb-2">Eventi prenotati:</h2>
+            <h2 className="mt-2 mb-2">Prenotazioni create:</h2>
             {user?.eventi.length > 0 ? (
               <>
                 {currentEvents?.map((event) => (
@@ -220,6 +220,10 @@ const Dashboard = () => {
                     <p>
                       <strong className="me-3">Sport: </strong>{" "}
                       {convertSportType(event.attivitaSportiva?.tipoDiSport)}
+                    </p>
+                    <p>
+                      <strong className="me-3">Utente creatore: </strong>
+                      {event?.userCreatore.name} {event?.userCreatore.surname}
                     </p>
                     <p>
                       <strong className="me-3">Data e ora: </strong>
