@@ -42,6 +42,27 @@ function Results() {
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
   };
+
+  const convertSportType = (sportType: any) => {
+    switch (sportType) {
+      case "CALCETTO":
+        return "Calcetto";
+      case "TENNIS_SINGOLO":
+        return "Tennis Singolo";
+      case "TENNIS_DOPPIO":
+        return "Tennis Doppio";
+      case "BEACH_TENNIS":
+        return "Beach Tennis";
+      case "BEACH_VOLLEY":
+        return "Beach Volley";
+      case "PALLAVOLO":
+        return "Pallavolo";
+      case "PADDLE":
+        return "Paddle";
+      default:
+        return sportType;
+    }
+  };
   // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FUNZIONI DEL COMPONENTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   return (
@@ -71,6 +92,7 @@ function Results() {
                 borderBottom: "4px solid  #9bd339",
                 paddingBottom: "30px",
               }}
+              className=""
             >
               {currentItems?.map((attivita, i) => (
                 <Col key={i} xs={12} className="mb-3">
@@ -94,7 +116,7 @@ function Results() {
                             <Card.Title className="mt-3 mb-4">
                               <strong>{attivita?.nomeAttivita}</strong>
                             </Card.Title>
-                            <Card.Text className="my-3">
+                            <Card.Text className="my-3 me-5 pe-5">
                               <strong>Descrizione:</strong>
                               <br />
                               {attivita?.descrizioneAttivita}
@@ -105,7 +127,7 @@ function Results() {
                             </Card.Text>
                             <Card.Text>
                               <strong>Sport: </strong> <br />
-                              {attivita?.tipoDiSport}
+                              {convertSportType(attivita?.tipoDiSport)}
                             </Card.Text>
                           </Card.Body>
                         </Col>

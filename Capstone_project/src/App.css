@@ -21,7 +21,7 @@
   background-size: cover;
 }
 .HomeText {
-  background-color: black;
+  background: linear-gradient(rgb(4, 58, 20), black);
   margin-bottom: 1.5em;
   border-radius: 15px;
   padding: 10px;
@@ -49,12 +49,14 @@
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   box-shadow: #9bd339 0px 0px 2px 5px;
+  font-weight: bold;
 }
 .myButton:hover {
   background-color: #9bd339;
-  color: black;
+  color: rgb(4, 58, 20);
   box-shadow: rgb(4, 58, 20) 0px 0px 4px 5px;
-  transform: scale(1.05);
+  transform: scale(1.03);
+  font-weight: bold;
 }
 * {
   margin: 0;
@@ -65,8 +67,9 @@ html {
   font-family: "Nunito", sans-serif;
   color: #fff;
 }
-.bi-trash3-fill {
+.bi-x-circle {
   font-size: 25px;
+  color: #9bd339;
 }
 /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< GENERICO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
 
@@ -76,7 +79,7 @@ html {
   width: 100%;
 }
 .homeCard {
-  background-color: black;
+  background: linear-gradient(rgb(4, 58, 20), black);
   color: #9bd339;
   transition: all 0.3s ease-in-out;
   box-shadow: 0px 0px 0px 0px, 0px 0px 0px 0px, 0px 0px 0px 0px,
@@ -94,11 +97,10 @@ html {
   font-size: larger;
   color: #9bd339;
 }
-
 .myNav {
-  background-color: black;
+  background: linear-gradient(rgb(4, 58, 20), black);
   height: 4rem;
-  z-index: 1;
+  z-index: 2;
   display: flex;
   align-items: center;
   color: #9bd339 !important;
@@ -112,11 +114,10 @@ html {
   border-radius: 50%;
   position: absolute;
   z-index: 30 !important;
-
   margin-left: 2em;
 }
 .dropdown-menu {
-  background-color: black;
+  background: linear-gradient(rgb(4, 58, 20), black);
   border: 1px solid #9bd339;
 }
 .notification-badge {
@@ -140,6 +141,12 @@ html {
   text-decoration: none !important;
   margin: 0 15px !important;
 }
+.dropdown-item:focus,
+.dropdown-item:hover {
+  background-color: rgb(4, 58, 20) !important;
+  color: #9bd339;
+  text-decoration: none;
+}
 /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< NAVBAR >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
 
 /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< DASHBOARD >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
@@ -152,7 +159,6 @@ html {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
 }
-
 .DashboardContainer strong {
   color: black !important;
 }
@@ -162,7 +168,6 @@ html {
 /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< DASHBOARD >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
 
 /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< MODAL >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-
 .ModalButton {
   background-color: transparent;
   color: black;
@@ -182,6 +187,10 @@ form {
   flex-grow: 1;
   padding-bottom: 1rem;
 }
+.dataForm {
+  color: black !important;
+  background-color: white !important;
+}
 /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< MODAL >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
 
 /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< REGISTER >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
@@ -198,7 +207,8 @@ section {
   flex-direction: column;
   justify-content: flex-start;
   padding: 1rem;
-  background-color: black;
+  border: 3px solid black;
+  background: linear-gradient(rgb(4, 58, 20), black);
   color: #9bd339;
   border-radius: 0.5rem;
 }
@@ -275,7 +285,6 @@ button {
 /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< REGISTER >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
 
 /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< PRENOTAZIONI >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-
 .secondSection {
   background-color: #f8f9fa;
   backdrop-filter: blur(10px);
@@ -303,7 +312,7 @@ button {
   text-align: center;
 }
 .transparent-card {
-  background-color: black; /* Colore di sfondo con opacità */
+  background: linear-gradient(rgb(4, 58, 20), black);
   color: #9bd339;
   transition: all 0.3s ease-in-out;
 }
@@ -316,7 +325,7 @@ button {
 
 /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FOOTER >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
 .page-footer {
-  background-color: #000;
+  background: linear-gradient(black, rgb(3, 32, 12));
   color: #9bd339;
 }
 /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FOOTER >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
@@ -324,7 +333,7 @@ button {
 /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< PAGINATION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
 .pagination {
   --bs-pagination-color: #9bd339;
-  --bs-pagination-bg: black;
+  --bs-pagination-bg: linear-gradient(rgb(4, 58, 20), black);
   --bs-pagination-disabled-bg: transparent;
   --bs-pagination-border-color: rgb(4, 58, 20);
   --bs-pagination-active-color: white;
@@ -335,5 +344,4 @@ button {
   --bs-pagination-hover-bg: none;
   --bs-pagination-hover-border-color: #9bd339;
 }
-
 /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< PAGINATION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/

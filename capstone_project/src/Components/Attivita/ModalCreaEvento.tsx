@@ -110,7 +110,7 @@ const ModalCreaEvento = ({
   return (
     <>
       <Button
-        style={{ width: "150px" }}
+        style={{ width: "180px" }}
         className="myButton rounded-4"
         onClick={handleShow}
       >
@@ -132,10 +132,10 @@ const ModalCreaEvento = ({
                     onChange={handleDateChange}
                     showTimeSelect
                     timeFormat="HH:mm"
-                    timeIntervals={30}
+                    timeIntervals={60}
                     timeCaption="Time"
                     dateFormat="MMMM d, yyyy h:mm aa"
-                    className="form-control"
+                    className="form-control dataForm"
                     minDate={currentDate}
                     locale={it} // Aggiungi questa riga per utilizzare il locale italiano
                   />

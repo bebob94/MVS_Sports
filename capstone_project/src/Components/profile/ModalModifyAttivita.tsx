@@ -90,6 +90,7 @@ const ModalModifyAttivita = ({
                 placeholder=""
                 autoFocus
                 name="nomeAttivita"
+                className="dataForm"
                 value={AttivitaPayload?.nomeAttivita?.toString()}
                 onChange={handleChange}
               />
@@ -99,6 +100,7 @@ const ModalModifyAttivita = ({
                 type="text"
                 placeholder=""
                 name="descrizioneAttivita"
+                className="dataForm"
                 value={AttivitaPayload?.descrizioneAttivita?.toString()}
                 onChange={handleChange}
               />

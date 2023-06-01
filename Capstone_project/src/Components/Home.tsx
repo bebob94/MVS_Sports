@@ -80,14 +80,7 @@ function Home() {
   return (
     <div className="MyContainer pt-5" style={{ height: "100vh" }}>
       <Row style={{ height: "100%", width: "100%" }}>
-        <Col
-          xs={12}
-          md={3}
-          className="homeCard pt-5 ps-3 "
-          style={{
-            background: "linear-gradient(rgb(4, 58, 20),black)",
-          }}
-        >
+        <Col xs={12} md={3} className="homeCard pt-5 ps-3 ">
           <h5 style={{ marginBottom: "12rem", marginTop: "5rem" }}>
             <strong>
               Non trovi abbastanza compagni? <br />
@@ -214,6 +207,7 @@ function Home() {
                   color: " rgb(4, 58, 20)",
                   backgroundColor: "#9bd339",
                   borderColor: "black",
+                  zIndex: "1",
                 }}
                 type="submit"
                 className="mt-0"

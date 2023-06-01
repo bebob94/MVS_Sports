@@ -83,6 +83,7 @@ const ModalModifyUtente = ({ userId }: { userId: user }) => {
                 placeholder=""
                 autoFocus
                 name="name"
+                className="dataForm"
                 value={userPayload.name.toString()}
                 onChange={handleChange}
               />
@@ -92,6 +93,7 @@ const ModalModifyUtente = ({ userId }: { userId: user }) => {
                 type="text"
                 placeholder=""
                 name="surname"
+                className="dataForm"
                 value={userPayload.surname.toString()}
                 onChange={handleChange}
               />

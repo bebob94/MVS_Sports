@@ -68,7 +68,10 @@ function MyNavbar() {
         />
         <Navbar.Collapse
           id="basic-navbar-nav"
-          style={{ marginLeft: "10em", backgroundColor: "black" }}
+          style={{
+            marginLeft: "10em",
+            background: "lineargradient(rgb(4, 58, 20), black)",
+          }}
           className="rounded-2"
         >
           <Nav className="me-auto ">
@@ -78,11 +81,11 @@ function MyNavbar() {
             <Link className="MyLink" to={"/ComeFunziona"}>
               <strong className="navText">Come funziona</strong>
             </Link>
-            <Link className="MyLink" to={"/Eventi"}>
-              <strong className="navText">Prenotazioni</strong>
-            </Link>
             <Link className="MyLink" to={"/Results"}>
               <strong className="navText">Attività</strong>
+            </Link>
+            <Link className="MyLink" to={"/Eventi"}>
+              <strong className="navText">Prenotazioni disponibili</strong>
             </Link>
           </Nav>
           <Nav>
@@ -114,11 +117,8 @@ function MyNavbar() {
                     </Link>
 
                     <NavDropdown.Item
-                      className="navText"
-                      style={{
-                        backgroundColor: "black",
-                        borderTop: "1px solid #9bd339",
-                      }}
+                      className="navText "
+                      style={{ borderTop: "2px solid #9bd339 " }}
                       onClick={(e) => {
                         handleSubmit(e);
                       }}
@@ -143,12 +143,9 @@ function MyNavbar() {
                     User?.notifiche.map((notifica, i) => (
                       <NavDropdown.Item
                         key={i}
+                        style={{ borderBottom: "2px solid #9bd339 " }}
                         className=" ms-0"
                         onClick={handleDeletNotifications}
-                        style={{
-                          backgroundColor: "black",
-                          borderBottom: "1px solid #9bd339",
-                        }}
                       >
                         <p className="my-0 mb-2 navText">
                           {" "}

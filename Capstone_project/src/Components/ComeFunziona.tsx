@@ -51,7 +51,7 @@ function ComeFunziona() {
           <h4 className="HomeText ms-4">
             <Typewriter
               options={{
-                delay: 25,
+                delay: 10,
               }}
               onInit={(typewriter: any) => {
                 typewriter
@@ -71,7 +71,7 @@ function ComeFunziona() {
             <h4 className="HomeText me-4 mt-4">
               <Typewriter
                 options={{
-                  delay: 25,
+                  delay: 10,
                 }}
                 onInit={(typewriter: any) => {
                   typewriter
@@ -93,7 +93,7 @@ function ComeFunziona() {
             <h4 className="HomeText ms-4 mt-4">
               <Typewriter
                 options={{
-                  delay: 25,
+                  delay: 10,
                 }}
                 onInit={(typewriter: any) => {
                   typewriter
@@ -115,7 +115,7 @@ function ComeFunziona() {
             <h4 className="HomeText ms-4  mt-4">
               <Typewriter
                 options={{
-                  delay: 25,
+                  delay: 10,
                 }}
                 onInit={(typewriter: any) => {
                   typewriter

@@ -130,7 +130,7 @@ const Register = () => {
   // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FUNZIONI DEL COMPONENTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   return (
-    <div className="MyContainer myRegister mt-5 pb-3">
+    <div className="MyContainer myRegister  pb-3" style={{ paddingTop: "5em" }}>
       {success ? (
         <section>
           <h1>Success!</h1>

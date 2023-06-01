@@ -67,6 +67,27 @@ function Prenotazioni() {
       payload: data,
     });
   };
+
+  const convertSportType = (sportType: any) => {
+    switch (sportType) {
+      case "CALCETTO":
+        return "Calcetto";
+      case "TENNIS_SINGOLO":
+        return "Tennis Singolo";
+      case "TENNIS_DOPPIO":
+        return "Tennis Doppio";
+      case "BEACH_TENNIS":
+        return "Beach Tennis";
+      case "BEACH_VOLLEY":
+        return "Beach Volley";
+      case "PALLAVOLO":
+        return "Pallavolo";
+      case "PADDLE":
+        return "Paddle";
+      default:
+        return sportType;
+    }
+  };
   // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FUNZIONI DEL COMPONENTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   return (
@@ -101,17 +122,17 @@ function Prenotazioni() {
                   className={`mb-5 mx-1 rounded-4 transparent-card`}
                   key={i}
                 >
-                  <Col className="mb-4">
-                    <p className="mt-3">
-                      <strong>Sport: </strong> <br />
-                      {evento?.attivitaSportiva.tipoDiSport}
-                    </p>
-                  </Col>
                   <Col className="my-4">
                     <p>
                       <strong>Attività: </strong>
                       <br />
                       {evento?.attivitaSportiva.nomeAttivita.toString()}{" "}
+                    </p>
+                  </Col>
+                  <Col className="mb-4">
+                    <p className="mt-3">
+                      <strong>Sport: </strong> <br />
+                      {convertSportType(evento?.attivitaSportiva?.tipoDiSport)}
                     </p>
                   </Col>
                   <Col className="my-4">
@@ -132,7 +153,7 @@ function Prenotazioni() {
                       Alle {formatTime(evento?.orarioFine)}
                     </p>
                   </Col>
-                  <Col className="my-4">
+                  <Col className="mt-4">
                     <p>
                       {" "}
                       <strong>Numero partecipanti:</strong>
@@ -140,7 +161,7 @@ function Prenotazioni() {
                       {evento?.numeroPartecipanti}
                     </p>
                   </Col>
-                  <Col className="mt-5">
+                  <Col>
                     <p>
                       {" "}
                       <strong>Numero massimo partecipanti:</strong>

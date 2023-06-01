@@ -72,12 +72,33 @@ function Attivita() {
   );
   const totalReviews = Attivita?.recensioni?.length;
   const totalPages = Math.ceil(totalReviews / reviewsPerPage);
+
+  const convertSportType = (sportType: any) => {
+    switch (sportType) {
+      case "CALCETTO":
+        return "Calcetto";
+      case "TENNIS_SINGOLO":
+        return "Tennis Singolo";
+      case "TENNIS_DOPPIO":
+        return "Tennis Doppio";
+      case "BEACH_TENNIS":
+        return "Beach Tennis";
+      case "BEACH_VOLLEY":
+        return "Beach Volley";
+      case "PALLAVOLO":
+        return "Pallavolo";
+      case "PADDLE":
+        return "Paddle";
+      default:
+        return sportType;
+    }
+  };
   // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FUNZIONI DEL COMPONENTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   return (
-    <div className="MyContainer py-5">
-      <Container className="MyAttivita mt-5">
-        <Row className="py-5 px-5 rounded-4 transparent-card">
+    <div className="MyContainer  py-5">
+      <Container className="MyAttivita mt-5 ">
+        <Row className="py-5 px-5 rounded-4 homeCard ">
           <Col xs={12} md={6}>
             <h1 className="mb-1">{Attivita?.nomeAttivita}</h1>
             <Col xs={12} md={8}>
@@ -90,15 +111,13 @@ function Attivita() {
               <h4 className="mt-2">Descrizione attività:</h4>
               <p>{Attivita?.descrizioneAttivita}</p>
               <h4 className="mt-4">Sport:</h4>
-              <p>{Attivita?.tipoDiSport}</p>
+              <p>{convertSportType(Attivita?.tipoDiSport)}</p>
               <h4 className="mt-4">Orario Apertura:</h4>
               <p>{formatTime(Attivita?.orarioApertura?.toString())}</p>
               <h4 className="mt-4">Orario chiusura</h4>
               <p>{formatTime(Attivita?.orarioChiusura?.toString())}</p>
-              <h4 className="mt-4">
-                Numero massimo partecipanti:{" "}
-                {Attivita?.numeroMassimoPartecipanti}
-              </h4>
+              <h4 className="mt-4">Numero massimo partecipanti: </h4>
+              <p>{Attivita?.numeroMassimoPartecipanti}</p>
             </Col>
             <Col xs={6} md={6} className="mt-3">
               <Col xs={1} className="mt-3">
@@ -141,18 +160,18 @@ function Attivita() {
                         }}
                         onClick={() => handleDelete(singRecensione?.id)}
                       >
-                        <i className="bi bi-trash3-fill"></i>
+                        <i className="bi bi-x-circle"></i>
                       </Button>
                     ) : (
                       <></>
                     )}
                   </Col>
                 </Row>
-                <h5 className="mb-3">
+                <h5>
                   <strong>Valutazione:</strong>
                   {"      "}
-                  {singRecensione?.valutazione?.toString()}
                 </h5>
+                <p> {singRecensione?.valutazione?.toString()}</p>
 
                 <h5>
                   <strong>Testo recensione:</strong>{" "}

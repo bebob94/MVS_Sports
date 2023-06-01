@@ -82,6 +82,27 @@ const Dashboard = () => {
     });
     return ` ${startTime} `;
   };
+
+  const convertSportType = (sportType: any) => {
+    switch (sportType) {
+      case "CALCETTO":
+        return "Calcetto";
+      case "TENNIS_SINGOLO":
+        return "Tennis Singolo";
+      case "TENNIS_DOPPIO":
+        return "Tennis Doppio";
+      case "BEACH_TENNIS":
+        return "Beach Tennis";
+      case "BEACH_VOLLEY":
+        return "Beach Volley";
+      case "PALLAVOLO":
+        return "Pallavolo";
+      case "PADDLE":
+        return "Paddle";
+      default:
+        return sportType;
+    }
+  };
   // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FUNZIONI DEL COMPONENTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   return (
@@ -106,22 +127,18 @@ const Dashboard = () => {
                 <h4 className="mt-5 mb-4">Utente</h4>
               </strong>
               <p className=" mb-4">
-                {" "}
                 <strong className="me-3">Nome: </strong>
                 {user?.name}
               </p>
               <p className=" mb-4">
-                {" "}
                 <strong className="me-3">Cognome: </strong>
                 {user?.surname}
               </p>
               <p className=" mb-4">
-                {" "}
                 <strong className="me-3">Email: </strong>
                 {user?.email}
               </p>
               <p className=" mb-5">
-                {" "}
                 <strong className="me-3">Indirizzo: </strong>
                 {user?.indirizzo}
               </p>
@@ -147,7 +164,7 @@ const Dashboard = () => {
                       </p>
                       <p>
                         <strong className="me-3">Sport: </strong>{" "}
-                        {Attivita?.tipoDiSport}
+                        {convertSportType(Attivita?.tipoDiSport)}
                       </p>
                       <p>
                         <strong className="me-3">Indirizzo: </strong>
@@ -182,65 +199,79 @@ const Dashboard = () => {
               )
             )}
           </Row>
-          <Row>
-            <Col>
-              <h2 className="mt-5 mb-5">Eventi prenotati</h2>
-            </Col>
-          </Row>
-          <Row>
-            {currentEvents.map((event, i) => (
-              <Col key={i} md={4} className=" mb-5">
-                <h3>
-                  {event?.attivitaSportiva.tipoDiSport}
-                  <Button
-                    variant="link"
-                    className="transparent-button"
+          <Row className="justify-content-between">
+            <h2 className="mt-2 mb-2">Eventi prenotati:</h2>
+            {user?.eventi.length > 0 ? (
+              <>
+                {currentEvents?.map((event) => (
+                  <Col
+                    xs={12}
+                    md={4}
+                    key={event.id}
                     style={{
-                      fontSize: "30px",
-                      color: "black",
-                      textDecoration: "none",
-                      marginLeft: "125px",
-                      marginBottom: "60px",
+                      border: "2px solid black",
+                      borderRadius: "10px",
+                      padding: "20px",
+                      width: "30%",
+                      margin: "30px auto",
                     }}
-                    onClick={() => handleDelete(event?.id)}
                   >
-                    <i className="bi bi-trash3-fill"></i>
-                  </Button>
-                </h3>
-                <strong>
-                  <p>Inizio: {formatTime(event?.orarioInizio)}</p>
-                  <p>Fine: {formatTime(event?.orarioFine)}</p>
-                  <p>
-                    Massimo Partecipanti:{" "}
-                    {event?.attivitaSportiva?.numeroMassimoPartecipanti}
-                  </p>
-                  <p>Partecipanti: {event?.numeroPartecipanti.toString()}</p>
-                  <p>
-                    Creato da: {event?.userCreatore.name}{" "}
-                    {event?.userCreatore.surname}
-                  </p>
-                  <p>Attività: {event?.attivitaSportiva.nomeAttivita}</p>
-                </strong>
-              </Col>
-            ))}
-          </Row>
-          <Row>
-            <Col>
-              <Pagination>
-                {Array.from(
-                  { length: Math.ceil(user?.eventi.length / eventsPerPage) },
-                  (_, index) => (
-                    <Pagination.Item
-                      key={index + 1}
-                      active={index + 1 === currentPage}
-                      onClick={() => paginate(index + 1)}
+                    <h4>{event.attivitaSportiva?.nomeAttivita}</h4>
+                    <p>
+                      <strong className="me-3">Sport: </strong>{" "}
+                      {convertSportType(event.attivitaSportiva?.tipoDiSport)}
+                    </p>
+                    <p>
+                      <strong className="me-3">Data e ora: </strong>
+                      {formatTime(event?.orarioInizio)}
+                    </p>
+                    <p>
+                      <strong className="me-3">Luogo: </strong>
+                      {event.attivitaSportiva?.indirizzo}
+                    </p>{" "}
+                    <p>
+                      <strong>Massimo Partecipanti: </strong>{" "}
+                      {event?.attivitaSportiva?.numeroMassimoPartecipanti}
+                    </p>{" "}
+                    <p>
+                      <strong>Partecipanti: </strong>{" "}
+                      {event?.numeroPartecipanti.toString()}
+                    </p>
+                    <Button
+                      variant="danger"
+                      onClick={() => handleDelete(event.id)}
                     >
-                      {index + 1}
+                      Elimina
+                    </Button>
+                  </Col>
+                ))}
+                <Pagination className="justify-content-center">
+                  {user?.eventi.length > eventsPerPage && (
+                    <Pagination.Prev
+                      onClick={() => paginate(currentPage - 1)}
+                    />
+                  )}
+                  {Array.from(
+                    Array(Math.ceil(user?.eventi.length / eventsPerPage)).keys()
+                  ).map((number) => (
+                    <Pagination.Item
+                      key={number + 1}
+                      active={number + 1 === currentPage}
+                      onClick={() => paginate(number + 1)}
+                    >
+                      {number + 1}
                     </Pagination.Item>
-                  )
-                )}
-              </Pagination>
-            </Col>
+                  ))}
+                  {user?.eventi.length > eventsPerPage && (
+                    <Pagination.Next
+                      onClick={() => paginate(currentPage + 1)}
+                    />
+                  )}
+                </Pagination>
+              </>
+            ) : (
+              <p>Non hai prenotato alcun evento</p>
+            )}
           </Row>
         </Container>
       ) : (
