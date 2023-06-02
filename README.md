@@ -83,7 +83,8 @@ Se sei interessato ad esplorare ulteriori progetti e contributi, ti invito a vis
 ## Profilo LinkedIn
 Sono alla ricerca di nuove opportunità lavorative che mi permettano di mettere in pratica le mie competenze e di crescere professionalmente.
 Se desideri saperne di più sul mio background e le mie esperienze, ti invito a visitare il mio profilo
- [LinkedIn](https://www.linkedin.com/in/alberto-macis-052273153/) Sarà un piacere connetterci e discutere di possibili collaborazioni.
+ [LinkedIn](https://www.linkedin.com/in/alberto-macis-052273153/)
+ Sarà un piacere connetterci e discutere di possibili collaborazioni.
 
 Sono aperto a nuove sfide e sono desideroso di ampliare le mie competenze.
 Se hai opportunità di lavoro o progetti interessanti, non esitare a contattarmi.
