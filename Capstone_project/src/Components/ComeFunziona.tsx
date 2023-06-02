@@ -47,7 +47,7 @@ function ComeFunziona() {
         </Col>
       </Row>
       <Row style={{ width: "100%" }}>
-        <Col xs={12} md={11} style={{ marginTop: "5em" }}>
+        <Col xs={12} md={8} style={{ marginTop: "5em" }}>
           <h4 className="HomeText ms-4">
             <Typewriter
               options={{
@@ -67,7 +67,7 @@ function ComeFunziona() {
       </Row>
       {showRow1 && (
         <Row className="justify-content-end" style={{ width: "100%" }}>
-          <Col xs={12} md={9}>
+          <Col xs={12} md={7}>
             <h4 className="HomeText me-4 mt-4">
               <Typewriter
                 options={{
@@ -89,7 +89,7 @@ function ComeFunziona() {
       )}
       {showRow2 && (
         <Row style={{ width: "100%" }}>
-          <Col xs={12} md={12}>
+          <Col xs={12} md={10}>
             <h4 className="HomeText ms-4 mt-4">
               <Typewriter
                 options={{
@@ -111,7 +111,7 @@ function ComeFunziona() {
       )}
       {showRow3 && (
         <Row style={{ width: "100%" }}>
-          <Col xs={12} md={7}>
+          <Col xs={12} md={6}>
             <h4 className="HomeText ms-4  mt-4">
               <Typewriter
                 options={{

@@ -51,10 +51,10 @@
   font-weight: bold;
 }
 .myButton:hover {
-  background-color: #9bd339;
-  color: rgb(4, 58, 20);
-  box-shadow: rgb(4, 58, 20) 0px 0px 4px 5px;
-  transform: scale(1.03);
+  background-color: rgb(4, 58, 20);
+  color: #9bd339;
+  border: none;
+  transform: scale(1.04);
   font-weight: bold;
 }
 * {
@@ -76,12 +76,6 @@ html {
 .myCarousel {
   height: 25rem;
   width: 100%;
-}
-.homeCard {
-  background: linear-gradient(rgb(4, 58, 20), black);
-  color: #9bd339;
-  transition: all 0.3s ease-in-out;
-  border: 4px solid black;
 }
 @media (max-width: 575px) {
   .carosello-col {
@@ -329,10 +323,17 @@ button {
   border-top: none;
   text-align: center;
 }
-.transparent-card {
-  background: linear-gradient(rgb(4, 58, 20), black);
+.homeCard {
+  background-color: rgb(4, 58, 20);
   color: #9bd339;
   transition: all 0.3s ease-in-out;
+  border: 4px solid black;
+}
+.transparent-card {
+  background-color: rgb(4, 58, 20);
+  color: #9bd339;
+  transition: all 0.3s ease-in-out;
+  border: 4px solid black;
 }
 .transparent-card:hover {
   transform: translateY(-5px);
@@ -351,15 +352,18 @@ button {
 /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< PAGINATION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
 .pagination {
   --bs-pagination-color: #9bd339;
-  --bs-pagination-bg: linear-gradient(rgb(4, 58, 20), black);
-  --bs-pagination-disabled-bg: transparent;
-  --bs-pagination-border-color: rgb(4, 58, 20);
-  --bs-pagination-active-color: white;
+  --bs-pagination-bg: rgb(4, 58, 20);
+  --bs-pagination-disabled-bg: rgb(4, 58, 20);
+  --bs-pagination-border-color: black;
+  --bs-pagination-active-color: #9bd339;
   --bs-pagination-active-bg: rgb(4, 58, 20);
-  --bs-pagination-active-border-color: rgb(4, 58, 20);
-  --bs-pagination-disabled-border-color: rgb(4, 58, 20);
-  --bs-pagination-hover-color: none;
-  --bs-pagination-hover-bg: none;
-  --bs-pagination-hover-border-color: #9bd339;
+  --bs-pagination-active-border-color: #9bd339;
+  --bs-pagination-disabled-border-color: black;
+  --bs-pagination-focus-bg: rgb(4, 58, 20);
+  --bs-pagination-hover-color: #9bd339;
+  --bs-pagination-hover-bg: rgb(4, 58, 20);
+  --bs-pagination-hover-border-color: black;
+  --bs-pagination-focus-color: #9bd339;
+  --bs-pagination-focus-box-shadow: none;
 }
 /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< PAGINATION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/

@@ -12,6 +12,7 @@ import { deleteRecensione } from "../../Redux/ActionType/Recensioni";
 import { ATTIVITA_SPORTIVA_FETCH_BY_ID } from "../../Redux/ActionType/AttivitaSportive";
 import ModalCreaEvento from "../Modali/ModalCreaEvento";
 import ModalCreateRecensione from "../Modali/ModalCreateRecensione";
+import { Link } from "react-router-dom";
 
 function Attivita() {
   // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< USE_NAVIGATE, USE_SELECTORE, USE_STATE, USE_DISPATCH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -98,7 +99,7 @@ function Attivita() {
   return (
     <div className="MyContainer  py-5">
       <Container className="MyAttivita mt-5 ">
-        <Row className="py-5 px-5 rounded-4 homeCard ">
+        <Row className="py-5 px-5 rounded-4 homeCard mb-5">
           <Col xs={12} md={6}>
             <h1 className="mb-1">{Attivita?.nomeAttivita}</h1>
             <Col xs={12} md={8}>
@@ -131,7 +132,7 @@ function Attivita() {
               <div
                 key={i}
                 style={{
-                  borderBottom: "2px solid rgb(4, 58, 20)",
+                  borderBottom: "3px solid  #9bd339",
                 }}
               >
                 <Row>
@@ -217,6 +218,23 @@ function Attivita() {
                 />
               </Col>
             </Col>
+          </Col>
+        </Row>
+        <Row
+          className="   justify-content-center"
+          style={{
+            borderTop: "4px solid  #9bd339",
+            paddingTop: "20px",
+          }}
+        >
+          <Col xs={12} className="text-center">
+            <Link
+              to="/Results"
+              className="MyLink"
+              style={{ color: " #9bd339" }}
+            >
+              <strong> Torna alle attività</strong>
+            </Link>
           </Col>
         </Row>
       </Container>

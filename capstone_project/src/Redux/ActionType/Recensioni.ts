@@ -1,7 +1,7 @@
 import { NewRecensione } from "../Interfaces";
 
 export const ALL_RECENSIONI = "ALL_RECENSIONI";
-export const RECENSIONE_BY_ID = "EVENTO_BY_ID";
+export const RECENSIONE_BY_ID = "RECENSIONE_BY_ID";
 
 export const fetchRecensioni = async (token: String) => {
   try {
