@@ -18,14 +18,13 @@ In tal caso, il sistema invierà una notifica a tutti gli utenti che potranno ag
 - Persistenza dei dati con Redux Persist.
 
 ## Dipendenze del frontend
-- Bootstrap per la creazione di un'interfaccia utente responsiva e moderna.
-- FontAwesome per l'utilizzo di icone vettoriali di alta qualità.
-- React-DatePicker per la gestione delle date e dei calendari.
-- MDB React UI Kit per componenti UI predefiniti e stili preconfigurati.
-- React-Icons per l'utilizzo di icone popolari all'interno dell'applicazione.
+- TypeScript per il supporto statico del tipo per il codice JavaScript.
 - React-Redux per la gestione dello stato globale dell'applicazione.
 - React-Router-Dom per la gestione delle rotte all'interno dell'applicazione.
 - Redux-Persist per la persistenza dei dati dello stato tra le sessioni.
+- Bootstrap per la creazione di un'interfaccia utente responsiva e moderna.
+- FontAwesome per l'utilizzo di icone vettoriali di alta qualità.
+- React-DatePicker per la gestione delle date e dei calendari.
 - Redux-Thunk per la gestione delle operazioni asincrone nel Redux store.
 - Typewriter-Effect per l'effetto di scrittura automatica del testo.
 - Axios per effettuare richieste HTTP verso il backend.
@@ -39,11 +38,10 @@ In tal caso, il sistema invierà una notifica a tutti gli utenti che potranno ag
 - JJWT per la creazione e la verifica dei JSON Web Token.
 - ModelMapper per il mapping degli oggetti.
 - Postgresql come database relazionale.
-- JavaFaker per la generazione di dati falsi.
 - Lombok per la semplificazione dello sviluppo Java.
 
 ## Installazione
-1. Clona il repository da GitHub: https://github.com/bebob94/MVS_Sports
+1. Clona il repository da GitHub:
 
 Per installare il frontend, seguire questi passaggi:
 1. Assicurarsi di avere Node.js installato sul proprio sistema.
@@ -73,17 +71,20 @@ Per favore, aprire un problema o inviare una richiesta di pull.
 - Implementazione di test automatizzati per garantire la qualità del codice e la stabilità dell'applicazione.
 
 ## Contatti
-Per domande, suggerimenti o feedback, contattare il team di sviluppo inviando un'e-mail a bebo.macis@gmail.com o aprendo una issue nel repository su GitHub.
+Per domande, suggerimenti o feedback, contattare inviando un'e-mail a bebo.macis@gmail.com o aprendo una issue nel repository su GitHub.
 
 ## Esplora il mio GitHub
 Sono appassionato di programmazione e sviluppo di software.
 Se sei interessato ad esplorare ulteriori progetti e contributi, ti invito a visitare il mio profilo
-GitHub: [bebob94](https://github.com/bebob94).
+ [GitHub](https://github.com/bebob94).
 
 ## Profilo LinkedIn
 Sono alla ricerca di nuove opportunità lavorative che mi permettano di mettere in pratica le mie competenze e di crescere professionalmente.
+
 Se desideri saperne di più sul mio background e le mie esperienze, ti invito a visitare il mio profilo
-LinkedIn: https://www.linkedin.com/in/alberto-macis-052273153/ Sarà un piacere connetterci e discutere di possibili collaborazioni.
+ [LinkedIn](https://www.linkedin.com/in/alberto-macis-052273153/).
+ 
+ Sarà un piacere connetterci e discutere di possibili collaborazioni.
 
 Sono aperto a nuove sfide e sono desideroso di ampliare le mie competenze.
 Se hai opportunità di lavoro o progetti interessanti, non esitare a contattarmi.
