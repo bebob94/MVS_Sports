@@ -43,7 +43,7 @@ In tal caso, il sistema invierà una notifica a tutti gli utenti che potranno ag
 - Lombok per la semplificazione dello sviluppo Java.
 
 ## Installazione
-1. Clona il repository da GitHub: https://github.com/bebob94/MVS_Sports
+1. Clona il repository da GitHub:
 
 Per installare il frontend, seguire questi passaggi:
 1. Assicurarsi di avere Node.js installato sul proprio sistema.
@@ -78,12 +78,12 @@ Per domande, suggerimenti o feedback, contattare il team di sviluppo inviando un
 ## Esplora il mio GitHub
 Sono appassionato di programmazione e sviluppo di software.
 Se sei interessato ad esplorare ulteriori progetti e contributi, ti invito a visitare il mio profilo
-GitHub: [bebob94](https://github.com/bebob94).
+GitHub: [Alberto Macis](https://github.com/bebob94).
 
 ## Profilo LinkedIn
 Sono alla ricerca di nuove opportunità lavorative che mi permettano di mettere in pratica le mie competenze e di crescere professionalmente.
 Se desideri saperne di più sul mio background e le mie esperienze, ti invito a visitare il mio profilo
-LinkedIn: https://www.linkedin.com/in/alberto-macis-052273153/ Sarà un piacere connetterci e discutere di possibili collaborazioni.
+LinkedIn: [Alberto Macis](https://www.linkedin.com/in/alberto-macis-052273153/) Sarà un piacere connetterci e discutere di possibili collaborazioni.
 
 Sono aperto a nuove sfide e sono desideroso di ampliare le mie competenze.
 Se hai opportunità di lavoro o progetti interessanti, non esitare a contattarmi.
