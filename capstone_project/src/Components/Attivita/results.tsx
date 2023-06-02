@@ -90,7 +90,7 @@ function Results() {
             <Row
               style={{
                 borderBottom: "4px solid  #9bd339",
-                paddingBottom: "30px",
+                paddingBottom: "20px",
               }}
               className=""
             >
@@ -137,39 +137,41 @@ function Results() {
                 </Col>
               ))}
             </Row>
-            <Row className="justify-content-center mt-5">
-              <Col xs={12} className="text-center">
+            <Row className=" mt-3 pb-3">
+              <Col xs={12} md={4} className="text-center">
+                <Pagination>
+                  <Pagination.First onClick={() => handlePageChange(1)} />
+                  <Pagination.Prev
+                    onClick={() =>
+                      handlePageChange(currentPage > 1 ? currentPage - 1 : 1)
+                    }
+                  />
+                  {[...Array(totalPages)].map((_, i) => (
+                    <Pagination.Item
+                      key={i}
+                      active={i + 1 === currentPage}
+                      onClick={() => handlePageChange(i + 1)}
+                    >
+                      {i + 1}
+                    </Pagination.Item>
+                  ))}
+                  <Pagination.Next
+                    onClick={() =>
+                      handlePageChange(
+                        currentPage < totalPages ? currentPage + 1 : totalPages
+                      )
+                    }
+                  />
+                  <Pagination.Last
+                    onClick={() => handlePageChange(totalPages)}
+                  />
+                </Pagination>
+              </Col>
+              <Col xs={12} md={4} className="text-center">
                 <Link to="/" className="MyLink" style={{ color: " #9bd339" }}>
                   <strong> Torna alla Home</strong>
                 </Link>
               </Col>
-            </Row>
-            <Row className="justify-content-center mt-4">
-              <Pagination>
-                <Pagination.First onClick={() => handlePageChange(1)} />
-                <Pagination.Prev
-                  onClick={() =>
-                    handlePageChange(currentPage > 1 ? currentPage - 1 : 1)
-                  }
-                />
-                {[...Array(totalPages)].map((_, i) => (
-                  <Pagination.Item
-                    key={i}
-                    active={i + 1 === currentPage}
-                    onClick={() => handlePageChange(i + 1)}
-                  >
-                    {i + 1}
-                  </Pagination.Item>
-                ))}
-                <Pagination.Next
-                  onClick={() =>
-                    handlePageChange(
-                      currentPage < totalPages ? currentPage + 1 : totalPages
-                    )
-                  }
-                />
-                <Pagination.Last onClick={() => handlePageChange(totalPages)} />
-              </Pagination>
             </Row>
           </>
         ) : (

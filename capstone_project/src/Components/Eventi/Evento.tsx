@@ -4,9 +4,8 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/Store";
 import { Link } from "react-router-dom";
 import { format } from "date-fns";
-
-import ModalModifyEvento from "./ModalModificaEvento";
 import { it } from "date-fns/locale";
+import ModalModifyEvento from "../Modali/ModalModificaEvento";
 
 function Evento() {
   // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< USE_NAVIGATE, USE_SELECTORE, USE_STATE, USE_DISPATCH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -26,7 +25,7 @@ function Evento() {
   return (
     <div className="MyContainer  pt-5">
       <Container className=" MyAttivita mt-3">
-        <Row className="justify-content-between transparent-card rounded-4 py-3">
+        <Row className="justify-content-between homeCard rounded-4 py-3">
           <Col sm={12} md={6} lg={4} className="ms-4">
             <Col className="mb-4">
               <strong>Sport: </strong> <br />

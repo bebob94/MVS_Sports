@@ -4,9 +4,6 @@ import { RootState } from "../../Redux/Store";
 import { USER_BY_USERNAME, userByUsername } from "../../Redux/ActionType/user";
 import { useEffect, useState } from "react";
 import Error2 from "../Error/Error2";
-import ModalModifyUtente from "./ModalModificaUtente";
-import ModalModifyAttivita from "./ModalModifyAttivita";
-import ModalCreateAttivita from "./ModalCreateAttivita";
 import Pagination from "react-bootstrap/Pagination";
 import { format } from "date-fns";
 import { it } from "date-fns/locale";
@@ -15,6 +12,9 @@ import {
   ATTIVITA_SPORTIVA_FETCH_BY_ID,
   searchById,
 } from "../../Redux/ActionType/AttivitaSportive";
+import ModalModifyUtente from "../Modali/ModalModificaUtente";
+import ModalModifyAttivita from "../Modali/ModalModifyAttivita";
+import ModalCreateAttivita from "../Modali/ModalCreateAttivita";
 
 const Dashboard = () => {
   // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< USE_NAVIGATE, USE_SELECTORE, USE_STATE, USE_DISPATCH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

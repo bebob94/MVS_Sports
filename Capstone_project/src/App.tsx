@@ -11,9 +11,9 @@ import Dashboard from "./Components/profile/Dashboard";
 import Results from "./Components/Attivita/results";
 import Evento from "./Components/Eventi/Evento";
 import Footer from "./Components/Footer";
-import AboutUs from "./Components/AboutUs";
 import Home from "./Components/Home";
 import Prenotazioni from "./Components/Eventi/Prenotazioni";
+import AboutUs from "./Components/profile/AboutUs";
 
 function App() {
   return (

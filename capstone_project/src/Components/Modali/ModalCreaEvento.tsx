@@ -146,11 +146,11 @@ const ModalCreaEvento = ({
                 <Form.Group className="mb-3">
                   <Form.Label>Numero partecipanti</Form.Label>
                   <Form.Control
+                    required
                     type="number"
-                    min="0"
-                    max={attivita.numeroMassimoPartecipanti}
-                    placeholder="Inserisci il numero di partecipanti"
-                    value={numeroPartecipanti}
+                    placeholder=""
+                    autoFocus
+                    value={numeroPartecipanti.toString()}
                     onChange={handleNumeroPartecipantiChange}
                   />
                 </Form.Group>

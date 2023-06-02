@@ -80,7 +80,7 @@ const ModalCreateRecensione = ({
   return (
     <>
       <Button
-        style={{ width: "150px" }}
+        style={{ width: "180px" }}
         className="myButton rounded-4"
         onClick={handleShow}
       >
@@ -114,6 +114,7 @@ const ModalCreateRecensione = ({
                 placeholder=""
                 autoFocus
                 name="name"
+                style={{ backgroundColor: "white" }}
                 value={testoRecensione.toString()}
                 onChange={handleTestoRecensioneChange}
               />

@@ -233,7 +233,7 @@ function Home() {
               }}
               type="text"
               value={search}
-              placeholder="Cerca per nome o indirizzo"
+              placeholder="inserisci testo e premi invio"
               onChange={(e) => {
                 handleSearch(e);
               }}

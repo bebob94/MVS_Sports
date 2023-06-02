@@ -7,11 +7,11 @@ import {
   fetchAttivita,
   searchById,
 } from "../../Redux/ActionType/AttivitaSportive";
-import ModalCreaEvento from "./ModalCreaEvento";
 import "react-datepicker/dist/react-datepicker.css";
-import ModalCreateRecensione from "./ModalCreateRecensione";
 import { deleteRecensione } from "../../Redux/ActionType/Recensioni";
 import { ATTIVITA_SPORTIVA_FETCH_BY_ID } from "../../Redux/ActionType/AttivitaSportive";
+import ModalCreaEvento from "../Modali/ModalCreaEvento";
+import ModalCreateRecensione from "../Modali/ModalCreateRecensione";
 
 function Attivita() {
   // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< USE_NAVIGATE, USE_SELECTORE, USE_STATE, USE_DISPATCH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
