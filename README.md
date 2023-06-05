@@ -21,22 +21,6 @@ In tal caso, il sistema invierà una notifica a tutti gli utenti che potranno ag
 - Persistenza dei dati con Redux Persist.
 
 
-## FRONTEND 🖥🎬
-- TypeScript per il supporto statico del tipo per il codice JavaScript.
-- React-Redux per la gestione dello stato globale dell'applicazione.
-- React-Router-Dom per la gestione delle rotte all'interno dell'applicazione.
-- Redux-Persist per la persistenza dei dati dello stato tra le sessioni.
-- Bootstrap per la creazione di un'interfaccia utente responsiva e moderna.
-- FontAwesome per l'utilizzo di icone vettoriali di alta qualità.
-- React-DatePicker per la gestione delle date e dei calendari.
-- Redux-Thunk per la gestione delle operazioni asincrone nel Redux store.
-- Typewriter-Effect per l'effetto di scrittura automatica del testo.
-- Axios per effettuare richieste HTTP verso il backend.
-- Date-Fns per la manipolazione delle date e dei tempi.
-
-![M V S sport front-end](https://github.com/bebob94/MVS_Sports/assets/119256128/b600882c-02ae-4da0-a9d8-8f7382cbe863)
-
-
 ## BACKEND 🛠⚙
 - Spring Boot per lo sviluppo del backend.
 - Spring Data JPA per l'accesso e la gestione dei dati.
@@ -51,6 +35,22 @@ In tal caso, il sistema invierà una notifica a tutti gli utenti che potranno ag
 
 ![M V S sport back-end](https://github.com/bebob94/MVS_Sports/assets/119256128/7a99d226-c8f4-41e0-a777-1d50a0b78c17)
 
+
+
+## FRONTEND 🖥🎬
+- TypeScript per il supporto statico del tipo per il codice JavaScript.
+- React-Redux per la gestione dello stato globale dell'applicazione.
+- React-Router-Dom per la gestione delle rotte all'interno dell'applicazione.
+- Redux-Persist per la persistenza dei dati dello stato tra le sessioni.
+- Bootstrap per la creazione di un'interfaccia utente responsiva e moderna.
+- FontAwesome per l'utilizzo di icone vettoriali di alta qualità.
+- React-DatePicker per la gestione delle date e dei calendari.
+- Redux-Thunk per la gestione delle operazioni asincrone nel Redux store.
+- Typewriter-Effect per l'effetto di scrittura automatica del testo.
+- Axios per effettuare richieste HTTP verso il backend.
+- Date-Fns per la manipolazione delle date e dei tempi.
+
+![M V S sport front-end](https://github.com/bebob94/MVS_Sports/assets/119256128/b600882c-02ae-4da0-a9d8-8f7382cbe863)
 
 
 ## Installazione 🕹💫
