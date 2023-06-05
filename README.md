@@ -20,6 +20,7 @@ In tal caso, il sistema invierà una notifica a tutti gli utenti che potranno ag
 - Frontend sviluppato con React, Redux e TypeScript.
 - Persistenza dei dati con Redux Persist.
 
+
 ## FRONTEND 🖥🎬
 - TypeScript per il supporto statico del tipo per il codice JavaScript.
 - React-Redux per la gestione dello stato globale dell'applicazione.
@@ -48,6 +49,9 @@ In tal caso, il sistema invierà una notifica a tutti gli utenti che potranno ag
 
 ![M V S sport database](https://github.com/bebob94/MVS_Sports/assets/119256128/707cfc58-ec69-4999-a1ab-a42433f198e3)
 
+![M V S sport back-end](https://github.com/bebob94/MVS_Sports/assets/119256128/7a99d226-c8f4-41e0-a777-1d50a0b78c17)
+
+
 
 ## Installazione 🕹💫
 1. Clona il repository da GitHub:
@@ -65,9 +69,11 @@ Per installare il backend, seguire questi passaggi:
 3. Accedere alla directory del backend: `cd backend`.
 4. Avviare l'applicazione utilizzando l'IDE preferito o eseguendo il comando `mvn spring-boot:run`.
 
+
 ## Contributi🤝🧐
 Le segnalazioni di bug, le richieste di nuove funzionalità e i contributi sono benvenuti!
 Per favore, aprire un problema o inviare una richiesta di pull.
+
 
 ## Roadmap futura🚀🗺
 - Implementazione di una chat per gli utenti per facilitare la comunicazione all'interno della piattaforma.
@@ -79,13 +85,16 @@ Per favore, aprire un problema o inviare una richiesta di pull.
 - Miglioramento dell'interfaccia utente, includendo animazioni e migliorando l'esperienza di navigazione.
 - Implementazione di test automatizzati per garantire la qualità del codice e la stabilità dell'applicazione.
 
+
 ## Contatti📞📟
 Per domande, suggerimenti o feedback, contattare inviando un'e-mail a bebo.macis@gmail.com o aprendo una issue nel repository su GitHub.
+
 
 ## Esplora il mio GitHub🔍🗃
 Sono appassionato di programmazione e sviluppo di software.
 Se sei interessato ad esplorare ulteriori progetti e contributi, ti invito a visitare il mio profilo
  [GitHub](https://github.com/bebob94).
+
 
 ## Profilo LinkedIn🙋‍♂️👇
 Sono alla ricerca di nuove opportunità lavorative che mi permettano di mettere in pratica le mie competenze e di crescere professionalmente.
