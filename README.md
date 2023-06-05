@@ -1,12 +1,15 @@
-# MVS_Sports Sito Sportivo
+# MVS_Sports ⚽🥎🏐
 
-## Descrizione
-Il progetto Sito Sportivo è un'applicazione fullstack che permette agli utenti normali e ai titolari di azienda di iscriversi e interagire all'interno della piattaforma.
+## Descrizione 🖋📝
+Il progetto MVS_Sports è un'applicazione fullstack che permette agli utenti normali e ai titolari di azienda di iscriversi e interagire all'interno della piattaforma.
 I titolari di azienda possono inserire le proprie attività sportive, fornendo informazioni dettagliate come nome, indirizzo, orari di apertura e chiusura, contatti e altro ancora.
 Gli utenti possono cercare aziende in base al tipo di sport, all'indirizzo o alle parole chiave, lasciare recensioni e prenotare un campo anche se non raggiungono il numero necessario di giocatori.
 In tal caso, il sistema invierà una notifica a tutti gli utenti che potranno aggiungersi alla prenotazione fino a raggiungere il numero di giocatori richiesto.
 
-## Caratteristiche principali
+![Cattura](https://github.com/bebob94/MVS_Sports/assets/119256128/14b9cef7-d38d-448b-a031-6167489ccbe6)
+
+
+## Caratteristiche principali 🧬💻
 - Registrazione e autenticazione di utenti e titolari di azienda.
 - Inserimento delle attività da parte dei titolari di azienda con dettagli completi.
 - Ricerca aziende per tipo di sport, indirizzo o parole chiave.
@@ -17,7 +20,8 @@ In tal caso, il sistema invierà una notifica a tutti gli utenti che potranno ag
 - Frontend sviluppato con React, Redux e TypeScript.
 - Persistenza dei dati con Redux Persist.
 
-## Dipendenze del frontend
+
+## FRONTEND 🖥🎬
 - TypeScript per il supporto statico del tipo per il codice JavaScript.
 - React-Redux per la gestione dello stato globale dell'applicazione.
 - React-Router-Dom per la gestione delle rotte all'interno dell'applicazione.
@@ -30,7 +34,10 @@ In tal caso, il sistema invierà una notifica a tutti gli utenti che potranno ag
 - Axios per effettuare richieste HTTP verso il backend.
 - Date-Fns per la manipolazione delle date e dei tempi.
 
-## Dipendenze del backend
+![M V S sport front-end](https://github.com/bebob94/MVS_Sports/assets/119256128/b600882c-02ae-4da0-a9d8-8f7382cbe863)
+
+
+## BACKEND 🛠⚙
 - Spring Boot per lo sviluppo del backend.
 - Spring Data JPA per l'accesso e la gestione dei dati.
 - Spring Web per la creazione di API web.
@@ -40,7 +47,13 @@ In tal caso, il sistema invierà una notifica a tutti gli utenti che potranno ag
 - Postgresql come database relazionale.
 - Lombok per la semplificazione dello sviluppo Java.
 
-## Installazione
+![M V S sport database](https://github.com/bebob94/MVS_Sports/assets/119256128/707cfc58-ec69-4999-a1ab-a42433f198e3)
+
+![M V S sport back-end](https://github.com/bebob94/MVS_Sports/assets/119256128/7a99d226-c8f4-41e0-a777-1d50a0b78c17)
+
+
+
+## Installazione 🕹💫
 1. Clona il repository da GitHub:
 
 Per installare il frontend, seguire questi passaggi:
@@ -56,11 +69,13 @@ Per installare il backend, seguire questi passaggi:
 3. Accedere alla directory del backend: `cd backend`.
 4. Avviare l'applicazione utilizzando l'IDE preferito o eseguendo il comando `mvn spring-boot:run`.
 
-## Contributi
+
+## Contributi🤝🧐
 Le segnalazioni di bug, le richieste di nuove funzionalità e i contributi sono benvenuti!
 Per favore, aprire un problema o inviare una richiesta di pull.
 
-## Roadmap futura
+
+## Roadmap futura🚀🗺
 - Implementazione di una chat per gli utenti per facilitare la comunicazione all'interno della piattaforma.
 - Miglioramento della selezione degli orari per le prenotazioni, includendo un calendario interattivo per semplificare la scelta delle disponibilità.
 - Gestione delle notifiche in modo che vengano inviate solo agli utenti che vivono in un'area specifica (ad esempio, entro 40 km),
@@ -70,15 +85,18 @@ Per favore, aprire un problema o inviare una richiesta di pull.
 - Miglioramento dell'interfaccia utente, includendo animazioni e migliorando l'esperienza di navigazione.
 - Implementazione di test automatizzati per garantire la qualità del codice e la stabilità dell'applicazione.
 
-## Contatti
+
+## Contatti📞📟
 Per domande, suggerimenti o feedback, contattare inviando un'e-mail a bebo.macis@gmail.com o aprendo una issue nel repository su GitHub.
 
-## Esplora il mio GitHub
+
+## Esplora il mio GitHub🔍🗃
 Sono appassionato di programmazione e sviluppo di software.
 Se sei interessato ad esplorare ulteriori progetti e contributi, ti invito a visitare il mio profilo
  [GitHub](https://github.com/bebob94).
 
-## Profilo LinkedIn
+
+## Profilo LinkedIn🙋‍♂️👇
 Sono alla ricerca di nuove opportunità lavorative che mi permettano di mettere in pratica le mie competenze e di crescere professionalmente.
 
 Se desideri saperne di più sul mio background e le mie esperienze, ti invito a visitare il mio profilo
