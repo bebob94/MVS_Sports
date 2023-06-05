@@ -1,7 +1,7 @@
 # MVS_Sports ⚽🥎🏐
 
 ## Descrizione 🖋📝
-Il progetto Sito Sportivo è un'applicazione fullstack che permette agli utenti normali e ai titolari di azienda di iscriversi e interagire all'interno della piattaforma.
+Il progetto MVS_Sports è un'applicazione fullstack che permette agli utenti normali e ai titolari di azienda di iscriversi e interagire all'interno della piattaforma.
 I titolari di azienda possono inserire le proprie attività sportive, fornendo informazioni dettagliate come nome, indirizzo, orari di apertura e chiusura, contatti e altro ancora.
 Gli utenti possono cercare aziende in base al tipo di sport, all'indirizzo o alle parole chiave, lasciare recensioni e prenotare un campo anche se non raggiungono il numero necessario di giocatori.
 In tal caso, il sistema invierà una notifica a tutti gli utenti che potranno aggiungersi alla prenotazione fino a raggiungere il numero di giocatori richiesto.
