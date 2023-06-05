@@ -40,7 +40,7 @@ const Footer = () => (
           >
             <BsLinkedin className="m-3" />
           </Link>
-          <Link className="MyLink" to={"https://github.com/bebob94"}>
+          <Link className="MyLink" to={"https://github.com/bebob94/MVS_Sports"}>
             <BsGithub className="m-3" />{" "}
           </Link>
         </Col>

@@ -9,7 +9,7 @@ const Error2 = () => {
           Impossibile accedere alla pagina, per favore esegua il login.{" "}
           <Link to={"/Login"} style={{ color: "blue" }}>
             {" "}
-            Indietro
+            Login
           </Link>
         </Alert>
       </Col>
