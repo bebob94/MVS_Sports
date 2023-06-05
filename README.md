@@ -21,6 +21,7 @@ In tal caso, il sistema invierà una notifica a tutti gli utenti che potranno ag
 - Persistenza dei dati con Redux Persist.
 
 
+
 ## BACKEND 🛠⚙
 - Spring Boot per lo sviluppo del backend.
 - Spring Data JPA per l'accesso e la gestione dei dati.
