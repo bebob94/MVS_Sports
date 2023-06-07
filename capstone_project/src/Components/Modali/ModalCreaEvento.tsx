@@ -46,6 +46,12 @@ const ModalCreaEvento = ({
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
 
+  const minTime = new Date();
+  minTime.setHours(9, 0);
+
+  const maxTime = new Date();
+  maxTime.setHours(21, 0);
+
   // Controllo dat e orario eventi
   const handleDateChange = (date: Date) => {
     let isValid = true;
@@ -136,7 +142,9 @@ const ModalCreaEvento = ({
                     dateFormat="MMMM d, yyyy h:mm aa"
                     className="form-control dataForm"
                     minDate={currentDate}
-                    locale={it} // Aggiungi questa riga per utilizzare il locale italiano
+                    minTime={minTime}
+                    maxTime={maxTime}
+                    locale={it}
                   />
                 </Form.Group>
               </div>
